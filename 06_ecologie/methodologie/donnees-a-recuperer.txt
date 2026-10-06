@@ -1,0 +1,10 @@
+Données à récupérer :
+- Statut IUCN des espèces
+- Relevés botaniques de la DREDD
+- Table de correspondance de Schlatz 2001, sinon du jardin botanique ou d'autres papiers scientifiques
+
+- Extraire les données de comparaison :
+	* Armstrong
+	* Le papier de 2023 comme Armstrong
+	* Romiguière 2025
+	* Autres papiers sur Ranomafano que j'ai pu trouver
