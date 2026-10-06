@@ -1,52 +1,143 @@
 "
 Ewen Le Coeur
-21/08/2026
+2026
 Objectif : calculs des indices écologiques
+
+Ce script traite la STRUCTURE FORESTIÈRE (document d'étape §3.2,
+Mémento du forestier tropical, Mille & Louppe 2015) :
+  - Densité N (tiges/ha), gaulis inclus
+  - Distribution des effectifs par classe de diamètre (largeur 2,5 cm)
+  - Surface terrière G (m²/ha)
+à l'échelle du dispositif ET par placette (moyenne ± écart-type).
+
+Reste à traiter dans ce script (sections du document d'étape) :
+  - chablis/ha et arbres DBH>40 /ha (transects, §3.2)
+  - stock de carbone AGB/BGB Chave (§3.3)
+  - volume de bois mort (Van Wagner) (§3.3)
+  - diversité alpha (Shannon, Simpson, Fisher) (§3.4)
+  - IVI (§3.6)
+
+Utilisation :
+  source(\"06_ecologie/analyse/scripts/calcIndices.R\")
 "
 
-### Import des modules ###
+### Modules ###
 
-library(readODS)
-library(ggplot2)
+if (!requireNamespace("dplyr", quietly = TRUE)) install.packages("dplyr")
+if (!requireNamespace("tidyr", quietly = TRUE)) install.packages("tidyr")
+if (!requireNamespace("stringr", quietly = TRUE)) install.packages("stringr")
+if (!requireNamespace("readr", quietly = TRUE)) install.packages("readr")
 
-### Import des données ###
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(readr)
 
-# saisie_releves_TZBA.ods
+source("06_ecologie/analyse/scripts/importDonnees.R")
+d <- importer_donnees()
 
-### Nettoyage et mise en forme des données ###
+### Préparation des tiges ###
 
-# ne garder que les données d'interet dans les deux feuilles dans une nv table
-# renommer les colonnes
+# Tiges mesurées (CBH > 8 cm) : floreTiges.
+# Gaulis (tiges < 1,30 m) : non mesurés — comptés dans la densité,
+# exclus de la surface terrière (pas de CBH).
+# La surface terrière se rapporte à la surface horizontale.
+tiges <- d$floreTiges |>
+  mutate(
+    dbh_cm = circ_cm / pi,
+    classeDiam = floor(dbh_cm / 2.5) * 2.5
+  )
 
-### Calcul des indices ###
-# réfléchir au par placette VS forêt entière
-# réfléchir à nom gasy vs nom binominal (genre ?)
+gaulis <- d$flore |>
+  filter(!is.na(gaulis)) |>
+  group_by(cdPlacette) |>
+  summarise(nbGaulis = sum(gaulis), .groups = "drop")
 
-## Shannon
-## IVI
-## Densité de tiges
-## Surface terrière
-## Volume de bois vivant
-## Volume de bois mort (sol+pied)
-## Indice kilométrique d'abondance
-## Chablis
+### Surfaces ###
 
-### Calcul des marges d'erreurs pour chaque indice ###
-# propagation des erreurs
-# écart-type
+surfaceTotale <- sum(d$placettes$surfaceHorizontale_m2, na.rm = TRUE)
+message("Surface inventoriée (horizontale) : ", round(surfaceTotale, 1),
+        " m² sur ", nrow(d$placettes), " placettes")
 
-### CAH/arbre de proximité des placettes sur la flore (?)
+### Densité N ###
 
-### tests de significativité de la composition floristique/G pour chaque variable de placette
-## pour ce faire, grouper sec/humide/saturé et tester les uns contre les autres
-## tester chaque placette l'une contre l'autre également
+nbTigesMesurees <- nrow(tiges)
+nbGaulis <- sum(gaulis$nbGaulis)
+densite <- (nbTigesMesurees + nbGaulis) / surfaceTotale * 10000
 
-### glm
-## P ~ variables (?)
-## flore ~ variables
-## ~ flore (une ligne pour chaque espèce)
+densite_dispositif <- tibble(
+  indicateur = "Densité N (tiges/ha)",
+  tigesMesurees = nbTigesMesurees,
+  gaulis = nbGaulis,
+  valeur = densite
+)
 
-### ACP entre espèces pour identifier groupes d'espèces / variables explicatives de chaque groupe
-## hmmm...
+### Distribution par classe de diamètre (largeur 2,5 cm) ###
 
-### Tableaux pour comparaison avec les valeurs de la littérature (alpha, G...)
+classesDiametre <- tiges |>
+  count(classeDiam, name = "effectif") |>
+  arrange(classeDiam) |>
+  mutate(
+    densite_ha = effectif / surfaceTotale * 10000,
+    frequence = effectif / nbTigesMesurees
+  )
+
+### Surface terrière G ###
+
+# G = somme des sections à hauteur de poitrine = pi/4 * DHP²
+g_par_placette <- tiges |>
+  group_by(cdPlacette) |>
+  summarise(G_m2 = sum(pi / 4 * (dbh_cm / 100)^2), nbTiges = n(), .groups = "drop")
+
+surfaceTerriere <- sum(g_par_placette$G_m2)
+G_ha <- surfaceTerriere / surfaceTotale * 10000
+
+surfaceTerriere_dispositif <- tibble(
+  indicateur = "Surface terrière G (m²/ha)",
+  valeur = G_ha
+)
+
+### Indices par placette : moyenne et écart-type ###
+
+placettesIndices <- d$placettes |>
+  select(cdPlacette, surfaceHorizontale_m2) |>
+  left_join(g_par_placette, by = "cdPlacette") |>
+  left_join(gaulis, by = "cdPlacette") |>
+  mutate(
+    nbGaulis = replace_na(nbGaulis, 0),
+    nbTiges = replace_na(nbTiges, 0),
+    densitePlacette = (nbTiges + nbGaulis) / surfaceHorizontale_m2 * 10000,
+    GhaPlacette = replace_na(G_m2, 0) / surfaceHorizontale_m2 * 10000
+  )
+
+resume_placettes <- placettesIndices |>
+  summarise(
+    densite_moyenne = mean(densitePlacette),
+    densite_ecartType = sd(densitePlacette),
+    Gha_moyenne = mean(GhaPlacette),
+    Gha_ecartType = sd(GhaPlacette)
+  )
+
+### Sorties ###
+
+resultat <- list(
+  surface_m2 = surfaceTotale,
+  densite_dispositif = densite_dispositif,
+  classesDiametre = classesDiametre,
+  surfaceTerriere_m2 = surfaceTerriere,
+  surfaceTerriere_ha = surfaceTerriere_dispositif,
+  placettesIndices = placettesIndices,
+  resume_placettes = resume_placettes
+)
+
+dossierSorties <- "06_ecologie/analyse/sorties"
+if (!dir.exists(dossierSorties)) dir.create(dossierSorties, recursive = TRUE)
+write_csv(classesDiametre, file.path(dossierSorties, "structure_classes_diametre.csv"))
+write_csv(placettesIndices, file.path(dossierSorties, "structure_indices_placettes.csv"))
+
+message("✅ Structure forestière :")
+message("   Densité N = ", round(densite), " tiges/ha (",
+        nbTigesMesurees, " tiges mesurées + ", nbGaulis, " gaulis, ",
+        round(surfaceTotale, 1), " m²)")
+message("   Surface terrière G = ", round(G_ha, 2), " m²/ha")
+resultat
