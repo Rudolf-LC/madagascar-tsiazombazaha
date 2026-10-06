@@ -1,0 +1,20 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# 06_Ecologie
+06_ecologie/methodologie/
+06_ecologie/releves/
+06_ecologie/analyse/figures/
+06_ecologie/analyse/donnees/
+
+# 08_rapport
+08_rapport/
+
+# Sorties générées
+figures/
+outputs/
+
+# Système
+.DS_Store
