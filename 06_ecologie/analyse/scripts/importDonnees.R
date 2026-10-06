@@ -88,20 +88,27 @@ importer_donnees <- function(fichier = trouver_fichier()) {
     )
 
   ### grands-arbres (transects, DBH > 40 cm) ###
-  grandsArbres <- normaliser_colonnes(read_ods(fichier, sheet = "grands-arbres")) |>
-    select(`Code transect`:`Usages`) |>
+  # N.B. : la ligne d'en-tete contient deux colonnes "Remarque" (bloc gauche
+  # et bloc droit du tableau ODS) ; on reference donc les colonnes par position.
+  # On lit sans en-tete (col_names = FALSE) et on nomme explicitement les 11
+  # premieres colonnes du bloc gauche.
+  grandsArbres <- read_ods(fichier, sheet = "grands-arbres", col_names = FALSE) |>
+    select(1:11) |>
+    setNames(c("cdTransectBrut", "cdObs", "nomVernaculaireBrut", "circBrute",
+               "gps", "remarque", "type", "nomSimple", "nbTypesBrut",
+               "descriptionTypes", "usages")) |>
     transmute(
-      cdTransect = str_trim(`Code transect`),
-      cdObs = as.character(`Code observation`),
-      nomVernaculaire = normaliser_nom(`Nom vernaculaire`),
-      circ_cm = en_numerique(`Circonférence`),
-      gps = `GPS`,
-      remarque = `Remarque`,
-      type = `Type`,
-      nomSimple = `Nom simple`,
-      nbTypes = en_numerique(`Nb types`),
-      descriptionTypes = `Description types`,
-      usages = `Usages`
+      cdTransect = str_trim(cdTransectBrut),
+      cdObs = as.character(cdObs),
+      nomVernaculaire = normaliser_nom(nomVernaculaireBrut),
+      circ_cm = en_numerique(circBrute),
+      gps = gps,
+      remarque = remarque,
+      type = type,
+      nomSimple = nomSimple,
+      nbTypes = en_numerique(nbTypesBrut),
+      descriptionTypes = descriptionTypes,
+      usages = usages
     ) |>
     filter(!is.na(cdTransect))
 
@@ -130,25 +137,29 @@ importer_donnees <- function(fichier = trouver_fichier()) {
     )
 
   ### bois-mort ###
-  boisMortBrut <- normaliser_colonnes(read_ods(fichier, sheet = "bois-mort"))
+  # N.B. : deux colonnes "Placette" (bloc gauche et bloc droit) ; on lit sans
+  # en-tete (col_names = FALSE) et on nomme explicitement. Colonnes 1-4 :
+  # mesures des bois morts (chandelle = sur pied, sol = au sol) ; colonnes 7-8 :
+  # longueurs des pieces au sol (methode Van Wagner).
+  boisMortBrut <- read_ods(fichier, sheet = "bois-mort", col_names = FALSE)
 
-  # Table de gauche : bois morts (chandelles = sur pied, sol = au sol)
   boisMort <- boisMortBrut |>
-    select(Placette, Type, `Circonférence`, `État`) |>
+    select(1:4) |>
+    setNames(c("cdPlacetteBrut", "typeBrut", "circBrute", "etatBrut")) |>
     transmute(
-      cdPlacette = str_trim(Placette),
-      type = str_trim(Type),
-      circ_cm = en_numerique(`Circonférence`),
-      etatDecomposition = en_numerique(`État`)
+      cdPlacette = str_trim(cdPlacetteBrut),
+      type = str_trim(typeBrut),
+      circ_cm = en_numerique(circBrute),
+      etatDecomposition = en_numerique(etatBrut)
     ) |>
     filter(!is.na(cdPlacette))
 
-  # Table de droite : longueur des pieces de bois mort au sol (methode Van Wagner)
   boisMortLongueurs <- boisMortBrut |>
-    select(`Placette.1`, `Longueur`) |>
+    select(7:8) |>
+    setNames(c("cdPlacetteBrut", "longueurBrute")) |>
     transmute(
-      cdPlacette = str_trim(`Placette.1`),
-      longueur_m = en_numerique(`Longueur`)
+      cdPlacette = str_trim(cdPlacetteBrut),
+      longueur_m = en_numerique(longueurBrute)
     ) |>
     filter(!is.na(longueur_m))
 
