@@ -61,12 +61,13 @@ en_booleen <- function(x, vrai = "Oui", faux = "Non") {
   dplyr::if_else(x %in% vrai, TRUE, dplyr::if_else(x %in% faux, FALSE, NA))
 }
 
-# Uniformise un nom vernaculaire (espaces multiples, casse)
+# Uniformise un nom vernaculaire : espaces multiples supprimes,
+# majuscule a la premiere lettre uniquement, reste en minuscules.
+# Ex. "  Hazo MAINTY " -> "Hazo mainty"
 normaliser_nom <- function(x) {
-  x |>
-    as.character() |>
-    str_squish() |>
-    str_to_title()
+  x <- str_to_lower(str_squish(as.character(x)))
+  dplyr::if_else(is.na(x), x,
+                 paste0(str_sub(x, 1, 1) |> str_to_upper(), str_sub(x, 2)))
 }
 
 # Normalise les noms de colonnes d'une feuille : espaces inseables,
@@ -364,7 +365,7 @@ importer_donnees <- function(fichier = trouver_fichier()) {
     transmute(
       cdPlacette = str_trim(`Placette`),
       type = `Type`,
-      espece = `Espèce`,
+      espece = normaliser_nom(`Espèce`),
       nombre = `Nombre`,
       remarque = `Remarque`
     ) |>
