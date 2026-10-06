@@ -40,11 +40,8 @@ trouver_fichier <- function() {
 
 # Convertit en nombre : \"~ 205\" -> 205, \"?\" -> NA, \"Oui\"/\"Non\" -> NA
 en_numerique <- function(x) {
-  x |>
-    as.character() |>
-    str_replace("~", "") |>
-    str_trim() |>
-    suppressWarnings(as.numeric())
+  x <- str_trim(str_replace(as.character(x), "~", ""))
+  suppressWarnings(as.numeric(x))
 }
 
 en_booleen <- function(x, vrai = "Oui", faux = "Non") {
