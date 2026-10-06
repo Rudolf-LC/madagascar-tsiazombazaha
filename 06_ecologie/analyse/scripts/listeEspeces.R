@@ -43,7 +43,8 @@ est_une_espece <- function(x) {
 # flore-verifiee : occurrences par placette, usages et types
 floreOcc <- d$flore |>
   filter(est_une_espece(nomVernaculaire)) |>
-  group_by(nomVernaculaire) |>
+  mutate(nomNormalise = normaliser_nom(nomVernaculaire)) |>
+  group_by(nomNormalise) |>
   summarise(
     occFlore = n(),
     usagesFlore = str_c(unique(na.omit(remarquesUsages)), collapse = " ; "),
@@ -54,7 +55,8 @@ floreOcc <- d$flore |>
 # grands-arbres : occurrences sur les transects, usages et types
 grandsArbresOcc <- d$grandsArbres |>
   filter(est_une_espece(nomVernaculaire)) |>
-  group_by(nomVernaculaire) |>
+  mutate(nomNormalise = normaliser_nom(nomVernaculaire)) |>
+  group_by(nomNormalise) |>
   summarise(
     occGrandsArbres = n(),
     usagesGrandsArbres = str_c(unique(na.omit(usages)), collapse = " ; "),
@@ -65,18 +67,19 @@ grandsArbresOcc <- d$grandsArbres |>
 # phenologie : especes vues en fleurs/fruits
 phenologieOcc <- d$phenologie |>
   filter(est_une_espece(espece)) |>
-  group_by(espece) |>
+  mutate(nomNormalise = normaliser_nom(espece)) |>
+  group_by(nomNormalise) |>
   summarise(
     occPhenologie = n(),
     phenologieTypes = str_c(unique(na.omit(type)), collapse = " ; "),
     .groups = "drop"
-  ) |>
-  rename(nomVernaculaire = espece)
+  )
 
 # autres-especes : especes vues hors placettes/transects
 autresOcc <- d$autresEspeces |>
   filter(est_une_espece(nomVernaculaire)) |>
-  group_by(nomVernaculaire) |>
+  mutate(nomNormalise = normaliser_nom(nomVernaculaire)) |>
+  group_by(nomNormalise) |>
   summarise(
     occAutres = n(),
     autresRemarques = str_c(unique(na.omit(remarques)), collapse = " ; "),
@@ -114,9 +117,9 @@ nomsBruts <- bind_rows(
 
 listeEspeces <- nomsBruts |>
   left_join(floreOcc, by = "nomNormalise") |>
-  left_join(grandsArbresOcc, by = c("nomNormalise" = "nomVernaculaire")) |>
-  left_join(phenologieOcc, by = c("nomNormalise" = "nomVernaculaire")) |>
-  left_join(autresOcc, by = c("nomNormalise" = "nomVernaculaire")) |>
+  left_join(grandsArbresOcc, by = "nomNormalise") |>
+  left_join(phenologieOcc, by = "nomNormalise") |>
+  left_join(autresOcc, by = "nomNormalise") |>
   mutate(
     across(starts_with("occ"), ~ replace_na(.x, 0)),
     occurrencesTotales = occFlore + occGrandsArbres + occPhenologie + occAutres,
