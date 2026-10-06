@@ -127,13 +127,6 @@ resume_placettes <- placettesIndices |>
 #    sont des longueurs exploitables. Les transects sans longueur
 #    renseignée sont exclus et signalés.
 
-transectsExplorables <- d$transects |>
-  mutate(longueurExplorable = longueurGA) |>
-  filter(!is.na(longueurExplorable), longueurExpllicableOk <- longueurExplorable > 0)
-
-# (correction : on ne peut pas assigner dans filter ; version propre ci-dessous)
-
-longueurTotaleTransects <- sum(d$transects$longueurGA, na.rm = TRUE)
 surfaceTransects_m2 <- longueurTotaleTransects * 10
 
 transectsSansLongueur <- d$transects |>
