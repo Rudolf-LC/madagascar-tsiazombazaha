@@ -248,7 +248,7 @@ importer_donnees <- function(fichier = trouver_fichier()) {
 
   autresEspeces <- normaliser_colonnes(read_ods(fichier, sheet = "autres-especes")) |>
     transmute(
-      cdZone = str_trim(`Code placette ou  transect`),
+      cdZone = str_trim(`Code placette ou transect`),
       nomVernaculaire = normaliser_nom(`Nom vernaculaire`),
       remarques = `Remarques`,
       remarquesLieu = `Remarques lieu d’observation`
