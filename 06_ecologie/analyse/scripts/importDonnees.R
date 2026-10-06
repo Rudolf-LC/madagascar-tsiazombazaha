@@ -69,7 +69,7 @@ importer_donnees <- function(fichier = trouver_fichier()) {
     transmute(
       cdTransect = str_trim(`Code transect`),
       date = as.character(`Date`),
-      polisnala = `Polisn\u2019ala`,
+      polisnala = `Polisn’ala`,
       objectifs = `Objectifs`,
       longueurGA = en_numerique(`Longueur prospection grands arbres`),
       prospGA = en_booleen(`Longueur prospection grands arbres`),
@@ -83,7 +83,7 @@ importer_donnees <- function(fichier = trouver_fichier()) {
       cdTransect = str_trim(`Code transect`),
       cdObs = as.character(`Code observation`),
       nomVernaculaire = normaliser_nom(`Nom vernaculaire`),
-      circ_cm = en_numerique(`Circonf\u00e9rence`),
+      circ_cm = en_numerique(`Circonférence`),
       gps = `GPS`,
       remarque = `Remarque`,
       type = `Type`,
@@ -101,20 +101,20 @@ importer_donnees <- function(fichier = trouver_fichier()) {
       cdPlacette = str_trim(`Code placette`),
       situationTopo = `Situation topographique`,
       surfaceHorizontale_m2 = en_numerique(`Surface horizontale`),
-      pente_pct = en_numerique(`Pente\u00a0%`),
-      surfaceReelle_m2 = en_numerique(`Surface r\u00e9elle`),
+      pente_pct = en_numerique(`Pente %`),
+      surfaceReelle_m2 = en_numerique(`Surface réelle`),
       canopeeN = `%N`, canopeeS = `%S`, canopeeE = `%E`, canopeeO = `%O`,
-      strateHerbacee = `Herbac\u00e9e`,
-      strateSousEtage = `Sous-\u00e9tage`,
-      strateCanopeeInf = `Canop\u00e9e inf`,
-      strateCanopeeSup = `Canop\u00e9e sup`,
-      typeHumus = `Type d\u2019humus`,
+      strateHerbacee = `Herbacée`,
+      strateSousEtage = `Sous-étage`,
+      strateCanopeeInf = `Canopée inf`,
+      strateCanopeeSup = `Canopée sup`,
+      typeHumus = `Type d’humus`,
       certitudeHumus = `Certitude humus`,
-      humiditeSol = `Humidit\u00e9 du sol`,
+      humiditeSol = `Humidité du sol`,
       epiphytes = `Epiphytes`, mousses = `Mousses`, lichens = `Lichens`,
       lianes = `Lianes`, champignons = `Champignons`,
       regeneration_inf30cm = `<30 cm`,
-      regeneration_30_130cm = `30 \u2013 130 cm`,
+      regeneration_30_130cm = `30 – 130 cm`,
       remarques = `Remarques`
     )
 
@@ -123,12 +123,12 @@ importer_donnees <- function(fichier = trouver_fichier()) {
 
   # Table de gauche : bois morts (chandelles = sur pied, sol = au sol)
   boisMort <- boisMortBrut |>
-    select(Placette, Type, `Circonf\u00e9rence`, `\u00c9tat`) |>
+    select(Placette, Type, `Circonférence`, `État`) |>
     transmute(
       cdPlacette = str_trim(Placette),
       type = str_trim(Type),
-      circ_cm = en_numerique(`Circonf\u00e9rence`),
-      etatDecomposition = en_numerique(`\u00c9tat`)
+      circ_cm = en_numerique(`Circonférence`),
+      etatDecomposition = en_numerique(`État`)
     ) |>
     filter(!is.na(cdPlacette))
 
@@ -208,7 +208,7 @@ importer_donnees <- function(fichier = trouver_fichier()) {
     transmute(
       cdTransect = str_trim(`Code transect`),
       nomGasy = `Nom gasy sp`,
-      typeObservation = `Type d\u2019observation`,
+      typeObservation = `Type d’observation`,
       photo = `Photo`,
       remarques = `Remarques`
     ) |>
@@ -218,7 +218,7 @@ importer_donnees <- function(fichier = trouver_fichier()) {
     transmute(
       cdPlacette = str_trim(`Placette`),
       type = `Type`,
-      espece = `Esp\u00e8ce`,
+      espece = `Espèce`,
       nombre = `Nombre`,
       remarque = `Remarque`
     ) |>
@@ -229,7 +229,7 @@ importer_donnees <- function(fichier = trouver_fichier()) {
       cdZone = str_trim(`Code placette ou  transect`),
       nomVernaculaire = normaliser_nom(`Nom vernaculaire`),
       remarques = `Remarques`,
-      remarquesLieu = `Remarques lieu d\u2019observation`
+      remarquesLieu = `Remarques lieu d’observation`
     ) |>
     filter(!is.na(cdZone))
 
