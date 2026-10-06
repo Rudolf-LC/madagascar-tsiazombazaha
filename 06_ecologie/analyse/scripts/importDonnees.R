@@ -60,12 +60,23 @@ normaliser_nom <- function(x) {
     str_to_title()
 }
 
+# Normalise les noms de colonnes d'une feuille : espaces insécables,
+# espaces en debut/fin, casse uniforme des accents. Rend l'acces par
+# backticks robuste aux variations invisibles du fichier ODS.
+normaliser_colonnes <- function(df) {
+  noms <- names(df)
+  noms <- stringr::str_replace_all(noms, "[\u00a0\u2007\u202f]", " ")
+  noms <- stringr::str_squish(noms)
+  names(df) <- noms
+  df
+}
+
 ### Import et nettoyage de chaque feuille ###
 
 importer_donnees <- function(fichier = trouver_fichier()) {
 
   ### transects ###
-  transects <- read_ods(fichier, sheet = "transects") |>
+  transects <- normaliser_colonnes(read_ods(fichier, sheet = "transects")) |>
     transmute(
       cdTransect = str_trim(`Code transect`),
       date = as.character(`Date`),
@@ -77,7 +88,7 @@ importer_donnees <- function(fichier = trouver_fichier()) {
     )
 
   ### grands-arbres (transects, DBH > 40 cm) ###
-  grandsArbres <- read_ods(fichier, sheet = "grands-arbres") |>
+  grandsArbres <- normaliser_colonnes(read_ods(fichier, sheet = "grands-arbres")) |>
     select(`Code transect`:`Usages`) |>
     transmute(
       cdTransect = str_trim(`Code transect`),
@@ -95,13 +106,13 @@ importer_donnees <- function(fichier = trouver_fichier()) {
     filter(!is.na(cdTransect))
 
   ### placettes (en-tes sur la deuxieme ligne) ###
-  placettes <- read_ods(fichier, sheet = "placettes", skip = 1) |>
+  placettes <- normaliser_colonnes(read_ods(fichier, sheet = "placettes", skip = 1)) |>
     transmute(
       cdTransect = str_trim(`Code transect`),
       cdPlacette = str_trim(`Code placette`),
       situationTopo = `Situation topographique`,
       surfaceHorizontale_m2 = en_numerique(`Surface horizontale`),
-      pente_pct = en_numerique(`Pente %`),
+      pente_pct = en_numerique(`Pente %`),
       surfaceReelle_m2 = en_numerique(`Surface réelle`),
       canopeeN = `%N`, canopeeS = `%S`, canopeeE = `%E`, canopeeO = `%O`,
       strateHerbacee = `Herbacée`,
@@ -119,7 +130,7 @@ importer_donnees <- function(fichier = trouver_fichier()) {
     )
 
   ### bois-mort ###
-  boisMortBrut <- read_ods(fichier, sheet = "bois-mort")
+  boisMortBrut <- normaliser_colonnes(read_ods(fichier, sheet = "bois-mort"))
 
   # Table de gauche : bois morts (chandelles = sur pied, sol = au sol)
   boisMort <- boisMortBrut |>
@@ -142,7 +153,7 @@ importer_donnees <- function(fichier = trouver_fichier()) {
     filter(!is.na(longueur_m))
 
   ### chablis (transects) ###
-  chablis <- read_ods(fichier, sheet = "chablis") |>
+  chablis <- normaliser_colonnes(read_ods(fichier, sheet = "chablis")) |>
     transmute(
       cdTransect = str_trim(`Transect`),
       nombre = en_numerique(`Nombre de chablis`),
@@ -152,7 +163,7 @@ importer_donnees <- function(fichier = trouver_fichier()) {
     filter(!is.na(cdTransect), !is.na(nombre))
 
   ### flore-verifiee (placettes) ###
-  floreBrut <- read_ods(fichier, sheet = "flore-verifiee") |>
+  floreBrut <- normaliser_colonnes(read_ods(fichier, sheet = "flore-verifiee")) |>
     transmute(
       cdPlacette = str_trim(`Code placette`),
       cdObs = as.character(`Code observation`),
@@ -166,7 +177,7 @@ importer_donnees <- function(fichier = trouver_fichier()) {
     )
 
   # Circonference a hauteur de poitrine : recuperation des colonnes Circ1..Circ10
-  circBrut <- read_ods(fichier, sheet = "flore-verifiee")
+  circBrut <- normaliser_colonnes(read_ods(fichier, sheet = "flore-verifiee"))
   colonnesCirc <- grep("^Cir[c]?[0-9]+$", names(circBrut), value = TRUE)
 
   floreTiges <- circBrut |>
@@ -195,7 +206,7 @@ importer_donnees <- function(fichier = trouver_fichier()) {
   flore <- floreBrut |> filter(!is.na(cdPlacette))
 
   ### feuilles descriptives ###
-  activitesHumaines <- read_ods(fichier, sheet = "activites-humaines") |>
+  activitesHumaines <- normaliser_colonnes(read_ods(fichier, sheet = "activites-humaines")) |>
     transmute(
       cdTransect = str_trim(`Code transect`),
       type = `Type`,
@@ -204,7 +215,7 @@ importer_donnees <- function(fichier = trouver_fichier()) {
     ) |>
     filter(!is.na(cdTransect))
 
-  animaux <- read_ods(fichier, sheet = "animaux") |>
+  animaux <- normaliser_colonnes(read_ods(fichier, sheet = "animaux")) |>
     transmute(
       cdTransect = str_trim(`Code transect`),
       nomGasy = `Nom gasy sp`,
@@ -214,7 +225,7 @@ importer_donnees <- function(fichier = trouver_fichier()) {
     ) |>
     filter(!is.na(cdTransect))
 
-  phenologie <- read_ods(fichier, sheet = "phenologie") |>
+  phenologie <- normaliser_colonnes(read_ods(fichier, sheet = "phenologie")) |>
     transmute(
       cdPlacette = str_trim(`Placette`),
       type = `Type`,
@@ -224,7 +235,7 @@ importer_donnees <- function(fichier = trouver_fichier()) {
     ) |>
     filter(!is.na(cdPlacette))
 
-  autresEspeces <- read_ods(fichier, sheet = "autres-especes") |>
+  autresEspeces <- normaliser_colonnes(read_ods(fichier, sheet = "autres-especes")) |>
     transmute(
       cdZone = str_trim(`Code placette ou  transect`),
       nomVernaculaire = normaliser_nom(`Nom vernaculaire`),
