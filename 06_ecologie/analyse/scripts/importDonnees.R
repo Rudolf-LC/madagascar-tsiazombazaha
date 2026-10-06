@@ -93,6 +93,7 @@ importer_donnees <- function(fichier = trouver_fichier()) {
   # On lit sans en-tete (col_names = FALSE) et on nomme explicitement les 11
   # premieres colonnes du bloc gauche.
   grandsArbres <- read_ods(fichier, sheet = "grands-arbres", col_names = FALSE) |>
+    slice(-1) |>
     select(1:11) |>
     setNames(c("cdTransectBrut", "cdObs", "nomVernaculaireBrut", "circBrute",
                "gps", "remarque", "type", "nomSimple", "nbTypesBrut",
@@ -141,7 +142,8 @@ importer_donnees <- function(fichier = trouver_fichier()) {
   # en-tete (col_names = FALSE) et on nomme explicitement. Colonnes 1-4 :
   # mesures des bois morts (chandelle = sur pied, sol = au sol) ; colonnes 7-8 :
   # longueurs des pieces au sol (methode Van Wagner).
-  boisMortBrut <- read_ods(fichier, sheet = "bois-mort", col_names = FALSE)
+  boisMortBrut <- read_ods(fichier, sheet = "bois-mort", col_names = FALSE) |>
+    slice(-1)
 
   boisMort <- boisMortBrut |>
     select(1:4) |>
