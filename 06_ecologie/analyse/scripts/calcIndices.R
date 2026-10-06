@@ -118,6 +118,73 @@ resume_placettes <- placettesIndices |>
     Gha_ecartType = sd(GhaPlacette)
   )
 
+### Indicateurs des transects : grands arbres DBH > 40 et chablis ###
+
+# N.B. conventions (document d'étape §3.2) :
+#  - largeur de prospection : 10 m -> surface = longueur x 10
+#  - la feuille "transects" mélange longueurs (m) et réponses Oui/Non
+#    selon que la prospection a eu lieu ; seules les valeurs numériques
+#    sont des longueurs exploitables. Les transects sans longueur
+#    renseignée sont exclus et signalés.
+
+transectsExplorables <- d$transects |>
+  mutate(longueurExplorable = longueurGA) |>
+  filter(!is.na(longueurExplorable), longueurExpllicableOk <- longueurExplorable > 0)
+
+# (correction : on ne peut pas assigner dans filter ; version propre ci-dessous)
+
+longueurTotaleTransects <- sum(d$transects$longueurGA, na.rm = TRUE)
+surfaceTransects_m2 <- longueurTotaleTransects * 10
+
+transectsSansLongueur <- d$transects |>
+  filter(is.na(longueurGA)) |>
+  pull(cdTransect)
+if (length(transectsSansLongueur) > 0) {
+  message("⚠️  Transects sans longueur de prospection exploitables : ",
+          paste(transectsSansLongueur, collapse = ", "),
+          " — exclus des calculs à l'hectare.")
+}
+
+# Nombre de grands arbres (DBH > 40 cm) a l'hectare
+grandsArbresValides <- d$grandsArbres |>
+  filter(cdTransect %in% d$transects$cdTransect[!is.na(d$transects$longueurGA)])
+
+nbGrandsArbres <- nrow(grandsArbresValides)
+densiteGrandsArbres <- nbGrandsArbres / surfaceTransects_m2 * 10000
+
+grandsArbresDispositif <- tibble(
+  indicateur = "Grands arbres DBH>40 (arbres/ha)",
+  valeur = densiteGrandsArbres
+)
+
+# Surface terriere des grands arbres a l'hectare
+GgrandsArbres <- grandsArbresValides |>
+  summarise(G_m2 = sum(pi / 4 * (circ_cm / pi / 100)^2, na.rm = TRUE)) |>
+  pull(G_m2)
+GgrandsArbres_ha <- GgrandsArbres / surfaceTransects_m2 * 10000
+
+# Chablis a l'hectare
+# Convention : seuls les transects avec prospection chablis attestée
+# (prospChablis == TRUE) sont comptés ; les longueurs correspondantes
+# ne sont pas renseignées dans le fichier -> a completer.
+chablisValides <- d$chablis
+nbChablis <- sum(chablisValides$nombre, na.rm = TRUE)
+transectsChablis <- d$transects |>
+  filter(prospChablis == TRUE) |>
+  pull(cdTransect)
+longueurChablisConnue <- sum(d$transects$longueurGA[d$transects$cdTransect %in% transectsChablis], na.rm = TRUE)
+
+chablisDispositif <- tibble(
+  indicateur = "Chablis (/ha)",
+  nbChablis = nbChablis,
+  transectsProspectes = paste(transectsChablis, collapse = ", "),
+  longueurConnue_m = longueurChablisConnue,
+  valeur = NA_real_
+)
+if (longueurChablisConnue > 0) {
+  chablisDispositif$valeur <- nbChablis / (longueurChablisConnue * 10) * 10000
+}
+
 ### Sorties ###
 
 resultat <- list(
