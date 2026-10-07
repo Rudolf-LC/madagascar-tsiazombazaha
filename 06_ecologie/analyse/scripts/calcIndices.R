@@ -216,8 +216,9 @@ library(scales)
 # Rigueur statistique : l'IC reel est toujours affiche. Si sa borne
 # inferieure descend sous 0 (possible : t de Student sur effectifs rares),
 # la barre s'arrete a 0 et l'etiquette montre l'IC reel non tronque.
-# Echelle : symetrique en log (symlog) — lineaire autour de zero, log au
--dessus — pour que les barres descendant a 0 soient representables
+# Echelle : symetrique en log (symlog), lineaire autour de zero puis
+# logarithmique au-dessus, pour que les barres descendant a 0 soient
+# representables
 # tout en gardant la lisibilite log sur les grands effectifs.
 # Classes de moyenne nulle : ecartees de la figure (non representables
 # en symlog), mais presentes dans les tableaux.
