@@ -394,12 +394,14 @@ write_csv(courbeClasses, file.path(dossierSorties, "structure_classes_diametre.c
 write_csv(placettesIndices, file.path(dossierSorties, "structure_indices_placettes.csv"))
 
 message("✅ Structure forestière :")
-message("   Densité par placette : ", round(resume_placettes$densite_moyenne),
-        " ± ", round(resume_placettes$densite_ecartType),
-        " tiges/ha (IC 95 % : ", round(resume_placettes$densite_IC95_bas), "–",
-        round(resume_placettes$densite_IC95_haut), ")")
-message("   Densité N = ", round(densite), " tiges/ha (",
+message("✅ Récapitulatif des indices (moyenne ± écart-type entre placettes, IC 95 %) :")
+for (i in seq_len(nrow(resume_placettes))) {
+  r <- resume_placettes[i, ]
+  message("   ", r$indice, " : ", round(r$moyenne, 1), " ± ", round(r$ecartType, 1),
+          " [IC 95 % : ", round(r$ic95_bas, 1), " ; ", round(r$ic95_haut, 1), "]")
+}
+message("   Densité N (dispositif) = ", round(densite), " tiges/ha (",
         nbTigesMesurees, " tiges mesurées + ", nbGaulis, " gaulis, ",
         round(surfaceTotale, 1), " m²)")
-message("   Surface terrière G = ", round(G_ha, 2), " m²/ha")
+message("   Surface terrière G (dispositif) = ", round(G_ha, 2), " m²/ha")
 resultat
