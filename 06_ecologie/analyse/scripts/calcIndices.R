@@ -112,15 +112,21 @@ surfacesPlacettes <- d$placettes |>
   select(cdPlacette, surfaceHorizontale_m2)
 
 indicesParPlacette <- placettesIndices |>
-  select(cdPlacette, densitePlacette, GhaPlacette) |>
+  select(cdPlacette, nbTiges, nbGaulis, densitePlacette, GhaPlacette) |>
   left_join(surfacesPlacettes, by = "cdPlacette") |>
   left_join(agb_par_placette, by = "cdPlacette") |>
   mutate(
+    nbTigesBrut = nbTiges + nbGaulis,
+    densite_m2 = nbTigesBrut / surfaceHorizontale_m2,
     AGBhaPlacette = replace_na(AGB_kg, 0) / 1000 / surfaceHorizontale_m2 * 10000,
     CO2haPlacette = 2.06988 * AGBhaPlacette
   )
 
 resume_placettes <- bind_rows(
+  resumer(indicesParPlacette$nbTigesBrut) |> t() |> as_tibble() |>
+    mutate(indice = "N brut par placette (tiges)"),
+  resumer(indicesParPlacette$densite_m2) |> t() |> as_tibble() |>
+    mutate(indice = "N (tiges/m2)"),
   resumer(indicesParPlacette$densitePlacette) |> t() |> as_tibble() |>
     mutate(indice = "N (tiges/ha)"),
   resumer(indicesParPlacette$GhaPlacette) |> t() |> as_tibble() |>
@@ -275,6 +281,27 @@ figureClasses <- ggplot(classesFigure, aes(x = classeDiam + 1.25, y = moyenne_ha
 ggsave(file.path(dossierSorties, "structure_histogramme_classes.png"),
        figureClasses, width = 20, height = 12, units = "cm", dpi = 300)
 message("   Figure : structure_histogramme_classes.png")
+
+# Figure en effectifs bruts : nombre de tiges comptées par classe (tiges/cd)
+# (meme presentation, echelle lineaire — les effectifs bruts restent lisibles)
+figureClassesBrut <- ggplot(courbeClasses, aes(x = classeDiam + 1.25, y = effectifTotal)) +
+  geom_col(width = 2.5, fill = "grey70", color = "grey30") +
+  geom_text(aes(label = effectifTotal), vjust = -0.3, size = 3) +
+  scale_x_continuous(breaks = seq(0, max(courbeClasses$borneSup), by = 2.5)) +
+  labs(
+    x = "Classe de diamètre (cm, bornes)",
+    y = "Tiges comptées (effectif)",
+    title = "Effectifs par classe de diamètre",
+    subtitle = "Nombre de tiges comptées dans le dispositif (gaulis en 0–2,5)"
+  ) +
+  theme_minimal()
+
+ggsave(file.path(dossierSorties, "structure_histogramme_classes_brut.png"),
+       figureClassesBrut, width = 20, height = 12, units = "cm", dpi = 300)
+message("   Figure : structure_histogramme_classes_brut.png")
+
+# Tableau recapitulatif des indices : export CSV
+write_csv(resume_placettes, file.path(dossierSorties, "structure_resume_indices.csv"))
 
 ### Indicateurs des transects : grands arbres DBH > 40 et chablis ###
 
@@ -450,5 +477,7 @@ for (i in seq_len(nrow(resume_placettes))) {
 message("   Densité N (dispositif) = ", round(densite), " tiges/ha (",
         nbTigesMesurees, " tiges mesurées + ", nbGaulis, " gaulis, ",
         round(surfaceTotale, 1), " m²)")
+message("   N total du dispositif = ", nbTigesMesurees + nbGaulis,
+        " tiges (", nbTigesMesurees, " mesurées + ", nbGaulis, " gaulis)")
 message("   Surface terrière G (dispositif) = ", round(G_ha, 2), " m²/ha")
 resultat
