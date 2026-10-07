@@ -194,6 +194,65 @@ associationUsages <- details |>
 write_csv(associationUsages,
           file.path(dossierSorties, "association_espece_usage.csv"))
 
+### Statistiques synthetiques (sorties du chantire usages) ###
+
+# Nombre d'especes vernaculaires (noms normalises distincts)
+nbEspecesVernaculaires <- nrow(reconciliation)
+
+# Nombre de types par espece : maximum rapporte pour chaque identite
+# (une meme espece peut etre vue avec 1 puis 3 types ; son nombre de
+# types est le maximum observe), puis moyenne ± IC 95 % entre especes.
+typesMaxParIdentite <- details |>
+  filter(!is.na(identite), str_trim(identite) != "",
+         !is.na(nbTypesBrut)) |>
+  mutate(nbTypesEntier = suppressWarnings(
+    as.integer(str_trim(as.character(nbTypesBrut))))) |>
+  filter(!is.na(nbTypesEntier)) |>
+  group_by(identite) |>
+  summarise(nbTypes = max(nbTypesEntier), .groups = "drop")
+
+resumer_ic <- function(valeurs) {
+  n <- length(valeurs)
+  demi <- qt(0.975, n - 1) * sd(valeurs) / sqrt(n)
+  c(n = n, moyenne = mean(valeurs), ecartType = sd(valeurs),
+    ic95_bas = mean(valeurs) - demi, ic95_haut = mean(valeurs) + demi)
+}
+
+statsTypes <- resumer_ic(typesMaxParIdentite$nbTypes)
+tableauTypes <- typesMaxParIdentite |>
+  count(nbTypes, name = "nbEspeces") |>
+  arrange(nbTypes)
+
+# Nombre d'usages par espece : usages normalises distincts (hors aucun)
+usagesParEspece <- associationUsages |>
+  count(identite, name = "nbUsages")
+
+nbUsagesParEspece <- listeEspecesDefinitive$identite |>
+  (\(ids) tibble(identite = ids))() |>
+  left_join(usagesParEspece, by = "identite") |>
+  mutate(nbUsages = replace_na(nbUsages, 0))
+
+statsUsagesToutes <- resumer_ic(nbUsagesParEspece$nbUsages)
+nbUsagesAvec <- nbUsagesParEspece |> filter(nbUsages > 0)
+statsUsagesAvec <- resumer_ic(nbUsagesAvec$nbUsages)
+
+# Nombre d'especes par classe locale d'usage, avec detail des codes
+# Cook niveau 2 presents et des usages normalises correspondants
+especesParClasse <- associationUsages |>
+  filter(!is.na(classe_locale)) |>
+  group_by(classe_locale) |>
+  summarise(
+    nbEspeces = n_distinct(identite),
+    cook_n1 = first(cook_n1),
+    codesN2 = str_c(sort(unique(cook_n2)), collapse = " ; "),
+    usagesDetailles = str_c(sort(unique(usage_normalise)), collapse = ", "),
+    .groups = "drop"
+  ) |>
+  arrange(desc(nbEspeces))
+
+write_csv(especesParClasse,
+          file.path(dossierSorties, "usages_especes_par_classe.csv"))
+
 ### Messages ###
 
 message("✅ Liste des espèces végétales (§3.1) :")
@@ -207,5 +266,25 @@ message("   Association espece x usage : ", nrow(associationUsages),
         " couples (", n_distinct(associationUsages$usage_normalise),
         " usages distincts, sans 'aucun')")
 message("   Export : association_espece_usage.csv")
+message("   Espèces vernaculaires (noms normalisés) : ", nbEspecesVernaculaires)
+message("   Types par espèce : ", round(statsTypes["moyenne"], 2),
+        " ± ", round(statsTypes["ecartType"], 2),
+        " [IC 95 % : ", round(statsTypes["ic95_bas"], 2), " ; ",
+        round(statsTypes["ic95_haut"], 2), "] (n = ", statsTypes["n"], ")")
+message("   Usages par espèce (toutes) : ", round(statsUsagesToutes["moyenne"], 2),
+        " ± ", round(statsUsagesToutes["ecartType"], 2),
+        " [IC 95 % : ", round(statsUsagesToutes["ic95_bas"], 2), " ; ",
+        round(statsUsagesToutes["ic95_haut"], 2), "]")
+message("   Usages par espèce (ayant ≥ 1 usage) : ",
+        round(statsUsagesAvec["moyenne"], 2), " ± ",
+        round(statsUsagesAvec["ecartType"], 2),
+        " [IC 95 % : ", round(statsUsagesAvec["ic95_bas"], 2), " ; ",
+        round(statsUsagesAvec["ic95_haut"], 2), "] (n = ", statsUsagesAvec["n"], ")")
+for (i in seq_len(nrow(especesParClasse))) {
+  r <- especesParClasse[i, ]
+  message("   ", r$classe_locale, " (Cook ", r$cook_n1, ") : ",
+          r$nbEspeces, " espèces — n2: ", r$codesN2,
+          " — usages: ", r$usagesDetailles)
+}
 
 listeEspecesDefinitive
