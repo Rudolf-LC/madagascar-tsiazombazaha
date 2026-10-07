@@ -129,7 +129,11 @@ resume_placettes <- placettesIndices |>
 # les grands arbres des transects (DBH > 40 cm) pourront être ajoutés
 # dans une seconde courbe une fois les longueurs de prospection saisies.
 
+# N.B. : la classe 0-2,5 cm regroupe les tiges mesurees de DBH < 2,5 cm
+# ET les gaulis (tiges non mesurees, par convention DBH < 2,5 cm).
+# Total de la courbe = toutes les tiges inventoriees (mesurees + gaulis).
 nbTigesMesurees <- nrow(tiges)
+nbGaulisTotal <- sum(gaulis$nbGaulis)
 
 courbeClasses <- tiges |>
   count(classeDiam, name = "effectifTotal") |>
@@ -140,10 +144,12 @@ courbeClasses <- tiges |>
   mutate(effectifTotal = replace_na(effectifTotal, 0)) |>
   arrange(classeDiam) |>
   mutate(
+    effectifTotal = if_else(classeDiam == 0,
+                           effectifTotal + nbGaulisTotal, effectifTotal),
     densite_ha = effectifTotal / surfaceTotale * 10000,
     borneInf = classeDiam,
     borneSup = classeDiam + 2.5,
-    frequence = effectifTotal / nbTigesMesurees
+    frequence = effectifTotal / (nbTigesMesurees + nbGaulisTotal)
   )
 
 ### Indicateurs des transects : grands arbres DBH > 40 et chablis ###
