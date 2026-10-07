@@ -2,7 +2,7 @@ usage_normalise,classe_locale,cook_n1,cook_n2,cook_n2_libelle,note
 anti_foudre,sociale_culturelle,0800,0804,'Religious' Uses,
 aucun,,,,,usage non renseigne (trace non classe)
 balai,materiaux_construction,0600,0604,Wood,
-batans,materiaux_construction,0600,0604,Wood,sorte de planche
+batan,materiaux_construction,0600,0604,Wood,sorte de planche
 bois_chauffage,combustible,0700,0703,Fuelwood,
 bois_construction,materiaux_construction,0600,0604,Wood,
 canaux_irrigation,materiaux_construction,0600,0604,Wood,bambou fendu (lakampotsigna)
@@ -18,7 +18,6 @@ guitare,materiaux_construction,0600,0604,Wood,
 haie,environnementale,1200,1208,Boundaries/Barriers/Supports,
 insecticide,poison,1000,1009,Arthropoda,
 magie,sociale_culturelle,0800,0804,'Religious' Uses,
-maison,materiaux_construction,0600,0604,Wood,
 manche_beche,materiaux_construction,0600,0604,Wood,
 medicinale,medicinale,1100,1101,Unspecified Medicinal Disorders,
 menuiserie,materiaux_construction,0600,0604,Wood,

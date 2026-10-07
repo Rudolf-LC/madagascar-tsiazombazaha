@@ -61,6 +61,23 @@ correspondanceUsages <- read_csv(file.path(dossierReferentiels,
                                            "correspondance_usages.csv"),
                                  show_col_types = FALSE)
 
+# Libelles des categories Cook niveau 1 (Cook 1995, TDWG)
+libellesCookN1 <- c(
+  "0100" = "Food (alimentation)",
+  "0200" = "Food additives (additifs alimentaires)",
+  "0300" = "Animal food (alimentation animale)",
+  "0400" = "Bee plants (plantes melliferes)",
+  "0500" = "Invertebrate food",
+  "0600" = "Materials (materiaux)",
+  "0700" = "Fuels (combustibles)",
+  "0800" = "Social uses (usages sociaux)",
+  "0900" = "Vertebrate poisons (poisons des vertebres)",
+  "1000" = "Non-vertebrate poisons (poisons des non-vertebres)",
+  "1100" = "Medicines (medicaments)",
+  "1200" = "Environmental uses (usages environnementaux)",
+  "1300" = "Gene sources (ressources genetiques)"
+)
+
 correspondances <- setNames(reconciliation$identite, reconciliation$nomNormalise)
 
 floreDetails <- d$flore |>
@@ -116,11 +133,11 @@ resumeDetails <- details |>
   group_by(identite) |>
   group_modify(~ {
     usagesNormalises <- traduire_usages(.x$usagesBruts)
-    classes <- correspondanceUsages$classe_locale[
+    n1 <- correspondanceUsages$cook_n1[
       match(usagesNormalises, correspondanceUsages$usage_normalise)]
     tibble(
       usages = paste(usagesNormalises, collapse = " ; "),
-      usagesClasses = paste(sort(unique(classes[!is.na(classes)])),
+      usagesClasses = paste(sort(unique(n1[!is.na(n1)])),
                             collapse = " ; "),
       nbTypes = paste(normaliser_nb_types(.x$nbTypesBrut), collapse = ", "),
       distinctionsTypes = paste(sort(unique(
@@ -187,7 +204,7 @@ associationUsages <- details |>
   filter(!is.na(usage_normalise), usage_normalise != "aucun") |>
   distinct(identite, usage_normalise) |>
   left_join(correspondanceUsages, by = "usage_normalise") |>
-  select(identite, usage_normalise, classe_locale,
+  select(identite, usage_normalise,
          cook_n1, cook_n2, cook_n2_libelle) |>
   arrange(identite, usage_normalise)
 
@@ -239,11 +256,11 @@ statsUsagesAvec <- resumer_ic(nbUsagesAvec$nbUsages)
 # Nombre d'especes par classe locale d'usage, avec detail des codes
 # Cook niveau 2 presents et des usages normalises correspondants
 especesParClasse <- associationUsages |>
-  filter(!is.na(classe_locale)) |>
-  group_by(classe_locale) |>
+  filter(!is.na(cook_n1)) |>
+  group_by(cook_n1) |>
   summarise(
     nbEspeces = n_distinct(identite),
-    cook_n1 = first(cook_n1),
+    libelle = unname(libellesCookN1[first(cook_n1)]),
     codesN2 = str_c(sort(unique(cook_n2)), collapse = " ; "),
     usagesDetailles = str_c(sort(unique(usage_normalise)), collapse = ", "),
     .groups = "drop"
@@ -282,7 +299,7 @@ message("   Usages par espèce (ayant ≥ 1 usage) : ",
         round(statsUsagesAvec["ic95_haut"], 2), "] (n = ", statsUsagesAvec["n"], ")")
 for (i in seq_len(nrow(especesParClasse))) {
   r <- especesParClasse[i, ]
-  message("   ", r$classe_locale, " (Cook ", r$cook_n1, ") : ",
+  message("   ", r$libelle, " (", r$cook_n1, ") : ",
           r$nbEspeces, " espèces — n2: ", r$codesN2,
           " — usages: ", r$usagesDetailles)
 }
