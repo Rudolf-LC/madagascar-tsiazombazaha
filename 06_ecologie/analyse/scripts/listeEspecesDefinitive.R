@@ -119,8 +119,8 @@ listeEspecesDefinitive <- reconciliation |>
     identificationsBotaniques = str_c(
       sort(unique(str_trim(na.omit(identification_botanique)))),
       collapse = " | "),
-    sources = str_c(
-      sort(unique(unlist(str_split(sources, fixed("..")))), collapse = " | "),
+    sources = str_c(sort(unique(unlist(str_split(sources, fixed(".."))))),
+                    collapse = " | "),
     .groups = "drop"
   ) |>
   left_join(resumeDetails, by = "identite") |>
