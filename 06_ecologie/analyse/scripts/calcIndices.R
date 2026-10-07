@@ -213,45 +213,61 @@ if (!requireNamespace("scales", quietly = TRUE)) install.packages("scales")
 library(ggplot2)
 library(scales)
 
-# N.B. : echelle logarithmique en ordonnee. Les classes de moyenne nulle
-# (ex. 27,5-30 cm si vide) ne sont pas representables en log : elles sont
-# ecartees de la figure (mais restent dans les tableaux).
+# Rigueur statistique : l'IC reel est toujours affiche. Si sa borne
+# inferieure descend sous 0 (possible : t de Student sur effectifs rares),
+# la barre s'arrete a 0 et l'etiquette montre l'IC reel non tronque.
+# Echelle : symetrique en log (symlog) — lineaire autour de zero, log au
+-dessus — pour que les barres descendant a 0 soient representables
+# tout en gardant la lisibilite log sur les grands effectifs.
+# Classes de moyenne nulle : ecartees de la figure (non representables
+# en symlog), mais presentes dans les tableaux.
+
+trans_symlog <- scales::trans_new(
+  name = "symlog",
+  transform = function(y) sign(y) * log10(1 + abs(y) / 10),
+  inverse = function(t) sign(t) * 10 * (10^abs(t) - 1)
+)
+# avec le facteur 10 : y = 10 -> t = log10(2) ; graduations propres via
+# breaks manuels ci-dessous
+
 classesFigure <- classesIC95 |>
   filter(moyenne_ha > 0)
 
-# Etiquette = moyenne et bornes REELLEMENT dessinees par la barre
-# (meme troncature log que geom_errorbar) : "m [bas ; haut]"
 etiquettes <- classesFigure |>
   mutate(
-    yBas = pmax(ic95_bas, moyenne_ha * 0.5),
-    yHaut = ic95_haut,
     etiquette = paste0(
       format(moyenne_ha, digits = 3, trim = TRUE),
-      " [", format(round(yBas), trim = TRUE), " ; ",
-      format(round(yHaut), trim = TRUE), "]"
+      " [", format(round(ic95_bas), trim = TRUE), " ; ",
+      format(round(ic95_haut), trim = TRUE), "]"
     )
   )
 
+bornesY <- sort(unique(c(0,
+  classesFigure$ic95_haut[classesFigure$ic95_haut > 0],
+  classesFigure$ic95_bas[classesFigure$ic95_bas > 0])))
+
 figureClasses <- ggplot(classesFigure, aes(x = classeDiam + 1.25, y = moyenne_ha)) +
   geom_col(width = 2.5, fill = "grey70", color = "grey30") +
-  geom_errorbar(aes(ymin = pmax(ic95_bas, moyenne_ha * 0.5),
+  geom_errorbar(aes(ymin = pmax(ic95_bas, 0),
                     ymax = ic95_haut),
                 width = 1.2, linewidth = 0.4) +
-  # N.B. : les bornes affichees dans les etiquettes utilisent exactement
-  # la meme troncature que la barre (pmax(ic95_bas, moyenne/2)).
   geom_smooth(method = "loess", se = FALSE, color = "darkred", linewidth = 0.8) +
   geom_text(data = etiquettes,
             aes(x = classeDiam + 1.25,
-                y = ic95_haut * 1.15,
+                y = ic95_haut * 1.10,
                 label = etiquette),
-            angle = 90, vjust = 0.5, hjust = 0, size = 2.6) +
-  scale_y_log10(labels = scales::label_comma()) +
+            angle = 90, vjust = 0.5, hjust = 0, size = 2.4) +
+  scale_y_continuous(
+    trans = trans_symlog,
+    breaks = c(0, 10, 100, 1000, 10000, 30000),
+    labels = scales::label_comma()
+  ) +
   scale_x_continuous(breaks = seq(0, max(classesFigure$borneSup), by = 2.5)) +
   labs(
     x = "Classe de diametre (cm, bornes)",
-    y = "Densite moyenne (tiges/ha, echelle log)",
+    y = "Densite moyenne (tiges/ha, echelle symlog)",
     title = "Distribution des tiges par classe de diametre",
-    subtitle = "Moyenne par placette ± IC 95 %, courbe : tendance loess"
+    subtitle = "Moyenne par placette, barres : IC 95 % reel (tronque a 0), courbe : loess"
   ) +
   theme_minimal()
 
