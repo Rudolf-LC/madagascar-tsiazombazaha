@@ -74,7 +74,7 @@ resume_indices <- bind_rows(resume_N, resume_G)
 GClasses <- calculer_G_par_classe(
   tiges,
   d$placettes |> select(cdPlacette, surfaceHorizontale_m2),
-  largeur = 5, surfaceTotale = surfaceTotale
+  largeur = 5, origine = 2.5, surfaceTotale = surfaceTotale
 )
 
 ### Regeneration (gaulis vs tiges mesurees) ###
@@ -175,7 +175,8 @@ figureGClasses <- ggplot(GClasses, aes(x = classeG + 2.5, y = moyenne_ha)) +
   geom_text(data = etiquettesG,
             aes(x = classeG + 2.5, y = ic95_haut * 1.10, label = etiquette),
             angle = 90, vjust = 0.5, hjust = 0, size = 2.6) +
-  scale_x_continuous(breaks = seq(0, max(GClasses$borneSup), by = 5)) +
+  scale_x_continuous(breaks = sort(unique(c(GClasses$borneInf,
+                                              GClasses$borneSup)))) +
   labs(x = "Classe de diamètre (cm)",
        y = "Surface terrière (m²/ha)",
        title = "Surface terrière par classe de diamètre",

@@ -156,13 +156,16 @@ calculer_regeneration <- function(N_par_placette) {
   )
 }
 
-# G par classe de diametre de largeur donnee (5 cm par defaut) :
-# contribution du dispositif (m2/ha) et moyenne ± IC 95 % entre placettes
+# G par classe de diametre de largeur donnee (5 cm par defaut), bornes
+# decalees de l'origine : premiere borne = 2,5 cm (seuil de mesure effectif
+# du protocole), classes 2,5-7,5 ; 7,5-12,5 ; etc.
+# Contribution du dispositif (m2/ha) et moyenne ± IC 95 % entre placettes
 # (grille complete : placettes sans tige dans la classe comptent 0).
 calculer_G_par_classe <- function(tiges, surfaces, largeur = 5,
-                                  surfaceTotale) {
+                                  origine = 2.5, surfaceTotale) {
   tigesCl <- tiges |>
-    mutate(classeG = floor(dbh_cm / largeur) * largeur)
+    mutate(classeG = origine + floor((dbh_cm - origine) / largeur) * largeur) |>
+    filter(dbh_cm >= origine)
   gDispositif <- tigesCl |>
     group_by(classeG) |>
     summarise(G_m2 = sum(pi / 4 * (dbh_cm / 100)^2), .groups = "drop") |>
