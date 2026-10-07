@@ -219,12 +219,16 @@ library(scales)
 classesFigure <- classesIC95 |>
   filter(moyenne_ha > 0)
 
+# Etiquette = moyenne et bornes REELLEMENT dessinees par la barre
+# (meme troncature log que geom_errorbar) : "m [bas ; haut]"
 etiquettes <- classesFigure |>
   mutate(
+    yBas = pmax(ic95_bas, moyenne_ha * 0.5),
+    yHaut = ic95_haut,
     etiquette = paste0(
-      ifelse(moyenne_ha >= 100, format(round(moyenne_ha), big.mark = " "),
-             format(round(moyenne_ha, 1), nsmall = 1)),
-      "±", format(round(pmin(ic95_haut - moyenne_ha, moyenne_ha)), trim = TRUE)
+      format(moyenne_ha, digits = 3, trim = TRUE),
+      " [", format(round(yBas), trim = TRUE), " ; ",
+      format(round(yHaut), trim = TRUE), "]"
     )
   )
 
@@ -233,6 +237,8 @@ figureClasses <- ggplot(classesFigure, aes(x = classeDiam + 1.25, y = moyenne_ha
   geom_errorbar(aes(ymin = pmax(ic95_bas, moyenne_ha * 0.5),
                     ymax = ic95_haut),
                 width = 1.2, linewidth = 0.4) +
+  # N.B. : les bornes affichees dans les etiquettes utilisent exactement
+  # la meme troncature que la barre (pmax(ic95_bas, moyenne/2)).
   geom_smooth(method = "loess", se = FALSE, color = "darkred", linewidth = 0.8) +
   geom_text(data = etiquettes,
             aes(x = classeDiam + 1.25,
