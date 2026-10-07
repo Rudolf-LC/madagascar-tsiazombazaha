@@ -61,21 +61,22 @@ correspondanceUsages <- read_csv(file.path(dossierReferentiels,
                                            "correspondance_usages.csv"),
                                  show_col_types = FALSE)
 
-# Libelles des categories Cook niveau 1 (Cook 1995, TDWG)
+# Libelles francais des categories Cook niveau 1 (Cook 1995, TDWG) ;
+# le code numerique fait le lien avec le standard (detail en annexe).
 libellesCookN1 <- c(
-  "0100" = "Food (alimentation)",
-  "0200" = "Food additives (additifs alimentaires)",
-  "0300" = "Animal food (alimentation animale)",
-  "0400" = "Bee plants (plantes melliferes)",
-  "0500" = "Invertebrate food",
-  "0600" = "Materials (materiaux)",
-  "0700" = "Fuels (combustibles)",
-  "0800" = "Social uses (usages sociaux)",
-  "0900" = "Vertebrate poisons (poisons des vertebres)",
-  "1000" = "Non-vertebrate poisons (poisons des non-vertebres)",
-  "1100" = "Medicines (medicaments)",
-  "1200" = "Environmental uses (usages environnementaux)",
-  "1300" = "Gene sources (ressources genetiques)"
+  "0100" = "Alimentation",
+  "0200" = "Additifs alimentaires",
+  "0300" = "Alimentation animale",
+  "0400" = "Plantes melliferes",
+  "0500" = "Aliment des invertébrés",
+  "0600" = "Matériaux",
+  "0700" = "Combustibles",
+  "0800" = "Usages sociaux",
+  "0900" = "Poisons des vertébrés",
+  "1000" = "Poisons des non-vertébrés",
+  "1100" = "Médicaments",
+  "1200" = "Usages environnementaux",
+  "1300" = "Ressources génétiques"
 )
 
 correspondances <- setNames(reconciliation$identite, reconciliation$nomNormalise)
@@ -261,7 +262,6 @@ especesParClasse <- associationUsages |>
   summarise(
     nbEspeces = n_distinct(identite),
     libelle = unname(libellesCookN1[first(cook_n1)]),
-    codesN2 = str_c(sort(unique(cook_n2)), collapse = " ; "),
     usagesDetailles = str_c(sort(unique(usage_normalise)), collapse = ", "),
     .groups = "drop"
   ) |>
@@ -299,9 +299,8 @@ message("   Usages par espèce (ayant ≥ 1 usage) : ",
         round(statsUsagesAvec["ic95_haut"], 2), "] (n = ", statsUsagesAvec["n"], ")")
 for (i in seq_len(nrow(especesParClasse))) {
   r <- especesParClasse[i, ]
-  message("   ", r$libelle, " (", r$cook_n1, ") : ",
-          r$nbEspeces, " espèces — n2: ", r$codesN2,
-          " — usages: ", r$usagesDetailles)
+  message("   ", r$libelle, " : ", r$nbEspeces,
+          " espèces — usages: ", r$usagesDetailles)
 }
 
 listeEspecesDefinitive
