@@ -79,12 +79,16 @@ nettoyer_texte <- function(x) {
   x[!is.na(x) & x != "" & x != "NA"]
 }
 
-# Nombres de types valides : entiers uniquement. Les annotations non
-# numeriques (++, na) sont ecartees. Si plusieurs nombres distincts
-# existent pour une meme identite, tous sont conserves (ex. "1, 2, 3").
+# Nombres de types : entiers conserves (tous si plusieurs valeurs
+# distinctes pour une meme identite, ex. "1, 2, 3"). L'annotation "++"
+# (beaucoup de types) est conservee ; "na" est ecarte.
 normaliser_nb_types <- function(x) {
-  v <- suppressWarnings(as.integer(str_trim(as.character(x))))
-  sort(unique(v[!is.na(v)]))
+  x <- str_trim(as.character(x))
+  x <- x[!is.na(x) & x != "" & tolower(x) != "na"]
+  entiers <- suppressWarnings(as.integer(x))
+  nombres <- sort(unique(entiers[!is.na(entiers)]))
+  plus <- unique(x[is.na(suppressWarnings(as.integer(x))) & x == "++"])
+  c(nombres, plus)
 }
 
 resumeDetails <- details |>
