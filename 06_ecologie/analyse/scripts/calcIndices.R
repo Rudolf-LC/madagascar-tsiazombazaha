@@ -72,16 +72,6 @@ densite_dispositif <- tibble(
   valeur = densite
 )
 
-### Distribution par classe de diamètre (largeur 2,5 cm) ###
-
-classesDiametre <- tiges |>
-  count(classeDiam, name = "effectif") |>
-  arrange(classeDiam) |>
-  mutate(
-    densite_ha = effectif / surfaceTotale * 10000,
-    frequence = effectif / nbTigesMesurees
-  )
-
 ### Surface terrière G ###
 
 # G = somme des sections à hauteur de poitrine = pi/4 * DHP²
@@ -112,10 +102,48 @@ placettesIndices <- d$placettes |>
 
 resume_placettes <- placettesIndices |>
   summarise(
+    nbPlacettes = n(),
     densite_moyenne = mean(densitePlacette),
     densite_ecartType = sd(densitePlacette),
+    densite_IC95_bas = qt(0.975, nbPlacettes - 1) * sd(densitePlacette) /
+      sqrt(nbPlacettes),
     Gha_moyenne = mean(GhaPlacette),
-    Gha_ecartType = sd(GhaPlacette)
+    Gha_ecartType = sd(GhaPlacette),
+    Gha_IC95_bas = qt(0.975, nbPlacettes - 1) * sd(GhaPlacette) /
+      sqrt(nbPlacettes),
+    .groups = "drop"
+  ) |>
+  mutate(
+    densite_IC95_haut = densite_moyenne + densite_IC95_bas,
+    densite_IC95_bas = densite_moyenne - densite_IC95_bas,
+    Gha_IC95_haut = Gha_moyenne + Gha_IC95_bas,
+    Gha_IC95_bas = Gha_moyenne - Gha_IC95_bas
+  )
+
+### Courbe N par classe de diamètre ###
+
+# Distribution des tiges mesurées par classe de diamètre (largeur 2,5 cm),
+# en effectif total du dispositif et en densité à l'hectare (placettes).
+# Les classes vides sont incluses pour une courbe régulière.
+# N.B. : les gaulis (non mesurés) n'entrent pas dans cette distribution ;
+# les grands arbres des transects (DBH > 40 cm) pourront être ajoutés
+# dans une seconde courbe une fois les longueurs de prospection saisies.
+
+nbTigesMesurees <- nrow(tiges)
+
+courbeClasses <- tiges |>
+  count(classeDiam, name = "effectifTotal") |>
+  right_join(
+    tibble(classeDiam = seq(0, max(tiges$classeDiam, na.rm = TRUE), by = 2.5)),
+    by = "classeDiam"
+  ) |>
+  mutate(effectifTotal = replace_na(effectifTotal, 0)) |>
+  arrange(classeDiam) |>
+  mutate(
+    densite_ha = effectifTotal / surfaceTotale * 10000,
+    borneInf = classeDiam,
+    borneSup = classeDiam + 2.5,
+    frequence = effectifTotal / nbTigesMesurees
   )
 
 ### Indicateurs des transects : grands arbres DBH > 40 et chablis ###
@@ -264,7 +292,7 @@ stockCarbone_dispositif <- tibble(
 resultat <- list(
   surface_m2 = surfaceTotale,
   densite_dispositif = densite_dispositif,
-  classesDiametre = classesDiametre,
+  classesDiametre = courbeClasses,
   surfaceTerriere_m2 = surfaceTerriere,
   surfaceTerriere_ha = surfaceTerriere_dispositif,
   placettesIndices = placettesIndices,
@@ -278,10 +306,14 @@ resultat <- list(
 
 dossierSorties <- "06_ecologie/analyse/sorties"
 if (!dir.exists(dossierSorties)) dir.create(dossierSorties, recursive = TRUE)
-write_csv(classesDiametre, file.path(dossierSorties, "structure_classes_diametre.csv"))
+write_csv(courbeClasses, file.path(dossierSorties, "structure_classes_diametre.csv"))
 write_csv(placettesIndices, file.path(dossierSorties, "structure_indices_placettes.csv"))
 
 message("✅ Structure forestière :")
+message("   Densité par placette : ", round(resume_placettes$densite_moyenne),
+        " ± ", round(resume_placettes$densite_ecartType),
+        " tiges/ha (IC 95 % : ", round(resume_placettes$densite_IC95_bas), "–",
+        round(resume_placettes$densite_IC95_haut), ")")
 message("   Densité N = ", round(densite), " tiges/ha (",
         nbTigesMesurees, " tiges mesurées + ", nbGaulis, " gaulis, ",
         round(surfaceTotale, 1), " m²)")
