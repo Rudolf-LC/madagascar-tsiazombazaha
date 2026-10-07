@@ -75,13 +75,13 @@ listeEspecesDefinitive <- reconciliation |>
   ) |>
   arrange(desc(occurrencesTotales), identite) |>
   mutate(
-    # nettoyage des champs vides reagreges
+    # nettoyage des NA agrégés par str_c (cellules vides à l'origine)
     across(c(identificationsBotaniques, types, usages,
              typesPhenotypiques, sources),
-           ~ str_replace_all(.x, "(^|\\s)(NA\\s*;?\\s*)+", "\\\\1") |>
-             str_replace_all("NA", "") |>
+           ~ str_remove_all(.x, '(NA[[:space:]]*[;|][[:space:]]*)+') |>
+             str_remove_all('[[:space:]]*[;|][[:space:]]*NA$') |>
+             str_remove_all('^NA$') |>
              str_squish())
-  )
 
 ### Exports ###
 
