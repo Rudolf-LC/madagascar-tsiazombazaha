@@ -100,25 +100,39 @@ placettesIndices <- d$placettes |>
     GhaPlacette = replace_na(G_m2, 0) / surfaceHorizontale_m2 * 10000
   )
 
-resume_placettes <- placettesIndices |>
-  summarise(
-    nbPlacettes = n(),
-    densite_moyenne = mean(densitePlacette),
-    densite_ecartType = sd(densitePlacette),
-    densite_IC95_bas = qt(0.975, nbPlacettes - 1) * sd(densitePlacette) /
-      sqrt(nbPlacettes),
-    Gha_moyenne = mean(GhaPlacette),
-    Gha_ecartType = sd(GhaPlacette),
-    Gha_IC95_bas = qt(0.975, nbPlacettes - 1) * sd(GhaPlacette) /
-      sqrt(nbPlacettes),
-    .groups = "drop"
-  ) |>
+# resume par placette : moyenne ± ecart-type et IC 95 % de chaque indice
+resumer <- function(valeurs) {
+  n <- length(valeurs)
+  demiLargeur <- qt(0.975, n - 1) * sd(valeurs) / sqrt(n)
+  c(moyenne = mean(valeurs), ecartType = sd(valeurs),
+    ic95_bas = mean(valeurs) - demiLargeur, ic95_haut = mean(valeurs) + demiLargeur)
+}
+
+surfacesPlacettes <- d$placettes |>
+  select(cdPlacette, surfaceHorizontale_m2)
+
+indicesParPlacette <- placettesIndices |>
+  select(cdPlacette, densitePlacette, GhaPlacette) |>
+  left_join(surfacesPlacettes, by = "cdPlacette") |>
+  left_join(agb_par_placette, by = "cdPlacette") |>
   mutate(
-    densite_IC95_haut = densite_moyenne + densite_IC95_bas,
-    densite_IC95_bas = densite_moyenne - densite_IC95_bas,
-    Gha_IC95_haut = Gha_moyenne + Gha_IC95_bas,
-    Gha_IC95_bas = Gha_moyenne - Gha_IC95_bas
+    AGBhaPlacette = replace_na(AGB_kg, 0) / 1000 / surfaceHorizontale_m2 * 10000,
+    CO2haPlacette = 2.06988 * AGBhaPlacette
   )
+
+resume_placettes <- bind_rows(
+  resumer(indicesParPlacette$densitePlacette) |> t() |> as_tibble() |>
+    mutate(indice = "N (tiges/ha)"),
+  resumer(indicesParPlacette$GhaPlacette) |> t() |> as_tibble() |>
+    mutate(indice = "G (m2/ha)"),
+  resumer(indicesParPlacette$AGBhaPlacette) |> t() |> as_tibble() |>
+    mutate(indice = "AGB (tMS/ha)"),
+  resumer(indicesParPlacette$CO2haPlacette) |> t() |> as_tibble() |>
+    mutate(indice = "CO2 vivant (tCO2/ha)")
+) |>
+  mutate(nbPlacettes = nrow(indicesParPlacette)) |>
+  select(indice, moyenne, ecartType, ic95_bas, ic95_haut, nbPlacettes) |>
+  mutate(across(where(is.numeric), ~ round(.x, 2)))
 
 ### Courbe N par classe de diamètre ###
 
@@ -151,6 +165,69 @@ courbeClasses <- tiges |>
     borneSup = classeDiam + 2.5,
     frequence = effectifTotal / (nbTigesMesurees + nbGaulisTotal)
   )
+
+# Densite par classe et par placette : moyenne et IC 95 % entre placettes
+densiteClassePlacette <- tiges |>
+  mutate(classeDiam = if_else(dbh_cm < 2.5, 0, classeDiam)) |>
+  count(cdPlacette, classeDiam, name = "effectif") |>
+  bind_rows(
+    gaulis |>
+      transmute(cdPlacette, classeDiam = 0, effectif = nbGaulis)
+  ) |>
+  left_join(surfacesPlacettes, by = "cdPlacette") |>
+  mutate(densite_ha_placette = effectif / surfaceHorizontale_m2 * 10000) |>
+  select(cdPlacette, classeDiam, densite_ha_placette)
+
+# Completer avec des zeros : une placette sans tige dans une classe
+# contribue 0 a cette classe (indispensable pour l'IC entre placettes).
+# La classe 0 n'a pas d'observation pour les placettes sans gaulis comptes :
+# completer avec des zeros pour toutes les placettes.
+toutesClasses <- tidyr::expand_grid(
+  cdPlacette = d$placettes$cdPlacette,
+  classeDiam = sort(unique(c(tiges$classeDiam, 0)))
+) |>
+  left_join(densiteClassePlacette, by = c("cdPlacette", "classeDiam")) |>
+  replace_na(list(densite_ha_placette = 0))
+
+classesIC95 <- toutesClasses |>
+  group_by(classeDiam) |>
+  group_modify(~ {
+    v <- .x$densite_ha_placette
+    n <- length(v)
+    demi <- qt(0.975, max(n - 1, 1)) * sd(v) / sqrt(n)
+    tibble(moyenne_ha = mean(v), ic95_bas = mean(v) - demi,
+           ic95_haut = mean(v) + demi)
+  }) |>
+  ungroup() |>
+  mutate(
+    borneInf = classeDiam,
+    borneSup = classeDiam + 2.5,
+    effectifTotalDispositif = courbeClasses$effectifTotal[
+      match(classeDiam, courbeClasses$classeDiam)]
+  )
+
+### Figure : histogramme des classes de diametre avec IC 95 % ###
+
+if (!requireNamespace("ggplot2", quietly = TRUE)) install.packages("ggplot2")
+library(ggplot2)
+
+figureClasses <- ggplot(classesIC95, aes(x = classeDiam + 1.25, y = moyenne_ha)) +
+  geom_col(width = 2.5, fill = "grey70", color = "grey30") +
+  geom_errorbar(aes(ymin = pmax(ic95_bas, 0), ymax = ic95_haut),
+                width = 1.2, linewidth = 0.4) +
+  geom_smooth(method = "loess", se = FALSE, color = "darkred", linewidth = 0.8) +
+  scale_x_continuous(breaks = seq(0, max(classesIC95$borneSup), by = 2.5)) +
+  labs(
+    x = "Classe de diametre (cm, bornes)",
+    y = "Densite moyenne (tiges/ha)",
+    title = "Distribution des tiges par classe de diametre",
+    subtitle = "Moyenne par placette, barres : IC 95 %, courbe : tendance loess"
+  ) +
+  theme_minimal()
+
+ggsave(file.path(dossierSorties, "structure_histogramme_classes.png"),
+       figureClasses, width = 20, height = 12, units = "cm", dpi = 300)
+message("   Figure : structure_histogramme_classes.png")
 
 ### Indicateurs des transects : grands arbres DBH > 40 et chablis ###
 
