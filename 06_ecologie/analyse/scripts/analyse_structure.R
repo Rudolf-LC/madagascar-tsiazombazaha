@@ -93,13 +93,13 @@ GClasses <- calculer_G_par_classe(
 
 ### Regeneration (gaulis vs tiges mesurees) ###
 
-regeneration <- calculer_regeneration(N_par_placette)
+regeneration <- calculer_regeneration(tiges, N_par_placette, seuil_dbh = 12.5)
 
 figureRegeneration <- ggplot(regeneration$par_placette,
-                             aes(x = N_ha_tiges, y = N_ha_gaulis)) +
+                             aes(x = N_ha_grosses, y = N_ha_gaulis)) +
   geom_point(size = 2.2, alpha = 0.8) +
   geom_smooth(method = "lm", se = TRUE, color = "darkred", linewidth = 0.7) +
-  labs(x = "Densité des tiges mesurées (tiges/ha)",
+  labs(x = paste0("Densité des tiges DBH ≥ ", regeneration$seuil_dbh, " cm (tiges/ha)"),
        y = "Densité de la régénération (gaulis/ha)",
        title = "Régénération en fonction du peuplement",
        subtitle = paste0("Par placette — Pearson r = ",
@@ -175,6 +175,10 @@ etiquettesG <- GClasses |>
     " [", format(round(ic95_bas, 1), trim = TRUE), " ; ",
     format(round(ic95_haut, 1), trim = TRUE), "]"
   ))
+# Etiquettes de l'axe x : intervalles [borneInf - borneSup] sous chaque barre
+etiquettesAxeG <- GClasses |>
+  mutate(etiquetteAxe = paste0("[", format(borneInf, trim = TRUE), " - ",
+                               format(borneSup, trim = TRUE), "]"))
 figureGClasses <- ggplot(GClasses, aes(x = classeG, y = moyenne_ha)) +
   geom_col(width = 5, fill = "grey70", color = "grey30") +
   geom_errorbar(aes(ymin = pmax(ic95_bas, 0), ymax = ic95_haut),
@@ -182,9 +186,11 @@ figureGClasses <- ggplot(GClasses, aes(x = classeG, y = moyenne_ha)) +
   geom_text(data = etiquettesG,
             aes(x = classeG, y = ic95_haut, label = etiquette),
             angle = 90, vjust = 0.5, hjust = -0.1, size = 2.6) +
-  scale_x_continuous(breaks = sort(unique(c(GClasses$borneInf,
-                                            GClasses$borneSup))),
-                     limits = c(0, max(GClasses$borneSup) + 2.5)) +
+  scale_x_continuous(
+    breaks = etiquettesAxeG$classeG,
+    labels = etiquettesAxeG$etiquetteAxe,
+    limits = c(0, max(GClasses$borneSup) + 2.5)
+  ) +
   scale_y_continuous(expand = expansion(mult = c(0.02, 0.28))) +
   labs(x = "Classe de diamètre (cm)",
        y = "Surface terrière (m²/ha)",

@@ -136,68 +136,36 @@ resumer <- function(valeurs) {
 
 ### Regeneration ###
 
-# Relation regeneration (gaulis) / peuplement (tiges mesurees) par placette.
-# Correlations de Pearson (lineaire) et Spearman (rang, robuste aux
-# distributions asymetriques des densites).
-calculer_regeneration <- function(N_par_placette) {
+# Relation regeneration (gaulis) / grosses tiges (couvert) par placette.
+# Methode : densite de gaulis vs densite des tiges de DBH >= seuil_dbh.
+# Comparer les gaulis aux tiges de 2,5-5 cm produirait une correlation
+# mecanique (classes adjacentes d'une meme dynamique) ; le seuil isole
+# les tiges qui structurent le couvert.
+# Seuil par defaut : 12,5 cm (reglable pour tests de sensibilite).
+calculer_regeneration <- function(tiges, N_par_placette, seuil_dbh = 12.5) {
+  grossesTiges <- tiges |>
+    filter(dbh_cm >= seuil_dbh) |>
+    count(cdPlacette, name = "nbGrossesTiges")
   jeu <- N_par_placette |>
-    filter((nbTiges + nbGaulis) > 0) |>
-    mutate(ratio_regen = nbGaulis / pmax(nbTiges, 1))
+    select(cdPlacette, nbGaulis, N_ha_gaulis) |>
+    left_join(grossesTiges, by = "cdPlacette") |>
+    mutate(
+      nbGrossesTiges = replace_na(nbGrossesTiges, 0),
+      N_ha_grosses = nbGrossesTiges /
+        (N_par_placette$surfaceHorizontale_m2[
+          match(cdPlacette, N_par_placette$cdPlacette)]) * 10000
+    ) |>
+    filter((nbGaulis + nbGrossesTiges) > 0)
   cor_pearson <- suppressWarnings(
-    cor.test(jeu$N_ha_tiges, jeu$N_ha_gaulis, method = "pearson"))
+    cor.test(jeu$N_ha_grosses, jeu$N_ha_gaulis, method = "pearson"))
   cor_spearman <- suppressWarnings(
-    cor.test(jeu$N_ha_tiges, jeu$N_ha_gaulis, method = "spearman"))
+    cor.test(jeu$N_ha_grosses, jeu$N_ha_gaulis, method = "spearman"))
   list(
+    seuil_dbh = seuil_dbh,
     par_placette = jeu,
     pearson_r = unname(cor_pearson$estimate),
     pearson_p = cor_pearson$p.value,
     spearman_rho = unname(cor_spearman$estimate),
     spearman_p = cor_spearman$p.value
   )
-}
-
-# G par classe de diametre de largeur donnee (5 cm par defaut), bornes
-# decalees de l'origine : premiere borne = 2,5 cm (seuil de mesure effectif
-# du protocole), classes 2,5-7,5 ; 7,5-12,5 ; etc.
-# Contribution du dispositif (m2/ha) et moyenne ± IC 95 % entre placettes
-# (grille complete : placettes sans tige dans la classe comptent 0).
-calculer_G_par_classe <- function(tiges, surfaces, largeur = 5,
-                                  origine = 2.5, surfaceTotale) {
-  tigesCl <- tiges |>
-    mutate(classeG = origine + floor((dbh_cm - origine) / largeur) * largeur) |>
-    filter(dbh_cm >= origine)
-  gDispositif <- tigesCl |>
-    group_by(classeG) |>
-    summarise(G_m2 = sum(pi / 4 * (dbh_cm / 100)^2), .groups = "drop") |>
-    mutate(G_ha_dispositif = G_m2 / surfaceTotale * 10000)
-
-  gParPlacetteClasse <- tigesCl |>
-    group_by(cdPlacette, classeG) |>
-    summarise(G_m2 = sum(pi / 4 * (dbh_cm / 100)^2), .groups = "drop") |>
-    left_join(surfaces, by = "cdPlacette") |>
-    mutate(G_ha = G_m2 / surfaceHorizontale_m2 * 10000) |>
-    select(cdPlacette, classeG, G_ha)
-
-  toutesClasses <- tidyr::expand_grid(
-    cdPlacette = surfaces$cdPlacette,
-    classeG = sort(unique(tigesCl$classeG))
-  ) |>
-    left_join(gParPlacetteClasse, by = c("cdPlacette", "classeG")) |>
-    replace_na(list(G_ha = 0))
-
-  ic95 <- toutesClasses |>
-    group_by(classeG) |>
-    group_modify(~ {
-      v <- .x$G_ha
-      n <- length(v)
-      demi <- qt(0.975, max(n - 1, 1)) * sd(v) / sqrt(n)
-      tibble(moyenne_ha = mean(v), ic95_bas = mean(v) - demi,
-             ic95_haut = mean(v) + demi)
-    }) |>
-    ungroup()
-
-  gDispositif |>
-    full_join(ic95, by = c("classeG" = "classeG")) |>
-    arrange(classeG) |>
-    mutate(borneInf = classeG, borneSup = classeG + largeur)
 }
