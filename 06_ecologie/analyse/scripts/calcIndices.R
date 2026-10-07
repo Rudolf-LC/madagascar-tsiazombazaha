@@ -161,6 +161,7 @@ courbeClasses <- tiges |>
 #    sont des longueurs exploitables. Les transects sans longueur
 #    renseignée sont exclus et signalés.
 
+longueurTotaleTransects <- sum(d$transects$longueurGA, na.rm = TRUE)
 surfaceTransects_m2 <- longueurTotaleTransects * 10
 
 transectsSansLongueur <- d$transects |>
