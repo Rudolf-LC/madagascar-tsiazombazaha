@@ -1,7 +1,7 @@
 usage_normalise,classe_locale,cook_n1,cook_n2,cook_n2_libelle,note
 anti_foudre,sociale_culturelle,0800,0804,'Religious' Uses,
 aucun,,,,,usage non renseigne (trace non classe)
-balai,materiaux_construction,0600,0602,Fibres,incertain : nature des poils du balai
+balai,materiaux_construction,0600,0604,Wood,
 batans,materiaux_construction,0600,0604,Wood,sorte de planche
 bois_chauffage,combustible,0700,0703,Fuelwood,
 bois_construction,materiaux_construction,0600,0604,Wood,
