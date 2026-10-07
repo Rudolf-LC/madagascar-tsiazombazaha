@@ -55,7 +55,9 @@ calculer_N_par_placette <- function(d, tiges, gaulis) {
       nbGaulis = replace_na(nbGaulis, 0),
       nbTigesBrut = nbTiges + nbGaulis,
       N_m2 = nbTigesBrut / surfaceHorizontale_m2,
-      N_ha = N_m2 * 10000
+      N_ha = N_m2 * 10000,
+      N_ha_tiges = nbTiges / surfaceHorizontale_m2 * 10000,
+      N_ha_gaulis = nbGaulis / surfaceHorizontale_m2 * 10000
     )
 }
 
@@ -130,4 +132,26 @@ resumer <- function(valeurs) {
   demiLargeur <- qt(0.975, n - 1) * sd(valeurs) / sqrt(n)
   c(moyenne = mean(valeurs), ecartType = sd(valeurs),
     ic95_bas = mean(valeurs) - demiLargeur, ic95_haut = mean(valeurs) + demiLargeur)
+}
+
+### Regeneration ###
+
+# Relation regeneration (gaulis) / peuplement (tiges mesurees) par placette.
+# Correlations de Pearson (lineaire) et Spearman (rang, robuste aux
+# distributions asymetriques des densites).
+calculer_regeneration <- function(N_par_placette) {
+  jeu <- N_par_placette |>
+    filter((nbTiges + nbGaulis) > 0) |>
+    mutate(ratio_regen = nbGaulis / pmax(nbTiges, 1))
+  cor_pearson <- suppressWarnings(
+    cor.test(jeu$N_ha_tiges, jeu$N_ha_gaulis, method = "pearson"))
+  cor_spearman <- suppressWarnings(
+    cor.test(jeu$N_ha_tiges, jeu$N_ha_gaulis, method = "spearman"))
+  list(
+    par_placette = jeu,
+    pearson_r = unname(cor_pearson$estimate),
+    pearson_p = cor_pearson$p.value,
+    spearman_rho = unname(cor_spearman$estimate),
+    spearman_p = cor_spearman$p.value
+  )
 }

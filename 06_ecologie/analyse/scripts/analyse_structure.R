@@ -70,6 +70,26 @@ resume_G <- t(resumer(G_par_placette$G_ha)) |> as_tibble() |>
 
 resume_indices <- bind_rows(resume_N, resume_G)
 
+### Regeneration (gaulis vs tiges mesurees) ###
+
+regeneration <- calculer_regeneration(N_par_placette)
+
+figureRegeneration <- ggplot(regeneration$par_placette,
+                             aes(x = N_ha_tiges, y = N_ha_gaulis)) +
+  geom_point(size = 2.2, alpha = 0.8) +
+  geom_smooth(method = "lm", se = TRUE, color = "darkred", linewidth = 0.7) +
+  labs(x = "Densité des tiges mesurées (tiges/ha)",
+       y = "Densité de la régénération (gaulis/ha)",
+       title = "Régénération en fonction du peuplement",
+       subtitle = paste0("Par placette — Pearson r = ",
+                        round(regeneration$pearson_r, 2), " (p = ",
+                        format(regeneration$pearson_p, digits = 2),
+                        "), Spearman rho = ",
+                        round(regeneration$spearman_rho, 2))) +
+  theme_minimal()
+ggsave(file.path(dossierSorties, "structure_regeneration.png"),
+       figureRegeneration, width = 16, height = 12, units = "cm", dpi = 300)
+
 ### Courbe aire-espece ###
 
 correspondances <- charger_correspondances(
@@ -176,6 +196,10 @@ for (i in seq_len(nrow(resume_indices))) {
 }
 message("   Surface inventoriée : ", round(surfaceTotale, 1), " m² sur ",
         nrow(d$placettes), " placettes")
+message("   Régénération : Pearson r = ", round(regeneration$pearson_r, 2),
+        " (p = ", format(regeneration$pearson_p, digits = 2), ") ; ",
+        "Spearman rho = ", round(regeneration$spearman_rho, 2),
+        " (p = ", format(regeneration$spearman_p, digits = 2), ")")
 message("   Richesse totale (identités réconciliées) : ",
         nrow(distinct(especesParPlacette, espece)), " espèces")
 
@@ -186,5 +210,6 @@ list(
   classesDiametre = classesDiametre, classesIC95 = classesIC95,
   resume_indices = resume_indices,
   G_par_placette = G_par_placette, G_total_m2 = G_total_m2, G_ha = G_ha,
-  courbeAireEspece = courbeAireEspece
+  courbeAireEspece = courbeAireEspece,
+  regeneration = regeneration
 )
