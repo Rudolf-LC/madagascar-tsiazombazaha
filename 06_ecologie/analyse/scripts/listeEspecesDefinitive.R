@@ -179,7 +179,11 @@ associationUsages <- details |>
   select(identite, usagesBruts) |>
   filter(!is.na(usagesBruts)) |>
   mutate(mention = str_trim(as.character(usagesBruts))) |>
-  left_join(mappingMentions, by = c("mention" = "mention_brute")) |>
+  # jointure plusieurs-plusieurs assumee : une mention composee
+  # (ex. "Planches, poutres") correspond a plusieurs lignes du mapping,
+  # et une meme mention apparait pour plusieurs especes.
+  left_join(mappingMentions, by = c("mention" = "mention_brute"),
+            relationship = "many-to-many") |>
   filter(!is.na(usage_normalise), usage_normalise != "aucun") |>
   distinct(identite, usage_normalise) |>
   left_join(correspondanceUsages, by = "usage_normalise") |>
