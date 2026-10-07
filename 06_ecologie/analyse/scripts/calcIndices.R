@@ -209,19 +209,43 @@ classesIC95 <- toutesClasses |>
 ### Figure : histogramme des classes de diametre avec IC 95 % ###
 
 if (!requireNamespace("ggplot2", quietly = TRUE)) install.packages("ggplot2")
+if (!requireNamespace("scales", quietly = TRUE)) install.packages("scales")
 library(ggplot2)
+library(scales)
 
-figureClasses <- ggplot(classesIC95, aes(x = classeDiam + 1.25, y = moyenne_ha)) +
+# N.B. : echelle logarithmique en ordonnee. Les classes de moyenne nulle
+# (ex. 27,5-30 cm si vide) ne sont pas representables en log : elles sont
+# ecartees de la figure (mais restent dans les tableaux).
+classesFigure <- classesIC95 |>
+  filter(moyenne_ha > 0)
+
+etiquettes <- classesFigure |>
+  mutate(
+    etiquette = paste0(
+      ifelse(moyenne_ha >= 100, format(round(moyenne_ha), big.mark = " "),
+             format(round(moyenne_ha, 1), nsmall = 1)),
+      "±", format(round(pmin(ic95_haut - moyenne_ha, moyenne_ha)), trim = TRUE)
+    )
+  )
+
+figureClasses <- ggplot(classesFigure, aes(x = classeDiam + 1.25, y = moyenne_ha)) +
   geom_col(width = 2.5, fill = "grey70", color = "grey30") +
-  geom_errorbar(aes(ymin = pmax(ic95_bas, 0), ymax = ic95_haut),
+  geom_errorbar(aes(ymin = pmax(ic95_bas, moyenne_ha * 0.5),
+                    ymax = ic95_haut),
                 width = 1.2, linewidth = 0.4) +
   geom_smooth(method = "loess", se = FALSE, color = "darkred", linewidth = 0.8) +
-  scale_x_continuous(breaks = seq(0, max(classesIC95$borneSup), by = 2.5)) +
+  geom_text(data = etiquettes,
+            aes(x = classeDiam + 1.25,
+                y = ic95_haut * 1.15,
+                label = etiquette),
+            angle = 90, vjust = 0.5, hjust = 0, size = 2.6) +
+  scale_y_log10(labels = scales::label_comma()) +
+  scale_x_continuous(breaks = seq(0, max(classesFigure$borneSup), by = 2.5)) +
   labs(
     x = "Classe de diametre (cm, bornes)",
-    y = "Densite moyenne (tiges/ha)",
+    y = "Densite moyenne (tiges/ha, echelle log)",
     title = "Distribution des tiges par classe de diametre",
-    subtitle = "Moyenne par placette, barres : IC 95 %, courbe : tendance loess"
+    subtitle = "Moyenne par placette ± IC 95 %, courbe : tendance loess"
   ) +
   theme_minimal()
 
