@@ -1,0 +1,33 @@
+usage_normalise,classe_locale,cook_n1,cook_n2,cook_n2_libelle,note
+anti_foudre,sociale_culturelle,0800,0804,'Religious' Uses,
+aucun,,,,,usage non renseigne (trace non classe)
+balai,materiaux_construction,0600,0602,Fibres,incertain : nature des poils du balai
+batans,,,,,mention brute grands arbres - a verifier
+bois_chauffage,combustible,0700,0703,Fuelwood,
+bois_construction,materiaux_construction,0600,0604,Wood,
+canaux_irrigation,materiaux_construction,0600,0604,Wood,bambou fendu (lakampotsigna)
+construction_maison,materiaux_construction,0600,0604,Wood,
+corde,fibres_tressage,0600,0602,Fibres,
+douleurs_dentaires,medicinale,1100,1119,Pain,
+ecorce_sucree,alimentaire,0100,0107,Bark,
+fatigue,medicinale,1100,1108,Ill-defined Symptoms,
+fixation_toiture,fibres_tressage,0600,0602,Fibres,raty = debut du petiole
+fruit_comestible,alimentaire,0100,0110,Infructescences,
+gonflements,medicinale,1100,1111,Inflammation,
+guitare,materiaux_construction,0600,0604,Wood,
+haie,environnementale,1200,1208,Boundaries/Barriers/Supports,
+insecticide,poison,1000,1009,Arthropoda,
+magie,sociale_culturelle,0800,0804,'Religious' Uses,
+maison,materiaux_construction,0600,0604,Wood,
+manche_beche,materiaux_construction,0600,0604,Wood,
+medicinale,medicinale,1100,1101,Unspecified Medicinal Disorders,
+menuiserie,materiaux_construction,0600,0604,Wood,
+panier,fibres_tressage,0600,0603,Cane etc.,
+pilon,materiaux_construction,0600,0604,Wood,
+plancher,materiaux_construction,0600,0604,Wood,
+planche,materiaux_construction,0600,0604,Wood,
+pirogue,materiaux_construction,0600,0604,Wood,
+poutre,materiaux_construction,0600,0604,Wood,
+the,alimentaire,0100,0101,Unspecified Parts,
+tressage,fibres_tressage,0600,0603,Cane etc.,
+aphrodisiaque,medicinale,1100,1107,Genitourinary System Disorders,

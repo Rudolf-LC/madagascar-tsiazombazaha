@@ -52,6 +52,15 @@ reconciliation <- read_csv(fichierReconciliation, show_col_types = FALSE) |>
 # distinctions entre types renseignes pour chaque identite.
 d <- importer_donnees()
 
+# Referentiels d'usages (classification Cook/TDWG, adaptée localement)
+dossierReferentiels <- "06_ecologie/analyse/referentiels"
+mappingMentions <- read_csv(file.path(dossierReferentiels,
+                                      "mapping_mentions_usages.csv"),
+                            show_col_types = FALSE)
+correspondanceUsages <- read_csv(file.path(dossierReferentiels,
+                                           "correspondance_usages.csv"),
+                                 show_col_types = FALSE)
+
 correspondances <- setNames(reconciliation$identite, reconciliation$nomNormalise)
 
 floreDetails <- d$flore |>
@@ -91,17 +100,31 @@ normaliser_nb_types <- function(x) {
   c(nombres, plus)
 }
 
+# Traduction des mentions brutes en usages normalises (une mention peut
+# donner plusieurs usages, ex. "Planches, poutres" -> planche + poutre),
+# puis jointure de la classe locale et du mapping Cook.
+traduire_usages <- function(mentions) {
+  mentions <- nettoyer_texte(mentions)
+  usages <- mappingMentions$usage_normalise[
+    match(mentions, mappingMentions$mention_brute)]
+  usages <- usages[!is.na(usages)]
+  sort(unique(usages))
+}
+
 resumeDetails <- details |>
   filter(!is.na(identite), str_trim(identite) != "") |>
   group_by(identite) |>
   group_modify(~ {
-    usages <- nettoyer_texte(.x$usagesBruts)
-    nbTypes <- normaliser_nb_types(.x$nbTypesBrut)
-    distinctions <- nettoyer_texte(.x$distinctionsBrutes)
+    usagesNormalises <- traduire_usages(.x$usagesBruts)
+    classes <- correspondanceUsages$classe_locale[
+      match(usagesNormalises, correspondanceUsages$usage_normalise)]
     tibble(
-      usages = paste(sort(unique(usages)), collapse = " ; "),
-      nbTypes = paste(nbTypes, collapse = ", "),
-      distinctionsTypes = paste(sort(unique(distinctions)), collapse = " ; ")
+      usages = paste(usagesNormalises, collapse = " ; "),
+      usagesClasses = paste(sort(unique(classes[!is.na(classes)])),
+                            collapse = " ; "),
+      nbTypes = paste(normaliser_nb_types(.x$nbTypesBrut), collapse = ", "),
+      distinctionsTypes = paste(sort(unique(
+        nettoyer_texte(.x$distinctionsBrutes))), collapse = " ; ")
     )
   }) |>
   ungroup()
@@ -137,14 +160,35 @@ listeEspecesDefinitive <- reconciliation |>
              str_squish())
   ) |>
   select(identite, nomsVernaculaires, occurrencesTotales,
-         identificationsBotaniques, usages, nbTypes, distinctionsTypes,
-         everything())
+         identificationsBotaniques, usages, usagesClasses, nbTypes,
+         distinctionsTypes, everything())
 
 
 ### Exports ###
 
 write_csv(listeEspecesDefinitive,
           file.path(dossierSorties, "liste_especes_vegetales_definitive.csv"))
+
+### Table d'association espece x usage (n-n) ###
+
+# Une ligne par couple (identite, usage_normalise), avec la classe locale.
+# Base des analyses de diversite des usages.
+associationUsages <- details |>
+  filter(!is.na(identite), str_trim(identite) != "") |>
+  mutate(identite = str_trim(identite)) |>
+  select(identite, usagesBruts) |>
+  filter(!is.na(usagesBruts)) |>
+  mutate(mention = str_trim(as.character(usagesBruts))) |>
+  left_join(mappingMentions, by = c("mention" = "mention_brute")) |>
+  filter(!is.na(usage_normalise), usage_normalise != "aucun") |>
+  distinct(identite, usage_normalise) |>
+  left_join(correspondanceUsages, by = "usage_normalise") |>
+  select(identite, usage_normalise, classe_locale,
+         cook_n1, cook_n2, cook_n2_libelle) |>
+  arrange(identite, usage_normalise)
+
+write_csv(associationUsages,
+          file.path(dossierSorties, "association_espece_usage.csv"))
 
 ### Messages ###
 
@@ -155,5 +199,9 @@ message("   Identifications botaniques : ",
         sum(str_trim(listeEspecesDefinitive$identificationsBotaniques) != ""),
         " / ", nrow(listeEspecesDefinitive))
 message("   Export : liste_especes_vegetales_definitive.csv")
+message("   Association espece x usage : ", nrow(associationUsages),
+        " couples (", n_distinct(associationUsages$usage_normalise),
+        " usages distincts, sans 'aucun')")
+message("   Export : association_espece_usage.csv")
 
 listeEspecesDefinitive
