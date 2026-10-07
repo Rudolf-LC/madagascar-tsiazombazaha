@@ -180,7 +180,7 @@ calculer_G_par_classe <- function(tiges, surfaces, largeur = 5,
 
   toutesClasses <- tidyr::expand_grid(
     cdPlacette = surfaces$cdPlacette,
-    classeG = sort(unique(c(tigesCl$classeG, 0)))
+    classeG = sort(unique(tigesCl$classeG))
   ) |>
     left_join(gParPlacetteClasse, by = c("cdPlacette", "classeG")) |>
     replace_na(list(G_ha = 0))

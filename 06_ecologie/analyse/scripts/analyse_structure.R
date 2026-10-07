@@ -2,12 +2,11 @@
 Ewen Le Coeur
 2026
 Objectif : analyse de la structure forestiere (§3.2 du document d'etape)
-et de la courbe aire-espece — execution et mise en forme des sorties.
+— execution et mise en forme des sorties (§3.2 du document d'etape).
 
 Structure du code (standard R en ecologie) :
   - importDonnees.R        : import et nettoyage (socle)
   - fonctionsStructure.R   : fonctions de calcul (N, classes, G)
-  - fonctionsAireEspece.R  : fonctions de calcul (aire-espece)
   - analyse_structure.R    : CE SCRIPT — orchestration, figures, exports
 
 Utilisation :
@@ -16,7 +15,6 @@ Utilisation :
 
 source("06_ecologie/analyse/scripts/importDonnees.R")
 source("06_ecologie/analyse/scripts/fonctionsStructure.R")
-source("06_ecologie/analyse/scripts/fonctionsAireEspece.R")
 
 if (!requireNamespace("ggplot2", quietly = TRUE)) install.packages("ggplot2")
 if (!requireNamespace("scales", quietly = TRUE)) install.packages("scales")
@@ -25,6 +23,22 @@ d <- importer_donnees()
 
 dossierSorties <- "06_ecologie/analyse/sorties"
 if (!dir.exists(dossierSorties)) dir.create(dossierSorties, recursive = TRUE)
+
+### Theme commun des figures ###
+
+# Axes fles aux extremites, sans quadrillage de fond, graduations
+# marquees d'un trait sur les deux axes.
+theme_axes <- theme_minimal() +
+  theme(
+    panel.grid = element_blank(),
+    axis.line = element_line(arrow = grid::arrow(length = grid::unit(0.25, "cm"),
+                                                  type = "closed")),
+    axis.ticks = element_line(linewidth = 0.4),
+    axis.ticks.length = grid::unit(0.15, "cm"),
+    axis.text = element_text(size = 9),
+    plot.title = element_text(size = 11, face = "bold"),
+    plot.subtitle = element_text(size = 9)
+  )
 
 ### Densite N ###
 
@@ -93,21 +107,12 @@ figureRegeneration <- ggplot(regeneration$par_placette,
                         format(regeneration$pearson_p, digits = 2),
                         "), Spearman rho = ",
                         round(regeneration$spearman_rho, 2))) +
-  theme_minimal()
+  scale_y_continuous(expand = expansion(mult = c(0.05, 0.12))) +
+  scale_x_continuous(expand = expansion(mult = c(0.05, 0.05))) +
+  theme_axes
 ggsave(file.path(dossierSorties, "structure_regeneration.png"),
        figureRegeneration, width = 16, height = 12, units = "cm", dpi = 300)
 
-### Courbe aire-espece ###
-
-correspondances <- charger_correspondances(
-  file.path(dossierSorties, "liste_especes_vegetales.csv"))
-especesParPlacette <- calculer_especes_par_placette(d, correspondances)
-richesseParPlacette <- calculer_richesse_par_placette(especesParPlacette)
-courbeAireEspece <- calculer_courbe_aire_espece(
-  especesParPlacette,
-  d$placettes |> select(cdPlacette, surfaceHorizontale_m2),
-  n_permutations = 200
-)
 
 ### Figures ###
 
@@ -137,14 +142,15 @@ figureClasses <- ggplot(classesFigure,
   geom_text(data = etiquettes,
             aes(x = classeDiam + 1.25, y = ic95_haut * 1.10, label = etiquette),
             angle = 90, vjust = 0.5, hjust = 0, size = 2.4) +
-  scale_y_continuous(trans = trans_symlog,
-                    breaks = c(0, 10, 100, 1000, 10000, 30000),
-                    labels = scales::label_comma()) +
   scale_x_continuous(breaks = seq(0, max(classesDiametre$borneSup), by = 2.5)) +
   labs(x = "Classe de diamètre (cm)", y = "Densité (tiges/ha, échelle symlog)",
        title = "Distribution des tiges par classe de diamètre",
        subtitle = "Moyenne par placette, barres : IC 95 % réel (tronqué à 0)") +
-  theme_minimal()
+  scale_y_continuous(trans = trans_symlog,
+                     breaks = c(0, 10, 100, 1000, 10000, 30000),
+                     labels = scales::label_comma(),
+                     expand = expansion(mult = c(0.02, 0.22))) +
+  theme_axes
 ggsave(file.path(dossierSorties, "structure_histogramme_classes.png"),
        figureClasses, width = 20, height = 12, units = "cm", dpi = 300)
 
@@ -157,7 +163,8 @@ figureClassesBrut <- ggplot(classesDiametre,
   labs(x = "Classe de diamètre (cm)", y = "Tiges comptées",
        title = "Effectifs par classe de diamètre",
        subtitle = "Nombre de tiges comptées dans le dispositif (gaulis en 0–2,5)") +
-  theme_minimal()
+  scale_y_continuous(expand = expansion(mult = c(0, 0.12))) +
+  theme_axes
 ggsave(file.path(dossierSorties, "structure_histogramme_classes_brut.png"),
        figureClassesBrut, width = 20, height = 12, units = "cm", dpi = 300)
 
@@ -168,38 +175,24 @@ etiquettesG <- GClasses |>
     " [", format(round(ic95_bas, 1), trim = TRUE), " ; ",
     format(round(ic95_haut, 1), trim = TRUE), "]"
   ))
-figureGClasses <- ggplot(GClasses, aes(x = classeG + 2.5, y = moyenne_ha)) +
+figureGClasses <- ggplot(GClasses, aes(x = classeG, y = moyenne_ha)) +
   geom_col(width = 5, fill = "grey70", color = "grey30") +
   geom_errorbar(aes(ymin = pmax(ic95_bas, 0), ymax = ic95_haut),
                 width = 2, linewidth = 0.4) +
   geom_text(data = etiquettesG,
-            aes(x = classeG + 2.5, y = ic95_haut * 1.10, label = etiquette),
-            angle = 90, vjust = 0.5, hjust = 0, size = 2.6) +
+            aes(x = classeG, y = ic95_haut, label = etiquette),
+            angle = 90, vjust = 0.5, hjust = -0.1, size = 2.6) +
   scale_x_continuous(breaks = sort(unique(c(GClasses$borneInf,
-                                              GClasses$borneSup)))) +
+                                            GClasses$borneSup))),
+                     limits = c(0, max(GClasses$borneSup) + 2.5)) +
+  scale_y_continuous(expand = expansion(mult = c(0.02, 0.28))) +
   labs(x = "Classe de diamètre (cm)",
        y = "Surface terrière (m²/ha)",
        title = "Surface terrière par classe de diamètre",
        subtitle = "Moyenne par placette, barres : IC 95 % (tronqué à 0)") +
-  theme_minimal()
+  theme_axes
 ggsave(file.path(dossierSorties, "structure_G_classes.png"),
        figureGClasses, width = 20, height = 12, units = "cm", dpi = 300)
-
-# Figure 4 : courbe aire-espece avec bande d'ecart-type
-figureAireEspece <- ggplot(courbeAireEspece,
-                           aes(x = surface_m2, y = richesse_moyenne)) +
-  geom_ribbon(aes(ymin = richesse_moyenne - richesse_ecartType,
-                 ymax = richesse_moyenne + richesse_ecartType),
-              fill = "grey80", alpha = 0.5) +
-  geom_line(color = "darkred", linewidth = 0.9) +
-  geom_point(size = 1.8) +
-  labs(x = "Surface inventoriée cumulée (m²)",
-       y = "Richesse spécifique (espèces)",
-       title = "Courbe aire-espèce",
-       subtitle = "Richesse moyenne pour 200 permutations aléatoires des placettes") +
-  theme_minimal()
-ggsave(file.path(dossierSorties, "structure_aire_espece.png"),
-       figureAireEspece, width = 16, height = 12, units = "cm", dpi = 300)
 
 ### Exports ###
 
@@ -215,8 +208,6 @@ readr::write_csv(G_par_placette,
                   file.path(dossierSorties, "structure_G_placettes.csv"))
 readr::write_csv(GClasses,
                   file.path(dossierSorties, "structure_G_classes.csv"))
-readr::write_csv(courbeAireEspece,
-                  file.path(dossierSorties, "structure_aire_espece.csv"))
 
 ### Messages ###
 
@@ -236,8 +227,6 @@ message("   Régénération : Pearson r = ", round(regeneration$pearson_r, 2),
         " (p = ", format(regeneration$pearson_p, digits = 2), ") ; ",
         "Spearman rho = ", round(regeneration$spearman_rho, 2),
         " (p = ", format(regeneration$spearman_p, digits = 2), ")")
-message("   Richesse totale (identités réconciliées) : ",
-        nrow(distinct(especesParPlacette, espece)), " espèces")
 
 list(
   donnees = d,
@@ -247,6 +236,5 @@ list(
   resume_indices = resume_indices,
   G_par_placette = G_par_placette, G_total_m2 = G_total_m2, G_ha = G_ha,
   GClasses = GClasses,
-  courbeAireEspece = courbeAireEspece,
   regeneration = regeneration
 )
