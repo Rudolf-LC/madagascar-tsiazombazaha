@@ -70,6 +70,13 @@ resume_G <- t(resumer(G_par_placette$G_ha)) |> as_tibble() |>
 
 resume_indices <- bind_rows(resume_N, resume_G)
 
+# G par classe de diametre (5 cm) avec IC 95 % entre placettes
+GClasses <- calculer_G_par_classe(
+  tiges,
+  d$placettes |> select(cdPlacette, surfaceHorizontale_m2),
+  largeur = 5, surfaceTotale = surfaceTotale
+)
+
 ### Regeneration (gaulis vs tiges mesurees) ###
 
 regeneration <- calculer_regeneration(N_par_placette)
@@ -154,7 +161,30 @@ figureClassesBrut <- ggplot(classesDiametre,
 ggsave(file.path(dossierSorties, "structure_histogramme_classes_brut.png"),
        figureClassesBrut, width = 20, height = 12, units = "cm", dpi = 300)
 
-# Figure 3 : courbe aire-espece avec bande d'ecart-type
+# Figure 3 : G/ha par classe de diametre (5 cm), IC 95 % entre placettes
+etiquettesG <- GClasses |>
+  mutate(etiquette = paste0(
+    format(round(moyenne_ha, 1), trim = TRUE),
+    " [", format(round(ic95_bas, 1), trim = TRUE), " ; ",
+    format(round(ic95_haut, 1), trim = TRUE), "]"
+  ))
+figureGClasses <- ggplot(GClasses, aes(x = classeG + 2.5, y = moyenne_ha)) +
+  geom_col(width = 5, fill = "grey70", color = "grey30") +
+  geom_errorbar(aes(ymin = pmax(ic95_bas, 0), ymax = ic95_haut),
+                width = 2, linewidth = 0.4) +
+  geom_text(data = etiquettesG,
+            aes(x = classeG + 2.5, y = ic95_haut * 1.10, label = etiquette),
+            angle = 90, vjust = 0.5, hjust = 0, size = 2.6) +
+  scale_x_continuous(breaks = seq(0, max(GClasses$borneSup), by = 5)) +
+  labs(x = "Classe de diamètre (cm)",
+       y = "Surface terrière (m²/ha)",
+       title = "Surface terrière par classe de diamètre",
+       subtitle = "Moyenne par placette, barres : IC 95 % (tronqué à 0)") +
+  theme_minimal()
+ggsave(file.path(dossierSorties, "structure_G_classes.png"),
+       figureGClasses, width = 20, height = 12, units = "cm", dpi = 300)
+
+# Figure 4 : courbe aire-espece avec bande d'ecart-type
 figureAireEspece <- ggplot(courbeAireEspece,
                            aes(x = surface_m2, y = richesse_moyenne)) +
   geom_ribbon(aes(ymin = richesse_moyenne - richesse_ecartType,
@@ -182,6 +212,8 @@ readr::write_csv(classesIC95,
                   file.path(dossierSorties, "structure_classes_ic95.csv"))
 readr::write_csv(G_par_placette,
                   file.path(dossierSorties, "structure_G_placettes.csv"))
+readr::write_csv(GClasses,
+                  file.path(dossierSorties, "structure_G_classes.csv"))
 readr::write_csv(courbeAireEspece,
                   file.path(dossierSorties, "structure_aire_espece.csv"))
 
@@ -194,6 +226,9 @@ for (i in seq_len(nrow(resume_indices))) {
           if (!is.na(r$ecartType)) paste0(" ± ", r$ecartType,
             " [", r$ic95_bas, " ; ", r$ic95_haut, "]"))
 }
+message("   G (dispositif) = ", round(G_ha, 2), " m2/ha ; G (par placette) = ",
+        round(resume_G$moyenne[1], 2), " m2/ha, IC 95 % [",
+        round(resume_G$ic95_bas[1], 2), " ; ", round(resume_G$ic95_haut[1], 2), "]")
 message("   Surface inventoriée : ", round(surfaceTotale, 1), " m² sur ",
         nrow(d$placettes), " placettes")
 message("   Régénération : Pearson r = ", round(regeneration$pearson_r, 2),
@@ -210,6 +245,7 @@ list(
   classesDiametre = classesDiametre, classesIC95 = classesIC95,
   resume_indices = resume_indices,
   G_par_placette = G_par_placette, G_total_m2 = G_total_m2, G_ha = G_ha,
+  GClasses = GClasses,
   courbeAireEspece = courbeAireEspece,
   regeneration = regeneration
 )

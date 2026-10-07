@@ -155,3 +155,46 @@ calculer_regeneration <- function(N_par_placette) {
     spearman_p = cor_spearman$p.value
   )
 }
+
+# G par classe de diametre de largeur donnee (5 cm par defaut) :
+# contribution du dispositif (m2/ha) et moyenne ± IC 95 % entre placettes
+# (grille complete : placettes sans tige dans la classe comptent 0).
+calculer_G_par_classe <- function(tiges, surfaces, largeur = 5,
+                                  surfaceTotale) {
+  tigesCl <- tiges |>
+    mutate(classeG = floor(dbh_cm / largeur) * largeur)
+  gDispositif <- tigesCl |>
+    group_by(classeG) |>
+    summarise(G_m2 = sum(pi / 4 * (dbh_cm / 100)^2), .groups = "drop") |>
+    mutate(G_ha_dispositif = G_m2 / surfaceTotale * 10000)
+
+  gParPlacetteClasse <- tigesCl |>
+    group_by(cdPlacette, classeG) |>
+    summarise(G_m2 = sum(pi / 4 * (dbh_cm / 100)^2), .groups = "drop") |>
+    left_join(surfaces, by = "cdPlacette") |>
+    mutate(G_ha = G_m2 / surfaceHorizontale_m2 * 10000) |>
+    select(cdPlacette, classeG, G_ha)
+
+  toutesClasses <- tidyr::expand_grid(
+    cdPlacette = surfaces$cdPlacette,
+    classeG = sort(unique(c(tigesCl$classeG, 0)))
+  ) |>
+    left_join(gParPlacetteClasse, by = c("cdPlacette", "classeG")) |>
+    replace_na(list(G_ha = 0))
+
+  ic95 <- toutesClasses |>
+    group_by(classeG) |>
+    group_modify(~ {
+      v <- .x$G_ha
+      n <- length(v)
+      demi <- qt(0.975, max(n - 1, 1)) * sd(v) / sqrt(n)
+      tibble(moyenne_ha = mean(v), ic95_bas = mean(v) - demi,
+             ic95_haut = mean(v) + demi)
+    }) |>
+    ungroup()
+
+  gDispositif |>
+    full_join(ic95, by = c("classeG" = "classeG")) |>
+    arrange(classeG) |>
+    mutate(borneInf = classeG, borneSup = classeG + largeur)
+}
