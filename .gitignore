@@ -6,11 +6,8 @@
 # 06_ecologie
 06_ecologie/methodologie/
 06_ecologie/releves/
-06_ecologie/analyse/figures/
-06_ecologie/analyse/donnees/
 
 # 08_rapport
-08_rapport/
 
 # Système
 .DS_Store
