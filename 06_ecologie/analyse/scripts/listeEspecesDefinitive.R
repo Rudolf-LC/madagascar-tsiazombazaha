@@ -33,6 +33,8 @@ library(tidyr)
 library(stringr)
 library(readr)
 
+source("06_ecologie/analyse/scripts/importDonnees.R")
+
 dossierSorties <- "06_ecologie/analyse/sorties"
 fichierReconciliation <- file.path(dossierSorties, "liste_especes_vegetales.csv")
 
@@ -42,6 +44,63 @@ if (!file.exists(fichierReconciliation)) {
 
 reconciliation <- read_csv(fichierReconciliation, show_col_types = FALSE) |>
   filter(!is.na(identite), str_trim(identite) != "")
+
+### Recuperation des donnees brutes de types et usages (flore + grands arbres) ###
+
+# Le CSV de reconciliation resume trop ces champs : on puise dans l'ODS
+# pour recuperer tous les usages, tous les nombres de types et toutes les
+# distinctions entre types renseignes pour chaque identite.
+d <- importer_donnees()
+
+correspondances <- setNames(reconciliation$identite, reconciliation$nomNormalise)
+
+floreDetails <- d$flore |>
+  mutate(identite = dplyr::recode(nomVernaculaire, !!!correspondances,
+                                  .default = nomVernaculaire)) |>
+  mutate(identite = str_trim(identite)) |>
+  select(identite,
+         usagesBruts = remarquesUsages,
+         nbTypesBrut = nbTypes,
+         distinctionsBrutes = remarquesTypes)
+
+grandsArbresDetails <- d$grandsArbres |>
+  mutate(identite = dplyr::recode(nomVernaculaire, !!!correspondances,
+                                  .default = nomVernaculaire)) |>
+  mutate(identite = str_trim(identite)) |>
+  select(identite,
+         usagesBruts = usages,
+         nbTypesBrut = nbTypes,
+         distinctionsBrutes = descriptionTypes)
+
+details <- bind_rows(floreDetails, grandsArbresDetails)
+
+nettoyer_texte <- function(x) {
+  x <- str_squish(str_trim(as.character(x)))
+  x[!is.na(x) & x != "" & x != "NA"]
+}
+
+# Nombres de types valides : entiers uniquement. Les annotations non
+# numeriques (++, na) sont ecartees. Si plusieurs nombres distincts
+# existent pour une meme identite, tous sont conserves (ex. "1, 2, 3").
+normaliser_nb_types <- function(x) {
+  v <- suppressWarnings(as.integer(str_trim(as.character(x))))
+  sort(unique(v[!is.na(v)]))
+}
+
+resumeDetails <- details |>
+  filter(!is.na(identite), str_trim(identite) != "") |>
+  group_by(identite) |>
+  group_modify(~ {
+    usages <- nettoyer_texte(.x$usagesBruts)
+    nbTypes <- normaliser_nb_types(.x$nbTypesBrut)
+    distinctions <- nettoyer_texte(.x$distinctionsBrutes)
+    tibble(
+      usages = paste(sort(unique(usages)), collapse = " ; "),
+      nbTypes = paste(nbTypes, collapse = ", "),
+      distinctionsTypes = paste(sort(unique(distinctions)), collapse = " ; ")
+    )
+  }) |>
+  ungroup()
 
 ### Consolidation par identite ###
 
@@ -60,28 +119,23 @@ listeEspecesDefinitive <- reconciliation |>
     identificationsBotaniques = str_c(
       sort(unique(str_trim(na.omit(identification_botanique)))),
       collapse = " | "),
-    types = str_c(
-      sort(unique(str_trim(str_remove_all(na.omit(identite_type), "^\\s*\\|\\s*$")))),
-      collapse = " ; "),
-    usages = str_c(
-      sort(unique(str_trim(na.omit(c(usagesFlore, usagesGrandsArbres))))),
-      collapse = " ; "),
-    typesPhenotypiques = str_c(
-      sort(unique(str_trim(na.omit(typesFlore)))),
-      collapse = " ; "),
     sources = str_c(
-      sort(unique(unlist(str_split(sources, "\\.\\.")))), collapse = " | "),
+      sort(unique(unlist(str_split(sources, fixed("..")))), collapse = " | "),
     .groups = "drop"
   ) |>
+  left_join(resumeDetails, by = "identite") |>
   arrange(desc(occurrencesTotales), identite) |>
   mutate(
-    # nettoyage des NA agrégés par str_c (cellules vides à l'origine)
-    across(c(identificationsBotaniques, types, usages,
-             typesPhenotypiques, sources),
+    across(c(identificationsBotaniques, sources),
            ~ str_remove_all(.x, '(NA[[:space:]]*[;|][[:space:]]*)+') |>
              str_remove_all('[[:space:]]*[;|][[:space:]]*NA$') |>
              str_remove_all('^NA$') |>
              str_squish())
+  ) |>
+  select(identite, nomsVernaculaires, occurrencesTotales,
+         identificationsBotaniques, usages, nbTypes, distinctionsTypes,
+         everything())
+
 
 ### Exports ###
 
