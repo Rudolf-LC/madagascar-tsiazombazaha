@@ -74,7 +74,10 @@ distBray <- vegan::vegdist(matAbond, method = "bray")
 nmdsRes <- vegan::metaMDS(distBray, k = 2, trymax = 100, trace = 0)
 
 correspTransects <- d$placettes |>
-  dplyr::select(cdTransect, cdPlacette)
+  dplyr::select(cdTransect, cdPlacette) |>
+  dplyr::left_join(
+    d$transects |> dplyr::select(cdTransect, polisnala, commune),
+    by = "cdTransect")
 
 pointsNMDS <- tibble::tibble(
   cdPlacette = rownames(nmdsRes$points),
@@ -107,6 +110,58 @@ figNMDS <- ggplot(pointsNMDS, aes(x = NMDS1, y = NMDS2,
 ggsave(file.path(dossierSorties, "diversite_beta_nmds.png"),
        figNMDS, width = 14, height = 12, units = "cm", dpi = 300)
 
+### Bray-Curtis par niveau hierarchique (transect / polisn'ala / commune) ###
+
+# Chaque paire de placettes est classee selon le niveau auquel les deux
+# placettes appartiennent a la meme entite : meme transect > meme
+# polisn'ala > meme commune > communes differentes.
+metaPlacettes <- pointsNMDS |> dplyr::select(cdPlacette, cdTransect,
+                                            polisnala, commune)
+
+pairesNiveaux <- paires |>
+  dplyr::left_join(metaPlacettes, by = c("placette1" = "cdPlacette")) |>
+  dplyr::rename(transect1 = cdTransect, polisnala1 = polisnala,
+                commune1 = commune) |>
+  dplyr::left_join(metaPlacettes, by = c("placette2" = "cdPlacette")) |>
+  dplyr::rename(transect2 = cdTransect, polisnala2 = polisnala,
+                commune2 = commune) |>
+  dplyr::mutate(
+    niveau = dplyr::case_when(
+      transect1 == transect2 ~ "Meme transect",
+      polisnala1 == polisnala2 ~ "Meme polisn'ala",
+      commune1 == commune2 ~ "Meme commune",
+      TRUE ~ "Communes differentes"
+    ),
+    niveau = factor(niveau, levels = c(
+      "Meme transect", "Meme polisn'ala", "Meme commune",
+      "Communes differentes"))
+  )
+
+resumeNiveaux <- pairesNiveaux |>
+  dplyr::group_by(niveau) |>
+  dplyr::summarise(
+    nbPaires = dplyr::n(),
+    moyenne = mean(brayCurtis),
+    ecartType = sd(brayCurtis),
+    .groups = "drop"
+  ) |>
+  dplyr::mutate(across(where(is.numeric), ~ round(.x, 3)))
+
+figNiveaux <- ggplot(pairesNiveaux,
+                     aes(x = niveau, y = brayCurtis, fill = niveau)) +
+  geom_boxplot(show.legend = FALSE, linewidth = 0.3) +
+  labs(
+    title = "Dissimilarite de Bray-Curtis selon le niveau geographique",
+    subtitle = "Paires de placettes : meme transect, meme polisn'ala, meme commune ou communes differentes",
+    x = NULL,
+    y = "Bray-Curtis"
+  ) +
+  theme_axes +
+  theme(axis.text.x = element_text(angle = 20, hjust = 1))
+
+ggsave(file.path(dossierSorties, "diversite_beta_bray_niveaux.png"),
+       figNiveaux, width = 16, height = 12, units = "cm", dpi = 300)
+
 ### Exports ###
 
 readr::write_csv(paires,
@@ -122,6 +177,11 @@ readr::write_csv(tibble::tibble(
 file.path(dossierSorties, "diversite_beta_whittaker.csv"))
 readr::write_csv(pointsNMDS,
                  file.path(dossierSorties, "diversite_beta_nmds_points.csv"))
+readr::write_csv(pairesNiveaux |>
+                   dplyr::select(placette1, placette2, niveau, brayCurtis),
+                 file.path(dossierSorties, "diversite_beta_paires_niveaux.csv"))
+readr::write_csv(resumeNiveaux,
+                 file.path(dossierSorties, "diversite_beta_bray_niveaux.csv"))
 
 ### Messages ###
 
@@ -137,6 +197,12 @@ message("   Beta multiplicatif (Whittaker) : ", round(whit$beta, 2),
 message("   Beta additif : ", round(betaAdditif, 1),
         " especes (gamma - alpha moyen)")
 message("   NMDS Bray-Curtis : stress = ", round(nmdsRes$stress, 3))
+message("   Bray-Curtis par niveau :")
+for (i in seq_len(nrow(resumeNiveaux))) {
+  r <- resumeNiveaux[i, ]
+  message("     ", r$niveau, " : ", r$moyenne,
+          " (n = ", r$nbPaires, " paires)")
+}
 
 list(
   donnees = d,
@@ -147,5 +213,7 @@ list(
   whittaker = whit,
   betaAdditif = betaAdditif,
   nmds = nmdsRes,
-  pointsNMDS = pointsNMDS
+  pointsNMDS = pointsNMDS,
+  pairesNiveaux = pairesNiveaux,
+  resumeNiveaux = resumeNiveaux
 )
