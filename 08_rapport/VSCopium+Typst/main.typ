@@ -3,14 +3,19 @@
 // (la racine du dépôt est la racine Typst, à cause des figures dans 06_ecologie/).
 
 // ---------- Police ----------
-// Liberation Serif : libre (SIL OFL), compatible métrique Times New Roman.
-// Alternative accessibilité : "Atkinson Hyperlegible" (Braille Institute, conçue pour
-// la basse vision) — sans-serif ; ou "Lexend" (légèreté de lecture). Si besoin,
-// changer la ligne ci-dessous.
-#set text(font: "Liberation Serif", size: 11pt, lang: "fr", region: "FR")
+// Accessibilité + rigueur académique : Source Serif 4 (Adobe, SIL OFL) — serif de
+// corps à grande hauteur d'x (plus lisible en petit corps que Times/Liberation),
+// dessin moderne, chiffres alignés. Installation : paquet "Source Serif 4"
+// (Google Fonts) ou fonts-sourceserifpro.
+// Alternatives : "Atkinson Hyperlegible" (Braille Institute, basse vision, sans-serif),
+// "Lexend" (lecture fluide, sans-serif), "Liberation Serif" (métrique Times).
+#set text(font: "Source Serif 4", size: 12pt, lang: "fr", region: "FR")
 
-// ---------- Corps de texte : justifié ----------
-#set par(justify: true)
+// ---------- Corps de texte : justifié, avec césures ----------
+// Interligne élargi (1,3 em) pour la lisibilité ; césures automatiques pour
+// éviter les « rivières » d'espaces créées par la justification.
+#set par(justify: true, leading: 1.3em)
+#set text(hyphenate: true)
 
 // ---------- Titres : 11 pt, numérotation 1.1 ----------
 #set heading(numbering: "1.1")
@@ -33,9 +38,9 @@
 // ---------- Figures et tableaux ----------
 // Titre des tableaux au-dessus, titre des figures en dessous (défaut).
 #show figure.where(kind: table): set figure.caption(position: top)
-// Titres (captions) justifiés.
+// Titres (captions) justifiés — 11 pt minimum (accessibilité).
 #show figure.caption: set par(justify: true)
-#show figure.caption: set text(size: 10pt)
+#show figure.caption: set text(size: 11pt)
 // Tableaux : texte justifié, centrage vertical ; en-têtes en gras.
 #show table.cell: set par(justify: true)
 #show table.cell: set align(horizon)

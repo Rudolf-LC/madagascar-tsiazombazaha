@@ -80,7 +80,8 @@ Sur l'ensemble du dispositif, 1 761 tiges ont été comptées sur 25 placettes (
 La distribution des effectifs par classe de diamètre décroît régulièrement depuis les plus petites classes (Figure @fig-hist-classes) : 26 010 tiges/ha (IC 95 % : [20 427 ; 31 593]) dans la classe 0–2,5 cm, qui inclut les gaulis, puis 6 138 tiges/ha [4 742 ; 7 534] en 2,5–5 cm et 1 469 tiges/ha [1 033 ; 1 906] en 5–7,5 cm. Les classes supérieures à 10 cm ne représentent plus que quelques dizaines de tiges par hectare.
 
 #figure(
-  image("../../06_ecologie/analyse/sorties/structure_histogramme_classes.png"),
+  image("../../06_ecologie/analyse/sorties/structure_histogramme_classes.png",
+    alt: "Histogramme de la densité de tiges par classe de diamètre de 2,5 cm : distribution en J inversé, la classe 0-2,5 cm domine à environ 26 000 tiges/ha, décroissance régulière ensuite."),
   caption: [Densité de tiges par classe de diamètre de 2,5 cm (moyenne entre placettes, barres = IC 95 % par t de Student). L'échelle de l'axe des ordonnées est symétrique-logarithmique : linéaire près de zéro, logarithmique au-delà, afin de représenter les intervalles de confiance dont la borne inférieure descend à zéro ; pour certaines classes rares, la borne inférieure de l'IC est négative et la barre est tronquée à zéro (étiquettes : IC réel). Les gaulis (< 1,30 m) sont inclus dans la classe 0–2,5 cm.],
 ) <fig-hist-classes>
 
@@ -91,7 +92,8 @@ La distribution des effectifs par classe de diamètre décroît régulièrement 
 Le profil de surface terrière est plus régulier (Figure @fig-G-classes) : après un maximum de 10,0 m2/ha dans la première classe [2,5–7,5], la surface terrière se maintient entre 3,8 et 4,6 m2/ha dans les classes intermédiaires, puis remonte à 9,2 m2/ha dans la classe [22,5–27,5]. La classe [22,5–27,5] concentre à elle seule un quart de la surface terrière totale. Au total, les petites tiges dominent largement les effectifs, mais leur contribution à la surface terrière reste faible — la section étant proportionnelle au carré du diamètre.
 
 #figure(
-  image("../../06_ecologie/analyse/sorties/structure_G_classes.png"),
+  image("../../06_ecologie/analyse/sorties/structure_G_classes.png",
+    alt: "Histogramme de la surface terrière par classe de diamètre de 5 cm : maximum de 10 m2/ha en 2,5-7,5 cm, valeurs de 4 à 9 m2/ha dans les grandes classes, la classe 22,5-27,5 cm ressort à 9,2 m2/ha."),
   caption: [Surface terrière par classe de diamètre de 5 cm, bornes décalées depuis le seuil de mesure effectif de 2,5 cm (moyenne entre placettes, barres = IC 95 % par t de Student). Les gaulis, non mesurés, sont exclus.],
 ) <fig-G-classes>
 
