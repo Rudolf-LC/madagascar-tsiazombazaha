@@ -40,6 +40,9 @@ calculer_abondances <- function(d, correspondances) {
     filter(!is.na(espece), str_trim(espece) != "") |>
     count(cdPlacette, espece, name = "nbMesurees")
 
+  # N.B. : agreger les gaulis par espece AVANT la jointure — une meme
+  # espece peut apparaitre dans plusieurs observations d'une placette,
+  # et la jointure dupliquerait sinon les tiges mesurees.
   gaulis <- d$flore |>
     mutate(
       espece = dplyr::recode(nomVernaculaire, !!!correspondances,
@@ -52,7 +55,8 @@ calculer_abondances <- function(d, correspondances) {
       nbGaulis = replace_na(gaulis, 0)
     ) |>
     filter(!is.na(espece), str_trim(espece) != "") |>
-    select(cdPlacette, espece, nbGaulis)
+    group_by(cdPlacette, espece) |>
+    summarise(nbGaulis = sum(nbGaulis), .groups = "drop")
 
   full_join(tigesMesurees, gaulis,
             by = c("cdPlacette", "espece")) |>
