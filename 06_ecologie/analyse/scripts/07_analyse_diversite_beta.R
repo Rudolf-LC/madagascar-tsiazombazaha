@@ -147,20 +147,7 @@ resumeNiveaux <- pairesNiveaux |>
   ) |>
   dplyr::mutate(across(where(is.numeric), ~ round(.x, 3)))
 
-figNiveaux <- ggplot(pairesNiveaux,
-                     aes(x = niveau, y = brayCurtis, fill = niveau)) +
-  geom_boxplot(show.legend = FALSE, linewidth = 0.3) +
-  labs(
-    title = "Dissimilarite de Bray-Curtis selon le niveau geographique",
-    subtitle = "Paires de placettes : meme transect, meme polisn'ala, meme commune ou communes differentes",
-    x = NULL,
-    y = "Bray-Curtis"
-  ) +
-  theme_axes +
-  theme(axis.text.x = element_text(angle = 20, hjust = 1))
-
-ggsave(file.path(dossierSorties, "diversite_beta_bray_niveaux.png"),
-       figNiveaux, width = 16, height = 12, units = "cm", dpi = 300)
+# (figure remplacee par le gradient Jaccard : voir plus bas)
 
 ### Tests statistiques entre niveaux ###
 
@@ -233,92 +220,109 @@ tableTestsGroupe <- tableTestsGroupe |>
   dplyr::filter(!is.na(p)) |>
   dplyr::mutate(p = round(p, 4))
 
-figGroupe <- ggplot(pairesGroupe,
-                    aes(x = niveauGroupe, y = brayCurtis,
-                        fill = niveauGroupe)) +
-  geom_boxplot(show.legend = FALSE, linewidth = 0.3) +
-  labs(
-    title = "Bray-Curtis selon le niveau (Andriana/Mizilo regroupes)",
-    subtitle = paste0("Kruskal-Wallis p = ",
-                      signif(testKWGroupe$p.value, 3)),
-    x = NULL, y = "Bray-Curtis"
-  ) +
-  theme_axes +
-  theme(axis.text.x = element_text(angle = 20, hjust = 1))
+# (figure remplacee par le gradient Jaccard : voir plus bas)
 
-ggsave(file.path(dossierSorties, "diversite_beta_bray_groupes.png"),
-       figGroupe, width = 16, height = 12, units = "cm", dpi = 300)
+### Gradient transect -> polisn'ala -> commune (Jaccard, presence-absence) ###
 
-### Figure : gradient transect -> polisn'ala -> commune (tous les tests) ###
+# Objectif : savoir si un polisn'ala (ou une commune) voit/nomme des
+# especes differentes des autres, independamment des abondances. La
+# dissimilarite de Jaccard compare les listes d'especes (reconciliees)
+# sans ponderation d'abondance.
+# Tests : Kruskal-Wallis global puis Wilcoxon deux a deux (correction
+# de Holm). Les paires ne sont pas independantes (une placette apparait
+# dans plusieurs paires) : tests indicatifs, a croiser avec la figure.
+testKWJac <- stats::kruskal.test(jaccard ~ niveau, data = pairesNiveaux)
+testsPairsJac <- stats::pairwise.wilcox.test(pairesNiveaux$jaccard,
+                                            pairesNiveaux$niveau,
+                                            p.adjust.method = "holm")
+tableTestsJac <- as.data.frame(as.table(testsPairsJac$p.value))
+names(tableTestsJac) <- c("niveau1", "niveau2", "p")
+tableTestsJac <- tableTestsJac |>
+  dplyr::filter(!is.na(p)) |>
+  dplyr::mutate(p = round(p, 4))
 
-# Boxplots ordonnes du niveau le plus fin au plus grossier, avec les
-# p-values des comparaisons deux a deux (Wilcoxon, correction de Holm)
-# tracees en accolades. Test global : Kruskal-Wallis.
-pvalsGrad <- tableTests |>
-  dplyr::mutate(
-    paire = paste(pmin(niveau1, niveau2), pmax(niveau1, niveau2), sep = "::")
-  ) |>
-  dplyr::arrange(paire)
-
-# positions x des niveaux sur la figure
 niveauxOrdres <- levels(pairesNiveaux$niveau)
 posNiveau <- stats::setNames(seq_along(niveauxOrdres), niveauxOrdres)
-
-# toutes les combinaisons deux a deux, dans l'ordre du gradient
 combis <- utils::combn(niveauxOrdres, 2, simplify = FALSE)
+
+# etoiles de significativite (convention usuelle)
+etoile <- function(p) {
+  dplyr::case_when(
+    is.na(p) ~ "",
+    p < 0.001 ~ "***",
+    p < 0.01 ~ "**",
+    p < 0.05 ~ "*",
+    TRUE ~ "ns"
+  )
+}
+
+# p-value exacte d'une paire de niveaux, par reunion robuste (plus de cle texte)
+p_de <- function(nA, nB) {
+  hit <- tableTestsJac |>
+    dplyr::filter((niveau1 == nA & niveau2 == nB) |
+                  (niveau1 == nB & niveau2 == nA))
+  if (nrow(hit) == 0) return(NA_real_)
+  hit$p[1]
+}
+
 pairesGrad <- dplyr::bind_rows(lapply(seq_along(combis), function(k) {
   cc <- combis[[k]]
-  key <- paste(pmin(cc[1], cc[2]), pmax(cc[1], cc[2]), sep = "::")
-  p <- pvalsGrad$p[match(key, pvalsGrad$paire)]
+  pv <- p_de(cc[1], cc[2])
   tibble(
     niveauA = cc[1], niveauB = cc[2],
     x = min(posNiveau[cc[1]], posNiveau[cc[2]]),
     xend = max(posNiveau[cc[1]], posNiveau[cc[2]]),
-    y = 1.0 + 0.017 * k,
-    p = p
+    y = 1.02 + 0.028 * k,
+    p = pv,
+    etoile = etoile(pv)
   )
 }))
 
-format_p <- function(p) {
-  dplyr::if_else(p < 0.001, "p < 0,001", paste0("p = ", formatC(p, format = "f", digits = 3)))
-}
-
-pairesGrad <- pairesGrad |>
-  dplyr::mutate(plabel = format_p(p))
+# legende texte : toutes les p-values exactes, dans le coin de la figure
+lignesLegende <- vapply(seq_len(nrow(pairesGrad)), function(k) {
+  r <- pairesGrad[k, ]
+  sprintf("%s vs %s : p = %s", r$niveauA, r$niveauB,
+          ifelse(is.na(r$p), "NA", formatC(r$p, format = "f", digits = 4)))
+}, character(1))
+legendeTests <- paste0(
+  c(paste0("Kruskal-Wallis global : p = ",
+           signif(testKWJac$p.value, 3),
+           ". Wilcoxon 2 a 2 (Holm) :"),
+    lignesLegende,
+    "Seuils : *** p < 0,001 ; ** p < 0,01 ; * p < 0,05 ; ns non significatif"),
+  collapse = "\n")
 
 figGradient <- ggplot(pairesNiveaux,
-                      aes(x = niveau, y = brayCurtis, fill = niveau)) +
+                      aes(x = niveau, y = jaccard, fill = niveau)) +
   geom_boxplot(show.legend = FALSE, linewidth = 0.3, outlier.size = 0.8) +
   geom_segment(data = pairesGrad,
                aes(x = x, xend = xend, y = y, yend = y),
                inherit.aes = FALSE, linewidth = 0.25) +
   geom_segment(data = pairesGrad,
-               aes(x = x, xend = x, y = y, yend = y - 0.008),
+               aes(x = x, xend = x, y = y, yend = y - 0.01),
                inherit.aes = FALSE, linewidth = 0.25) +
   geom_segment(data = pairesGrad,
-               aes(x = xend, xend = xend, y = y, yend = y - 0.008),
+               aes(x = xend, xend = xend, y = y, yend = y - 0.01),
                inherit.aes = FALSE, linewidth = 0.25) +
   geom_text(data = pairesGrad,
-            aes(x = (x + xend) / 2, y = y + 0.004, label = plabel),
-            inherit.aes = FALSE, size = 2.4) +
-  annotate("text", x = 1, y = 1.14, hjust = 0,
-           label = paste0("Test global : Kruskal-Wallis, p = ",
-                          signif(testKW$p.value, 3),
-                          " | Comparaisons : Wilcoxon 2 a 2, correction de Holm"),
-           size = 2.4) +
-  coord_cartesian(ylim = c(0.35, 1.17)) +
+            aes(x = (x + xend) / 2, y = y + 0.006, label = etoile),
+            inherit.aes = FALSE, size = 3.2) +
+  annotate("text", x = 0.55, y = 0.32, hjust = 0, vjust = 0,
+           label = legendeTests, size = 2.2) +
+  coord_cartesian(ylim = c(0.3, 1.22), clip = "off") +
   scale_x_discrete(labels = function(l) paste0(l, "\n(n = ",
     as.integer(table(pairesNiveaux$niveau)[l]), ")")) +
   labs(
     title = "Gradient de dissimilarite : transect -> polisn'ala -> commune",
-    subtitle = "Dissimilarite de Bray-Curtis entre paires de placettes (especes reconciliees)",
-    x = NULL, y = "Bray-Curtis"
+    subtitle = "Dissimilarite de Jaccard entre paires de placettes (especes reconciliees, presence-absence)",
+    x = NULL, y = "Jaccard (presence-absence)"
   ) +
   theme_axes +
-  theme(axis.text.x = element_text(size = 8))
+  theme(axis.text.x = element_text(size = 8),
+        plot.margin = grid::unit(c(0.3, 0.3, 1.2, 0.3), "cm"))
 
 ggsave(file.path(dossierSorties, "diversite_beta_gradient.png"),
-       figGradient, width = 18, height = 14, units = "cm", dpi = 300)
+       figGradient, width = 18, height = 15, units = "cm", dpi = 300)
 
 ### Especes par commune : structure reelle ou artefact ? ###
 
@@ -421,6 +425,8 @@ readr::write_csv(resumeNiveaux,
                  file.path(dossierSorties, "diversite_beta_bray_niveaux.csv"))
 readr::write_csv(tableTests,
                  file.path(dossierSorties, "diversite_beta_tests_niveaux.csv"))
+readr::write_csv(tableTestsJac,
+                 file.path(dossierSorties, "diversite_beta_tests_niveaux_jaccard.csv"))
 readr::write_csv(resumeGroupe,
                  file.path(dossierSorties, "diversite_beta_bray_groupes.csv"))
 readr::write_csv(tableTestsGroupe,
@@ -473,7 +479,13 @@ for (i in seq_len(nrow(resumeGroupe))) {
 }
 message("   Kruskal-Wallis (groupes) : p = ",
         signif(testKWGroupe$p.value, 3))
-message("   Especes vues dans une seule commune : ",
+message("   Gradient Jaccard (presence-absence) : KW p = ",
+        signif(testKWJac$p.value, 3))
+for (i in seq_len(nrow(tableTestsJac))) {
+  r <- tableTestsJac[i, ]
+  message("     ", r$niveau1, " vs ", r$niveau2, " : p = ", r$p)
+}
+message("   Especes vues dans une seule commune : "
         round(propMonoObs, 3), " (attendu sous permutation : ",
         round(mean(permMono), 3), ", p = ", signif(pMono, 3), ")")
 message("   Noms vernaculaires bruts mono-commune : ",
@@ -497,5 +509,6 @@ list(
   resumeGroupe = resumeGroupe,
   tableTests = tableTests,
   tableTestsGroupe = tableTestsGroupe,
+  tableTestsJac = tableTestsJac,
   especesParCommune = especesParCommune
 )
