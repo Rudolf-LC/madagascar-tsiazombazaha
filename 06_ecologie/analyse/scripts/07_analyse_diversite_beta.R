@@ -96,15 +96,14 @@ figNMDS <- ggplot(pointsNMDS, aes(x = NMDS1, y = NMDS2,
                                    shape = cdTransect,
                                    colour = cdTransect)) +
   geom_point(size = 2.5) +
-  scale_shape_manual(values = formes) +
+  scale_shape_manual(values = formes, name = "Transect") +
   scale_colour_discrete(name = "Transect") +
-  labs(
-    title = "Position des placettes (NMDS, dissimilarité de Bray-Curtis)",
-    subtitle = paste0("Chaque point est une placette ; deux points proches ont des compositions proches. Stress = ",
-                      round(nmdsRes$stress, 3), " (", nrow(matAbond),
-                      " placettes, 2 dimensions)"),
-    x = "NMDS 1", y = "NMDS 2"
-  ) +
+  guides(colour = "none") +
+  scale_x_continuous(breaks = scales::breaks_pretty(n = 5),
+                     expand = expansion(mult = 0.08)) +
+  scale_y_continuous(breaks = scales::breaks_pretty(n = 5),
+                     expand = expansion(mult = 0.08)) +
+  labs(x = "NMDS 1", y = "NMDS 2") +
   theme_axes
 
 ggsave(file.path(dossierSorties, "diversite_beta_nmds.png"),
@@ -295,16 +294,14 @@ figGradient <- ggplot(pairesNiveaux,
                aes(x = xend, xend = xend, y = y, yend = y - 0.01),
                inherit.aes = FALSE, linewidth = 0.25) +
   geom_text(data = pairesGrad,
-            aes(x = (x + xend) / 2, y = y + 0.004, label = etoile),
-            inherit.aes = FALSE, size = 3.4, vjust = 0) +
-  coord_cartesian(ylim = c(0.3, 1.2)) +
+            aes(x = (x + xend) / 2, y = y + 0.012, label = etoile),
+            inherit.aes = FALSE, size = 3.6, vjust = 0) +
+  coord_cartesian(ylim = c(0, 1.28)) +
   scale_x_discrete(labels = function(l) paste0(l, "\n(n = ",
     as.integer(table(pairesNiveaux$niveau)[l]), ")")) +
-  labs(
-    title = "Gradient de dissimilarite : transect -> polisn'ala -> commune",
-    subtitle = "Dissimilarite de Jaccard entre paires de placettes (especes reconciliees, presence-absence)",
-    x = NULL, y = "Jaccard (presence-absence)"
-  ) +
+  scale_y_continuous(breaks = seq(0, 1, by = 0.2),
+                     expand = expansion(mult = c(0.02, 0.02))) +
+  labs(x = NULL, y = "Jaccard (présence-absence)") +
   theme_axes +
   theme(axis.text.x = element_text(size = 8))
 
