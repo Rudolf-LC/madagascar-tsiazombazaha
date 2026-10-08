@@ -97,12 +97,12 @@ figNMDS <- ggplot(pointsNMDS, aes(x = NMDS1, y = NMDS2,
                                    colour = cdTransect)) +
   geom_point(size = 2.5) +
   scale_shape_manual(values = formes) +
-  geom_text_repel(aes(label = cdPlacette), size = 2.5,
-                  min.segment.length = 0, show.legend = FALSE) +
+  scale_colour_discrete(name = "Transect") +
   labs(
-    title = "NMDS des placettes (dissimilarite de Bray-Curtis)",
-    subtitle = paste0("Stress : ", round(nmdsRes$stress, 3),
-                      " (k = 2, ", nrow(matAbond), " placettes)"),
+    title = "Position des placettes (NMDS, dissimilarité de Bray-Curtis)",
+    subtitle = paste0("Chaque point est une placette ; deux points proches ont des compositions proches. Stress = ",
+                      round(nmdsRes$stress, 3), " (", nrow(matAbond),
+                      " placettes, 2 dimensions)"),
     x = "NMDS 1", y = "NMDS 2"
   ) +
   theme_axes
@@ -127,13 +127,13 @@ pairesNiveaux <- paires |>
                 commune2 = commune) |>
   dplyr::mutate(
     niveau = dplyr::case_when(
-      transect1 == transect2 ~ "Meme transect",
-      polisnala1 == polisnala2 ~ "Meme polisn'ala",
-      commune1 == commune2 ~ "Meme commune",
+      transect1 == transect2 ~ "Même transect",
+      polisnala1 == polisnala2 ~ "Même polisn'ala",
+      commune1 == commune2 ~ "Même commune",
       TRUE ~ "Entre communes"
     ),
     niveau = factor(niveau, levels = c(
-      "Meme transect", "Meme polisn'ala", "Meme commune",
+      "Même transect", "Même polisn'ala", "Même commune",
       "Entre communes"))
   )
 
@@ -187,15 +187,15 @@ pairesGroupe <- pairesNiveaux |>
   dplyr::rename(groupe2 = groupe) |>
   dplyr::mutate(
     niveauGroupe = dplyr::case_when(
-      transect1 == transect2 ~ "Meme transect",
-      polisnala1 == polisnala2 ~ "Meme polisn'ala",
-      commune1 == commune2 ~ "Meme commune",
-      groupe1 == groupe2 ~ "Meme groupe (Andriana/Mizilo)",
+      transect1 == transect2 ~ "Même transect",
+      polisnala1 == polisnala2 ~ "Même polisn'ala",
+      commune1 == commune2 ~ "Même commune",
+      groupe1 == groupe2 ~ "Même groupe (Andriana/Mizilo)",
       TRUE ~ "Ambahatrazo vs autres"
     ),
     niveauGroupe = factor(niveauGroupe, levels = c(
-      "Meme transect", "Meme polisn'ala", "Meme commune",
-      "Meme groupe (Andriana/Mizilo)", "Ambahatrazo vs autres"))
+      "Même transect", "Même polisn'ala", "Même commune",
+      "Même groupe (Andriana/Mizilo)", "Ambahatrazo vs autres"))
   ) |>
   dplyr::filter(!is.na(niveauGroupe))
 
@@ -278,19 +278,9 @@ pairesGrad <- dplyr::bind_rows(lapply(seq_along(combis), function(k) {
   )
 }))
 
-# legende texte : toutes les p-values exactes, dans le coin de la figure
-lignesLegende <- vapply(seq_len(nrow(pairesGrad)), function(k) {
-  r <- pairesGrad[k, ]
-  sprintf("%s vs %s : p = %s", r$niveauA, r$niveauB,
-          ifelse(is.na(r$p), "NA", formatC(r$p, format = "f", digits = 4)))
-}, character(1))
-legendeTests <- paste0(
-  c(paste0("Kruskal-Wallis global : p = ",
-           signif(testKWJac$p.value, 3),
-           ". Wilcoxon 2 a 2 (Holm) :"),
-    lignesLegende,
-    "Seuils : *** p < 0,001 ; ** p < 0,01 ; * p < 0,05 ; ns non significatif"),
-  collapse = "\n")
+# Les p-values exactes et les seuils vont dans la legende de la figure
+# (titre/description cote memoire), pas dans l'image : seules les
+# etoiles de significativite y figurent.
 
 figGradient <- ggplot(pairesNiveaux,
                       aes(x = niveau, y = jaccard, fill = niveau)) +
@@ -305,11 +295,9 @@ figGradient <- ggplot(pairesNiveaux,
                aes(x = xend, xend = xend, y = y, yend = y - 0.01),
                inherit.aes = FALSE, linewidth = 0.25) +
   geom_text(data = pairesGrad,
-            aes(x = (x + xend) / 2, y = y + 0.006, label = etoile),
-            inherit.aes = FALSE, size = 3.2) +
-  annotate("text", x = 0.55, y = 0.32, hjust = 0, vjust = 0,
-           label = legendeTests, size = 2.2) +
-  coord_cartesian(ylim = c(0.3, 1.22), clip = "off") +
+            aes(x = (x + xend) / 2, y = y + 0.004, label = etoile),
+            inherit.aes = FALSE, size = 3.4, vjust = 0) +
+  coord_cartesian(ylim = c(0.3, 1.2)) +
   scale_x_discrete(labels = function(l) paste0(l, "\n(n = ",
     as.integer(table(pairesNiveaux$niveau)[l]), ")")) +
   labs(
@@ -318,11 +306,10 @@ figGradient <- ggplot(pairesNiveaux,
     x = NULL, y = "Jaccard (presence-absence)"
   ) +
   theme_axes +
-  theme(axis.text.x = element_text(size = 8),
-        plot.margin = grid::unit(c(0.3, 0.3, 1.2, 0.3), "cm"))
+  theme(axis.text.x = element_text(size = 8))
 
 ggsave(file.path(dossierSorties, "diversite_beta_gradient.png"),
-       figGradient, width = 18, height = 15, units = "cm", dpi = 300)
+       figGradient, width = 18, height = 13, units = "cm", dpi = 300)
 
 ### Especes par commune : structure reelle ou artefact ? ###
 
@@ -485,7 +472,7 @@ for (i in seq_len(nrow(tableTestsJac))) {
   r <- tableTestsJac[i, ]
   message("     ", r$niveau1, " vs ", r$niveau2, " : p = ", r$p)
 }
-message("   Especes vues dans une seule commune : "
+message("   Especes vues dans une seule commune : ",
         round(propMonoObs, 3), " (attendu sous permutation : ",
         round(mean(permMono), 3), ", p = ", signif(pMono, 3), ")")
 message("   Noms vernaculaires bruts mono-commune : ",
