@@ -36,6 +36,13 @@ Cette note accompagne le chantier « diversité alpha » du document d'étape (�
 - **Contrastes entre placettes** : P15 la plus riche (46 espèces, H′ = 3,42) ; **P23 est un cas particulier** : richesse moyenne (26 espèces) mais H′ = 2,39 et ²D = 6,9 — une espèce y domine très fortement le sous-bois (régénération quasi monospécifique). Ce contraste peut appuyer la discussion sur l'hétérogénéité spatiale (en lien avec le futur NMDS, §3.5).
 - **Prudence statistique** : n = 24 placettes, IC 95 % présentés — l'usage veut qu'on présente moyenne ± écart-type ET l'IC, les deux sont dans le CSV.
 
+## Figures de discussion (optionnelles, à la demande de la rédaction)
+
+Le document d'étape exige les quatre indices par placette avec moyenne/écart-type — c'est livré. Deux figures optionnelles peuvent enrichir la **discussion** si la rédaction le souhaite (ce ne sont pas des livrables exigés) :
+
+1. **Boxplot des indices par placette** — visualiser la distribution entre placettes de S, H′, ¹D, ²D, Fisher (notamment pour montrer P15 et P23 visuellement, et l'asymétrie de ²D) ;
+2. **Richesse S vs nombre de tiges N (par placette)** — nuage de points pour discuter **l'effort d'échantillonnage** : si S croît avec N, une partie de la variabilité de richesse entre placettes reflète l'effort (placettes plus denses = plus d'espèces trouvées), pas seulement l'écologie. Le lien attendu est logarithmique (S ∝ α·ln(N)) ; un nuage S vs ln(N) assez linéaire confirmerait que Fisher α est le bon indice pour comparer des placettes d'efforts inégaux — exactement l'argument de Fisher. Demander à la session R si la rédaction veut ces figures (elles sont rapides).
+
 ## En cours / à venir (ne pas rédiger encore)
 
 - **Diversité bêta** (§3.5 : Whittaker, Lande, NMDS Bray-Curtis) — la table `diversite_abondances.csv` est déjà prête pour ça ;
