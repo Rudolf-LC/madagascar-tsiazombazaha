@@ -93,12 +93,9 @@ nTransects <- length(unique(pointsNMDS$cdTransect))
 formes <- c(0:25)[seq_len(nTransects)]
 
 figNMDS <- ggplot(pointsNMDS, aes(x = NMDS1, y = NMDS2,
-                                   shape = cdTransect,
-                                   colour = cdTransect)) +
-  geom_point(size = 2.5) +
+                                   shape = cdTransect)) +
+  geom_point(size = 2.5, colour = "grey20") +
   scale_shape_manual(values = formes, name = "Transect") +
-  scale_colour_discrete(name = "Transect") +
-  guides(colour = "none") +
   scale_x_continuous(breaks = scales::breaks_pretty(n = 5),
                      expand = expansion(mult = 0.08)) +
   scale_y_continuous(breaks = scales::breaks_pretty(n = 5),
@@ -264,6 +261,15 @@ p_de <- function(nA, nB) {
   hit$p[1]
 }
 
+# Hauteur d'accolade selon la "portee" de la comparaison : les
+# comparaisons adjacentes (1-2, 2-3, 3-4) sont basses, les
+# comparaisons larges (1-3, 2-4, 1-4) sont plus hautes, sans
+# chevauchement possible (une accolade ne croise jamais une autre).
+portee <- function(nA, nB) {
+  abs(posNiveau[[nB]] - posNiveau[[nA]])
+}
+hautPortee <- c(`1` = 1.06, `2` = 1.16, `3` = 1.06, `4` = 1.16, `5` = 1.26, `6` = 1.06)
+
 pairesGrad <- dplyr::bind_rows(lapply(seq_along(combis), function(k) {
   cc <- combis[[k]]
   pv <- p_de(cc[1], cc[2])
@@ -271,7 +277,7 @@ pairesGrad <- dplyr::bind_rows(lapply(seq_along(combis), function(k) {
     niveauA = cc[1], niveauB = cc[2],
     x = min(posNiveau[cc[1]], posNiveau[cc[2]]),
     xend = max(posNiveau[cc[1]], posNiveau[cc[2]]),
-    y = 1.02 + 0.028 * k,
+    y = hautPortee[as.character(k)],
     p = pv,
     etoile = etoile(pv)
   )
@@ -282,21 +288,24 @@ pairesGrad <- dplyr::bind_rows(lapply(seq_along(combis), function(k) {
 # etoiles de significativite y figurent.
 
 figGradient <- ggplot(pairesNiveaux,
-                      aes(x = niveau, y = jaccard, fill = niveau)) +
-  geom_boxplot(show.legend = FALSE, linewidth = 0.3, outlier.size = 0.8) +
+                      aes(x = niveau, y = jaccard, group = niveau)) +
+  geom_boxplot(show.legend = FALSE, linewidth = 0.3, outlier.size = 0.8,
+               fill = "grey85", colour = "grey20",
+               outlier.colour = "grey20") +
   geom_segment(data = pairesGrad,
                aes(x = x, xend = xend, y = y, yend = y),
-               inherit.aes = FALSE, linewidth = 0.25) +
+               inherit.aes = FALSE, linewidth = 0.3, colour = "grey20") +
   geom_segment(data = pairesGrad,
-               aes(x = x, xend = x, y = y, yend = y - 0.01),
-               inherit.aes = FALSE, linewidth = 0.25) +
+               aes(x = x, xend = x, y = y, yend = y - 0.02),
+               inherit.aes = FALSE, linewidth = 0.3, colour = "grey20") +
   geom_segment(data = pairesGrad,
-               aes(x = xend, xend = xend, y = y, yend = y - 0.01),
-               inherit.aes = FALSE, linewidth = 0.25) +
+               aes(x = xend, xend = xend, y = y, yend = y - 0.02),
+               inherit.aes = FALSE, linewidth = 0.3, colour = "grey20") +
   geom_text(data = pairesGrad,
-            aes(x = (x + xend) / 2, y = y + 0.012, label = etoile),
-            inherit.aes = FALSE, size = 3.6, vjust = 0) +
-  coord_cartesian(ylim = c(0, 1.28)) +
+            aes(x = (x + xend) / 2, y = y, label = etoile),
+            inherit.aes = FALSE, size = 3.8, vjust = -0.6,
+            colour = "grey20") +
+  coord_cartesian(ylim = c(0, 1.42)) +
   scale_x_discrete(labels = function(l) paste0(l, "\n(n = ",
     as.integer(table(pairesNiveaux$niveau)[l]), ")")) +
   scale_y_continuous(breaks = seq(0, 1, by = 0.2),
