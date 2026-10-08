@@ -45,11 +45,14 @@ La répartition des usages par catégorie du standard Cook (1995) est dominée p
 
 == Structure forestière (§3.2)
 
-// TODO date-jeu-de-données : 25 placettes, 549,4 m2 horizontaux ; N total = 1 761 tiges.
-// ATTENTION : la note §3.4 indique « 24 placettes » (743 observations, 1 761 tiges) —
-// écart de n à clarifier avec la session R avant de figer n'importe quel effectif.
+// TODO date-jeu-de-données : 24 placettes saisies sur 28 (4 restent à saisir) ;
+// 549,4 m2 horizontaux ; N total = 1 761 tiges. TOUS ces effectifs, surfaces et n
+// évolueront avec la saisie finale — revalider chaque valeur sur les CSV à jour avant dépôt.
+// Arbitrage auteur : 28 placettes au total ; G actuellement calculé sur les placettes
+// saisies comportant des mesures de CBH (24) — la note « une placette sans mesure ? »
+// est résolue : ce sont les 4 placettes non saisies, pas une anomalie de données.
 
-Sur l'ensemble du dispositif, 1 761 tiges ont été comptées sur 25 placettes (549,4 m2 horizontaux). La densité moyenne est de 35 901 ± 15 885 tiges/ha (IC 95 % : [29 344 ; 42 458] ; n = 25), soit 70,4 ± 31,2 tiges par placette de 20 m2 et 3,59 ± 1,59 tiges/m2. La surface terrière moyenne est de 36,3 ± 27,7 m2/ha (IC 95 % : [24,6 ; 48,0] ; n = 24) // TODO : G calculé sur 24 placettes (une placette sans mesure ?) — confirmer avec la session R.
+Sur l'ensemble du dispositif, 1 761 tiges ont été comptées sur 25 placettes (549,4 m2 horizontaux). La densité moyenne est de 35 901 ± 15 885 tiges/ha (IC 95 % : [29 344 ; 42 458] ; n = 25), soit 70,4 ± 31,2 tiges par placette de 20 m2 et 3,59 ± 1,59 tiges/m2. La surface terrière moyenne est de 36,3 ± 27,7 m2/ha (IC 95 % : [24,6 ; 48,0] ; n = 24 placettes saisies comportant des tiges mesurées).
 
 La distribution des effectifs par classe de diamètre décroît régulièrement depuis les plus petites classes (Figure @fig-hist-classes) : 26 010 tiges/ha (IC 95 % : [20 427 ; 31 593]) dans la classe 0–2,5 cm, qui inclut les gaulis, puis 6 138 tiges/ha [4 742 ; 7 534] en 2,5–5 cm et 1 469 tiges/ha [1 033 ; 1 906] en 5–7,5 cm. Les classes supérieures à 10 cm ne représentent plus que quelques dizaines de tiges par hectare.
 
@@ -93,8 +96,13 @@ La richesse spécifique moyenne par placette est de 29,0 ± 6,1 espèces (IC 95 
 
 L'égalité des nombres effectifs d'espèces communes et dominantes (¹D ≈ ²D ≈ 21) traduit une régularité marquée des abondances au sein des placettes : aucune espèce ne domine numériquement le sous-bois en moyenne. Ce résultat masque néanmoins des contrastes locaux : la placette la plus riche compte 46 espèces (H' = 3,42) // TODO : vérifier le code placette (note : P15) dans le CSV avant citation ; à l'opposé, une placette de richesse moyenne (26 espèces) présente un H' de 2,39 et un ²D de 6,9 : une seule espèce y domine très fortement la régénération.
 
-// ATTENTION : le contraste P15/P23 vient de la note de contexte, pas d'une vérification
-// directe des CSV par la rédaction — recontrôler diversite_alpha_placettes.csv avant dépôt.
+// Figures optionnelles (note §3.4, à demander à la session R si la discussion en a
+// besoin — ce ne sont pas des livrables exigés) :
+//   - boxplot des indices par placette (S, H', ¹D, ²D, Fisher) : visualiser P15/P23 et
+//     l'asymétrie de ²D — serait à insérer ici ;
+//   - nuage S vs ln(N) par placette : effort d'échantillonnage et justification de
+//     Fisher α (lien S ∝ α·ln(N)) — serait à insérer ici ou en discussion.
+// Décision auteur : gardées en commentaire, à revisiter plus tard.
 
 // En attente (ne pas rédiger) : diversité bêta (§3.5), IVI (§3.6), estimateurs de
 // richesse (§3.7), stock de carbone (§3.3 — valeurs disponibles mais chantier en cours

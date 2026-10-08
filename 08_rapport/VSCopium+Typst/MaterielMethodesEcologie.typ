@@ -22,16 +22,17 @@
 // ont été implantées au hasard en cours de journée le long des chemins de ronde des
 // patrouilleurs communautaires, qui ne sont pas encore cartographiés.
 
-// TODO : nombre de placettes et surface totale à figer AVANT publication.
-// ATTENTION — quatre valeurs coexistent dans les sources, à arbitrer avec l'auteur :
-//   - note §3.2 : 25 placettes, 549,4 m2 horizontaux (569 m2 réels corrigés de pente) ;
-//   - note §3.4 : 24 placettes (743 observations, 1 761 tiges) ;
-//   - document d'étape §2.1 : 29 placettes de 20 m2, 569 m2, ~2 000 tiges dont ~520 mesurées ;
-//   - squelette Foresterie : 13×20 + 80 + 4×8 = 380 m2 en comptage plein.
-// Les indices rapportés à la surface utilisent la surface HORIZONTALE (549,4 m2),
-// pas la surface réelle corrigée de pente — à préciser ici (convention note §3.2).
+// Arbitrage auteur (2026-10-08) : 28 placettes au total ; 24 saisies à ce jour
+// (4 restent à saisir) — les n des livrables actuels (24-25) augmenteront donc.
+// Les indices rapportés à la surface utilisent la surface HORIZONTALE (549,4 m2
+// pour 25 placettes saisies ; à mettre à jour avec la saisie complète), pas la
+// surface réelle corrigée de pente — convention à préciser ici (note §3.2).
+// Les CSV évoluant avec la saisie : NE JAMAIS figer les effectifs/surfaces/densités
+// sans relecture des livrables à jour.
 
-Le dispositif compre // TODO : rédiger une fois l'arbitrage fait :
+// TODO : rédiger la description du dispositif une fois la forme des placettes
+// confirmée (circulaires d10 m ? rectangulaires 4×10 m ? cf. protocole ODT et
+// Romiguière 2025) :
 //   - forme des placettes (circulaires d10 m ? rectangulaires 4×10 m ? cf. protocole
 //     ODT et Romiguière 2025) ;
 //   - les huit placettes de Romiguière (2025) : 40 m2, précomptage 2,5 cm, sous-placettes
@@ -55,12 +56,12 @@ Le dispositif compre // TODO : rédiger une fois l'arbitrage fait :
 
 Pour chaque tige, le nom vernaculaire est relevé par le *polisin'ala* (personne désignée par la communauté comme connaisseuse de la forêt), et la circonférence à hauteur de poitrine (CBH, à 1,30 m) est mesurée au ruban métrique si elle dépasse 8 cm — soit un seuil de mesure effectif de 2,5 cm de diamètre (DBH). Les tiges de CBH inférieur ou égal à 8 cm (gaulis) sont comptées sans mesure. Les bois morts sur pied sont mesurés et notés à part.
 
-// ATTENTION : le protocole ODT fixe un diamètre de précomptage de 5 cm (CBH 15,5 cm,
-// seuil strict) « contrairement à Romiguière (2025) qui le fixe à 2,5 cm » ; or le
-// document d'étape et les livrables R utilisent CBH > 8 cm (DBH 2,5 cm), donc le seuil
-// de Romiguière. Confirmer le seuil effectivement appliqué au terrain avant de figer.
+// Arbitrage auteur : le seuil de mesure effectif est CBH >= 8 cm (DBH 2,5 cm).
+// Le protocole ODT initial prévoyait un précomptage de 5 cm (CBH 15,5 cm) : mentionner
+// l'écart avec le protocole initial uniquement si utile (limite/discussion), sinon
+// garder la version terrain.
 
-L'équipe de terrain était constituée de trois membres : un *polisin'ala* garant de l'identification vernaculaire, un traducteur-interprète faisant office de scribe (notation des noms malgaches), et un forestier chef d'équipe guidant le cheminement et réalisant les mesures. Par manque de temps, de moyens et de pertinence, aucun contrôle croisé de l'inventaire n'a été réalisé. La saisie a été effectuée sous LibreOffice Calc, avec vérification aléatoire portant sur 10 % des placettes // TODO : le projet de stage annonce 5 %, le protocole ODT 10 % — arbitrer.
+L'équipe de terrain était constituée de trois membres : un *polisin'ala* garant de l'identification vernaculaire, un traducteur-interprète faisant office de scribe (notation des noms malgaches), et un forestier chef d'équipe guidant le cheminement et réalisant les mesures. Par manque de temps, de moyens et de pertinence, aucun contrôle croisé de l'inventaire n'a été réalisé. La saisie a été effectuée sous LibreOffice Calc, avec vérification aléatoire portant sur 20 % des placettes.
 
 === Usages et types vernaculaires
 
@@ -94,12 +95,12 @@ Les noms vernaculaires relevés ont été normalisés puis réconciliés manuell
 
 Les usages rapportés ont été classés selon le standard *Economic Botany Data Collection Standard* (Cook, 1995) de la TDWG : les libellés français sont utilisés dans le développement et les codes de premier et second niveau sont renvoyés en annexe (table `association_espece_usage.csv`).
 
-// TODO : documenter le statut « espèce indéterminée » (22 occurrences) : taxon
-// fourre-tout présent dans la liste, exclu des analyses de diversité — sauf convention
-// contraire (cf. §3.4 : les « Sp. indéterminée » comptent pour des espèces locales
-// distinctes dans la diversité alpha). ATTENTION : les deux notes ne disent pas exactement
-// la même chose (§3.1 : « à exclure des analyses de diversité » ; §3.4 : « comptent
-// chacune pour une espèce locale distincte »). À arbitrer avec l'auteur.
+// Convention « espèce indéterminée » (arbitrage auteur) : au sein d'une placette,
+// chaque « Sp. indéterminée » compte comme une espèce locale distincte dans les
+// calculs de diversité (évite de sous-estimer la richesse locale) ; entre placettes,
+// les individus indéterminés sont exclus des comparaisons (on ne sait pas s'il s'agit
+// d'une même espèce ou d'une erreur du polisin'ala). Les analyses de structure
+// (N, G) les conservent, étant indépendantes de l'espèce.
 
 === Structure forestière (§3.2)
 
@@ -116,8 +117,9 @@ La diversité alpha est quantifiée par quatre indices s'inscrivant dans le cadr
 
 Les abondances prennent en compte toutes les tiges comptées : tiges mesurées (CBH > 8 cm) et gaulis. Cette convention doit être gardée à l'esprit lors des comparaisons, certains travaux ne comptant que les tiges de DBH ≥ 10 cm. Les espèces sont les identités réconciliées ; les individus indéterminés d'une même placette comptent pour des espèces locales distinctes (convention qui évite de sous-estimer la richesse).
 
-// TODO : statuer sur l'exclusion/inclusion des « Sp. indéterminée » (cf. contradiction
-// §3.1 vs §3.4 ci-dessus) et l'expliquer ici en une phrase.
+// La convention « espèce indéterminée » est explicitée en §3.1 ci-dessus : comptées
+// localement dans les indices, exclues des comparaisons entre placettes, conservées
+// dans la structure.
 
 === Analyses en attente (à rédiger après validation)
 
