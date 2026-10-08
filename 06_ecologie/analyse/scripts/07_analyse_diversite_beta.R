@@ -130,11 +130,11 @@ pairesNiveaux <- paires |>
       transect1 == transect2 ~ "Meme transect",
       polisnala1 == polisnala2 ~ "Meme polisn'ala",
       commune1 == commune2 ~ "Meme commune",
-      TRUE ~ "Communes differentes"
+      TRUE ~ "Entre communes"
     ),
     niveau = factor(niveau, levels = c(
       "Meme transect", "Meme polisn'ala", "Meme commune",
-      "Communes differentes"))
+      "Entre communes"))
   )
 
 resumeNiveaux <- pairesNiveaux |>
@@ -248,6 +248,77 @@ figGroupe <- ggplot(pairesGroupe,
 
 ggsave(file.path(dossierSorties, "diversite_beta_bray_groupes.png"),
        figGroupe, width = 16, height = 12, units = "cm", dpi = 300)
+
+### Figure : gradient transect -> polisn'ala -> commune (tous les tests) ###
+
+# Boxplots ordonnes du niveau le plus fin au plus grossier, avec les
+# p-values des comparaisons deux a deux (Wilcoxon, correction de Holm)
+# tracees en accolades. Test global : Kruskal-Wallis.
+pvalsGrad <- tableTests |>
+  dplyr::mutate(
+    paire = paste(pmin(niveau1, niveau2), pmax(niveau1, niveau2), sep = "::")
+  ) |>
+  dplyr::arrange(paire)
+
+# positions x des niveaux sur la figure
+niveauxOrdres <- levels(pairesNiveaux$niveau)
+posNiveau <- stats::setNames(seq_along(niveauxOrdres), niveauxOrdres)
+
+# toutes les combinaisons deux a deux, dans l'ordre du gradient
+combis <- utils::combn(niveauxOrdres, 2, simplify = FALSE)
+pairesGrad <- dplyr::bind_rows(lapply(seq_along(combis), function(k) {
+  cc <- combis[[k]]
+  key <- paste(pmin(cc[1], cc[2]), pmax(cc[1], cc[2]), sep = "::")
+  p <- pvalsGrad$p[match(key, pvalsGrad$paire)]
+  tibble(
+    niveauA = cc[1], niveauB = cc[2],
+    x = min(posNiveau[cc[1]], posNiveau[cc[2]]),
+    xend = max(posNiveau[cc[1]], posNiveau[cc[2]]),
+    y = 1.0 + 0.017 * k,
+    p = p
+  )
+}))
+
+format_p <- function(p) {
+  dplyr::if_else(p < 0.001, "p < 0,001", paste0("p = ", formatC(p, format = "f", digits = 3)))
+}
+
+pairesGrad <- pairesGrad |>
+  dplyr::mutate(plabel = format_p(p))
+
+figGradient <- ggplot(pairesNiveaux,
+                      aes(x = niveau, y = brayCurtis, fill = niveau)) +
+  geom_boxplot(show.legend = FALSE, linewidth = 0.3, outlier.size = 0.8) +
+  geom_segment(data = pairesGrad,
+               aes(x = x, xend = xend, y = y, yend = y),
+               inherit.aes = FALSE, linewidth = 0.25) +
+  geom_segment(data = pairesGrad,
+               aes(x = x, xend = x, y = y, yend = y - 0.008),
+               inherit.aes = FALSE, linewidth = 0.25) +
+  geom_segment(data = pairesGrad,
+               aes(x = xend, xend = xend, y = y, yend = y - 0.008),
+               inherit.aes = FALSE, linewidth = 0.25) +
+  geom_text(data = pairesGrad,
+            aes(x = (x + xend) / 2, y = y + 0.004, label = plabel),
+            inherit.aes = FALSE, size = 2.4) +
+  annotate("text", x = 1, y = 1.14, hjust = 0,
+           label = paste0("Test global : Kruskal-Wallis, p = ",
+                          signif(testKW$p.value, 3),
+                          " | Comparaisons : Wilcoxon 2 a 2, correction de Holm"),
+           size = 2.4) +
+  coord_cartesian(ylim = c(0.35, 1.17)) +
+  scale_x_discrete(labels = function(l) paste0(l, "\n(n = ",
+    as.integer(table(pairesNiveaux$niveau)[l]), ")")) +
+  labs(
+    title = "Gradient de dissimilarite : transect -> polisn'ala -> commune",
+    subtitle = "Dissimilarite de Bray-Curtis entre paires de placettes (especes reconciliees)",
+    x = NULL, y = "Bray-Curtis"
+  ) +
+  theme_axes +
+  theme(axis.text.x = element_text(size = 8))
+
+ggsave(file.path(dossierSorties, "diversite_beta_gradient.png"),
+       figGradient, width = 18, height = 14, units = "cm", dpi = 300)
 
 ### Especes par commune : structure reelle ou artefact ? ###
 
