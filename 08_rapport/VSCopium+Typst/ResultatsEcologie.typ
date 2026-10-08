@@ -39,9 +39,14 @@ La répartition des usages par catégorie du standard Cook (1995) est dominée p
   caption: [Répartition des 69 espèces à usage rapporté par catégorie de premier niveau de la classification Cook (1995). Les usages cités sont les usages de second niveau ; leurs codes figurent en annexe.],
 ) <tab-usages>
 
-// TODO : générer ce tableau depuis le CSV (usages_especes_par_classe.csv) pour éviter
-// la désynchronisation — soit par import dynamique Typst (csv() + boucle), soit par
-// script d'export LaTeX/Typst côté R. En attendant : valeurs manuelles vérifiées.
+// Règle de gestion des tableaux (décision auteur, phase de saisie en cours) :
+//   - petits tableaux du corps : saisie manuelle, à mettre à jour à la main quand les
+//     CSV évoluent (tout est évolutif tant que la saisie des 28 placettes n'est pas finie) ;
+//   - gros tableaux d'annexe (liste des 230 espèces, association espèce×usage) :
+//     import CSV dynamique (Typst csv()) — à mettre en place quand les annexes sont
+//     créées ; en attendant, renvoi annexe en commentaire.
+// Ce tableau : valeurs vérifiées sur usages_especes_par_classe.csv le 2026-10-08 —
+// revalider à chaque évolution du CSV tant que la saisie n'est pas close.
 
 == Structure forestière (§3.2)
 
@@ -52,7 +57,25 @@ La répartition des usages par catégorie du standard Cook (1995) est dominée p
 // saisies comportant des mesures de CBH (24) — la note « une placette sans mesure ? »
 // est résolue : ce sont les 4 placettes non saisies, pas une anomalie de données.
 
-Sur l'ensemble du dispositif, 1 761 tiges ont été comptées sur 25 placettes (549,4 m2 horizontaux). La densité moyenne est de 35 901 ± 15 885 tiges/ha (IC 95 % : [29 344 ; 42 458] ; n = 25), soit 70,4 ± 31,2 tiges par placette de 20 m2 et 3,59 ± 1,59 tiges/m2. La surface terrière moyenne est de 36,3 ± 27,7 m2/ha (IC 95 % : [24,6 ; 48,0] ; n = 24 placettes saisies comportant des tiges mesurées).
+Sur l'ensemble du dispositif, 1 761 tiges ont été comptées sur 25 placettes (549,4 m2 horizontaux). La densité moyenne est de 35 901 ± 15 885 tiges/ha (IC 95 % : [29 344 ; 42 458] ; n = 25), soit 70,4 ± 31,2 tiges par placette de 20 m2 et 3,59 ± 1,59 tiges/m2. La surface terrière moyenne est de 36,3 ± 27,7 m2/ha (IC 95 % : [24,6 ; 48,0] ; n = 24 placettes saisies comportant des tiges mesurées). Les indicateurs principaux sont récapitulés dans le Tableau @tab-structure.
+
+#figure(
+  table(
+    columns: (auto, auto, auto, auto, auto),
+    align: (left, right, center, center, center),
+    inset: 8pt,
+    [*Indicateur*], [*Moyenne*], [*Écart-type*], [*IC 95 %*], [*n*],
+    [Nombre total de tiges comptées, tiges], [1 761], [—], [—], [25],
+    [Tiges par placette, tiges], [70,4], [31,2], [[57,6 ; 83,3]], [25],
+    [Densité N, tiges/m2], [3,59], [1,59], [[2,93 ; 4,25]], [25],
+    [Densité N, tiges/ha], [35 901], [15 885], [[29 344 ; 42 458]], [25],
+    [Surface terrière G, m2/ha], [36,3], [27,7], [[24,6 ; 48,0]], [24],
+  ),
+  caption: [Indicateurs de structure forestière : moyenne, écart-type et intervalle de confiance à 95 % (t de Student entre placettes). Valeurs vérifiées sur structure_resume_indices.csv le 2026-10-08 — évolutives tant que la saisie n'est pas close (24 placettes saisies sur 28).],
+) <tab-structure>
+// TODO date-jeu-de-données : mettre à jour ce tableau manuellement à chaque évolution de
+// structure_resume_indices.csv. Le G porte sur n = 24 (placettes saisies avec mesures).
+
 
 La distribution des effectifs par classe de diamètre décroît régulièrement depuis les plus petites classes (Figure @fig-hist-classes) : 26 010 tiges/ha (IC 95 % : [20 427 ; 31 593]) dans la classe 0–2,5 cm, qui inclut les gaulis, puis 6 138 tiges/ha [4 742 ; 7 534] en 2,5–5 cm et 1 469 tiges/ha [1 033 ; 1 906] en 5–7,5 cm. Les classes supérieures à 10 cm ne représentent plus que quelques dizaines de tiges par hectare.
 
@@ -90,9 +113,23 @@ La régénération a été confrontée aux tiges de DBH ≥ 12,5 cm placette par
 
 La richesse spécifique moyenne par placette est de 29,0 ± 6,1 espèces (IC 95 % : [26,5 ; 31,6] ; n = 24). L'indice de Shannon moyen est H' = 3,01 ± 0,23 [2,92 ; 3,11]. Les nombres effectifs d'espèces qui en dérivent sont proches : exp(H') = 20,8 ± 4,4 espèces communes effectives [19,0 ; 22,7] et ²D = 20,8 ± 6,9 espèces dominantes effectives [17,9 ; 23,7] // TODO : vérifier l'arrondi — le CSV donne 20,77 pour ²D : arrondir à 20,8 est cohérent. L'indice α de Fisher, indépendant du nombre de tiges comptées, vaut 19,6 ± 5,5 [17,3 ; 21,9]. L'ensemble des indices par placette figure en annexe.
 
-// TODO : tableau récapitulatif des cinq indices (moyenne ± sd, IC 95 %, n) — import dynamique
-// depuis diversite_alpha_resume.csv plutôt que saisie manuelle ; même remarque que pour
-// le Tableau @tab-usages.
+#figure(
+  table(
+    columns: (auto, auto, auto, auto, auto),
+    align: (left, right, center, center, center),
+    inset: 8pt,
+    [*Indice*], [*Moyenne*], [*Écart-type*], [*IC 95 %*], [*n*],
+    [Richesse spécifique S (= ⁰D), espèces], [29,0], [6,1], [[26,5 ; 31,6]], [24],
+    [Shannon H', sans unité], [3,01], [0,23], [[2,92 ; 3,11]], [24],
+    [exp(H') = ¹D, espèces communes effectives], [20,8], [4,4], [[19,0 ; 22,7]], [24],
+    [²D (Simpson inverse), espèces dominantes effectives], [20,8], [6,9], [[17,9 ; 23,7]], [24],
+    [α de Fisher, sans unité], [19,6], [5,5], [[17,3 ; 21,9]], [24],
+  ),
+  caption: [Indices de diversité alpha par placette : moyenne, écart-type et intervalle de confiance à 95 % (t de Student entre placettes). Valeurs vérifiées sur diversite_alpha_resume.csv le 2026-10-08 — évolutives tant que la saisie n'est pas close.],
+) <tab-div-alpha>
+// TODO date-jeu-de-données : mettre à jour ce tableau manuellement à chaque évolution de
+// diversite_alpha_resume.csv (24 placettes saisies sur 28 au 2026-10-08).
+
 
 L'égalité des nombres effectifs d'espèces communes et dominantes (¹D ≈ ²D ≈ 21) traduit une régularité marquée des abondances au sein des placettes : aucune espèce ne domine numériquement le sous-bois en moyenne. Ce résultat masque néanmoins des contrastes locaux : la placette la plus riche compte 46 espèces (H' = 3,42) // TODO : vérifier le code placette (note : P15) dans le CSV avant citation ; à l'opposé, une placette de richesse moyenne (26 espèces) présente un H' de 2,39 et un ²D de 6,9 : une seule espèce y domine très fortement la régénération.
 
