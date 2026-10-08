@@ -1,6 +1,6 @@
 indice,n,moyenne,ecartType,ic95_bas,ic95_haut
-Richesse S (⁰D),24,29,6.05,26.45,31.55
-Shannon H',24,3.01,0.23,2.92,3.11
-exp(H') = ¹D (espèces communes),24,20.84,4.44,18.96,22.71
-Simpson inverse ²D (espèces dominantes),24,20.77,6.88,17.86,23.67
-Alpha de Fisher,24,19.62,5.48,17.31,21.94
+Richesse S (⁰D),28,30,6.19,27.6,32.4
+Shannon H',28,3.06,0.25,2.96,3.15
+exp(H') = ¹D (espèces communes),28,21.91,5.06,19.95,23.88
+Simpson inverse ²D (espèces dominantes),28,22.56,8.6,19.23,25.89
+Alpha de Fisher,28,22.49,9.24,18.91,26.07

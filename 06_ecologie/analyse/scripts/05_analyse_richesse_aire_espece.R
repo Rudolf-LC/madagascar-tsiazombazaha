@@ -14,8 +14,8 @@ Utilisation :
   source(\"06_ecologie/analyse/scripts/analyse_richesse.R\")
 "
 
-source("06_ecologie/analyse/scripts/importDonnees.R")
-source("06_ecologie/analyse/scripts/fonctionsAireEspece.R")
+source("06_ecologie/analyse/scripts/01_importDonnees.R")
+source("06_ecologie/analyse/scripts/fonctions/fonctionsAireEspece.R")
 
 if (!requireNamespace("ggplot2", quietly = TRUE)) install.packages("ggplot2")
 

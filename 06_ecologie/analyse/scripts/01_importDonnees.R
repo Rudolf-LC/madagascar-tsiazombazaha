@@ -110,6 +110,7 @@ importer_donnees <- function(fichier = trouver_fichier()) {
       cdTransect = str_trim(`Code transect`),
       date = as.character(`Date`),
       polisnala = `Polisn’ala`,
+      commune = `Commune`,
       objectifs = `Objectifs`,
       longueurGABrute = as.character(`Longueur prospection grands arbres`),
       longueurGA = en_numerique(`Longueur prospection grands arbres`),
