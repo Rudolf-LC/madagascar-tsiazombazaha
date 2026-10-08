@@ -268,16 +268,26 @@ p_de <- function(nA, nB) {
 portee <- function(nA, nB) {
   abs(posNiveau[[nB]] - posNiveau[[nA]])
 }
-hautPortee <- c(`1` = 1.06, `2` = 1.16, `3` = 1.06, `4` = 1.16, `5` = 1.26, `6` = 1.06)
+# Hauteurs par position exacte (degre de liberte : aucune accolade
+# ne partage un point d'ancrage a la meme hauteur) :
+#   1-2 : 1,06   2-3 : 1,12   3-4 : 1,06
+#   1-3 : 1,18   2-4 : 1,18
+#   1-4 : 1,24
+hautPosition <- c(
+  "1 2" = 1.06, "2 3" = 1.12, "3 4" = 1.06,
+  "1 3" = 1.18, "2 4" = 1.18,
+  "1 4" = 1.24
+)
 
 pairesGrad <- dplyr::bind_rows(lapply(seq_along(combis), function(k) {
   cc <- combis[[k]]
   pv <- p_de(cc[1], cc[2])
+  xi <- min(posNiveau[cc[1]], posNiveau[cc[2]])
+  xj <- max(posNiveau[cc[1]], posNiveau[cc[2]])
   tibble(
     niveauA = cc[1], niveauB = cc[2],
-    x = min(posNiveau[cc[1]], posNiveau[cc[2]]),
-    xend = max(posNiveau[cc[1]], posNiveau[cc[2]]),
-    y = hautPortee[as.character(k)],
+    x = xi, xend = xj,
+    y = hautPosition[[paste(xi, xj)]],
     p = pv,
     etoile = etoile(pv)
   )
@@ -303,7 +313,7 @@ figGradient <- ggplot(pairesNiveaux,
                inherit.aes = FALSE, linewidth = 0.3, colour = "grey20") +
   geom_text(data = pairesGrad,
             aes(x = (x + xend) / 2, y = y, label = etoile),
-            inherit.aes = FALSE, size = 3.8, vjust = -0.6,
+            inherit.aes = FALSE, size = 3.8, vjust = -0.1,
             colour = "grey20") +
   coord_cartesian(ylim = c(0, 1.42)) +
   scale_x_discrete(labels = function(l) paste0(l, "\n(n = ",
