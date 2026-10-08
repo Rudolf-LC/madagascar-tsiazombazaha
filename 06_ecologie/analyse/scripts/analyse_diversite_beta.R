@@ -21,8 +21,10 @@ source("06_ecologie/analyse/scripts/fonctionsDiversiteBeta.R")
 
 if (!requireNamespace("ggplot2", quietly = TRUE)) install.packages("ggplot2")
 if (!requireNamespace("scales", quietly = TRUE)) install.packages("scales")
+if (!requireNamespace("vegan", quietly = TRUE)) install.packages("vegan")
 library(ggplot2)
 library(scales)
+library(vegan)
 
 d <- importer_donnees()
 
@@ -46,11 +48,11 @@ matAbond <- matrice_abondances(abondances)
 
 paires <- table_paires(matAbond)
 
+### MISE DE COTE (Jaccard, Sorensen, dendrogramme) ###
+# Mesures de turnover en presence-absence non retenues dans la
+# demonstration : elles restent calculees dans la table
+# la table paires mais ni exportees ni affichees.
 resumeDissim <- bind_rows(
-  tibble(indice = "Jaccard (presences)",
-         moyenne = mean(paires$jaccard), ecartType = sd(paires$jaccard)),
-  tibble(indice = "Sorensen (presences)",
-         moyenne = mean(paires$sorensen), ecartType = sd(paires$sorensen)),
   tibble(indice = "Bray-Curtis (abondances)",
          moyenne = mean(paires$brayCurtis), ecartType = sd(paires$brayCurtis))
 ) |>
@@ -60,112 +62,39 @@ resumeDissim <- bind_rows(
 
 whit <- whittaker_beta(matAbond)
 
-### Figure : histogramme des dissimilarites Jaccard ###
+### Beta additif (richesse) ###
 
-if (!exists("theme_axes")) {
-  theme_axes <- ggplot2::theme_minimal() +
-    theme(
-      panel.grid = element_blank(),
-      axis.line = element_line(arrow = grid::arrow(length = grid::unit(0.25, "cm"),
-                                                   type = "closed")),
-      axis.ticks = element_line(linewidth = 0.4),
-      axis.ticks.length = grid::unit(0.15, "cm"),
-      axis.text = element_text(size = 9),
-      plot.title = element_text(size = 11, face = "bold"),
-      plot.subtitle = element_text(size = 9)
-    )
-}
+# beta_add = gamma - alpha_moyen : nombre moyen d'especes
+# "supplementaires" gagnees en parcourant les placettes.
+betaAdditif <- whit$gamma - whit$alphaMoyen
 
-figDissim <- ggplot(paires, aes(x = jaccard)) +
-  geom_histogram(binwidth = 0.05, boundary = 0,
-                fill = "grey40", color = "white") +
-  scale_x_continuous(breaks = seq(0, 1, by = 0.1),
-                     labels = scales::number_format(accuracy = 0.1)) +
+### NMDS sur Bray-Curtis (ordination des placettes) ###
+
+distBray <- vegan::vegdist(matAbond, method = "bray")
+nmdsRes <- vegan::metaMDS(distBray, k = 2, trymax = 100, trace = 0)
+
+pointsNMDS <- tibble::tibble(
+  cdPlacette = rownames(nmdsRes$points),
+  NMDS1 = nmdsRes$points[, 1],
+  NMDS2 = nmdsRes$points[, 2]
+)
+
+if (!requireNamespace("ggrepel", quietly = TRUE)) install.packages("ggrepel")
+library(ggrepel)
+
+figNMDS <- ggplot(pointsNMDS, aes(x = NMDS1, y = NMDS2)) +
+  geom_point(size = 2) +
+  geom_text_repel(aes(label = cdPlacette), size = 2.5) +
   labs(
-    title = "Dissimilarit\u00e9 de Jaccard entre paires de placettes",
-    subtitle = paste0(nrow(paires), " paires \u2014 moyenne ",
-                      round(mean(paires$jaccard), 3)),
-    x = "Jaccard (0 = placettes identiques, 1 = aucune esp\u00e8ce commune)",
-    y = "Nombre de paires"
+    title = "NMDS des placettes (dissimilarite de Bray-Curtis)",
+    subtitle = paste0("Stress : ", round(nmdsRes$stress, 3),
+                      " (k = 2, ", nrow(matAbond), " placettes)"),
+    x = "NMDS 1", y = "NMDS 2"
   ) +
   theme_axes
 
-ggsave(file.path(dossierSorties, "diversite_beta_jaccard_histogramme.png"),
-       figDissim, width = 14, height = 10, units = "cm", dpi = 300)
-
-### Figure : clustering des placettes (Jaccard, lien moyen) ###
-
-distJaccard <- stats::as.dist(matrice_dissimilarite(matAbond, jaccard))
-arbre <- stats::hclust(distJaccard, method = "average")
-
-# Dendrogramme redessine en ggplot depuis l'arbre de hclust
-# (aucune dependance externe supplementaire).
-coords_fusion <- function(arbre) {
-  n <- length(arbre$height)
-  labelsOrdonnes <- arbre$labels[arbre$order]
-  positions <- stats::setNames(seq_along(labelsOrdonnes), labelsOrdonnes)
-  membres <- stats::setNames(seq_along(arbre$labels), arbre$labels)
-  segments <- vector("list", 2 * n)
-  for (k in seq_len(n)) {
-    fusion <- arbre$merge[k, ]
-    pts <- lapply(fusion, function(f) {
-      if (f < 0) {
-        lbl <- arbre$labels[-f]
-        list(x = positions[[lbl]], bas = 0)
-      } else {
-        list(x = membres[[as.character(f)]], bas = arbre$height[f])
-      }
-    })
-    haut <- arbre$height[k]
-    segments[[2 * k - 1]] <- data.frame(
-      x = pts[[1]]$x, y = c(pts[[1]]$bas, haut), groupe = k)
-    segments[[2 * k]] <- data.frame(
-      x = pts[[2]]$x, y = c(pts[[2]]$bas, haut), groupe = k)
-    membres[[as.character(k)]] <- mean(c(pts[[1]]$x, pts[[2]]$x))
-  }
-  dplyr::bind_rows(segments)
-}
-
-# Lignes horizontales de chaque fusion (hauteur k) entre les deux
-# sous-arbres : (x1, h) -> (x2, h).
-fusions_h <- function(arbre) {
-  n <- length(arbre$height)
-  labelsOrdonnes <- arbre$labels[arbre$order]
-  positions <- stats::setNames(seq_along(labelsOrdonnes), labelsOrdonnes)
-  membres <- stats::setNames(seq_along(arbre$labels), arbre$labels)
-  res <- vector("list", n)
-  for (k in seq_len(n)) {
-    fusion <- arbre$merge[k, ]
-    xs <- vapply(fusion, function(f) {
-      if (f < 0) positions[[arbre$labels[-f]]] else membres[[as.character(f)]]
-    }, numeric(1))
-    res[[k]] <- data.frame(
-      x = min(xs), xend = max(xs), y = arbre$height[k], groupe = k)
-    membres[[as.character(k)]] <- mean(xs)
-  }
-  dplyr::bind_rows(res)
-}
-
-segVert <- coords_fusion(arbre)
-segHori <- fusions_h(arbre)
-
-figDendrogramme <- ggplot() +
-  geom_segment(data = segVert,
-               aes(x = x, xend = x, y = y, yend = 0, group = groupe)) +
-  geom_segment(data = segHori,
-               aes(x = x, xend = xend, y = y, yend = y, group = groupe)) +
-  scale_x_continuous(breaks = seq_along(arbre$labels[arbre$order]),
-                     labels = arbre$labels[arbre$order],
-                     expand = expansion(add = 0.6)) +
-  labs(
-    title = "Regroupement des placettes (Jaccard, lien moyen)",
-    subtitle = "Deux placettes sont d'autant plus proches qu'elles partagent d'especes",
-    x = NULL, y = "Dissimilarite de Jaccard"
-  ) +
-  theme_axes
-
-ggsave(file.path(dossierSorties, "diversite_beta_dendrogramme.png"),
-       figDendrogramme, width = 14, height = 12, units = "cm", dpi = 300)
+ggsave(file.path(dossierSorties, "diversite_beta_nmds.png"),
+       figNMDS, width = 14, height = 12, units = "cm", dpi = 300)
 
 ### Exports ###
 
@@ -176,9 +105,12 @@ readr::write_csv(resumeDissim,
 readr::write_csv(tibble::tibble(
   alphaMoyen = whit$alphaMoyen,
   gamma = whit$gamma,
-  betaWhittaker = whit$beta
+  betaMultiplicatif = whit$beta,
+  betaAdditif = betaAdditif
 ) |> dplyr::mutate(across(where(is.numeric), ~ round(.x, 2))),
 file.path(dossierSorties, "diversite_beta_whittaker.csv"))
+readr::write_csv(pointsNMDS,
+                 file.path(dossierSorties, "diversite_beta_nmds_points.csv"))
 
 ### Messages ###
 
@@ -188,9 +120,13 @@ for (i in seq_len(nrow(resumeDissim))) {
   r <- resumeDissim[i, ]
   message("   ", r$indice, " : ", r$moyenne, " \u00b1 ", r$ecartType)
 }
-message("   Beta de Whittaker : ", round(whit$beta, 2),
+message("   Beta multiplicatif (Whittaker) : ", round(whit$beta, 2),
         " (alpha moyen ", round(whit$alphaMoyen, 1),
         ", gamma ", whit$gamma, ")")
+message("   Beta additif : ", round(betaAdditif, 1),
+        " especes (gamma - alpha moyen)")
+message("   NMDS Bray-Curtis : stress = ", round(nmdsRes$stress, 3))
+")
 
 list(
   donnees = d,
@@ -198,5 +134,8 @@ list(
   matAbond = matAbond,
   paires = paires,
   resumeDissim = resumeDissim,
-  whittaker = whit
+  whittaker = whit,
+  betaAdditif = betaAdditif,
+  nmds = nmdsRes,
+  pointsNMDS = pointsNMDS
 )
