@@ -77,8 +77,9 @@ if (!exists("theme_axes")) {
 }
 
 figDissim <- ggplot(paires, aes(x = jaccard)) +
-  geom_histogram(bins = 20, fill = "grey40", color = "white") +
-  scale_x_continuous(limits = c(0, 1),
+  geom_histogram(binwidth = 0.05, boundary = 0,
+                fill = "grey40", color = "white") +
+  scale_x_continuous(breaks = seq(0, 1, by = 0.1),
                      labels = scales::number_format(accuracy = 0.1)) +
   labs(
     title = "Dissimilarit\u00e9 de Jaccard entre paires de placettes",
