@@ -21,6 +21,8 @@ source("06_ecologie/analyse/scripts/fonctionsDiversiteBeta.R")
 
 if (!requireNamespace("ggplot2", quietly = TRUE)) install.packages("ggplot2")
 if (!requireNamespace("scales", quietly = TRUE)) install.packages("scales")
+library(ggplot2)
+library(scales)
 
 d <- importer_donnees()
 
