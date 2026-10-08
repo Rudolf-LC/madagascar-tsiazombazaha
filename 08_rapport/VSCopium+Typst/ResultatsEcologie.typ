@@ -25,7 +25,7 @@ La répartition des usages par catégorie du standard Cook (1995) est dominée p
 #figure(
   table(
     columns: (auto, auto, auto),
-    align: (left, right, left),
+    align: (left, center, left),
     inset: 8pt,
     [*Catégorie d'usage (Cook, 1995)*], [*Nombre d'espèces*], [*Usages cités*],
     [Matériaux], [48], [balai, batan, bois de construction, canaux d'irrigation, construction de maison, corde, fixation de toiture, guitare, manche de bêche, menuiserie, panier, pilon, pirogue, planche, plancher, poutre, tressage],
@@ -62,7 +62,7 @@ Sur l'ensemble du dispositif, 1 761 tiges ont été comptées sur 25 placettes (
 #figure(
   table(
     columns: (auto, auto, auto, auto, auto),
-    align: (left, right, center, center, center),
+    align: (left, center, center, center, center),
     inset: 8pt,
     [*Indicateur*], [*Moyenne*], [*Écart-type*], [*IC 95 %*], [*n*],
     [Nombre total de tiges comptées, tiges], [1 761], [—], [—], [25],
@@ -116,7 +116,7 @@ La richesse spécifique moyenne par placette est de 29,0 ± 6,1 espèces (IC 95 
 #figure(
   table(
     columns: (auto, auto, auto, auto, auto),
-    align: (left, right, center, center, center),
+    align: (left, center, center, center, center),
     inset: 8pt,
     [*Indice*], [*Moyenne*], [*Écart-type*], [*IC 95 %*], [*n*],
     [Richesse spécifique S (= ⁰D), espèces], [29,0], [6,1], [[26,5 ; 31,6]], [24],
