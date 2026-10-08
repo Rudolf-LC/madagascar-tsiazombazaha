@@ -49,6 +49,9 @@
 // dans les fichiers (align: ..., center pour les colonnes de chiffres).
 
 // ---------- Assemblage ----------
+// Ordre final visé : page de titre, note d'accessibilité, remerciements, résumés,
+// table des matières, corps (Introduction -> ... -> Conclusion), références, annexes.
+#include "PrefaceAccessibilite.typ"
 #include "Introduction.typ"
 #include "MaterielMethodesEcologie.typ"
 #include "ResultatsEcologie.typ"
