@@ -1,169 +1,175 @@
 Code placette,Code observation,Nom vernaculaire,Type,Circ1,Gaulis,Nb types,Remarques (types),Remarques (usages),Remarques autres
-P02a,1001,Ambora,,9.0,0,,,,ex-obs 224
-P02a,1002,Madiorano,,34.0,0,,,,ex-obs 233
-P02a,1003,Madiorano,,22.0,0,,,,ex-obs 233
-P02a,1004,Vahimavo,,12.0,0,,,,ex-obs 239
-P02a,1005,Babogna,,19.0,0,,,,ex-obs 244
-P02a,1006,Babogna,,62.0,0,,,,ex-obs 244
-P02a,1007,Vahierotra,,12.0,0,,,,ex-obs 246
-P02a,1008,Vahierotra,,15.0,0,,,,ex-obs 246
-P02a,1009,Angavoady,,14.0,0,,,,ex-obs 266
-P02a,1010,Hazopody,,9.0,0,,,,ex-obs 272
-P02a,1011,Rotrala,,17.0,0,,,,ex-obs 278
-P02a,1012,Hasina,,12.0,0,,,,ex-obs 281
-P02a,1013,Voamalimpangady,,13.0,0,,,,ex-obs 292
-P02a,1014,Ambora,,,1,,,,ex-obs 251
-P02a,1015,Angavoady,,,1,,,,ex-obs 266
-P02a,1016,Babogna,,,3,,,,ex-obs 244
-P02a,1017,Dikadika,,,1,,,,ex-obs 226
-P02a,1018,Etatr'angidigna,,,3,,,,ex-obs 257
-P02a,1019,Fanakaragna,,,1,,,,ex-obs 201
-P02a,1020,Hajom-barika,,,1,,,,ex-obs 247
-P02a,1021,Hasina,,,5,,,,ex-obs 234
-P02a,1022,Hazo mainty,,,2,,,,ex-obs 235
-P02a,1023,Hazomavo,,,1,,,,ex-obs 227
-P02a,1024,Hazompody,,,1,,,,ex-obs 211
-P02a,1025,Katoky,,,1,,,,ex-obs 237
-P02a,1026,Lambignana,,,1,,,,ex-obs 262
-P02a,1027,Madiorano,,,4,,,,ex-obs 233
-P02a,1028,Mahanoro,,,1,,,,ex-obs 220
-P02a,1029,Mahatsoraka,,,2,,,,ex-obs 258
-P02a,1030,Rafita,,,1,,,,ex-obs 297
-P02a,1031,Raomogna,,,1,,,,ex-obs 263
-P02a,1032,Sagnira,,,2,,,,ex-obs 249
-P02a,1033,Tsikarikaragna,,,1,,,,ex-obs 210
-P02a,1034,Tsingena,,,1,,,,ex-obs 253
-P02a,1035,Tsoratsoraky,,,1,,,,ex-obs 240
-P02a,1036,Vahierotra,,,2,,,,ex-obs 246
-P02a,1037,Vahimavo,,,1,,,,ex-obs 239
-P02a,1038,Vainamalogna,,,1,,,,ex-obs 291
-P02a,1039,Valambignana,,,1,,,,ex-obs 207
-P02a,1040,Valotra,,,1,,,,ex-obs 213
-P02a,1041,Vilogna,,,1,,,,ex-obs 264
-P02a,1042,Voamalimpangady,,,1,,,,ex-obs 265
-P02a,1043,Voatogna,,,1,,,,ex-obs 279
-P02a,1044,Voatsilagna,,,1,,,,ex-obs 204
-P02b,2001,Mahanoro,,8.0,0,,,,ex-obs 220
-P02b,2002,Madiorano,,39.0,0,,,,ex-obs 233
-P02b,2003,Madiorano,,32.0,0,,,,ex-obs 233
-P02b,2004,Madiorano,,25.0,0,,,,ex-obs 233
-P02b,2005,Malandivony,,15.0,0,,,,ex-obs 238
-P02b,2006,Vahierotra,,17.0,0,,,,ex-obs 246
-P02b,2007,Vahierotra,,14.0,0,,,,ex-obs 246
-P02b,2008,Sagnira,,28.0,0,,,,ex-obs 249
-P02b,2009,Tsimitegnina,,11.0,0,,,,ex-obs 270
-P02b,2010,Kijy,,14.0,0,,,,ex-obs 271
-P02b,2011,Kabokala,,60.0,0,,,,ex-obs 273
-P02b,2012,Natopoaky,,8.0,0,,,,ex-obs 277
-P02b,2013,Hazomavo,,20.0,0,,,,ex-obs 280
-P02b,2014,Ambora,,,2,,,,ex-obs 251
-P02b,2015,Angavoady,,,3,,,,ex-obs 266
-P02b,2016,Babogna,,,8,,,,ex-obs 244
-P02b,2017,Etatr'angidigna,,,1,,,,ex-obs 257
-P02b,2018,Faralaotra,,,1,,,,ex-obs 259
-P02b,2019,Hajom-barika,,,3,,,,ex-obs 247
-P02b,2020,Hakify,,,1,,,,ex-obs 231
-P02b,2021,Hasimbe,,,2,,,,ex-obs 241
-P02b,2022,Hasina,,,1,,,,ex-obs 234
-P02b,2023,Hazo mainty,,,1,,,,ex-obs 235
-P02b,2024,Katoky,,,1,,,,ex-obs 237
-P02b,2025,Kimba,,,1,,,,ex-obs 222
-P02b,2026,Madiorano,,,3,,,,ex-obs 233
-P02b,2027,Mahatsoraka,,,1,,,,ex-obs 258
-P02b,2028,Malandivony,,,2,,,,"ex-obs 232,238"
-P02b,2029,Mandrosovelo,,,1,,,,ex-obs 228
-P02b,2030,Marotao,,,2,,,,ex-obs 287
-P02b,2031,Matsoaka,,,1,,,,ex-obs 212
-P02b,2032,Menahihy,,,1,,,,ex-obs 283
-P02b,2033,Nato,,,1,,,,ex-obs 252
-P02b,2034,Sagnira,,,1,,,,ex-obs 249
-P02b,2035,Soaravy,,,1,,,,ex-obs 250
-P02b,2036,Tavia,,,1,,,,ex-obs 267
-P02b,2037,Tsingena,,,1,,,,ex-obs 286
-P02b,2038,Tsirika,,,1,,,,ex-obs 261
-P02b,2039,Tsokazo,,,1,,,,ex-obs 205
-P02b,2040,Vahimavo,,,1,,,,ex-obs 239
-P02b,2041,Vahipiky,,,1,,,,ex-obs 293
-P02b,2042,Vaimainty,,,1,,,,ex-obs 218
-P02c,3001,Bararaky,,21.0,0,,,,ex-obs 206
-P02c,3002,Sakatavilogna,,63.0,0,,,,ex-obs 208
-P02c,3003,Madiorano,,30.0,0,,,,ex-obs 233
-P02c,3004,Malandivony,,10.0,0,,,,ex-obs 238
-P02c,3005,Hasimbe,,16.0,0,,,,ex-obs 241
-P02c,3006,Babogna,,19.0,0,,,,ex-obs 244
-P02c,3007,Vahierotra,,12.0,0,,,,ex-obs 246
-P02c,3008,Tsirika,,15.0,0,,,,ex-obs 261
-P02c,3009,Kijy,,9.0,0,,,,ex-obs 271
-P02c,3010,Rotrala,,20.0,0,,,,ex-obs 278
-P02c,3011,Hazomdambo,,11.0,0,,,,ex-obs 294
-P02c,3012,Katoky,,9.0,0,,,,ex-obs 295
-P02c,3013,Matsoraky,,8.0,0,,,,ex-obs 298
-P02c,3014,Ambora,,,1,,,,ex-obs 269
-P02c,3015,Angavoady,,,1,,,,ex-obs 266
-P02c,3016,Babogna,,,9,,,,ex-obs 244
-P02c,3017,Bevorovoka,,,1,,,,ex-obs 214
-P02c,3018,Hafi-potsy,,,1,,,,ex-obs 243
-P02c,3019,Hasimbe,,,4,,,,ex-obs 241
-P02c,3020,Hazo mainty,,,4,,,,ex-obs 235
-P02c,3021,Hazoaraka,,,1,,,,ex-obs 268
-P02c,3022,Hazombary,,,1,,,,ex-obs 216
-P02c,3023,Kabokala,,,1,,,,ex-obs 273
-P02c,3024,Kijy,,,1,,,,ex-obs 271
-P02c,3025,Lalogna,,,1,,,,ex-obs 260
-P02c,3026,Madiorano,,,2,,,,ex-obs 233
-P02c,3027,Manjarivelo,,,1,,,,ex-obs 225
-P02c,3028,Nato,,,1,,,,ex-obs 252
-P02c,3029,Ramiavogna,,,1,,,,ex-obs 242
-P02c,3030,Randripody,,,2,,,,"ex-obs 236,254"
-P02c,3031,Sagnira,,,2,,,,ex-obs 249
-P02c,3032,Sakasaka,,,2,,,,ex-obs 221
-P02c,3033,Soaravy,,,1,,,,ex-obs 288
-P02c,3034,Talihy,,,1,,,,ex-obs 217
-P02c,3035,Tsetoraky,,,1,,,,ex-obs 284
-P02c,3036,Tsikarikaragnana,,,1,,,,ex-obs 276
-P02c,3037,Tsoaky,,,1,,,,ex-obs 289
-P02c,3038,Tsoy,,,1,,,,ex-obs 248
-P02c,3039,Vahierotra,,,1,,,,ex-obs 246
-P02c,3040,Vaijagna,,,2,,,,ex-obs 202
-P02d,4001,Tavia,,13.0,0,,,,ex-obs 203
-P02d,4002,Mahanoro,,8.0,0,,,,ex-obs 220
-P02d,4003,Ramiavogna,,83.0,0,,,,ex-obs 229
-P02d,4004,Matsoraka,,9.0,0,,,,ex-obs 230
-P02d,4005,Vahierotra,,20.0,0,,,,ex-obs 246
-P02d,4006,Sagnira,,17.0,0,,,,ex-obs 249
-P02d,4007,Sagnira,,11.0,0,,,,ex-obs 249
-P02d,4008,Tsirika,,14.0,0,,,,ex-obs 261
-P02d,4009,Tsirika,,13.0,0,,,,ex-obs 261
-P02d,4010,Kijy,,12.0,0,,,,ex-obs 271
-P02d,4011,Kabokala,,14.0,0,,,,ex-obs 273
-P02d,4012,Mandrosovelo,,8.0,0,,,,ex-obs 274
-P02d,4013,Tragnobemboragna,,30.0,0,,,,ex-obs 282
-P02d,4014,Ambora,,,1,,,,ex-obs 251
-P02d,4015,Angavoady,,,1,,,,ex-obs 266
-P02d,4016,Babogna,,,7,,,,ex-obs 244
-P02d,4017,Besaroviky,,,1,,,,ex-obs 245
-P02d,4018,Bevoroviky,,,1,,,,ex-obs 296
-P02d,4019,Bevorovoka,,,1,,,,ex-obs 214
-P02d,4020,Fantsik'ahitra,,,1,,,,ex-obs 256
-P02d,4021,Fotsign'iraka,,,1,,,,ex-obs 209
-P02d,4022,Hasimbe,,,2,,,,ex-obs 241
-P02d,4023,Hasina,,,3,,,,ex-obs 234
-P02d,4024,Hazo mainty,,,5,,,,ex-obs 235
-P02d,4025,Lambignana,,,1,,,,ex-obs 262
-P02d,4026,Madiorano,,,1,,,,ex-obs 233
-P02d,4027,Mahanoro,,,1,,,,ex-obs 220
-P02d,4028,Mahatsoraka,,,2,,,,"ex-obs 219,258"
-P02d,4029,Malandivony,,,1,,,,ex-obs 238
-P02d,4030,Mandravy,,,1,,,,ex-obs 255
-P02d,4031,Menahihy,,,1,,,,ex-obs 283
-P02d,4032,Nato,,,1,,,,ex-obs 252
-P02d,4033,Ramiavogna,,,1,,,,ex-obs 242
-P02d,4034,Randripody,,,2,,,,"ex-obs 236,254"
-P02d,4035,Soaravy,,,1,,,,ex-obs 250
-P02d,4036,Tsirika,,,1,,,,ex-obs 261
-P02d,4037,Tsoaky,,,1,,,,ex-obs 289
-P02d,4038,Tsoy,,,1,,,,ex-obs 248
-P02d,4039,Vaijagna,,,2,,,,"ex-obs 202,215"
-P02d,4040,Valambignana,,,1,,,,ex-obs 207
-P02d,4041,Voasonairogna,,,1,,,,ex-obs 223
-P02d,4042,Voatogna,,,1,,,,ex-obs 275
+P02,0201,Tavia,,13.0,0,,,,ex-P2 obs 203
+P02,0202,Mahanoro,,8.0,0,,,,ex-P2 obs 220
+P02,0203,Madiorano,,32.0,0,,,,ex-P2 obs 233
+P02,0204,Malandivony,,10.0,0,,,,ex-P2 obs 238
+P02,0205,Hasimbe,,16.0,0,,,,ex-P2 obs 241
+P02,0206,Babogna,,62.0,0,,,,ex-P2 obs 244
+P02,0207,Sagnira,,17.0,0,,,,ex-P2 obs 249
+P02,0208,Kijy,,9.0,0,,,,ex-P2 obs 271
+P02,0209,Mandrosovelo,,8.0,0,,,,ex-P2 obs 274
+P02,0210,Rotrala,,17.0,0,,,,ex-P2 obs 278
+P02,0211,Hazomavo,,20.0,0,,,,ex-P2 obs 280
+P02,0212,Tragnobemboragna,,30.0,0,,,,ex-P2 obs 282
+P02,0213,Hazomdambo,,11.0,0,,,,ex-P2 obs 294
+P02,0214,Ambora,,,2,,,,ex-P2 obs 251
+P02,0215,Angavoady,,,1,,,,ex-P2 obs 266
+P02,0216,Babogna,,,5,,,,ex-P2 obs 244
+P02,0217,Bevoroviky,,,1,,,,ex-P2 obs 296
+P02,0218,Bevorovoka,,,1,,,,ex-P2 obs 214
+P02,0219,Etatr'angidigna,,,2,,,,ex-P2 obs 257
+P02,0220,Hasimbe,,,2,,,,ex-P2 obs 241
+P02,0221,Hasina,,,2,,,,ex-P2 obs 234
+P02,0222,Hazo mainty,,,1,,,,ex-P2 obs 235
+P02,0223,Katoky,,,1,,,,ex-P2 obs 237
+P02,0224,Kijy,,,1,,,,ex-P2 obs 271
+P02,0225,Kimba,,,1,,,,ex-P2 obs 222
+P02,0226,Madiorano,,,3,,,,ex-P2 obs 233
+P02,0227,Mahatsoraka,,,1,,,,ex-P2 obs 258
+P02,0228,Malandivony,,,2,,,,"ex-P2 obs 232,238"
+P02,0229,Marotao,,,1,,,,ex-P2 obs 287
+P02,0230,Randripody,,,1,,,,ex-P2 obs 236
+P02,0231,Sagnira,,,3,,,,ex-P2 obs 249
+P02,0232,Sakasaka,,,1,,,,ex-P2 obs 221
+P02,0233,Soaravy,,,1,,,,ex-P2 obs 250
+P02,0234,Talihy,,,1,,,,ex-P2 obs 217
+P02,0235,Tsikarikaragnana,,,1,,,,ex-P2 obs 276
+P02,0236,Tsokazo,,,1,,,,ex-P2 obs 205
+P02,0237,Tsoy,,,1,,,,ex-P2 obs 248
+P02,0238,Vahierotra,,,2,,,,ex-P2 obs 246
+P02,0239,Vahimavo,,,1,,,,ex-P2 obs 239
+P02,0240,Vaijagna,,,2,,,,ex-P2 obs 202
+P02,0241,Vaimainty,,,1,,,,ex-P2 obs 218
+P02,0242,Vainamalogna,,,1,,,,ex-P2 obs 291
+P02,0243,Valambignana,,,1,,,,ex-P2 obs 207
+P02,0244,Voasonairogna,,,1,,,,ex-P2 obs 223
+P02,0245,Voatogna,,,1,,,,ex-P2 obs 275
+P03,0301,Sakatavilogna,,63.0,0,,,,ex-P2 obs 208
+P03,0302,Mahanoro,,8.0,0,,,,ex-P2 obs 220
+P03,0303,Ramiavogna,,83.0,0,,,,ex-P2 obs 229
+P03,0304,Babogna,,19.0,0,,,,ex-P2 obs 244
+P03,0305,Sagnira,,11.0,0,,,,ex-P2 obs 249
+P03,0306,Sagnira,,28.0,0,,,,ex-P2 obs 249
+P03,0307,Tsirika,,14.0,0,,,,ex-P2 obs 261
+P03,0308,Tsirika,,15.0,0,,,,ex-P2 obs 261
+P03,0309,Angavoady,,14.0,0,,,,ex-P2 obs 266
+P03,0310,Tsimitegnina,,11.0,0,,,,ex-P2 obs 270
+P03,0311,Kabokala,,60.0,0,,,,ex-P2 obs 273
+P03,0312,Natopoaky,,8.0,0,,,,ex-P2 obs 277
+P03,0313,Hasina,,12.0,0,,,,ex-P2 obs 281
+P03,0314,Ambora,,,1,,,,ex-P2 obs 269
+P03,0315,Angavoady,,,2,,,,ex-P2 obs 266
+P03,0316,Babogna,,,10,,,,ex-P2 obs 244
+P03,0317,Dikadika,,,1,,,,ex-P2 obs 226
+P03,0318,Fotsign'iraka,,,1,,,,ex-P2 obs 209
+P03,0319,Hajom-barika,,,3,,,,ex-P2 obs 247
+P03,0320,Hasina,,,1,,,,ex-P2 obs 234
+P03,0321,Hazo mainty,,,2,,,,ex-P2 obs 235
+P03,0322,Hazompody,,,1,,,,ex-P2 obs 211
+P03,0323,Katoky,,,1,,,,ex-P2 obs 237
+P03,0324,Lalogna,,,1,,,,ex-P2 obs 260
+P03,0325,Madiorano,,,3,,,,ex-P2 obs 233
+P03,0326,Mahanoro,,,1,,,,ex-P2 obs 220
+P03,0327,Mahatsoraka,,,1,,,,ex-P2 obs 219
+P03,0328,Marotao,,,1,,,,ex-P2 obs 287
+P03,0329,Menahihy,,,1,,,,ex-P2 obs 283
+P03,0330,Nato,,,2,,,,ex-P2 obs 252
+P03,0331,Randripody,,,1,,,,ex-P2 obs 254
+P03,0332,Sagnira,,,1,,,,ex-P2 obs 249
+P03,0333,Sakasaka,,,1,,,,ex-P2 obs 221
+P03,0334,Tsetoraky,,,1,,,,ex-P2 obs 284
+P03,0335,Tsikarikaragna,,,1,,,,ex-P2 obs 210
+P03,0336,Tsingena,,,1,,,,ex-P2 obs 286
+P03,0337,Tsirika,,,2,,,,ex-P2 obs 261
+P03,0338,Tsoaky,,,1,,,,ex-P2 obs 289
+P03,0339,Tsoy,,,1,,,,ex-P2 obs 248
+P03,0340,Vahipiky,,,1,,,,ex-P2 obs 293
+P03,0341,Vaijagna,,,1,,,,ex-P2 obs 215
+P03,0342,Vilogna,,,1,,,,ex-P2 obs 264
+P04,0401,Bararaky,,21.0,0,,,,ex-P2 obs 206
+P04,0402,Madiorano,,39.0,0,,,,ex-P2 obs 233
+P04,0403,Madiorano,,22.0,0,,,,ex-P2 obs 233
+P04,0404,Vahimavo,,12.0,0,,,,ex-P2 obs 239
+P04,0405,Vahierotra,,20.0,0,,,,ex-P2 obs 246
+P04,0406,Vahierotra,,17.0,0,,,,ex-P2 obs 246
+P04,0407,Vahierotra,,12.0,0,,,,ex-P2 obs 246
+P04,0408,Tsirika,,13.0,0,,,,ex-P2 obs 261
+P04,0409,Kijy,,14.0,0,,,,ex-P2 obs 271
+P04,0410,Kijy,,12.0,0,,,,ex-P2 obs 271
+P04,0411,Kabokala,,14.0,0,,,,ex-P2 obs 273
+P04,0412,Voamalimpangady,,13.0,0,,,,ex-P2 obs 292
+P04,0413,Katoky,,9.0,0,,,,ex-P2 obs 295
+P04,0414,Ambora,,,1,,,,ex-P2 obs 251
+P04,0415,Angavoady,,,3,,,,ex-P2 obs 266
+P04,0416,Babogna,,,9,,,,ex-P2 obs 244
+P04,0417,Etatr'angidigna,,,1,,,,ex-P2 obs 257
+P04,0418,Fanakaragna,,,1,,,,ex-P2 obs 201
+P04,0419,Hafi-potsy,,,1,,,,ex-P2 obs 243
+P04,0420,Hajom-barika,,,1,,,,ex-P2 obs 247
+P04,0421,Hasimbe,,,2,,,,ex-P2 obs 241
+P04,0422,Hasina,,,4,,,,ex-P2 obs 234
+P04,0423,Hazo mainty,,,3,,,,ex-P2 obs 235
+P04,0424,Kabokala,,,1,,,,ex-P2 obs 273
+P04,0425,Lambignana,,,2,,,,ex-P2 obs 262
+P04,0426,Madiorano,,,3,,,,ex-P2 obs 233
+P04,0427,Mahatsoraka,,,2,,,,ex-P2 obs 258
+P04,0428,Mandravy,,,1,,,,ex-P2 obs 255
+P04,0429,Manjarivelo,,,1,,,,ex-P2 obs 225
+P04,0430,Menahihy,,,1,,,,ex-P2 obs 283
+P04,0431,Nato,,,1,,,,ex-P2 obs 252
+P04,0432,Ramiavogna,,,1,,,,ex-P2 obs 242
+P04,0433,Randripody,,,1,,,,ex-P2 obs 254
+P04,0434,Raomogna,,,1,,,,ex-P2 obs 263
+P04,0435,Soaravy,,,1,,,,ex-P2 obs 288
+P04,0436,Tavia,,,1,,,,ex-P2 obs 267
+P04,0437,Tsoaky,,,1,,,,ex-P2 obs 289
+P04,0438,Vaijagna,,,1,,,,ex-P2 obs 202
+P04,0439,Valotra,,,1,,,,ex-P2 obs 213
+P05,0501,Ambora,,9.0,0,,,,ex-P2 obs 224
+P05,0502,Matsoraka,,9.0,0,,,,ex-P2 obs 230
+P05,0503,Madiorano,,25.0,0,,,,ex-P2 obs 233
+P05,0504,Madiorano,,34.0,0,,,,ex-P2 obs 233
+P05,0505,Madiorano,,30.0,0,,,,ex-P2 obs 233
+P05,0506,Malandivony,,15.0,0,,,,ex-P2 obs 238
+P05,0507,Babogna,,19.0,0,,,,ex-P2 obs 244
+P05,0508,Vahierotra,,15.0,0,,,,ex-P2 obs 246
+P05,0509,Vahierotra,,14.0,0,,,,ex-P2 obs 246
+P05,0510,Vahierotra,,12.0,0,,,,ex-P2 obs 246
+P05,0511,Hazopody,,9.0,0,,,,ex-P2 obs 272
+P05,0512,Rotrala,,20.0,0,,,,ex-P2 obs 278
+P05,0513,Matsoraky,,8.0,0,,,,ex-P2 obs 298
+P05,0514,Ambora,,,1,,,,ex-P2 obs 251
+P05,0515,Babogna,,,3,,,,ex-P2 obs 244
+P05,0516,Besaroviky,,,1,,,,ex-P2 obs 245
+P05,0517,Bevorovoka,,,1,,,,ex-P2 obs 214
+P05,0518,Etatr'angidigna,,,1,,,,ex-P2 obs 257
+P05,0519,Fantsik'ahitra,,,1,,,,ex-P2 obs 256
+P05,0520,Faralaotra,,,1,,,,ex-P2 obs 259
+P05,0521,Hakify,,,1,,,,ex-P2 obs 231
+P05,0522,Hasimbe,,,4,,,,ex-P2 obs 241
+P05,0523,Hasina,,,2,,,,ex-P2 obs 234
+P05,0524,Hazo mainty,,,6,,,,ex-P2 obs 235
+P05,0525,Hazoaraka,,,1,,,,ex-P2 obs 268
+P05,0526,Hazomavo,,,1,,,,ex-P2 obs 227
+P05,0527,Hazombary,,,1,,,,ex-P2 obs 216
+P05,0528,Kitsoky,,,1,,,,ex-P2 obs 285
+P05,0529,Madiorano,,,1,,,,ex-P2 obs 233
+P05,0530,Mahanoro,,,1,,,,ex-P2 obs 220
+P05,0531,Mahatsoraka,,,1,,,,ex-P2 obs 258
+P05,0532,Malandivony,,,1,,,,ex-P2 obs 238
+P05,0533,Mandrosovelo,,,1,,,,ex-P2 obs 228
+P05,0534,Matsoaka,,,1,,,,ex-P2 obs 212
+P05,0535,Rafita,,,1,,,,ex-P2 obs 297
+P05,0536,Ramiavogna,,,1,,,,ex-P2 obs 242
+P05,0537,Randripody,,,1,,,,ex-P2 obs 236
+P05,0538,Sagnira,,,1,,,,ex-P2 obs 249
+P05,0539,Soaravy,,,1,,,,ex-P2 obs 250
+P05,0540,Tsingena,,,1,,,,ex-P2 obs 253
+P05,0541,Tsoratsoraky,,,1,,,,ex-P2 obs 240
+P05,0542,Vahierotra,,,1,,,,ex-P2 obs 246
+P05,0543,Vahimavo,,,1,,,,ex-P2 obs 239
+P05,0544,Valambignana,,,1,,,,ex-P2 obs 207
+P05,0545,Voamalimpangady,,,1,,,,ex-P2 obs 265
+P05,0546,Voamalok'agady,,,1,,,,ex-P2 obs 290
+P05,0547,Voatogna,,,1,,,,ex-P2 obs 279
+P05,0548,Voatsilagna,,,1,,,,ex-P2 obs 204
