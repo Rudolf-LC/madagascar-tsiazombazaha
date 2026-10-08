@@ -72,7 +72,7 @@ readr::write_csv(resumeAlpha,
 ### Messages ###
 
 message("✅ Diversité alpha (§3.4) — ", nrow(diversiteAlpha),
-        " placettes, exclusion de l'espèce indéterminée :")
+        " placettes, indéterminées comptées comme espèces distinctes :")
 for (i in seq_len(nrow(resumeAlpha))) {
   r <- resumeAlpha[i, ]
   message("   ", r$indice, " : ", r$moyenne, " ± ", r$ecartType,
