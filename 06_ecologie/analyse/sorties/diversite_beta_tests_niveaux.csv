@@ -1,0 +1,7 @@
+niveau1,niveau2,p
+Meme polisn'ala,Meme transect,0
+Meme commune,Meme transect,0
+Communes differentes,Meme transect,0
+Meme commune,Meme polisn'ala,0.001
+Communes differentes,Meme polisn'ala,0.0012
+Communes differentes,Meme commune,0.3517
