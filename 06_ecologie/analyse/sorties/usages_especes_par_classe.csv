@@ -1,0 +1,8 @@
+cook_n1,nbEspeces,libelle,usagesDetailles
+0600,48,Matériaux,"balai, batan, bois_construction, canaux_irrigation, construction_maison, corde, fixation_toiture, guitare, manche_beche, menuiserie, panier, pilon, pirogue, planche, plancher, poutre, tressage"
+1100,11,Médicaments,"aphrodisiaque, douleurs_dentaires, fatigue, gonflements, medicinale"
+0800,9,Usages sociaux,"anti_foudre, magie"
+0100,3,Alimentation,"ecorce_sucree, fruit_comestible, the"
+0700,2,Combustibles,bois_chauffage
+1200,2,Usages environnementaux,haie
+1000,1,Poisons des non-vertébrés,insecticide

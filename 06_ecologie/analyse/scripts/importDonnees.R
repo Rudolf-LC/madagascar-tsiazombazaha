@@ -8,6 +8,11 @@ Utilisation dans un autre script :
 
 Le chemin du fichier ODS est resolu automatiquement depuis la racine du projet
 (le dossier contenant 06_ecologie/), quel que soit le repertoire de travail.
+
+Avertissements : les lignes ecartees par le nettoyage (valeurs non numeriques
+notamment) sont signalees a l'ecran (source, nombre, raison, numeros de ligne
+du fichier ODS) et conservees dans l'attribut \"avertissements\" du resultat :
+  attr(donnees, \"avertissements\")
 "
 
 ### Modules ###
@@ -40,11 +45,15 @@ trouver_fichier <- function() {
 
 # Convertit en nombre : \"~ 205\" -> 205, \"?\" -> NA, \"Oui\"/\"Non\" -> NA
 en_numerique <- function(x) {
-  x |>
-    as.character() |>
-    str_replace("~", "") |>
-    str_trim() |>
-    suppressWarnings(as.numeric())
+  x <- str_trim(str_replace(as.character(x), "~", ""))
+  suppressWarnings(as.numeric(x))
+}
+
+# Cellules remplies mais non convertibles en nombre (ex. \"?\", \"beaucoup\").
+# Les cellules vides ne sont pas des anomalies.
+non_numerique <- function(x) {
+  x <- as.character(x)
+  !is.na(x) & str_trim(x) != "" & is.na(en_numerique(x))
 }
 
 en_booleen <- function(x, vrai = "Oui", faux = "Non") {
@@ -52,108 +61,235 @@ en_booleen <- function(x, vrai = "Oui", faux = "Non") {
   dplyr::if_else(x %in% vrai, TRUE, dplyr::if_else(x %in% faux, FALSE, NA))
 }
 
-# Uniformise un nom vernaculaire (espaces multiples, casse)
+# Uniformise un nom vernaculaire : espaces multiples supprimes,
+# majuscule a la premiere lettre uniquement, reste en minuscules.
+# Ex. "  Hazo MAINTY " -> "Hazo mainty"
 normaliser_nom <- function(x) {
-  x |>
-    as.character() |>
-    str_squish() |>
-    str_to_title()
+  x <- str_to_lower(str_squish(as.character(x)))
+  dplyr::if_else(is.na(x), x,
+                 paste0(str_sub(x, 1, 1) |> str_to_upper(), str_sub(x, 2)))
+}
+
+# Normalise les noms de colonnes d'une feuille : espaces inseables,
+# espaces en debut/fin. Rend l'acces par backticks robuste aux
+# variations invisibles du fichier ODS.
+normaliser_colonnes <- function(df) {
+  noms <- names(df)
+  noms <- stringr::str_replace_all(noms, "[   ]", " ")
+  noms <- stringr::str_squish(noms)
+  names(df) <- noms
+  df
 }
 
 ### Import et nettoyage de chaque feuille ###
 
 importer_donnees <- function(fichier = trouver_fichier()) {
 
+  avertissements <- character(0)
+
+  # Signale les lignes ecartees : source (feuille), colonne, raison,
+  # numeros de ligne du fichier ODS.
+  avertir <- function(feuille, colonne, raison, lignes) {
+    if (length(lignes) == 0) return(invisible(NULL))
+    msg <- sprintf(
+      "[%s / %s] %d ligne(s) ignoree(s) — %s — ligne(s) %s du fichier ODS",
+      feuille, colonne, length(lignes), raison,
+      paste(lignes, collapse = ", ")
+    )
+    avertissements <<- c(avertissements, msg)
+    message("⚠️  ", msg)
+  }
+
   ### transects ###
-  transects <- read_ods(fichier, sheet = "transects") |>
+  transectsBrut <- normaliser_colonnes(read_ods(fichier, sheet = "transects")) |>
+    mutate(.ligne = row_number() + 1)   # ligne 1 = en-tete du fichier ODS
+
+  transectsTmp <- transectsBrut |>
     transmute(
+      .ligne,
       cdTransect = str_trim(`Code transect`),
       date = as.character(`Date`),
-      polisnala = `Polisn\u2019ala`,
+      polisnala = `Polisn’ala`,
       objectifs = `Objectifs`,
+      longueurGABrute = as.character(`Longueur prospection grands arbres`),
       longueurGA = en_numerique(`Longueur prospection grands arbres`),
       prospGA = en_booleen(`Longueur prospection grands arbres`),
       prospChablis = en_booleen(`Longueur prospection chablis`)
     )
 
+  avertir("transects", "Longueur prospection grands arbres",
+          "valeur remplie mais non numerique",
+          transectsTmp$.ligne[non_numerique(transectsTmp$longueurGABrute)])
+
+  transects <- transectsTmp |>
+    select(-.ligne, -longueurGABrute)
+
   ### grands-arbres (transects, DBH > 40 cm) ###
-  grandsArbres <- read_ods(fichier, sheet = "grands-arbres") |>
-    select(`Code transect`:`Usages`) |>
+  # N.B. : la ligne d'en-tete contient deux colonnes \"Remarque\" (bloc gauche
+  # et bloc droit du tableau ODS) ; on reference donc les colonnes par position.
+  # On lit sans en-tete (col_names = FALSE) et on nomme explicitement les 11
+  # premieres colonnes du bloc gauche. Avec col_names = FALSE, la ligne 1 lue
+  # est la ligne 1 du fichier ODS : .ligne = row_number() avant slice(-1).
+  grandsArbresBrut <- read_ods(fichier, sheet = "grands-arbres", col_names = FALSE) |>
+    mutate(.ligne = row_number()) |>
+    slice(-1) |>
+    select(.ligne, 1:11) |>
+    setNames(c(".ligne", "cdTransectBrut", "cdObs", "nomVernaculaireBrut", "circBrute",
+               "gps", "remarque", "type", "nomSimple", "nbTypesBrut",
+               "descriptionTypes", "usages"))
+
+  grandsArbresTmp <- grandsArbresBrut |>
     transmute(
-      cdTransect = str_trim(`Code transect`),
-      cdObs = as.character(`Code observation`),
-      nomVernaculaire = normaliser_nom(`Nom vernaculaire`),
-      circ_cm = en_numerique(`Circonf\u00e9rence`),
-      gps = `GPS`,
-      remarque = `Remarque`,
-      type = `Type`,
-      nomSimple = `Nom simple`,
-      nbTypes = en_numerique(`Nb types`),
-      descriptionTypes = `Description types`,
-      usages = `Usages`
-    ) |>
-    filter(!is.na(cdTransect))
+      .ligne,
+      cdTransect = str_trim(cdTransectBrut),
+      cdObs = as.character(cdObs),
+      nomVernaculaire = normaliser_nom(nomVernaculaireBrut),
+      circ_cm = en_numerique(circBrute),
+      gps = gps,
+      remarque = remarque,
+      type = type,
+      nomSimple = nomSimple,
+      nbTypes = en_numerique(nbTypesBrut),
+      descriptionTypes = descriptionTypes,
+      usages = usages
+    )
+
+  lignesGA <- grandsArbresBrut$.ligne[!is.na(grandsArbresBrut$cdTransectBrut) &
+                                        non_numerique(grandsArbresBrut$circBrute)]
+  avertir("grands-arbres", "Circonférence",
+          "valeur remplie mais non numerique", lignesGA)
+
+  grandsArbres <- grandsArbresTmp |>
+    filter(!is.na(cdTransect)) |>
+    select(-.ligne)
 
   ### placettes (en-tes sur la deuxieme ligne) ###
-  placettes <- read_ods(fichier, sheet = "placettes", skip = 1) |>
+  placettesBrut <- normaliser_colonnes(read_ods(fichier, sheet = "placettes", skip = 1)) |>
+    mutate(.ligne = row_number() + 2)   # lignes 1-2 = en-tetes du fichier ODS
+
+  placettesTmp <- placettesBrut |>
     transmute(
+      .ligne,
       cdTransect = str_trim(`Code transect`),
       cdPlacette = str_trim(`Code placette`),
       situationTopo = `Situation topographique`,
+      surfaceHorizontaleBrute = as.character(`Surface horizontale`),
       surfaceHorizontale_m2 = en_numerique(`Surface horizontale`),
-      pente_pct = en_numerique(`Pente\u00a0%`),
-      surfaceReelle_m2 = en_numerique(`Surface r\u00e9elle`),
+      penteBrute = as.character(`Pente %`),
+      pente_pct = en_numerique(`Pente %`),
+      surfaceReelleBrute = as.character(`Surface réelle`),
+      surfaceReelle_m2 = en_numerique(`Surface réelle`),
       canopeeN = `%N`, canopeeS = `%S`, canopeeE = `%E`, canopeeO = `%O`,
-      strateHerbacee = `Herbac\u00e9e`,
-      strateSousEtage = `Sous-\u00e9tage`,
-      strateCanopeeInf = `Canop\u00e9e inf`,
-      strateCanopeeSup = `Canop\u00e9e sup`,
-      typeHumus = `Type d\u2019humus`,
+      strateHerbacee = `Herbacée`,
+      strateSousEtage = `Sous-étage`,
+      strateCanopeeInf = `Canopée inf`,
+      strateCanopeeSup = `Canopée sup`,
+      typeHumus = `Type d’humus`,
       certitudeHumus = `Certitude humus`,
-      humiditeSol = `Humidit\u00e9 du sol`,
+      humiditeSol = `Humidité du sol`,
       epiphytes = `Epiphytes`, mousses = `Mousses`, lichens = `Lichens`,
       lianes = `Lianes`, champignons = `Champignons`,
       regeneration_inf30cm = `<30 cm`,
-      regeneration_30_130cm = `30 \u2013 130 cm`,
+      regeneration_30_130cm = `30 – 130 cm`,
       remarques = `Remarques`
     )
 
+  avertir("placettes", "Surface horizontale",
+          "valeur remplie mais non numerique",
+          placettesTmp$.ligne[non_numerique(placettesTmp$surfaceHorizontaleBrute)])
+  avertir("placettes", "Pente %",
+          "valeur remplie mais non numerique",
+          placettesTmp$.ligne[non_numerique(placettesTmp$penteBrute)])
+  avertir("placettes", "Surface réelle",
+          "valeur remplie mais non numerique",
+          placettesTmp$.ligne[non_numerique(placettesTmp$surfaceReelleBrute)])
+
+  placettes <- placettesTmp |>
+    select(-.ligne, -surfaceHorizontaleBrute, -penteBrute, -surfaceReelleBrute)
+
   ### bois-mort ###
-  boisMortBrut <- read_ods(fichier, sheet = "bois-mort")
+  # N.B. : deux colonnes \"Placette\" (bloc gauche et bloc droit) ; on lit sans
+  # en-tete (col_names = FALSE) et on nomme explicitement. Colonnes 1-4 :
+  # mesures des bois morts (chandelle = sur pied, sol = au sol) ; colonnes 7-8 :
+  # longueurs des pieces au sol (methode Van Wagner).
+  boisMortBrut <- read_ods(fichier, sheet = "bois-mort", col_names = FALSE) |>
+    mutate(.ligne = row_number()) |>
+    slice(-1)
 
-  # Table de gauche : bois morts (chandelles = sur pied, sol = au sol)
-  boisMort <- boisMortBrut |>
-    select(Placette, Type, `Circonf\u00e9rence`, `\u00c9tat`) |>
+  boisMortTmp <- boisMortBrut |>
+    select(.ligne, 1:4) |>
+    setNames(c(".ligne", "cdPlacetteBrut", "typeBrut", "circBrute", "etatBrut")) |>
     transmute(
-      cdPlacette = str_trim(Placette),
-      type = str_trim(Type),
-      circ_cm = en_numerique(`Circonf\u00e9rence`),
-      etatDecomposition = en_numerique(`\u00c9tat`)
-    ) |>
-    filter(!is.na(cdPlacette))
+      .ligne,
+      cdPlacette = str_trim(cdPlacetteBrut),
+      type = str_trim(typeBrut),
+      circBrute = as.character(circBrute),
+      circ_cm = en_numerique(circBrute),
+      etatBrut = as.character(etatBrut),
+      etatDecomposition = en_numerique(etatBrut)
+    )
 
-  # Table de droite : longueur des pieces de bois mort au sol (methode Van Wagner)
-  boisMortLongueurs <- boisMortBrut |>
-    select(`Placette.1`, `Longueur`) |>
+  avertir("bois-mort", "Circonférence",
+          "valeur remplie mais non numerique",
+          boisMortTmp$.ligne[!is.na(boisMortTmp$cdPlacette) &
+                              non_numerique(boisMortTmp$circBrute)])
+  avertir("bois-mort", "État",
+          "valeur remplie mais non numerique",
+          boisMortTmp$.ligne[!is.na(boisMortTmp$cdPlacette) &
+                              non_numerique(boisMortTmp$etatBrut)])
+
+  boisMort <- boisMortTmp |>
+    filter(!is.na(cdPlacette)) |>
+    select(-.ligne, -circBrute, -etatBrut)
+
+  boisMortLongueursTmp <- boisMortBrut |>
+    select(.ligne, 7:8) |>
+    setNames(c(".ligne", "cdPlacetteBrut", "longueurBrute")) |>
     transmute(
-      cdPlacette = str_trim(`Placette.1`),
-      longueur_m = en_numerique(`Longueur`)
-    ) |>
-    filter(!is.na(longueur_m))
+      .ligne,
+      cdPlacette = str_trim(cdPlacetteBrut),
+      longueurBrute = as.character(longueurBrute),
+      longueur_m = en_numerique(longueurBrute)
+    )
+
+  avertir("bois-mort", "Longueur",
+          "valeur remplie mais non numerique",
+          boisMortLongueursTmp$.ligne[non_numerique(boisMortLongueursTmp$longueurBrute)])
+
+  boisMortLongueurs <- boisMortLongueursTmp |>
+    filter(!is.na(longueur_m)) |>
+    select(-.ligne, -longueurBrute)
 
   ### chablis (transects) ###
-  chablis <- read_ods(fichier, sheet = "chablis") |>
+  chablisBrut <- normaliser_colonnes(read_ods(fichier, sheet = "chablis")) |>
+    mutate(.ligne = row_number() + 1)
+
+  chablisTmp <- chablisBrut |>
     transmute(
+      .ligne,
       cdTransect = str_trim(`Transect`),
+      nombreBrut = as.character(`Nombre de chablis`),
       nombre = en_numerique(`Nombre de chablis`),
       categorie = str_extract(`Remarques`, "BM|PB|GB"),
       remarques = `Remarques`
-    ) |>
-    filter(!is.na(cdTransect), !is.na(nombre))
+    )
+
+  avertir("chablis", "Nombre de chablis",
+          "valeur remplie mais non numerique (ligne ecartee)",
+          chablisTmp$.ligne[!is.na(chablisTmp$cdTransect) &
+                            non_numerique(chablisTmp$nombreBrut)])
+
+  chablis <- chablisTmp |>
+    filter(!is.na(cdTransect), !is.na(nombre)) |>
+    select(-.ligne, -nombreBrut)
 
   ### flore-verifiee (placettes) ###
-  floreBrut <- read_ods(fichier, sheet = "flore-verifiee") |>
+  floreBrut <- normaliser_colonnes(read_ods(fichier, sheet = "flore-verifiee")) |>
+    mutate(.ligne = row_number() + 1)
+
+  floreTmp <- floreBrut |>
     transmute(
+      .ligne,
       cdPlacette = str_trim(`Code placette`),
       cdObs = as.character(`Code observation`),
       nomVernaculaire = normaliser_nom(`Nom vernaculaire`),
@@ -165,12 +301,13 @@ importer_donnees <- function(fichier = trouver_fichier()) {
       remarquesAutres = `Remarques autres`
     )
 
-  # Circonference a hauteur de poitrine : recuperation des colonnes Circ1..Circ10
-  circBrut <- read_ods(fichier, sheet = "flore-verifiee")
-  colonnesCirc <- grep("^Cir[c]?[0-9]+$", names(circBrut), value = TRUE)
+  flore <- floreTmp |> filter(!is.na(cdPlacette))
 
-  floreTiges <- circBrut |>
-    select(`Code placette`, `Code observation`, all_of(colonnesCirc)) |>
+  # Circonference a hauteur de poitrine : recuperation des colonnes Circ1..Circ10
+  colonnesCirc <- grep("^Cir[c]?[0-9]+$", names(floreBrut), value = TRUE)
+
+  floreTigesBrut <- floreBrut |>
+    select(.ligne, `Code placette`, `Code observation`, all_of(colonnesCirc)) |>
     mutate(
       cdPlacette = str_trim(`Code placette`),
       cdObs = as.character(`Code observation`)
@@ -179,23 +316,33 @@ importer_donnees <- function(fichier = trouver_fichier()) {
     pivot_longer(
       cols = all_of(colonnesCirc),
       names_to = "noTige",
-      values_to = "circ_cm"
+      values_to = "circBrute"
     ) |>
-    mutate(noTige = as.integer(str_extract(noTige, "[0-9]+"))) |>
+    mutate(noTige = as.integer(str_extract(noTige, "[0-9]+")))
+
+  avertir("flore-verifiee", "Circonférences des tiges (Circ1..Circ10)",
+          "valeur remplie mais non numerique",
+          floreTigesBrut$.ligne[non_numerique(floreTigesBrut$circBrute)])
+
+  floreTiges <- floreTigesBrut |>
+    transmute(
+      .ligne,
+      cdPlacette, cdObs, noTige,
+      circBrute = as.character(circBrute),
+      circ_cm = en_numerique(circBrute)
+    ) |>
     filter(!is.na(circ_cm)) |>
     left_join(
-      floreBrut |> select(cdPlacette, cdObs, nomVernaculaire, type, gaulis, nbTypes,
-                          remarquesTypes, remarquesUsages, remarquesAutres),
+      floreTmp |> select(cdPlacette, cdObs, nomVernaculaire, type, gaulis, nbTypes,
+                         remarquesTypes, remarquesUsages, remarquesAutres),
       by = c("cdPlacette", "cdObs")
     ) |>
     select(cdPlacette, cdObs, nomVernaculaire, noTige, circ_cm,
            type, gaulis, nbTypes, remarquesTypes, remarquesUsages, remarquesAutres) |>
     arrange(cdPlacette, cdObs, noTige)
 
-  flore <- floreBrut |> filter(!is.na(cdPlacette))
-
   ### feuilles descriptives ###
-  activitesHumaines <- read_ods(fichier, sheet = "activites-humaines") |>
+  activitesHumaines <- normaliser_colonnes(read_ods(fichier, sheet = "activites-humaines")) |>
     transmute(
       cdTransect = str_trim(`Code transect`),
       type = `Type`,
@@ -204,37 +351,42 @@ importer_donnees <- function(fichier = trouver_fichier()) {
     ) |>
     filter(!is.na(cdTransect))
 
-  animaux <- read_ods(fichier, sheet = "animaux") |>
+  animaux <- normaliser_colonnes(read_ods(fichier, sheet = "animaux")) |>
     transmute(
       cdTransect = str_trim(`Code transect`),
       nomGasy = `Nom gasy sp`,
-      typeObservation = `Type d\u2019observation`,
+      typeObservation = `Type d’observation`,
       photo = `Photo`,
       remarques = `Remarques`
     ) |>
     filter(!is.na(cdTransect))
 
-  phenologie <- read_ods(fichier, sheet = "phenologie") |>
+  phenologie <- normaliser_colonnes(read_ods(fichier, sheet = "phenologie")) |>
     transmute(
       cdPlacette = str_trim(`Placette`),
       type = `Type`,
-      espece = `Esp\u00e8ce`,
+      espece = normaliser_nom(`Espèce`),
       nombre = `Nombre`,
       remarque = `Remarque`
     ) |>
     filter(!is.na(cdPlacette))
 
-  autresEspeces <- read_ods(fichier, sheet = "autres-especes") |>
+  autresEspeces <- normaliser_colonnes(read_ods(fichier, sheet = "autres-especes")) |>
     transmute(
-      cdZone = str_trim(`Code placette ou  transect`),
+      cdZone = str_trim(`Code placette ou transect`),
       nomVernaculaire = normaliser_nom(`Nom vernaculaire`),
       remarques = `Remarques`,
-      remarquesLieu = `Remarques lieu d\u2019observation`
+      remarquesLieu = `Remarques lieu d’observation`
     ) |>
     filter(!is.na(cdZone))
 
   ### Assemblage ###
-  list(
+  if (length(avertissements) > 0) {
+    message("ℹ️  Récapitulatif : ", length(avertissements),
+            " avertissement(s) de nettoyage. Détail : attr(donnees, \"avertissements\")")
+  }
+
+  resultat <- list(
     fichier = fichier,
     transects = transects,
     grandsArbres = grandsArbres,
@@ -249,4 +401,6 @@ importer_donnees <- function(fichier = trouver_fichier()) {
     phenologie = phenologie,
     autresEspeces = autresEspeces
   )
+  attr(resultat, "avertissements") <- avertissements
+  resultat
 }

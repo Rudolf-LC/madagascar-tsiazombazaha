@@ -1,0 +1,230 @@
+identite,nomsVernaculaires,occurrencesTotales,identificationsBotaniques,usages,usagesClasses,nbTypes,distinctionsTypes,nbNomsVernaculaires,occFlore,occGrandsArbres,occPhenologie,occAutres,sources
+Voapaka,Voapaka,34,++,bois_construction ; construction_maison,0600,"1, 2",Présence ou absence de racines-échasses,1,9,22,0,3,autres-especes | flore-verifiee | grands-arbres
+Hasina,Hasina | Hasina (type petites feuilles) | Hasina be | Hasina kely | Hasina kely ravy,33,++,aucun ; haie,1200,"1, 2, 3","Feuilles grandes (‘be’), moyennes (‘antogniny’) ou petites (‘kely’) ; Feuilles petites ou grandes",5,31,0,1,1,autres-especes | flore-verifiee | flore-verifiee | phenologie
+Hazomainty,Hajo mainty | Hazo maintsy | Hazo mainty | Hazomainty,29,++,aucun ; bois_construction ; menuiserie,0600,"1, 2",Écorce jaune ou noire ; Feuilles petites ou grandes ; Mâle ou femelle,4,24,2,3,0,flore-verifiee | flore-verifiee | grands-arbres | phenologie | grands-arbres
+Espèce indéterminée,Sp. inconnue | Sp. inconnue 1 | Sp. inconnue 2 | Sp. indéterminée,22,,magie,0800,1,?,4,20,0,1,1,autres-especes | flore-verifiee | flore-verifiee | phenologie
+Babogna,Babogna,21,Mascarenhasia,bois_construction ; construction_maison,0600,1,,1,13,7,0,1,autres-especes | flore-verifiee | grands-arbres
+Ambora,Ambora | Ambora lahy | Ambora vavy,19,++,aucun,,"1, 2, 3","Feuilles longues et petites ou grandes ; Feuilles petites ou grandes ; Feuilles petites, moyennes ou grandes",3,17,2,0,0,flore-verifiee | flore-verifiee | grands-arbres
+Randripody,Randripody | Randripody lahy | Randropody,18,,poutre,0600,2,"Écorce avec ou sans traits verticaux ; Feuilles longues ou rondes ; Feuilles petites ou grandes ; Feuilles petites, moyennes ou grandes",3,18,0,0,0,flore-verifiee
+Menafatagna,Menafatagna | Menafatagna lahy | Menafatana,17,Doratoxylon littorale Capuron,bois_construction,0600,"1, 2, 3","Feuilles petites ou grandes ; Feuilles petites, moyennes ou grandes",3,16,0,0,1,autres-especes | flore-verifiee | flore-verifiee
+Vilogna,Vilogna | Vilona,17,Tina fulvinervis Radlk.,,,1,,2,17,0,0,0,flore-verifiee
+Tamenaka,Tamenaka | Tamenaky,15,++,bois_construction,0600,1,,2,3,11,0,1,autres-especes | flore-verifiee | grands-arbres | flore-verifiee | grands-arbres
+Tsimahamasasokona,Tsimahamasasokona | Tsimamasasokona | Tsimanasa sokona | Tsimanasasokina | Tsy mahamasa-sokona | Tsy mahamasasokina | Tsy mahamasasokogna | Tsy mahamaso-sokogna,15,++,aucun ; bois_construction ; construction_maison,0600,"1, 2, 3","Feuilles grandes et écorce épaisse ou feuilles petites et écorce mince ; Feuilles petites ou grandes ; Feuilles petites, moyennes ou grandes",8,15,0,0,0,flore-verifiee
+Kijy,Kijy | Kizy,14,++,bois_construction,0600,"1, 2, 3","Feuilles grandes ; Feuilles longues et petites, en forme d’amande (‘ravim-boanjo’) ; Feuilles petites ; Feuilles petites ou grandes ; Feuilles petites, moyennes ou grandes",2,11,3,0,0,flore-verifiee | grands-arbres
+Fantsikahitra,Fantsik'ahitra | Fantsik’aitra | Fantsikahatra | Fantsikahitra | Fantsikaitra,13,++,bois_construction ; construction_maison ; medicinale,0600 ; 1100,"1, 2",Feuilles petites ou grandes,5,13,0,0,0,flore-verifiee
+Hazondambo,Hazon-dambo | Hazondambo | Hazonoambo,12,++,aucun,,"1, 2",Feuilles épaisses ou minces ; Feuilles petites ou grandes ; Plante mâle ou femelle,3,12,0,0,0,flore-verifiee
+Menahihy,Menahihy,12,++,bois_construction ; poutre,0600,"1, 2",Feuilles petites ou grandes,1,11,0,0,1,autres-especes | flore-verifiee
+Raharaha,Raharaha,12,,aucun,,"1, 2",Feuilles grandes ou petites ; Latex rouge ou clair ; Pousse dans la forêt (‘agnala’) ou au village (‘antanana’) ; Tige blanche ou rouge,1,12,0,0,0,flore-verifiee
+Angavoady,Angavoady,11,Thecacoris cometia Leandri,poutre,0600,"1, 2",Feuilles petites ou grandes,1,6,5,0,0,flore-verifiee | grands-arbres
+Andragnoy,Andragnoy,10,,bois_construction,0600,"1, 2, 3","Écorce rouge ou noire ; Feuilles petites ou grandes ; Feuilles petites, moyennes ou grandes",1,10,0,0,0,flore-verifiee
+Sagnira,Sagnira | Sagnira lahy,10,++,,,"2, 3","Feuilles grandes ou petites ; Feuilles petites ou grandes ; Feuilles petites, grandes ou longues",2,10,0,0,0,flore-verifiee
+Vahimainty,Vahimainty | Vahy mainty | Vaimainty | Vaiminty,10,++,aucun ; corde,0600,"1, 2",Feuilles petites ou grandes,4,10,0,0,0,flore-verifiee
+Valotra,Valotra,10,++,bois_construction,0600,"1, 2",Écorce noire ou blanche ; Écorce noire ou jaune,1,6,2,0,2,autres-especes | flore-verifiee | grands-arbres
+Fantsinakoho,Fantsiknakoho | Fantsin'akoho | Fantsinakoha | Fantsinakoho | Fatsinakoho,9,++,bois_chauffage ; bois_construction,0600 ; 0700,1,,5,9,0,0,0,flore-verifiee
+Vahikerotra,Vahikerotra | Vahy kerotra,9,,aucun,,"1, 2",Couleur rouge avec fruits ou jaune,2,9,0,0,0,flore-verifiee
+Hazombary,Hazombary,8,++,bois_construction ; poutre,0600,"1, 2",Feuilles petites ou grandes,1,8,0,0,0,flore-verifiee
+Lalangiala,Lalangiala | Lalangy ala,8,++,bois_construction,0600,"1, 2",Écorce blanche ou rouge,2,8,0,0,0,flore-verifiee
+Ramiavogna,Ramavogna | Ramiavogna | Ramiavona | Remiavogna,8,Xylopia,bois_construction,0600,"1, 2",Feuilles petites ou grandes ; Tige rouge ou blanche,4,6,0,0,2,autres-especes | flore-verifiee
+Vahy,Vahy,8,++,aucun,,,,1,8,0,0,0,flore-verifiee
+Velonijy,Velomijy | Velonizy,8,,aucun ; magie,0800,1,,2,8,0,0,0,flore-verifiee
+Voatsilagna,Voatsilagna | Votsilagna,8,,guitare,0600,"1, 2",Feuilles petites (‘voatsilagna’) ou grandes (‘voatsilambato),2,7,0,0,1,autres-especes | flore-verifiee
+Longotra,Longotra | Longotra lahy,7,++,construction_maison,0600,"1, 2",Feuilles petites ou grandes,2,5,2,0,0,flore-verifiee | flore-verifiee | grands-arbres
+Vahibe,Vahibe | Vahy be | Vahybe | Vaibe,7,Tournefortia puberula Baker,,,1,,4,7,0,0,0,flore-verifiee
+Vahijagna,Vahijagna | Vaijagna | Vainjagna,7,,,,1,,3,7,0,0,0,flore-verifiee
+Vahivahy,Vahivahy | Vaivay | Vayivayi,7,,corde,0600,1,,3,6,0,1,0,flore-verifiee | phenologie
+Vognitra,Vognitra | Vognitry,7,Vonitra,aucun ; bois_construction,0600,1,,2,7,0,0,0,flore-verifiee
+Fontsigniraka,Fontsigna iraka | Fotsign'iraka,6,,,,,,2,0,6,0,0,grands-arbres
+Hasimbe,Hasimbe,6,,,,2,Feuilles petites ou grandes,1,5,0,0,1,autres-especes | flore-verifiee
+Kabokala,Kabokala,6,++,aucun,,"1, 2",Feuilles petites ou grandes,1,6,0,0,0,flore-verifiee
+Lambignana,Lambigna | Lambignana,6,++,,,1,,2,2,3,0,1,autres-especes | flore-verifiee | grands-arbres
+Mahanoro,Mahanora | Mahanoro,6,Pachytrophe sp.,aucun,,"1, 2, 3",Feuilles longues ou rondes ou petites ; Feuilles petites ou grandes ; Pousse dans la forêt (‘agnala’) ou dans les endroits clairs (‘mazava’),2,6,0,0,0,flore-verifiee
+Mamirano,Mamirano,6,,,,"1, 2",Feuilles grandes ou petites,1,6,0,0,0,flore-verifiee
+Tendritrazo,Tendritrazo,6,,,,"1, 2",,1,3,3,0,0,flore-verifiee | grands-arbres
+Tsirika,Tsirika,6,Dypsis,aucun,,"1, 2",Nombre de branches élevé ou faible ; Présence ou absence de branches,1,6,0,0,0,flore-verifiee
+Vahinamalogna,Vahinamalogna | Vain’amalogna | Vainamalogna,6,Byttneria,corde,0600,"1, 2",Écorce noire et grandes feuilles ; Écorce rouge et petites feuilles ; Feuilles petites ou grandes,3,6,0,0,0,flore-verifiee
+Fandramanagna,Fandramanagna | Fandramanana,5,++,the,0100,"1, 2, 3","Feuilles petites ou grandes ; Feuilles petites, moyennes ou grandes",2,4,0,0,1,autres-especes | flore-verifiee | flore-verifiee
+Haorendry,Haorendry,5,,aucun ; douleurs_dentaires,1100,1,,1,5,0,0,0,flore-verifiee
+Hazoharaka,Hazo haraka | Hazoaraka | Hazoharaka,5,Rinorea,aucun ; gonflements,1100,1,,3,5,0,0,0,flore-verifiee
+Hazotavolo,Hazo tarolo | Hazo tavolo | Hazotavolo,5,Ravensara,pilon,0600,"1, 2",Feuilles petites ou grandes,3,4,1,0,0,flore-verifiee | grands-arbres
+Lakamboalavo,Lakabaovolo | Lakabolavo | Lakamboalavo,5,Ravenea,canaux_irrigation ; tressage,0600,"1, 2",Feuilles petites ou grandes,3,4,0,0,1,autres-especes | flore-verifiee
+Madiorano,Madiorano,5,Saldinia proboscidea Hochr.,,,2,Rachis des feuilles petit ou grand ; Tronc poilu ou glabre,1,5,0,0,0,flore-verifiee
+Matsoraka,Matsoraka | Matsoroka,5,,,,2,Écorce noire ou blanche,2,4,0,0,1,autres-especes | flore-verifiee | flore-verifiee
+Meragna,Meragna | Merana,5,++,,,1,,2,2,3,0,0,flore-verifiee | grands-arbres
+Nato,Nato,5,++,bois_construction,0600,2,Feuilles grandes ou en forme d’arachide (‘ravimboanyo’) ; Feuilles petites ou grandes ; Rouge ou blanc (Natopoaka fotsy),1,4,0,0,1,autres-especes | flore-verifiee
+Resonjo,Resonjo,5,++,medicinale,1100,"1, 2",Feuilles grandes et longues ; courtes ; petites feuilles ; Long ou court,1,5,0,0,0,flore-verifiee
+Vahierotra,Vahierotra | Vaierotra,5,Ipomoea,corde,0600,2,Feuilles petites ou grandes,2,5,0,0,0,flore-verifiee
+Vahimaragna,Vahimaragna | Vahy maragna | Vahymaragna,5,Tetracera,,,2,"Écorce lisse ou rugueuse ; Écorce noire et feuilles petites, ou grandes feuilles ; Feuilles petites ou grandes",3,5,0,0,0,flore-verifiee
+Vahipika,Vahipika | Vahypika,5,Flagellaria indica L.,panier,0600,1,,2,5,0,0,0,flore-verifiee
+Fagnamohazo,Fagnamo hazo,4,,,,2,Feuilles petites ou grandes,1,3,0,1,0,flore-verifiee | phenologie
+Fagnidy,Fagnidy,4,++,magie ; medicinale,0800 ; 1100,1,,1,4,0,0,0,flore-verifiee
+Fandrenakanga,Fandrenakanga,4,++,,,,,1,3,1,0,0,flore-verifiee | grands-arbres
+Fantsikala,Fantsik' ala | Fantsik’ala | Fantsikala,4,++,aucun ; insecticide,1000,"1, 2",Feuilles petites ou grandes ; Tige rouge ou noire,3,4,0,0,0,flore-verifiee
+Kiritrala,Kiritr’ala | Kiritrala,4,,,,"1, 2",Feuilles petites ou grandes,2,4,0,0,0,flore-verifiee
+Natopoaka,Nato poaka | Natopoaka,4,,,,"1, 3","Grandes feuilles, feuilles rondes, nato (ravim-boango)",2,4,0,0,0,flore-verifiee
+Rindambo,Rindambo,4,,,,1,,1,4,0,0,0,flore-verifiee
+Rotrala,Rotra ala | Rotrala,4,++,bois_construction,0600,2,Écorce blanche ou rouge (‘Rodambo’) ; Écorce rouge (‘rodambo’) ou blanche ; Feuilles petites ou grandes ; Forestier ou non-forestier,2,4,0,0,0,flore-verifiee
+Tavia,Tavia,4,++,,,"1, 2",Feuilles longues ou rondes,1,4,0,0,0,flore-verifiee
+Tsikarakaragnana,Tsikara karagna | Tsikarakaragna vavy | Tsikarakaragnana,4,Plagioscyphus,,,"1, 2",Feuilles petites ou grandes,3,4,0,0,0,flore-verifiee
+Tsilaitra,Tsilaitra,4,++,,,"1, 2",Feuilles petites ou grandes,1,2,0,0,2,autres-especes | flore-verifiee
+Voatrotrokala,Voatrotrokala,4,++,,,1,,1,4,0,0,0,flore-verifiee
+Vondrona,Vondrogna,4,Typha angustifolia L.,,,1,,1,4,0,0,0,flore-verifiee
+Vonotra,Vonotra,4,,,,1,,1,4,0,0,0,flore-verifiee
+Alampogna,Alampogna | Alompogna,3,++,,,1,,2,3,0,0,0,flore-verifiee
+Ambilazo,Ambilazo | Ambilzo,3,Calliandra alternans Benth.,,,1,,2,3,0,0,0,flore-verifiee
+Ampaliala,Ampaliala | Ampaly ala,3,Ficus soroceoides Baker,aucun,,"1, 2",Feuilles poilues ou glabres,2,3,0,0,0,flore-verifiee
+Angavoala,Angavoala,3,,aucun,,1,,1,3,0,0,0,flore-verifiee
+Faralaotra,Faralaotra,3,Colubrina faraloatra (H.Perrier) Capuron,,,2,Écorce rouge ou jaune,1,3,0,0,0,flore-verifiee
+Fontsignabemavo,Fontsigna bemavo,3,,,,4,,1,1,2,0,0,flore-verifiee | grands-arbres
+Fotsikazo,Fotsik'azo | Fotsik’azo,3,,,,1,,2,3,0,0,0,flore-verifiee
+Hazomamy,Hazomamy,3,++,ecorce_sucree,0100,"1, 2",Feuilles longues ou rondes,1,2,0,0,1,autres-especes | flore-verifiee
+Hazombato,Hazombato,3,++,,,"1, 2",Feuilles petites ou grandes,1,3,0,0,0,flore-verifiee
+Hazondandy,Azondandy | Hazondandy | Hozodandy,3,++,,,1,,3,2,1,0,0,flore-verifiee | grands-arbres
+Lagnary,Lagnary,3,++,,,1,,1,3,0,0,0,flore-verifiee
+Longoza,Longosa | Longoza,3,Aframomum angustifolium (Sonn.) K.Schum.,fruit_comestible,0100,1,,2,3,0,0,0,flore-verifiee
+Nanto,Nanto,3,++,,,2,Feuilles petites ou grandes ; Grandes/petites feuilles,1,2,1,0,0,flore-verifiee | grands-arbres
+Odisandragna,Ody sandragna,3,,,,2,Feuilles petites ou grandes,1,3,0,0,0,flore-verifiee
+Ramy,Ramy,3,++,,,,,1,0,2,0,1,autres-especes | grands-arbres
+Ranivinaomby,Ranivinaomby,3,,,,1,,1,3,0,0,0,flore-verifiee
+Rohindambo,Rohindambo | Roin-dambo,3,++,aucun ; medicinale,1100,1,,2,3,0,0,0,flore-verifiee
+Rotra,Rotra,3,++,,,2,Dans/hors forêt,1,1,1,0,1,autres-especes | flore-verifiee | grands-arbres
+Sefagna,Sefagna | Sefana,3,++,bois_chauffage ; bois_construction,0600 ; 0700,"1, 2",Feuilles petites ou grandes,2,3,0,0,0,flore-verifiee
+Tsilakagna,Tsilakagna | Tsilakana,3,Myrica spathulata Mirb.,,,"1, 2",,2,3,0,0,0,flore-verifiee
+Tsingena,Tsingena,3,Doratoxylon stipulatum Capuron,balai,0600,1,,1,3,0,0,0,flore-verifiee
+Vahilambignana,Vahy lambignana,3,Clematis mauritiana Lam.,,,"1, 2",Feuilles petites ou grandes ; Feuilles petites ou grandes (femelle),1,3,0,0,0,flore-verifiee
+Vahimahery,Vahy mahery,3,,,,1,,1,3,0,0,0,flore-verifiee
+Vahimena,Vahy mena | Vaimena,3,++,,,1,,2,3,0,0,0,flore-verifiee
+Vandrikala,Vandrika ala,3,Canthium austro-orientale Cavaco,,,"2, 3","Feuilles grandes, petites, ou rondes ; Feuilles petites ou grandes",1,3,0,0,0,flore-verifiee
+Voatalagny,Voatalagny | Voatalangy,3,Brexia madagascariensis (Lam.) Ker Gawl.,aucun,,1,,2,3,0,0,0,flore-verifiee
+Vodihazo,Vodiazo,3,++,,,1,,1,2,0,0,1,autres-especes | flore-verifiee
+Aboladitra,Haboladitra,2,Sideroxylon gerrardianum (Hooker f.) Aubrév.,bois_construction,0600,,,1,2,0,0,0,flore-verifiee
+Belakevigna,Belakevigna,2,,aucun,,1,,1,2,0,0,0,flore-verifiee
+Beronono,Be ronono | Beronono,2,,bois_construction,0600,2,Feuilles petites ou grandes,2,2,0,0,0,flore-verifiee
+Fagnentsoagnana,Fagnentsoagnana,2,,,,,,1,0,2,0,0,grands-arbres
+Hafipotsy,Hafipotsy,2,Dombeya spectabilis Bojer (Malvaceae).,,,2,Feuilles petites ou grandes ; Tige rouge ou blanche,1,2,0,0,0,flore-verifiee
+Hafotra,Hafotra,2,++,corde ; fixation_toiture,0600,1,,1,2,0,0,0,flore-verifiee
+Havoa,Avoa | Havoa,2,,magie,0800,1,,2,2,0,0,0,flore-verifiee
+Hazomalagny,Hazomalagny,2,++,aucun,,1,,1,2,0,0,0,flore-verifiee
+Hazondrano,Hazon-drano | Hazondrano,2,++,,,2,Forestier et grandes feuilles ; Dans les rizières et petites feuilles,2,1,0,0,1,autres-especes | flore-verifiee
+Lafagna,Lafagna,2,,plancher,0600,1,,1,2,0,0,0,flore-verifiee
+Mahasalama,Mahasalama,2,,,,1,,1,2,0,0,0,flore-verifiee
+Mahitsiatoraka,Mahitsiatoraka,2,,aucun,,1,,1,2,0,0,0,flore-verifiee
+Mandrio,Mandirio | Mandrio,2,,,,"1, 2",Feuilles longues ou rondes,2,2,0,0,0,flore-verifiee
+Masonambatsy,Masona ambatsy,2,++,,,2,,1,2,0,0,0,flore-verifiee
+Menamaraigna,Mena maraigna,2,,,,,,1,0,2,0,0,grands-arbres
+Mokaragnana,Mokaragnana,2,++,aucun,,1,,1,2,0,0,0,flore-verifiee
+Rahaboramena,Raboramena | Rahaboramena,2,,bois_construction,0600,1,,2,2,0,0,0,flore-verifiee
+Ranoavao,Ranoavao,2,,,,1,,1,1,0,0,1,autres-especes | flore-verifiee
+Ravinala,Ravinala,2,Ravenala,,,"1, 3",Plante petite (‘volovo’) ; rachis rouge (‘Iaraka’) ; rachis large (‘belavo’),1,2,0,0,0,flore-verifiee
+Retsara,Retsara,2,Bembicia,medicinale,1100,1,,1,2,0,0,0,flore-verifiee
+Sakatavilogna,Sakatavilogna,2,++,canaux_irrigation,0600,1,,1,1,0,0,1,autres-especes | flore-verifiee
+Sary,Sary,2,++,planche,0600,,,1,2,0,0,0,flore-verifiee
+Soakazo,Soakazo,2,Allophyllus,,,1,,1,2,0,0,0,flore-verifiee
+Tsimatindreo,Tsimatindreo,2,,medicinale,1100,,,1,2,0,0,0,flore-verifiee
+Tsirikala,Tsirika ala | Tsirikala,2,,,,1,,2,1,0,0,1,autres-especes | flore-verifiee
+Tsitoitoy,Tsitoitoy,2,,aucun,,1,,1,2,0,0,0,flore-verifiee
+Tsitrotroka,Tsitrotroka | Tsitrotroky,2,++,aucun,,"1, 2",Bois tendre ou dur,2,2,0,0,0,flore-verifiee
+Vahifotsy,Vahy fotsy | Vay fotsy,2,++,,,1,,2,2,0,0,0,flore-verifiee
+Vahikarabo,Vahikarabo,2,Entada scandens (L.) Benth.,corde,0600,1,,1,2,0,0,0,flore-verifiee
+Vahimantsigna,Vahy mantsigna,2,Agelaea pentagyna (Lam.) Baill.,,,"1, 2",Feuilles petites ou grandes,1,2,0,0,0,flore-verifiee
+Vahisagnira,Vahisagnira | Vahy sagnira,2,,,,"1, 2",Feuilles petites ou grandes,2,2,0,0,0,flore-verifiee
+Veso,Veso,2,,aucun,,1,,1,2,0,0,0,flore-verifiee
+Voarongy,Voarongy,2,++,planche,0600,"1, 2",Feuilles petites ou grandes,1,1,1,0,0,flore-verifiee | grands-arbres
+Vorovoro,Vorovoro,2,,,,2,Tige poilue ou glabre,1,2,0,0,0,flore-verifiee
+Zahagna,Zahagna,2,++,,,1,,1,2,0,0,0,flore-verifiee
+Zambo,Zambo,2,Rhopalocarpus triplinervius Baill.,bois_construction,0600,1,,1,2,0,0,0,flore-verifiee
+Zatsifady,Jatsifady | Zatsifady,2,,fatigue,1100,"1, 2",Avec ou sans branches,2,2,0,0,0,flore-verifiee
+???,N/a,1,,,,,,1,0,1,0,0,grands-arbres
+Bararaky,Bararaky,1,++,bois_construction,0600,1,,1,1,0,0,0,flore-verifiee
+Bararata,Bararata,1,++,,,,,1,1,0,0,0,flore-verifiee
+Bois de rose,Bois de rose,1,?,NA,NA,NA,NA,1,0,0,0,1,autres-especes
+Dingadigana,Dingadigana,1,++,NA,NA,NA,NA,1,0,0,0,1,autres-especes
+Dintogna,Dintogna,1,,,,1,,1,1,0,0,0,flore-verifiee
+Elatrangidigna,Elatrangidigna,1,++,,,2,Feuilles grandes ou petites,1,1,0,0,0,flore-verifiee
+Fagnotavahatra,Ambilazo / fagnotavahatra,1,,NA,NA,NA,NA,1,0,0,0,1,autres-especes
+Fanalaotra,Fanalaotra,1,,poutre,0600,1,,1,1,0,0,0,flore-verifiee
+Fandemo,Fandemo,1,,,,2,Feuilles petites ou grandes,1,1,0,0,0,flore-verifiee
+Fantsihena,Fantsihena,1,,,,2,Feuilles petites ou grandes,1,1,0,0,0,flore-verifiee
+Fantsinakohoala,Fantsin’akohon’ala,1,++,,,1,,1,1,0,0,0,flore-verifiee
+Faritafoka,Faritafoka,1,,anti_foudre,0800,2,,1,1,0,0,0,flore-verifiee
+Fenakaragna,Fenakaragna,1,,,,1,,1,1,0,0,0,flore-verifiee
+Fianakara,Fianakara,1,,,,1,,1,1,0,0,0,flore-verifiee
+Foraha,Foraha,1,Calophyllum,NA,NA,NA,NA,1,0,0,0,1,autres-especes
+Fotsivavogna,Fotsy vavogna,1,,,,1,,1,1,0,0,0,flore-verifiee
+Goaviala,Goavy ala,1,++,,,2,Feuilles petites ou grandes,1,1,0,0,0,flore-verifiee
+Hafona,Hafona,1,,,,2,Mâle ou femelle,1,1,0,0,0,flore-verifiee
+Hazoara,Hazoara,1,Ficus,,,2,Forestier ou non-forestier,1,1,0,0,0,flore-verifiee
+Hazofotsy,Hozo fotsy,1,++,,,,,1,1,0,0,0,flore-verifiee
+Hazomaragna,Hazo maragna,1,,,,2,Feuilles petites (mâle) ou grandes (femelle),1,1,0,0,0,flore-verifiee
+Hazombalala,Hazombalala,1,++,,,1,,1,1,0,0,0,flore-verifiee
+Hazombavy,Hazombavy,1,++,,,1,,1,1,0,0,0,flore-verifiee
+Hazomenamaraigna,Hazomena maraigna,1,,,,1,,1,1,0,0,0,flore-verifiee
+Itsoka,Itsoka,1,,,,1,,1,1,0,0,0,flore-verifiee
+Kasakasa,Kasakasa,1,,NA,NA,NA,NA,1,0,0,1,0,phenologie
+Kijimainty,Kijy mainty,1,Symphonia urophylla (Decne. ex Planch. & Triana) Benth. & Hook. f. ex Vesque,,,,,1,1,0,0,0,flore-verifiee
+Lakatra,Lakatra,1,++,,,1,,1,1,0,0,0,flore-verifiee
+Lalogna,Lalogna,1,++,NA,NA,NA,NA,1,0,0,0,1,autres-especes
+Magnasavelo,Magnasavelo,1,Rhodolaena acutifolia Baker,,,2,Plante mâle ou femelle,1,1,0,0,0,flore-verifiee
+Magnivalana,Magnivalana,1,,,,,,1,1,0,0,0,flore-verifiee
+Mahatsoraka,Mahatsoraka,1,,,,2,Feuilles petites ou grandes,1,1,0,0,0,flore-verifiee
+Maheriampatragna,Mahery apatragna,1,Ravensara floribunda Baill.,,,,,1,1,0,0,0,flore-verifiee
+Malandivogny,Malandivogny,1,++,,,1,,1,1,0,0,0,flore-verifiee
+Malandivoho,Malandivoho,1,,,,2,Plante mâle ou femelle,1,1,0,0,0,flore-verifiee
+Mamalifolahina,Mamaly folaina,1,Hazunta modesta subvar. brevituba Markgr.,,,1,,1,1,0,0,0,flore-verifiee
+Mandriravy,Mandriravy,1,,,,1,,1,1,0,0,0,flore-verifiee
+Mandrisy,Mandrisy,1,,NA,NA,NA,NA,1,0,0,0,1,autres-especes
+Mandrorovo,Mandrorovo,1,Trachylobium verrucosum (Gaertn.) Oliv.,,,,,1,1,0,0,0,flore-verifiee
+Manivalana,Manivalana,1,,magie,0800,,,1,1,0,0,0,flore-verifiee
+Manoro,Manoro,1,,NA,NA,NA,NA,1,0,0,0,1,autres-especes
+Maranambatsy,Marana ambatsy,1,,,,2,Feuilles petites ou grandes,1,1,0,0,0,flore-verifiee
+Marimbody,Marimbody,1,Macarisia pyramidata Thouars,,,2,Feuilles petites ou grandes,1,1,0,0,0,flore-verifiee
+Marombody,Marombody,1,Tinopsis apiculata Radlk.,NA,NA,NA,NA,1,0,0,0,1,autres-especes
+Matolahimiana,Matolahimiana,1,,magie,0800,,,1,1,0,0,0,flore-verifiee
+Matsoaky,Matsoaky,1,,NA,NA,NA,NA,1,0,0,0,1,autres-especes
+Mavalia,Mavalia,1,,,,2,Plante femelle à l’écorce verte ; plante mâle à l’écorce noire,1,1,0,0,0,flore-verifiee
+Nantopoha,Nanto pôha,1,,,,2,Feuilles petites ou grandes,1,1,0,0,0,flore-verifiee
+Odibiby,Odibiby,1,,magie,0800,1,,1,1,0,0,0,flore-verifiee
+Ragnomona,Ragnomona,1,,,,,,1,1,0,0,0,flore-verifiee
+Raharopa,Raharopa,1,,,,,,1,1,0,0,0,flore-verifiee
+Rahogna,Rahogna,1,,,,1,,1,1,0,0,0,flore-verifiee
+Ramanjavona,Ramanjavona,1,++,magie,0800,,,1,1,0,0,0,flore-verifiee
+Raomogna,Raomogna,1,,,,1,,1,1,0,0,0,flore-verifiee
+Rendemy,Rendemy,1,,,,1,,1,1,0,0,0,flore-verifiee
+Rodambo,Ro-dambo,1,Eugenia,,,,,1,1,0,0,0,flore-verifiee
+Sakasaka,Sakasaka,1,,,,1,,1,1,0,0,0,flore-verifiee
+Seka,Seka,1,++,NA,NA,NA,NA,1,0,0,0,1,autres-especes
+Taimbarika,Taim-barika,1,++,,,1,,1,1,0,0,0,flore-verifiee
+Talatalanatsidigna,Talatalana tsidigna,1,,,,2,Feuilles petites ou grandes,1,1,0,0,0,flore-verifiee
+Tavoloala,Tavoloala,1,,,,1,,1,1,0,0,0,flore-verifiee
+Tevimitrairy,Tevimitrairy,1,,NA,NA,NA,NA,1,0,0,0,1,autres-especes
+Toloho,Toloho,1,,NA,NA,NA,NA,1,0,0,0,1,autres-especes
+Tongoloalalahy,Tongoloala lahy,1,,,,2,Bonne odeur ou absence d’odeur,1,1,0,0,0,flore-verifiee
+Tsienimposa,Tsenimposa,1,Cuphocarpus,,,2,Feuilles petites ou grandes,1,1,0,0,0,flore-verifiee
+Tsihanimposa,Tsianiposa,1,Zanthoxylum,bois_construction,0600,1,,1,1,0,0,0,flore-verifiee
+Tsihifoka,Tsihifoka,1,,,,1,,1,1,0,0,0,flore-verifiee
+Tsimataodakato,Tsy mataodakato,1,,,,2,Plante poilue et verte ou glabre,1,1,0,0,0,flore-verifiee
+Tsimihifiky,Tsimihifiky,1,,,,,,1,1,0,0,0,flore-verifiee
+Tsimitehigna,Tsimitehigna,1,,,,,,1,1,0,0,0,flore-verifiee
+Tsiriba,Tsiriba,1,,,,,,1,1,0,0,0,flore-verifiee
+Vahiara,Vahiara,1,Solanum apocynifolium Baker,medicinale,1100,,,1,1,0,0,0,flore-verifiee
+Vahidronono,Vahidronono,1,Alafia intermedia Pichon,corde,0600,1,,1,1,0,0,0,flore-verifiee
+Vahiganeno,Vaiganeno,1,Stephanotis grandiflora Decne.,,,,,1,1,0,0,0,flore-verifiee
+Vahikiripoka,Vahikiripoka,1,,,,,,1,1,0,0,0,flore-verifiee
+Vahimandronono,Vahy mandronono,1,,,,,Feuilles petites (mâle) ou grandes (femelle),1,1,0,0,0,flore-verifiee
+Vahinborondreo,Vahin-borondreo,1,,,,1,,1,1,0,0,0,flore-verifiee
+Vahinjagna,Vahinjagna,1,,,,,,1,1,0,0,0,flore-verifiee
+Vilokazo,Vilok'azo,1,,,,1,,1,1,0,0,0,flore-verifiee
+Voakazoaraby,Voakazoaraby,1,,,,1,,1,1,0,0,0,flore-verifiee
+Voamalimpangady,Valotra / voamalimpangady,1,Nauclea cuspidata Baker,poutre,0600,1,,1,1,0,0,0,flore-verifiee
+Voamasoandro,Voamasoandro,1,Salacia madagascariensis (Lam.) DC.,,,,,1,1,0,0,0,flore-verifiee
+Voamboagna,Voamboagna,1,Dalbergia baroni,NA,NA,NA,NA,1,0,0,0,1,autres-especes
+Voamboatoloha,Voamboatoloha,1,,NA,NA,NA,NA,1,0,0,0,1,autres-especes
+Voandakevona,Voandakevona,1,,,,,,1,1,0,0,0,flore-verifiee
+Voapakafotsy,Voapaka fotsy,1,Uapaca,NA,NA,NA,NA,1,0,0,0,1,autres-especes
+Voapakamena,Voapaka mena,1,Uapaca,NA,NA,NA,NA,1,0,0,0,1,autres-especes
+Voapenakaragna,Voapenakaragna,1,,,,1,,1,1,0,0,0,flore-verifiee
+Voara,Voara,1,Ficus,,,2,Forestier ou non-forestier,1,1,0,0,0,flore-verifiee
+Voarotra,Voarotra,1,Eugenia vacciniifolia Baker,,,2,Feuilles glabres ou poilues,1,1,0,0,0,flore-verifiee
+Voatsarotra,Voatsarotra,1,,,,1,,1,1,0,0,0,flore-verifiee
+Voatsilambato,Voatsilambato,1,Polyscias boivinii (Seem.) Bernardi,,,2,Feuilles petites (‘voatsilagna’) ou grandes (‘voatsilambato),1,1,0,0,0,flore-verifiee
+Voatsingiriala,Voatsingiry ala,1,,,,2,Forestier ou non-forestier,1,1,0,0,0,flore-verifiee
+Volombodipony,Volombody pony,1,Dalbergia,,,1,,1,1,0,0,0,flore-verifiee
