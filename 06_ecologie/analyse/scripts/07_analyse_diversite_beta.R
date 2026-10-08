@@ -15,9 +15,9 @@ Utilisation :
   source(\"06_ecologie/analyse/scripts/analyse_diversite_beta.R\")
 "
 
-source("06_ecologie/analyse/scripts/importDonnees.R")
-source("06_ecologie/analyse/scripts/fonctionsDiversite.R")
-source("06_ecologie/analyse/scripts/fonctionsDiversiteBeta.R")
+source("06_ecologie/analyse/scripts/01_importDonnees.R")
+source("06_ecologie/analyse/scripts/fonctions/fonctionsDiversite.R")
+source("06_ecologie/analyse/scripts/fonctions/fonctionsDiversiteBeta.R")
 
 if (!requireNamespace("ggplot2", quietly = TRUE)) install.packages("ggplot2")
 if (!requireNamespace("scales", quietly = TRUE)) install.packages("scales")

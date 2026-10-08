@@ -14,9 +14,9 @@ Utilisation :
   source(\"06_ecologie/analyse/scripts/analyse_diversite.R\")
 "
 
-source("06_ecologie/analyse/scripts/importDonnees.R")
-source("06_ecologie/analyse/scripts/fonctionsStructure.R")
-source("06_ecologie/analyse/scripts/fonctionsDiversite.R")
+source("06_ecologie/analyse/scripts/01_importDonnees.R")
+source("06_ecologie/analyse/scripts/fonctions/fonctionsStructure.R")
+source("06_ecologie/analyse/scripts/fonctions/fonctionsDiversite.R")
 
 d <- importer_donnees()
 

@@ -13,8 +13,8 @@ Utilisation :
   source(\"06_ecologie/analyse/scripts/analyse_structure.R\")
 "
 
-source("06_ecologie/analyse/scripts/importDonnees.R")
-source("06_ecologie/analyse/scripts/fonctionsStructure.R")
+source("06_ecologie/analyse/scripts/01_importDonnees.R")
+source("06_ecologie/analyse/scripts/fonctions/fonctionsStructure.R")
 
 if (!requireNamespace("ggplot2", quietly = TRUE)) install.packages("ggplot2")
 if (!requireNamespace("scales", quietly = TRUE)) install.packages("scales")
