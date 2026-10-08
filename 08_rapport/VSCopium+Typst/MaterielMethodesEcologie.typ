@@ -113,7 +113,7 @@ La distribution des effectifs par classe de diamètre utilise des classes de 2,5
 
 === Diversité alpha (§3.4)
 
-La diversité alpha est quantifiée par quatre indices s'inscrivant dans le cadre des nombres de Hill $q D$ (Hill, 1973 ; Jost, 2006) : la richesse spécifique $S = ^0D$ ; l'indice de Shannon $H'$ (Shannon & Weaver, 1949), dont l'exponentielle $exp(H') = ^1D$ s'interprète comme le nombre effectif d'espèces communes (Jost, 2006) ; l'inverse de l'indice de Simpson corrigé, $^2D$, nombre effectif d'espèces dominantes (Simpson, 1949) ; et l'indice $alpha$ de Fisher (Fisher et al., 1943), résolu numériquement depuis $S = alpha ln(1 + N/alpha)$, dont la valeur est indépendante du nombre de tiges comptées.
+La diversité alpha est quantifiée par quatre indices s'inscrivant dans le cadre des nombres de Hill ${}^q D$ (Hill, 1973 ; Jost, 2006) : la richesse spécifique $S = {}^0 D$ ; l'indice de Shannon $H'$ (Shannon & Weaver, 1949), dont l'exponentielle $exp(H') = {}^1 D$ s'interprète comme le nombre effectif d'espèces communes (Jost, 2006) ; l'inverse de l'indice de Simpson corrigé, ${}^2 D$, nombre effectif d'espèces dominantes (Simpson, 1949) ; et l'indice $alpha$ de Fisher (Fisher et al., 1943), résolu numériquement depuis $S = alpha ln(1 + N slash alpha)$, dont la valeur est indépendante du nombre de tiges comptées.
 
 Les abondances prennent en compte toutes les tiges comptées : tiges mesurées (CBH > 8 cm) et gaulis. Cette convention doit être gardée à l'esprit lors des comparaisons, certains travaux ne comptant que les tiges de DBH ≥ 10 cm. Les espèces sont les identités réconciliées ; les individus indéterminés d'une même placette comptent pour des espèces locales distinctes (convention qui évite de sous-estimer la richesse).
 

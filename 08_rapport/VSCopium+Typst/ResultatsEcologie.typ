@@ -11,16 +11,16 @@
 
 // TODO date-jeu-de-données : liste définitive issue de la fusion PR #2 ; revalider avant dépôt.
 
-Au total, 335 noms vernaculaires normalisés ont été relevés dans les relevés de terrain et les sources complémentaires ; leur réconciliation manuelle aboutit à 230 identités d'espèces perçues localement. Parmi elles, 223 ont reçu une identification botanique // TODO : préciser la source de la colonne identificationsBotaniques (Schatz 2001 ? Rodriguèze 2025 ?) et le nombre exact d'identités identifiées au niveau espèce vs genre vs famille.
+Au total, 335 noms vernaculaires normalisés ont été relevés dans les relevés de terrain et les sources complémentaires ; leur réconciliation manuelle aboutit à 230 identités d'espèces perçues localement. Sur les 229 identités de la liste définitive, 130 disposent d'une identification botanique au sens large : 61 avec un taxon proposé (genre, espèce) et 69 avec une correspondance concordante vers au moins deux genres différents à partir des deux sources utilisées (Schatz, 2001 ; dictionnaire des noms malgaches de végétaux // TODO : référence exacte de la source en ligne à préciser).
 
-Les identités comportent en moyenne 1,59 ± 0,64 types phénotypiques (IC 95 % : [1,49 ; 1,68] ; n = 181 espèces pour lesquelles le nombre de types est documenté). Cette moyenne masque une distribution dissymétrique : 89 espèces n'ont qu'un type décrit, 79 en ont deux, 12 en ont trois et une en a quatre. Les distinctions rapportées entre types sont le plus souvent liées à la taille ou à la couleur des feuilles, au port, ou à l'habitat (forêt ou village).
+Les identités comportent en moyenne 1,60 ± 0,64 types phénotypiques (IC 95 % : [1,50 ; 1,70] ; n = 180 espèces pour lesquelles le nombre de types est documenté, en retenant le maximum observé). Cette moyenne masque une distribution dissymétrique : 86 espèces n'ont qu'un type décrit, 81 en ont deux, 12 en ont trois et une en a quatre. Les distinctions rapportées entre types sont le plus souvent liées à la taille ou à la couleur des feuilles, au port, ou à l'habitat (forêt ou village).
 
-// TODO : vérifier les valeurs 89/79/12/1 sur les CSV définitifs avant dépôt
-// (note §3.1 : distribution identique, mais recontrôle souhaité).
+// Valeurs recalculées sur liste_especes_vegetales_definitive.csv le 2026-10-08 (règle : max observé).
+// La note §3.1 donnait n=181, 1,59±0,64, 89/79/12/1 — écart de version, le CSV fait foi.
 
-Soixante-neuf espèces ont au moins un usage rapporté ; parmi elles, le nombre moyen d'usages est de 1,29 ± 0,55 (IC 95 % : [1,16 ; 1,42]). Les 39 mentions « aucun » correspondent à un usage non rapporté lors de l'enquête, et non à une plante sans usage.
+Soixante-dix espèces ont au moins un usage rapporté et classé ; parmi elles, le nombre moyen d'usages est de 1,27 ± 0,51. Les 28 mentions « aucun » correspondent à un usage non rapporté lors de l'enquête, et non à une plante sans usage — dix de ces espèces ont d'ailleurs un usage rapporté par une autre source. Dix-sept espèces supplémentaires ont une mention d'usage non renseignée (NA), sans qu'on puisse conclure à l'absence d'usage.
 
-La répartition des usages par catégorie du standard Cook (1995) est dominée par les matériaux : 48 espèces sur les 69 à usage rapporté (Tableau @tab-usages). Les usages détaillés de cette catégorie relèvent presque tous de la construction et du bois d'œuvre — poutres, planches, menuiserie, charpente, manches d'outils, tressage. Viennent ensuite les usages médicinaux (11 espèces), les usages sociaux et rituels (9 espèces, dont des usages magiques et un usage anti-foudre), l'alimentation (3), les combustibles (2), les usages environnementaux (2) et les poisons (1).
+La répartition des usages par catégorie du standard Cook (1995) est dominée par les matériaux : 48 espèces sur les 70 à usage rapporté et classé (Tableau @tab-usages). Les usages détaillés de cette catégorie relèvent presque tous de la construction et du bois d'œuvre — poutres, planches, menuiserie, charpente, manches d'outils, tressage. Viennent ensuite les usages médicinaux (11 espèces), les usages sociaux et rituels (9 espèces, dont des usages magiques et un usage anti-foudre), l'alimentation (3), les combustibles (2), les usages environnementaux (2) et les poisons (1).
 
 #figure(
   table(
