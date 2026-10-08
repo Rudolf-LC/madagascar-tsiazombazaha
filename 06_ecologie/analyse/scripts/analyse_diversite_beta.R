@@ -73,18 +73,24 @@ betaAdditif <- whit$gamma - whit$alphaMoyen
 distBray <- vegan::vegdist(matAbond, method = "bray")
 nmdsRes <- vegan::metaMDS(distBray, k = 2, trymax = 100, trace = 0)
 
+correspTransects <- d$placettes |>
+  dplyr::select(cdTransect, cdPlacette)
+
 pointsNMDS <- tibble::tibble(
   cdPlacette = rownames(nmdsRes$points),
   NMDS1 = nmdsRes$points[, 1],
   NMDS2 = nmdsRes$points[, 2]
-)
+) |>
+  dplyr::left_join(correspTransects, by = "cdPlacette")
 
 if (!requireNamespace("ggrepel", quietly = TRUE)) install.packages("ggrepel")
 library(ggrepel)
 
-figNMDS <- ggplot(pointsNMDS, aes(x = NMDS1, y = NMDS2)) +
-  geom_point(size = 2) +
-  geom_text_repel(aes(label = cdPlacette), size = 2.5) +
+figNMDS <- ggplot(pointsNMDS, aes(x = NMDS1, y = NMDS2,
+                                   shape = cdTransect)) +
+  geom_point(size = 2.5) +
+  geom_text_repel(aes(label = cdPlacette), size = 2.5,
+                  min.segment.length = 0) +
   labs(
     title = "NMDS des placettes (dissimilarite de Bray-Curtis)",
     subtitle = paste0("Stress : ", round(nmdsRes$stress, 3),
