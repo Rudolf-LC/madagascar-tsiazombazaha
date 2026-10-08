@@ -18,37 +18,26 @@ Conventions :
     S = alpha * ln(1 + N / alpha).
 "
 
-# Abondances par placette x espece (identites re conciliees).
-# Chaque observation de flore represente une espece dans une placette ;
-# son abondance = nombre de tiges mesurees (floreTiges, CBH > 8 cm)
-#               + nombre de gaulis (colonnes Gaulis).
-# Les especes sans tige comptee (presence notee uniquement) comptent 1.
-# Exclusion : espece indeterminee (taxon fourre-tout).
+# Abondances par placette x espece, TIGES MESUREES uniquement
+# (floreTiges : CBH > 8 cm — les gaulis ne comptent pas).
+# Conventions :
+#  - l'identite reconciliationnee fait foi pour les especes determinees ;
+#  - chaque observation "espece indeterminee" compte pour UNE espece
+#    distincte (ind_PXX_OOO) : 3 sp. indeterminees dans une placette
+#    = 3 especes locales. On ne perd ni richesse ni equitabilite.
 calculer_abondances <- function(d, correspondances) {
-  tigesMesurees <- d$floreTiges |>
-    mutate(espece = dplyr::recode(nomVernaculaire, !!!correspondances,
-                                  .default = nomVernaculaire)) |>
-    filter(!is.na(espece), str_trim(espece) != "",
-           str_to_lower(str_trim(espece)) != "espèce indéterminée") |>
-    count(cdPlacette, espece, name = "nbMesurees")
-
-  gaulis <- d$flore |>
-    mutate(espece = dplyr::recode(nomVernaculaire, !!!correspondances,
-                                  .default = nomVernaculaire)) |>
-    filter(!is.na(espece), str_trim(espece) != "",
-           str_to_lower(str_trim(espece)) != "espèce indéterminée") |>
-    mutate(nbGaulis = replace_na(gaulis, 0)) |>
-    select(cdPlacette, espece, nbGaulis)
-
-  full_join(tigesMesurees, gaulis,
-            by = c("cdPlacette", "espece")) |>
+  d$floreTiges |>
     mutate(
-      nbMesurees = replace_na(nbMesurees, 0),
-      nbGaulis = replace_na(nbGaulis, 0),
-      abondance = nbMesurees + nbGaulis
+      espece = dplyr::recode(nomVernaculaire, !!!correspondances,
+                             .default = nomVernaculaire),
+      espece = if_else(
+        str_to_lower(str_trim(espece)) == "espèce indéterminée",
+        paste0("ind_", cdPlacette, "_", cdObs),
+        espece
+      )
     ) |>
-    filter(abondance > 0) |>
-    select(cdPlacette, espece, abondance)
+    filter(!is.na(espece), str_trim(espece) != "") |>
+    count(cdPlacette, espece, name = "abondance")
 }
 
 # Indices d'une placette a partir du vecteur d'abondances
