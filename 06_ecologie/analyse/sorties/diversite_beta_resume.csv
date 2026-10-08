@@ -1,4 +1,2 @@
 indice,moyenne,ecartType
-Jaccard (presences),0.848,0.069
-Sorensen (presences),0.742,0.098
 Bray-Curtis (abondances),0.816,0.083
