@@ -18,15 +18,16 @@ Conventions :
     S = alpha * ln(1 + N / alpha).
 "
 
-# Abondances par placette x espece, TIGES MESUREES uniquement
-# (floreTiges : CBH > 8 cm — les gaulis ne comptent pas).
+# Abondances par placette x espece : TOUTES LES TIGES COMPTÉES
+# (tiges mesurees de floreTiges, CBH > 8 cm, + gaulis de la colonne
+# Gaulis : tiges < 1,30 m).
 # Conventions :
 #  - l'identite reconciliationnee fait foi pour les especes determinees ;
 #  - chaque observation "espece indeterminee" compte pour UNE espece
 #    distincte (ind_PXX_OOO) : 3 sp. indeterminees dans une placette
 #    = 3 especes locales. On ne perd ni richesse ni equitabilite.
 calculer_abondances <- function(d, correspondances) {
-  d$floreTiges |>
+  tigesMesurees <- d$floreTiges |>
     mutate(
       espece = dplyr::recode(nomVernaculaire, !!!correspondances,
                              .default = nomVernaculaire),
@@ -37,7 +38,31 @@ calculer_abondances <- function(d, correspondances) {
       )
     ) |>
     filter(!is.na(espece), str_trim(espece) != "") |>
-    count(cdPlacette, espece, name = "abondance")
+    count(cdPlacette, espece, name = "nbMesurees")
+
+  gaulis <- d$flore |>
+    mutate(
+      espece = dplyr::recode(nomVernaculaire, !!!correspondances,
+                             .default = nomVernaculaire),
+      espece = if_else(
+        str_to_lower(str_trim(espece)) == "espèce indéterminée",
+        paste0("ind_", cdPlacette, "_", cdObs),
+        espece
+      ),
+      nbGaulis = replace_na(gaulis, 0)
+    ) |>
+    filter(!is.na(espece), str_trim(espece) != "") |>
+    select(cdPlacette, espece, nbGaulis)
+
+  full_join(tigesMesurees, gaulis,
+            by = c("cdPlacette", "espece")) |>
+    mutate(
+      nbMesurees = replace_na(nbMesurees, 0),
+      nbGaulis = replace_na(nbGaulis, 0),
+      abondance = nbMesurees + nbGaulis
+    ) |>
+    filter(abondance > 0) |>
+    select(cdPlacette, espece, abondance)
 }
 
 # Indices d'une placette a partir du vecteur d'abondances
