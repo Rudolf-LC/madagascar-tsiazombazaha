@@ -126,7 +126,6 @@ message("   Beta multiplicatif (Whittaker) : ", round(whit$beta, 2),
 message("   Beta additif : ", round(betaAdditif, 1),
         " especes (gamma - alpha moyen)")
 message("   NMDS Bray-Curtis : stress = ", round(nmdsRes$stress, 3))
-")
 
 list(
   donnees = d,
