@@ -86,11 +86,16 @@ pointsNMDS <- tibble::tibble(
 if (!requireNamespace("ggrepel", quietly = TRUE)) install.packages("ggrepel")
 library(ggrepel)
 
+nTransects <- length(unique(pointsNMDS$cdTransect))
+formes <- c(0:25)[seq_len(nTransects)]
+
 figNMDS <- ggplot(pointsNMDS, aes(x = NMDS1, y = NMDS2,
-                                   shape = cdTransect)) +
+                                   shape = cdTransect,
+                                   colour = cdTransect)) +
   geom_point(size = 2.5) +
+  scale_shape_manual(values = formes) +
   geom_text_repel(aes(label = cdPlacette), size = 2.5,
-                  min.segment.length = 0) +
+                  min.segment.length = 0, show.legend = FALSE) +
   labs(
     title = "NMDS des placettes (dissimilarite de Bray-Curtis)",
     subtitle = paste0("Stress : ", round(nmdsRes$stress, 3),
