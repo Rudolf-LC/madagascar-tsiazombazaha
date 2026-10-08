@@ -2,30 +2,36 @@
 Ewen Le Coeur
 2026
 Objectif : fonctions de calcul de la diversite alpha (§3.4 du document
-d'etape) — nombres de Hill, indice de Fisher, par placette.
+d'etape) — nombres de Hill et indice de Fisher, par placette.
 
-Fonctions de calcul uniquement ; l'orchestration est dans
-analyse_diversite.R.
+Fonctions de calcul uniquement ; l'orchestration, les sorties et les
+figures sont dans analyse_diversite.R.
 
-Conventions :
-  - les abondances comptent les tiges mesurees ET les gaulis
-    (une observation de flore = l'espece + son nombre de tiges) ;
-  - l'identite reconciliationnee fait foi (exclusion de l'espece
-    indeterminee, taxon fourre-tout) ;
-  - indices de Hill : 0D = richesse S ; 1D = exp(Shannon) ;
-    2D = Simpson inverse corrige (forme unveighted) ;
-  - alpha de Fisher : resolution numerique de
-    S = alpha * ln(1 + N / alpha).
+Conventions (validees par l'auteur, double controle R/Python) :
+  - ABONDANCES = toutes les tiges comptees : tiges mesurees
+    (floreTiges, CBH > 8 cm) + gaulis (tiges < 1,30 m) ;
+  - ESPECES = identites re conciliees (liste_especes_vegetales.csv) ;
+    chaque observation « espece indeterminee » compte pour une espece
+    locale distincte (ind_PXX_OOO) ;
+  - INDICES DE HILL (Hill 1973 ; interpretations de Jost 2006) :
+      0D = richesse specifique S ;
+      1D = exp(Shannon H') = nombre effectif d'especes communes ;
+      2D = Simpson inverse corrige (estimateur N(N-1)/Σn(n-1))
+           = nombre effectif d'especes dominantes ;
+  - ALPHA DE FISHER : resolution numerique (dichotomie) de
+      S = alpha * ln(1 + N / alpha)
+    (Fisher et al. 1943) ; independant du nombre de tiges comptees.
 "
 
-# Abondances par placette x espece : TOUTES LES TIGES COMPTÉES
-# (tiges mesurees de floreTiges, CBH > 8 cm, + gaulis de la colonne
-# Gaulis : tiges < 1,30 m).
-# Conventions :
-#  - l'identite reconciliationnee fait foi pour les especes determinees ;
-#  - chaque observation "espece indeterminee" compte pour UNE espece
-#    distincte (ind_PXX_OOO) : 3 sp. indeterminees dans une placette
-#    = 3 especes locales. On ne perd ni richesse ni equitabilite.
+### Abondances ###
+
+# Abondances par placette x espece (tibble : cdPlacette, espece, abondance).
+#
+# Les tiges mesurees proviennent de floreTiges (une ligne = une tige) ;
+# les gaulis sont comptes par observation dans d$flore. Une meme espece
+# peut apparaitre dans plusieurs observations d'une placette : les gaulis
+# sont donc agreges par espece AVANT la jointure, sinon chaque tige
+# mesuree serait dupliquee autant de fois (bug corrige et documente ici).
 calculer_abondances <- function(d, correspondances) {
   tigesMesurees <- d$floreTiges |>
     mutate(
@@ -40,9 +46,6 @@ calculer_abondances <- function(d, correspondances) {
     filter(!is.na(espece), str_trim(espece) != "") |>
     count(cdPlacette, espece, name = "nbMesurees")
 
-  # N.B. : agreger les gaulis par espece AVANT la jointure — une meme
-  # espece peut apparaitre dans plusieurs observations d'une placette,
-  # et la jointure dupliquerait sinon les tiges mesurees.
   gaulis <- d$flore |>
     mutate(
       espece = dplyr::recode(nomVernaculaire, !!!correspondances,
@@ -69,28 +72,31 @@ calculer_abondances <- function(d, correspondances) {
     select(cdPlacette, espece, abondance)
 }
 
-# Indices d'une placette a partir du vecteur d'abondances
+### Indices ###
+
+# Nombres de Hill d'un vecteur d'abondances.
+# Retourne : S (richesse), H (Shannon), D1, D2, N (total de tiges).
 indices_hill <- function(abondances) {
   abondances <- abondances[abondances > 0]
   S <- length(abondances)
   N <- sum(abondances)
   p <- abondances / N
-  H <- -sum(p * log(p))
-  D1 <- exp(H)
-  # Simpson inverse, forme corrigee (estimateur unveil)
+  H <- -sum(p * log(p))          # Shannon H'
+  D1 <- exp(H)                   # 1D
+  # 2D : Simpson inverse. Indefini si une seule espece (sommeCarres = 0)
   sommeCarres <- sum(abondances * (abondances - 1))
   D2 <- if (sommeCarres > 0) N * (N - 1) / sommeCarres else NA_real_
   c(S = S, H = H, D1 = D1, D2 = D2, N = N)
 }
 
-# Alpha de Fisher : resoudre S = alpha * ln(1 + N/alpha)
+# Alpha de Fisher : resoudre S = alpha * ln(1 + N/alpha) par dichotomie
+# (robuste, aucune dependance externe ; la fonction est croissante en
+# alpha, un encadrement large [1e-3 ; 1e6] convient toujours).
 alpha_fisher <- function(S, N) {
   if (S <= 1 || N <= 1) return(NA_real_)
   f <- function(a) a * log(1 + N / a) - S
-  # encadrement : alpha dans [1e-3, 1e6]
   bas <- 1e-3
   haut <- 1e6
-  # dichotomie (robuste, sans dependance)
   for (i in 1:200) {
     milieu <- (bas + haut) / 2
     if (f(milieu) > 0) haut <- milieu else bas <- milieu
@@ -98,7 +104,9 @@ alpha_fisher <- function(S, N) {
   (bas + haut) / 2
 }
 
-# Tous les indices par placette
+### Table par placette ###
+
+# Tous les indices de diversite alpha, une ligne par placette.
 calculer_diversite_alpha <- function(abondances) {
   abondances |>
     group_by(cdPlacette) |>
