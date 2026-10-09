@@ -50,14 +50,20 @@ theme_axes <- theme_minimal() +
     plot.subtitle = element_text(size = 9)
   )
 
+# Enforce grayscale for all figures
+scale_grey <- function() {
+  scale_fill_grey(start = 0.3, end = 0.8) +
+  scale_color_grey(start = 0.3, end = 0.8)
+}
+
 ### Figure ###
 
 figureAireEspece <- ggplot(courbeAireEspece,
                            aes(x = surface_m2, y = richesse_moyenne)) +
   geom_ribbon(aes(ymin = richesse_moyenne - richesse_ecartType,
                  ymax = richesse_moyenne + richesse_ecartType),
-              fill = "grey80", alpha = 0.5) +
-  geom_line(color = "darkred", linewidth = 0.9) +
+              alpha = 0.5) +
+  geom_line(linewidth = 0.9) +
   geom_point(size = 1.8) +
   scale_x_continuous(expand = expansion(mult = c(0.02, 0.05))) +
   scale_y_continuous(expand = expansion(mult = c(0.02, 0.08))) +
@@ -65,7 +71,8 @@ figureAireEspece <- ggplot(courbeAireEspece,
        y = "Richesse spécifique (espèces)",
        title = "Courbe aire-espèce",
        subtitle = "Richesse moyenne pour 200 permutations aléatoires des placettes") +
-  theme_axes
+  theme_axes +
+  scale_grey()
 ggsave(file.path(dossierSorties, "richesse_aire_espece.png"),
        figureAireEspece, width = 16, height = 12, units = "cm", dpi = 300)
 
