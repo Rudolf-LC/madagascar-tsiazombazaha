@@ -1,19 +1,29 @@
-# NOTE DE CONTEXTE — Rédaction §3.6 : IVI
+# NOTE DE CONTEXTE — Rédaction §3.6 : IVI (synthèse finale)
 
-## Méthodo (à citer)
-- **IVI normalisé** : Curtis, J.T. & McIntosh, R.P. (1951) « An upland forest continuum in the prairie-forest border region of Wisconsin », *Ecology* 32(3) : 476-496 (indice original) ; **Kent, M. (2011)** *Vegetation Description and Data Analysis: A Practical Approach*, 2e éd., Wiley-Blackwell (normalisation, implémentée aussi dans `BiodiversityR::importancevalue`).
-- Formule : IVI = (DR + DoR + FR) / 3, base 100. DR = % des tiges, DoR = % de la surface terrière, FR = % des placettes échantillonnées contenant l'espèce.
-- **Pourquoi normalisé** : en forêt hyperdiverse à fort turnover (261 espèces), DR et DoR sont dilués (~0,4 %/espèce en moyenne) mais pas la FR (une espèce dans 12/24 placettes = FR 50 même si rare en tiges). L'IVI brut se réduit donc à un classement par FR ; la normalisation équilibre les trois dimensions.
+## Ce qui a été fait
+Script `09_analyse_ivi.R` (branche `vibe/ivi-dbd38e`), exécuté et validé. Sortie : `ivi_especes.csv` — 129 espèces, 24 placettes échantillonnées (28 au total, 4 sans tige mesurée), 488 tiges.
 
-## Références d'application pour la DISCUSSION (à choisir, une des trois)
-1. **Gelesha forest, Éthiopie** — *J. Ecology and the Natural Environment* : structure + IVI pour hiérarchiser les priorités de conservation (espèces à IVI faible = conservation, IVI fort = monitoring). Bon parallèle avec vos usages/conservation.
-2. **Siberut, Indonésie** — forêt tropicale humide primaire, IVI par classes de dbh — contexte forestier le plus proche du vôtre.
-3. **Chhotanagpur plateau, Inde** — *J. Bio. & Env. Sci.* : IVI divisé par 3 (même normalisation que nous), Shorea robusta dominant — exemple d'IVI par espèce dominante unique.
+## Méthode (citations)
+- **IVI normalisé** base 100 : IVI = (DR + DoR + FR) / 3.
+  - DR = 100 × nbTiges/Σ tiges ; DoR = 100 × G espèce/Σ G ; FR = 100 × nbPlacettes de l'espèce/Σ placettes par espèce (vérifier le dénominateur exact dans le script : FR sur les placettes échantillonnées).
+- Citations : **Curtis & McIntosh (1951)**, *Ecology* 32(3) : 476-496 (indice original) ; **Kent (2011)**, *Vegetation Description and Data Analysis*, 2e éd., Wiley-Blackwell (normalisation).
+- Pourquoi normalisé : en forêt hyperdiverse (129 espèces mesurées), l'IVI brut (somme sur 300) est dominé à >80 % par la FR — DR et DoR sont dilués entre les espèces, pas la FR. La normalisation équilibre les trois dimensions.
 
-## Livrables (`06_ecologie/analyse/sorties/`)
-- `ivi_especes.csv` : rang, espèce (réconciliée), nbTiges, nbPlacettes, g_m2, DR, DoR, FR, IVI normalisé.
-- Convention : tiges mesurées uniquement (gaulis exclus, pas de CBH → pas de G) ; indéterminées = espèces locales distinctes.
+## Résultats à citer (ivi_especes.csv, trié par IVI décroissant)
+- **Babogna** domine nettement : IVI = 6,5 (DR 5,1 ; DoR 9,9 ; FR 4,5) — à la fois la plus dense, la plus dominante (G) et l'une des plus fréquentes. Espèce structurante de la forêt.
+- Suivent : Ambora (5,0), Hazomainty (4,9), Menafatagna (4,4), Voapaka (3,8).
+- La décroissance est rapide : 5 espèces > 3,5 ; au-delà du rang 15, IVI < 1,5. Longue traîne d'IVI faibles = traduction directe du turnover élevé (cohérent avec §3.4 beta, Whittaker 7,7).
+- Cas intéressants à commenter : Ramiavogna et Sary — 2 tiges chacune mais DoR ~4,5-5,0 (grosses tiges isolées) : rares mais localement dominantes. Hasina — FR 3,9 (12 placettes) mais DoR 1,3 : partout mais jamais dominante. Ces contrastes DR/DoR/FR sont la richesse de l'indice : les présenter par composantes, pas seulement l'IVI agrégé.
 
-## Points de rédaction
-- Présenter aussi les trois composantes séparément (tableau DR/DoR/FR) : en hyperdiversité, une espèce peut avoir une FR élevée (partout) mais un DoR faible (jamais dominante) — l'IVI seul masque cette nuance.
-- Lecture attendue : les espèces à IVI fort sont les « structurantes » (présentes ET denses ET dominantes) ; la longue traîne d'IVI faibles traduit le turnover élevé (cohérent avec §3.4 beta).
+## Conventions
+- Espèces réconciliées uniquement ; indéterminées = espèces locales distinctes.
+- Tiges mesurées (CBH > 8 cm) ; gaulis exclus (pas de CBH → pas de G).
+- Échelle : dispositif entier (pas de ventilation par placette — la FR n'aurait pas de sens).
+
+## Figure éventuelle (optionnelle)
+Si figure : barres horizontales top 15 + longue traîne en mention textuelle. Niveaux de gris uniquement, pas de titre dans l'image (légende Typst). Sinon, un tableau top 10-15 suffit largement pour un point secondaire du mémoire.
+
+## Références d'application pour la DISCUSSION (en choisir une)
+1. Gelesha forest, Éthiopie — IVI pour hiérarchiser priorités de conservation.
+2. Siberut, Indonésie — forêt tropicale humide primaire, contexte le plus proche.
+3. Chhotanagpur plateau, Inde — IVI normalisé comme nous (÷3), espèce dominante unique.
