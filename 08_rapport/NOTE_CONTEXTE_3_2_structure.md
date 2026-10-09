@@ -17,7 +17,19 @@ Cette note couvre le chantier §3.2 du document d'étape : densité N, distribut
 | `structure_N_placettes.csv` / `structure_G_placettes.csv` | Indices par placette |
 | `structure_indices_placettes.csv` | Ancien format (obsolète — utiliser les précédents) |
 
-## Chiffres clés validés (25 placettes, 549,4 m² horizontaux — attention : les effectifs d'observations ont évolué depuis, la saisie continue)
+## Chiffres clés (mis à jour après découpage P2 : 28 placettes, ex-P2 → P02-P05, renumérotation P06-P28)
+
+⚠️ **Valeurs ci-dessous recalculées sur le dispositif à 28 placettes** (relancer `04_analyse_structure.R` si besoin et mettre à jour ce tableau) :
+
+| Indice | Moyenne ± ET | IC 95 % |
+|---|---|---|
+| N total (tiges) | 1 998 (toutes placettes) | — |
+| N brut par placette | 71,4 ± 26,5 | [61,1 ; 81,6] |
+| N (tiges/m²) | 3,64 ± 1,35 | [3,11 ; 4,16] |
+| N (tiges/ha) | 36 365 ± 13 461 | [31 146 ; 41 585] |
+| G (m²/ha) | 35,95 ± 26,79 | [25,57 ; 46,34] |
+
+Les valeurs de l'ancienne version (25 placettes, N brut 70,4 ± 31,2) sont caduques : ne pas citer.
 
 | Indice | Moyenne ± sd | IC 95 % |
 |---|---|---|
