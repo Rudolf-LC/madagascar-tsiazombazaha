@@ -66,9 +66,6 @@ nbPlacettesEchantillonnees <- tiges$cdPlacette |> unique() |> length()
 
 ### IVI a l'echelle du dispositif ###
 
-totalTiges <- nrow(tiges)
-totalG <- sum(tiges$g_m2)
-
 ivi <- tiges |>
   dplyr::group_by(espece) |>
   dplyr::summarise(
@@ -78,17 +75,15 @@ ivi <- tiges |>
     .groups = "drop"
   ) |>
   dplyr::mutate(
-    DR = 100 * nbTiges / totalTiges,
-    DoR = 100 * g_m2 / totalG,
-    FR = 100 * nbPlacettes / nbPlacettesEchantillonnees,
+    DR = 100 * nbTiges / sum(nbTiges),
+    DoR = 100 * g_m2 / sum(g_m2),
+    FR = 100 * nbPlacettes / sum(nbPlacettes),
     IVInormalise = (DR + DoR + FR) / 3
   ) |>
   dplyr::arrange(dplyr::desc(IVInormalise)) |>
   dplyr::mutate(rang = dplyr::row_number()) |>
   dplyr::select(rang, espece, nbTiges, nbPlacettes, g_m2,
-                DR, DoR, FR, IVInormalise) |>
-  dplyr::mutate(across(where(is.numeric) & !rang,
-                       ~ round(.x, 2)))
+                DR, DoR, FR, IVInormalise)
 
 ### Exports ###
 
