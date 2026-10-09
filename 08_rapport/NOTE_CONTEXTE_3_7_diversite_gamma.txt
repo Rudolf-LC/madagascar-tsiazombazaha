@@ -1,0 +1,47 @@
+Voici le texte de cadrage, prêt à être transmis à l'agent de rédaction. Les valeurs numériques des estimateurs ne figurent pas dans cette conversation ; elles sont signalées par des champs à compléter à partir de vos sorties CSV.
+
+---
+
+## Briefing de rédaction — Section 3.7 « Estimation de la richesse spécifique totale »
+
+### Mission
+
+Rédiger, pour un rapport d'étude en écologie forestière, trois volets consacrés à l'estimation de la richesse spécifique totale (richesse gamma) de la flore vasculaire d'une zone d'étude : une sous-section Matériel et méthodes, une sous-section Résultats, et une analyse critique. Le ton est scientifique, neutre et factuel ; le document est destiné à un rapport professionnel (niveaux de gris, tableaux et figures numérotés).
+
+### Contexte de l'étude
+
+La flore a été recensée dans 28 placettes de surface horizontale moyenne d'environ 19,62 m², soit une surface prospectée totale d'environ 549,4 m². Le relevé a porté sur la présence des espèces par placette et sur le dénombrement des tiges de chaque espèce par placette. Les noms vernaculaires de terrain ont été réconciliés en identités taxonomiques au moyen d'une liste de correspondances validée. Après réconciliation, le nombre d'espèces distinctes observées s'élève à 243 : c'est le gamma observé, la richesse totale de référence.
+
+Deux jeux de données en découlent : une matrice d'incidence (28 placettes × 243 espèces, codée 1/0), fondée sur la présence-absence par placette ; et un vecteur d'abondances (nombre total de tiges par espèce, toutes placettes confondues). Les analyses exploitent ces deux jeux selon deux modèles d'échantillonnage distincts : le modèle d'incidence, dont l'unité est la placette, et le modèle d'abondance, dont l'unité est la tige.
+
+### Méthodes mises en œuvre (à décrire dans Matériel et méthodes)
+
+1. Courbe de raréfaction-extrapolation (iNEXT, Hsieh et al. 2016) : diversité d'ordre q = 0 (richesse), modèle d'incidence. L'échantillon de référence compte 28 unités ; la courbe interpole depuis 1 placette, passe par le point observé (28 placettes) et extrapole jusqu'à 112 placettes, soit quatre fois la surface prospectée (environ 2 197,5 m²), avec 40 nœuds et des intervalles de confiance à 95 % obtenus par bootstrap. Préciser que les auteurs de la méthode recommandent de ne pas dépasser le double de la taille de référence ; l'extrapolation au quadruple est un choix assumé, à assumer explicitement dans le texte.
+2. Estimateurs asymptotiques d'incidence (unité = placette) :
+   - Chao2, estimateur principal, fondé sur les espèces observées dans une seule (Q1) puis deux placettes (Q2) ; intervalle de confiance à 95 % par transformation logarithmique (package SpadeR).
+   - Jackknife d'ordre 2 (Burnham et Overton, 1979), contrôle de robustesse, fondé sur Q1 et Q2 (SpadeR, IC log).
+   - ICE, estimateur par couverture (Lee et Chao, 1994), homologue d'incidence de l'ACE ; séparation des espèces fréquentes et infrequentes au seuil de 10 placettes (SpadeR, IC log).
+   - Bootstrap de Smith et van Belle (1984), complément conservateur estimant le nombre d'espèces manquées par unité ; intervalle par approximation normale (package vegan).
+3. Estimateurs d'abondance (unité = tige), en contrepoint : Chao1 (Chao, 1984), fondé sur les espèces représentées par une puis deux tiges, intervalle de confiance exact (iNEXT/ChaoRichness) ; Jackknife d'ordre 1 (vegan, IC par approximation normale) et ACE (Chao et Lee, 1992, vegan, IC par approximation normale), rapportés à titre de compléments.
+4. Logiciels : R (version 4.6), packages iNEXT (3.x), SpadeR, vegan, dplyr/tidyr, ggplot2.
+
+Une précision méthodologique à conserver : Chao1, Jack1 et ACE relèvent du modèle d'échantillonnage des individus (tiges), qui suppose un mélange aléatoire des individus ; sur un dispositif en placettes couvrant des habitats hétérogènes, ce modèle tend à sous-estimer la richesse. Les estimateurs d'incidence constituent donc la référence, les estimateurs d'abondance un contrepoint.
+
+### Sorties disponibles (à mobiliser dans Résultats)
+
+1. Tableau des huit estimateurs (fichier estimateurs_richesse_gamma.csv), à colonnes : Metrique, Modele (incidence/abondance), Estimation, IC_inf, IC_sup. Valeurs à insérer : [CHAO2], [JACK2], [ICE], [BOOTSTRAP], [CHAO1], [JACK1], [ACE], avec le gamma observé fixé à 243.
+2. Table de la courbe (courbe_raréfaction_extrapolation.csv) : 40 points, surface cumulée en m², richesse estimée et bornes de l'intervalle de confiance.
+3. Figure en niveaux de gris (PNG/SVG) : courbe de raréfaction-extrapolation avec bande de confiance à 95 %, ligne pointillée verticale à la surface prospectée (549,4 m²).
+
+### Contenu attendu par volet
+
+1. Résultats : présentation strictement factuelle. Donner le gamma observé, le tableau des huit estimateurs avec leurs intervalles à 95 %, puis la courbe : allure de la raréfaction, position du point de référence, pente de l'extrapolation au-delà de la surface prospectée, largeur de la bande de confiance et son accroissement progressif. Décrire la fourchette globale d'estimation (de l'estimation la plus basse à la plus haute) et indiquer si les estimateurs convergent ou se dispersent.
+2. Analyse : interpréter la convergence de la fourchette comme indicateur de fiabilité (forte proximité de Chao2, ICE, bootstrap et jackknives = richesse proche de la saturation d'échantillonnage ; dispersion marquée = effort insuffisant ou hétérogénéité forte). Rappeler que Chao2 est une borne inférieure prudente et le bootstrap la borne basse de la fourchette. Confronter les deux modèles : un Chao1 nettement inférieur à Chao2 signale le biais attendu du modèle d'abondance sur données en placettes ; une proximité des deux renforce au contraire la plausibilité de la fourchette. Signaler les limites : extrapolation au quadruple de la surface, nombre modéré de placettes, intervalles issus de méthodes différentes (transformation log pour la famille SpadeR, approximation normale pour vegan) donc à comparer avec prudence.
+
+### Références à mobiliser
+
+Burnham et Overton (1979) ; Chao (1984, 1987) ; Chao et Lee (1992) ; Lee et Chao (1994) ; Smith et van Belle (1984) ; Hsieh, Ma et Chao (2016) ; Chiu et al. (2014) pour les variantes de Chao2 (Chao2-bc, iChao2), disponibles en annexe mais non retenues au tableau principal.
+
+---
+
+Deux champs restent à compléter par vous avant transmission : les valeurs numériques des sept estimateurs (prises dans votre CSV final) et, si vous le souhaitez, un extrait descriptif de la courbe. Si vous préférez, je peux également produire une version condensée de ce briefing (environ moitié moins longue) si l'agent rédacteur travaille mieux sur un texte plus court.
