@@ -25,7 +25,7 @@ La répartition des usages par catégorie du standard Cook (1995) est dominée p
 #figure(
   table(
     columns: (auto, auto, auto),
-    align: (left, right, left),
+    align: (left, center, left),
     inset: 8pt,
     [*Catégorie d'usage (Cook, 1995)*], [*Nombre d'espèces*], [*Usages cités*],
     [Matériaux], [48], [balai, batan, bois de construction, canaux d'irrigation, construction de maison, corde, fixation de toiture, guitare, manche de bêche, menuiserie, panier, pilon, pirogue, planche, plancher, poutre, tressage],
@@ -62,7 +62,7 @@ Sur l'ensemble du dispositif, 1 761 tiges ont été comptées sur 25 placettes (
 #figure(
   table(
     columns: (auto, auto, auto, auto, auto),
-    align: (left, right, center, center, center),
+    align: (left, center, center, center, center),
     inset: 8pt,
     [*Indicateur*], [*Moyenne*], [*Écart-type*], [*IC 95 %*], [*n*],
     [Nombre total de tiges comptées, tiges], [1 761], [—], [—], [25],
@@ -80,7 +80,8 @@ Sur l'ensemble du dispositif, 1 761 tiges ont été comptées sur 25 placettes (
 La distribution des effectifs par classe de diamètre décroît régulièrement depuis les plus petites classes (Figure @fig-hist-classes) : 26 010 tiges/ha (IC 95 % : [20 427 ; 31 593]) dans la classe 0–2,5 cm, qui inclut les gaulis, puis 6 138 tiges/ha [4 742 ; 7 534] en 2,5–5 cm et 1 469 tiges/ha [1 033 ; 1 906] en 5–7,5 cm. Les classes supérieures à 10 cm ne représentent plus que quelques dizaines de tiges par hectare.
 
 #figure(
-  image("../../06_ecologie/analyse/sorties/structure_histogramme_classes.png"),
+  image("../../06_ecologie/analyse/sorties/structure_histogramme_classes.png",
+    alt: "Histogramme de la densité de tiges par classe de diamètre de 2,5 cm : distribution en J inversé, la classe 0-2,5 cm domine à environ 26 000 tiges/ha, décroissance régulière ensuite."),
   caption: [Densité de tiges par classe de diamètre de 2,5 cm (moyenne entre placettes, barres = IC 95 % par t de Student). L'échelle de l'axe des ordonnées est symétrique-logarithmique : linéaire près de zéro, logarithmique au-delà, afin de représenter les intervalles de confiance dont la borne inférieure descend à zéro ; pour certaines classes rares, la borne inférieure de l'IC est négative et la barre est tronquée à zéro (étiquettes : IC réel). Les gaulis (< 1,30 m) sont inclus dans la classe 0–2,5 cm.],
 ) <fig-hist-classes>
 
@@ -91,7 +92,8 @@ La distribution des effectifs par classe de diamètre décroît régulièrement 
 Le profil de surface terrière est plus régulier (Figure @fig-G-classes) : après un maximum de 10,0 m2/ha dans la première classe [2,5–7,5], la surface terrière se maintient entre 3,8 et 4,6 m2/ha dans les classes intermédiaires, puis remonte à 9,2 m2/ha dans la classe [22,5–27,5]. La classe [22,5–27,5] concentre à elle seule un quart de la surface terrière totale. Au total, les petites tiges dominent largement les effectifs, mais leur contribution à la surface terrière reste faible — la section étant proportionnelle au carré du diamètre.
 
 #figure(
-  image("../../06_ecologie/analyse/sorties/structure_G_classes.png"),
+  image("../../06_ecologie/analyse/sorties/structure_G_classes.png",
+    alt: "Histogramme de la surface terrière par classe de diamètre de 5 cm : maximum de 10 m2/ha en 2,5-7,5 cm, valeurs de 4 à 9 m2/ha dans les grandes classes, la classe 22,5-27,5 cm ressort à 9,2 m2/ha."),
   caption: [Surface terrière par classe de diamètre de 5 cm, bornes décalées depuis le seuil de mesure effectif de 2,5 cm (moyenne entre placettes, barres = IC 95 % par t de Student). Les gaulis, non mesurés, sont exclus.],
 ) <fig-G-classes>
 
@@ -116,7 +118,7 @@ La richesse spécifique moyenne par placette est de 29,0 ± 6,1 espèces (IC 95 
 #figure(
   table(
     columns: (auto, auto, auto, auto, auto),
-    align: (left, right, center, center, center),
+    align: (left, center, center, center, center),
     inset: 8pt,
     [*Indice*], [*Moyenne*], [*Écart-type*], [*IC 95 %*], [*n*],
     [Richesse spécifique S (= ⁰D), espèces], [29,0], [6,1], [[26,5 ; 31,6]], [24],
