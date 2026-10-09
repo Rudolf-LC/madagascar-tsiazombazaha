@@ -56,7 +56,8 @@ tiges <- d$floreTiges |>
   dplyr::filter(!is.na(espece), str_trim(espece) != "",
                 !is.na(circ_cm))
 
-nbPlacettes <- tiges$cdPlacette |> unique() |> length()
+nbPlacettesTotal <- d$placettes$cdPlacette |> unique() |> length()
+nbPlacettesEchantillonnees <- tiges$cdPlacette |> unique() |> length()
 
 ### IVI a l'echelle du dispositif ###
 
@@ -74,7 +75,7 @@ ivi <- tiges |>
   dplyr::mutate(
     DR = 100 * nbTiges / totalTiges,
     DoR = 100 * g_m2 / totalG,
-    FR = 100 * nbPlacettes / nbPlacettes,
+    FR = 100 * nbPlacettes / nbPlacettesEchantillonnees,
     IVI = DR + DoR + FR
   ) |>
   dplyr::arrange(dplyr::desc(IVI)) |>
@@ -91,7 +92,8 @@ readr::write_csv(ivi, file.path(dossierSorties, "ivi_especes.csv"))
 ### Messages ###
 
 message("✅ IVI (§3.6) — ", nrow(ivi), " espèces, ",
-        nbPlacettes, " placettes, ", totalTiges, " tiges :")
+        nbPlacettesEchantillonnees, " placettes échantillonnées (",
+        nbPlacettesTotal, " au total), ", totalTiges, " tiges :")
 for (i in seq_len(min(10, nrow(ivi)))) {
   r <- ivi[i, ]
   message("   ", r$rang, ". ", r$espece, " : IVI = ", r$IVI,
