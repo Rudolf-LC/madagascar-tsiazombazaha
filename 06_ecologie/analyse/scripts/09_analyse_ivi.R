@@ -4,13 +4,18 @@ Ewen Le Coeur
 Objectif : IVI — Indice de Valeur d'Importance (§3.6 du document
 d'etape), sur especes reconciliees.
 
-IVI (Curtis & McIntosh 1951) = DR + DoR + FR, avec pour chaque espece :
+IVI normalise (Curtis & McIntosh 1951 ; Kent 2011) : chaque
+composante est ramenee a une base 100 en la divisant par sa somme
+totale, puis l'IVI est la moyenne des trois (maximum 100) :
   - DR  (densite relative)      : % des tiges de l'espece / total tiges ;
   - DoR (dominance relative)    : % de la surface terriere de l'espece
                                   / surface terriere totale ;
   - FR  (frequence relative)    : % des placettes contenant l'espece /
-                                  nombre de placettes ;
-  - IVI = somme des trois (exprime en %, maximum 300).
+                                  placettes echantillonnees ;
+  - IVI normalise = (DR + DoR + FR) / 3.
+La normalisation evite que la FR domine l'indice en foret
+hyperdiverse a fort turnover (DR et DoR y sont dilues entre de
+nombreuses especes, pas la FR : voir note de contexte).
 
 Conventions :
   - tiges mesurees (floreTiges, CBH > 8 cm) ; gaulis exclus (pas de CBH,
@@ -76,12 +81,12 @@ ivi <- tiges |>
     DR = 100 * nbTiges / totalTiges,
     DoR = 100 * g_m2 / totalG,
     FR = 100 * nbPlacettes / nbPlacettesEchantillonnees,
-    IVI = DR + DoR + FR
+    IVInormalise = (DR + DoR + FR) / 3
   ) |>
-  dplyr::arrange(dplyr::desc(IVI)) |>
+  dplyr::arrange(dplyr::desc(IVInormalise)) |>
   dplyr::mutate(rang = dplyr::row_number()) |>
   dplyr::select(rang, espece, nbTiges, nbPlacettes, g_m2,
-                DR, DoR, FR, IVI) |>
+                DR, DoR, FR, IVInormalise) |>
   dplyr::mutate(across(where(is.numeric) & !rang,
                        ~ round(.x, 2)))
 
@@ -96,7 +101,7 @@ message("✅ IVI (§3.6) — ", nrow(ivi), " espèces, ",
         nbPlacettesTotal, " au total), ", totalTiges, " tiges :")
 for (i in seq_len(min(10, nrow(ivi)))) {
   r <- ivi[i, ]
-  message("   ", r$rang, ". ", r$espece, " : IVI = ", r$IVI,
+  message("   ", r$rang, ". ", r$espece, " : IVI = ", r$IVInormalise,
           " (DR ", r$DR, ", DoR ", r$DoR, ", FR ", r$FR, ")")
 }
 
