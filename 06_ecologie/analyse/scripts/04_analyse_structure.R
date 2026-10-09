@@ -40,6 +40,12 @@ theme_axes <- theme_minimal() +
     plot.subtitle = element_text(size = 9)
   )
 
+# Enforce grayscale for all figures
+scale_grey <- function() {
+  scale_fill_grey(start = 0.3, end = 0.8) +
+  scale_color_grey(start = 0.3, end = 0.8)
+}
+
 ### Densite N ###
 
 tiges <- preparer_tiges(d)
@@ -98,7 +104,7 @@ regeneration <- calculer_regeneration(tiges, N_par_placette, seuil_dbh = 12.5)
 figureRegeneration <- ggplot(regeneration$par_placette,
                              aes(x = N_ha_grosses, y = N_ha_gaulis)) +
   geom_point(size = 2.2, alpha = 0.8) +
-  geom_smooth(method = "lm", se = TRUE, color = "darkred", linewidth = 0.7) +
+  geom_smooth(method = "lm", se = TRUE, linewidth = 0.7) +
   labs(x = paste0("Densité des tiges DBH ≥ ", regeneration$seuil_dbh, " cm (tiges/ha)"),
        y = "Densité de la régénération (gaulis/ha)",
        title = "Régénération en fonction du peuplement",
@@ -109,7 +115,8 @@ figureRegeneration <- ggplot(regeneration$par_placette,
                         round(regeneration$spearman_rho, 2))) +
   scale_y_continuous(expand = expansion(mult = c(0.05, 0.12))) +
   scale_x_continuous(expand = expansion(mult = c(0.05, 0.05))) +
-  theme_axes
+  theme_axes +
+  scale_grey()
 ggsave(file.path(dossierSorties, "structure_regeneration.png"),
        figureRegeneration, width = 16, height = 12, units = "cm", dpi = 300)
 
@@ -135,10 +142,10 @@ etiquettes <- classesFigure |>
 
 figureClasses <- ggplot(classesFigure,
                         aes(x = classeDiam + 1.25, y = moyenne_ha)) +
-  geom_col(width = 2.5, fill = "grey70", color = "grey30") +
+  geom_col(width = 2.5) +
   geom_errorbar(aes(ymin = pmax(ic95_bas, 0), ymax = ic95_haut),
                 width = 1.2, linewidth = 0.4) +
-  geom_smooth(method = "loess", se = FALSE, color = "darkred", linewidth = 0.8) +
+  geom_smooth(method = "loess", se = FALSE, linewidth = 0.8) +
   geom_text(data = etiquettes,
             aes(x = classeDiam + 1.25, y = ic95_haut * 1.10, label = etiquette),
             angle = 90, vjust = 0.5, hjust = 0, size = 2.4) +
@@ -150,21 +157,23 @@ figureClasses <- ggplot(classesFigure,
                      breaks = c(0, 10, 100, 1000, 10000, 30000),
                      labels = scales::label_comma(),
                      expand = expansion(mult = c(0.02, 0.22))) +
-  theme_axes
+  theme_axes +
+  scale_grey()
 ggsave(file.path(dossierSorties, "structure_histogramme_classes.png"),
        figureClasses, width = 20, height = 12, units = "cm", dpi = 300)
 
 # Figure 2 : effectifs bruts par classe (tiges comptees)
 figureClassesBrut <- ggplot(classesDiametre,
                             aes(x = classeDiam + 1.25, y = effectifTotal)) +
-  geom_col(width = 2.5, fill = "grey70", color = "grey30") +
+  geom_col(width = 2.5) +
   geom_text(aes(label = effectifTotal), vjust = -0.3, size = 3) +
   scale_x_continuous(breaks = seq(0, max(classesDiametre$borneSup), by = 2.5)) +
   labs(x = "Classe de diamètre (cm)", y = "Tiges comptées",
        title = "Effectifs par classe de diamètre",
        subtitle = "Nombre de tiges comptées dans le dispositif (gaulis en 0–2,5)") +
   scale_y_continuous(expand = expansion(mult = c(0, 0.12))) +
-  theme_axes
+  theme_axes +
+  scale_grey()
 ggsave(file.path(dossierSorties, "structure_histogramme_classes_brut.png"),
        figureClassesBrut, width = 20, height = 12, units = "cm", dpi = 300)
 
@@ -180,7 +189,7 @@ etiquettesAxeG <- GClasses |>
   mutate(etiquetteAxe = paste0("[", format(borneInf, trim = TRUE), " - ",
                                format(borneSup, trim = TRUE), "]"))
 figureGClasses <- ggplot(GClasses, aes(x = classeG, y = moyenne_ha)) +
-  geom_col(width = 5, fill = "grey70", color = "grey30") +
+  geom_col(width = 5) +
   geom_errorbar(aes(ymin = pmax(ic95_bas, 0), ymax = ic95_haut),
                 width = 2, linewidth = 0.4) +
   geom_text(data = etiquettesG,
@@ -196,7 +205,8 @@ figureGClasses <- ggplot(GClasses, aes(x = classeG, y = moyenne_ha)) +
        y = "Surface terrière (m²/ha)",
        title = "Surface terrière par classe de diamètre",
        subtitle = "Moyenne par placette, barres : IC 95 % (tronqué à 0)") +
-  theme_axes
+  theme_axes +
+  scale_grey()
 ggsave(file.path(dossierSorties, "structure_G_classes.png"),
        figureGClasses, width = 20, height = 12, units = "cm", dpi = 300)
 
