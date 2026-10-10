@@ -3,11 +3,19 @@
 .RData
 .Ruserdata
 
+# 05_Sociologie _temp
+05_Sociologie _temp/
+
 # 06_ecologie
 06_ecologie/methodologie/
 06_ecologie/releves/
+06_ecologie/scripts/sorties
 
 # 08_rapport
+08_rapport/documents-brouillons/
+08_rapport/documents-etapes/
+08_rapport/guides-de-redaction-apt/
+08_rapport/images/
 
 # Système
 .DS_Store
