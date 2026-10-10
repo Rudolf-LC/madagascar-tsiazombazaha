@@ -1,0 +1,29 @@
+transect,placette,situation-topographique,surface-horizontale,pente-pourcent,surface-corrigee,recouvrement-canopee-quart-nord,recouvrement-canopee-quart-est,recouvrement-canopee-sud,recouvrement-canopee-quart-ouest,presence-strate-herbacee,presence-strate-sous-etage,presence-strate-canopee-inf,presence-strate-canopee-sup,humus,humidite-sol,nb-epiphytes,nb-mousses,nb-lichens,nb-lianes,nb-champignons,regeneration-inf-30,regeneration-30-a-130,longueur-transect-bois-mort,remarques
+T01,P01,Versant,"19,6349540849362",53,"22,2222230736304",0-25,0-25,25-50,0-25,1,1,0,0,Mull / Hemimoder,Sec,0-2,0-2,>10,>10,0-2,NA,NA,20,Inachevée (accompagnateur âgé) ; comptage en plein sur un quart de 10 mètres de diamètre ; comptage des tiges >5 cm sur 10 mètres de diamètre
+T03,P02,,"19,6349540849362",34,"20,7388248049696",50-75,50-75,50-75,50-75,1,1,1,1,Oligomull,Sec,0-2,0-2,>10,>10,0-2,NA,NA,5,"Choisie par l’accompagnateur car « zone plus riche » ; Sous-placette 1/4 de l'ancienne P2 (decoupage aleatoire, graine 20261009)"
+T03,P03,,"19,6349540849362",34,"20,7388248049696",50-75,50-75,50-75,50-75,1,1,1,1,Oligomull,Sec,3-10,0-2,>10,>10,0-2,NA,NA,5,"Choisie par l’accompagnateur car « zone plus riche » ; Sous-placette 1/4 de l'ancienne P2 (decoupage aleatoire, graine 20261009)"
+T03,P04,,"19,6349540849362",34,"20,7388248049696",50-75,50-75,50-75,50-75,1,1,1,1,Oligomull,Sec,0-2,0-2,>10,>10,0-2,NA,NA,5,"Choisie par l’accompagnateur car « zone plus riche » ; Sous-placette 1/4 de l'ancienne P2 (decoupage aleatoire, graine 20261009)"
+T03,P05,,"19,6349540849362",34,"20,7388248049696",25-50,25-50,25-50,25-50,1,1,1,1,Oligomull,Sec,0-2,0-2,>10,>10,0-2,NA,NA,5,"Choisie par l’accompagnateur car « zone plus riche » ; Sous-placette 1/4 de l'ancienne P2 (decoupage aleatoire, graine 20261009)"
+T04,P06,,"19,6349540849362",3,"19,6437878271294",25-50,0-25,25-50,75-100,1,1,1,0,?,Sec,0-2,0-2,>10,>10,0-2,NA,NA,30,Bois mort sur 20 mètres supplémentaire de liénaire (P3BIS)
+T04,P07,,"19,6349540849362",2,"19,6388806831326",25-50,0-25,25-50,25-50,1,1,0,0,Dysmull / Oligomull,Sec,0-2,0-2,>10,>10,0-2,NA,NA,10,Dans un chablis
+T05,P08,,"19,6349540849362",8,"19,6976857274611",0-25,25-50,50-75,25-50,1,1,0,0,?,Sec,0-2,0-2,>10,>10,0-2,NA,NA,10,Près d’un petit chablis
+T05,P09,,"19,6349540849362",23,"20,147606163934",25-50,50-75,25-50,50-75,1,1,0,0,Mull ?,Sec,0-2,0-2,>10,>10,0-2,NA,NA,10,
+T05,P10,,"19,6349540849362",2,"19,6388806831326",25-50,0-25,50-75,50-75,1,1,1,0,Mull,Sec,0-2,0-2,>10,>10,0-2,NA,NA,10,Au bord d’un cours d’eau (à sec à cette période)
+T05,P11,,"19,6349540849362",45,"21,5314081020229",0-25,25-50,0-25,0-25,1,1,0,0,?,Sec,0-2,0-2,>10,>10,0-2,NA,NA,10,
+T14,P12,,"19,6349540849362",35,"20,8028608874465",0-25,25-50,25-50,25-50,1,1,1,0,Dysmull,Sec,0-2,3-10,>10,>10,0-2,NA,NA,10,
+T14,P13,,"19,6349540849362",38,"21,0048127638036",50-75,25-50,50-75,25-50,1,1,1,0,Mesomull,Sec,0-2,0-2,>10,>10,0-2,NA,NA,10,"Forêt bien développée, située en bas de pente proche d’un bas-fond"
+T14,P14,,"19,6349540849362",7,"19,6830009369748",25-50,0-25,0-25,25-50,1,1,0,0,Dysmull,Sec,0-2,0-2,>10,0-2,0-2,NA,NA,10,Strate herbacée abondante
+T14,P15,,"19,6349540849362",18,"19,9505047552106",25-50,25-50,25-50,0-25,1,1,1,0,Dysmull,Sec,0-2,0-2,>10,>10,0-2,NA,NA,10,
+T16,P16,,"19,6349540849362",42,"21,2964589719467",50-75,50-75,25-50,25-50,1,1,1,1,Dysmull/Hemimoder,Sec,0-2,0-2,>10,>10,0-2,NA,NA,10,"Pente qui donne sur une piscine naturelle en bas. Humus mouillé, mais pas le sol."
+T19,P17,,"19,6349540849362",25,"20,2392474115862",25-50,0-25,0-25,50-75,1,1,0,0,Oligomull,Humide,0-2,0-2,>10,>10,0-2,NA,NA,10,ZDU
+T19,P18,,"19,6349540849362",20,"20,0238028055176",25-50,25-50,0-25,25-50,1,1,1,0,Oligomull,Sec,0-2,0-2,>10,>10,0-2,NA,NA,10,Énorme termitière sur un bois CBH 14 cm
+T19,P19,,"19,6349540849362",30,"20,4994938935119",0-25,25-50,25-50,25-50,1,1,1,0,Dysmull,Sec,0-2,>10,>10,3-10,0-2,NA,NA,10,Proche de nombreux GB Voapaka. Beaucoup de lumière. Lianes sur les petits et mousses sur moyens.
+T19,P20,,"19,6349540849362",10,"19,7328846380028",50-75,50-75,25-50,50-75,1,1,1,0,Dysmull,Sec,0-2,0-2,>10,>10,0-2,NA,NA,10,"Nombreux semis au sol, ambiance de forêt tempérée."
+T20,P21,,"19,6349540849362",0,"19,6349540849362",25-50,25-50,75-100,50-75,1,1,0,0,Mesomull,Sec,NA,NA,NA,NA,NA,68,20,10,
+T20,P22,,"19,6349540849362",3,"19,6437878271294",75-100,50-75,25-50,50-75,1,1,0,0,Mesomull,Humide,NA,NA,NA,NA,NA,124,41,10,
+T20,P23,,"19,6349540849362",23,"20,147606163934",25-50,25-50,25-50,0-25,1,1,1,1,Dysmull / Oligomull,Sec,NA,NA,NA,NA,NA,98,29,10,
+T20,P24,,"19,6349540849362",49,"21,8654411416728",0-25,25-50,0-25,50-75,1,1,1,0,Oligomull,Sec,NA,NA,NA,NA,NA,75,40,10,En bordure d’un TGB
+T21,P25,Bas-fond,"19,6349540849362",17,"19,9166583545275",0-25,0-25,25-50,0-25,1,1,0,0,Mesomull,Sec,>10,3-10,>10,>10,0-2,120,61,10,"En bordure de cours d’eau, nombreuses « lianes épiphytes » humides sur tous les arbres"
+T21,P26,Versant,"19,6349540849362",17,"19,9166583545275",50-75,75-100,50-75,25-50,1,1,0,0,Oligomull,Sec,3-10,3-10,>10,>10,0-2,110,78,10,
+T21,P27,Bas-fond,"19,2422550032375",17,"19,518325187437",25-50,0-25,75-100,50-75,1,1,1,0,Hydromull,Humide,0-2,3-10,>10,3-10,0-2,NA,NA,10,
+T21,P28,Plateau,"19,6349540849362",4,"19,6506557700404",25-50,50-75,25-50,25-50,1,1,1,1,Oligomull / Mesomull,Sec,0-2,3-10,>10,>10,0-2,83,38,10,Placette extrêmement lumineuse malgré la présence de très grands arbres car la lumière vient des côtés/

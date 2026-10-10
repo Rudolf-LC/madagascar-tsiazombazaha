@@ -1,0 +1,918 @@
+placette,code-observation-flore,nom-vernaculaire-brut,type-espece,Circ1,Circ2,Circ3,Circ4,Circ5,Circ6,Cir7,Circ8,Circ9,Cir10,nombre-gaulis,nombre-types,definition-types,usages,remarques-autres
+P06,0601,Randripody,Type 1,10,8,,,,,,,,,5,2,,Poutre (‘anakandry’),
+P06,0602,Lakamboalavo,Type 1,,,,,,,,,,,2,1,,Canaux d’irrigation du riz (‘lakampotsigna’),
+P06,0603,Fontsigna bemavo,,,,,,,,,,,,1,4,,,
+P06,0604,Sp. inconnue,,7,8,,,,,,,,,0,NA,,,
+P06,0605,Ramiavogna,,,,,,,,,,,,1,2,Tige rouge ou blanche,,
+P06,0606,Hasimbe,,,,,,,,,,,,1,NA,,,
+P06,0607,Voatsilagna ,,,,,,,,,,,,1,1,,,
+P06,0608,Raharaha,,,,,,,,,,,,1,2,Pousse dans la forêt (‘agnala’) ou au village (‘antanana’),,
+P06,0609,Valotra / Voamalimpangady ,,,,,,,,,,,,2,1,,Poutre,"Ici, valotra = voamalimpangady"
+P06,0610,Hasina kely,,,,,,,,,,,,14,NA,,Haie,
+P06,0611,Vaivay,,8,8,9,,,,,,,,8,++,,Cordes,
+P06,0612,Babogna,,,,,,,,,,,,2,1,,Construction maison,
+P06,0613,Vilogna,,7,,,,,,,,,,0,1,,,Bois de mauvaise qualité car apprécié des insectes
+P06,0614,Elatrangidigna,Petites feuilles,,,,,,,,,,,2,2,Feuilles grandes ou petites,,
+P06,0615,Sagnira,,18,11,11,,,,,,,,3,2,Feuilles grandes ou petites,,
+P06,0616,Vaimainty ,,,,,,,,,,,,1,NA,,,
+P06,0617,Sefagna,,,,,,,,,,,,1,1,,Bois de chauffage ,
+P06,0618,Sp. inconnue,,,,,,,,,,,,1,NA,,,
+P06,0619,Mamirano,Petites feuilles,,,,,,,,,,,1,2,Feuilles grandes ou petites,,
+P06,0620,Randripody ,Type 2,,,,,,,,,,,1,NA,,,
+P06,0621,Ambora,,,,,,,,,,,,1,1,,,
+P06,0622,Lakamboalavo,Type 2,,,,,,,,,,,2,NA,,,
+P06,0623,Malandivogny ,,,,,,,,,,,,1,1,,,
+P06,0624,Fantsik'ahitra,,8,,,,,,,,,,1,1,,,Nommé ainsi car son bois est très dur
+P06,0625,Hazo mainty,,57,,,,,,,,,,0,1,,,
+P06,0626,Mahanoro,,,,,,,,,,,,2,2,Pousse dans la forêt (‘agnala’) ou dans les endroits clairs (‘mazava’),,
+P06,0627,Sakasaka ,,,,,,,,,,,,1,1,,,
+P06,0628,Sp. inconnue,,,,,,,,,,,,1,NA,,,
+P06,0629,Odibiby,,,,,,,,,,,,1,1,,Utilisé par les sorciers (‘ombiasa’),Odim-biby ?
+P06,0630,Belakevigna,,9,,,,,,,,,,0,1,,Aucun usage,
+P06,0631,Sp. inconnue,,,,,,,,,,,,1,NA,,,
+P06,0632,Fantsin'akoho,,,,,,,,,,,,1,1,,Bois de chauffage ,
+P06,0633,Sakatavilogna,,,,,,,,,,,,1,1,,Canaux d’irrigation du riz (‘lakampotsigna’),
+P06,0634,Sp. inconnue,,,,,,,,,,,,1,NA,,,
+P06,0635,Voatrotrokala,,,,,,,,,,,,1,1,,,
+P06,0636,Sp. inconnue,,,,,,,,,,,,1,NA,,,
+P06,0637,Rahogna,,,,,,,,,,,,1,1,,,
+P06,0638,Zatsifady ,,,,,,,,,,,,1,1,,Plante médicinale contre la fatigue ,Jatsifady ?
+P06,0639,Tsirika ,,,,,,,,,,,,1,2,Nombre de branches élevé ou faible,,
+P07,P0401,Fantsik'ahitra ,,,,,,,,,,,,1,1,,,
+P07,P0402,Fantsin'akoho ,,9,,,,,,,,,,1,1,,,
+P07,P0403,Fenakaragna ,,,,,,,,,,,,0,1,,,
+P07,P0404,Hasina kely,,26,,,,,,,,,,2,NA,,,
+P07,P0405,Hazondambo,,,,,,,,,,,,1,NA,,,
+P07,P0406,Vaivay ,,15,,,,,,,,,,9,NA,,,
+P07,P0407,Hasimbe ,,,,,,,,,,,,1,NA,,,
+P07,P0408,Mahanoro ,,14,8,,,,,,,,,2,2,,,
+P07,P0409,Vodiazo,,,,,,,,,,,,1,1,,,
+P07,P0410,Hafipotsy,,,,,,,,,,,,1,2,Tige rouge ou blanche,,
+P07,P0411,Babogna ,,13,8,,,,,,,,,1,NA,,,
+P07,P0412,Rindambo,,,,,,,,,,,,1,NA,,,
+P07,P0413,Voatsilagna ,,,,,,,,,,,,1,NA,,,
+P07,P0414,Mamirano,,,,,,,,,,,,1,NA,,,
+P07,P0415,Nato,,,,,,,,,,,,2,2,Feuilles grandes ou en forme d’arachide (‘ravimboanyo’),,
+P07,P0416,Voapaka,,22,21,,,,,,,,,0,1,,,
+P07,P0417,Belakevigna ,,,,,,,,,,,,1,NA,,,
+P07,P0418,Voatrotrokala ,,,,,,,,,,,,8,NA,,,
+P07,P0419,Lakamboalavo ,,,,,,,,,,,,1,NA,,,
+P07,P0420,Randripody ,,,,,,,,,,,,1,NA,,,
+P07,P0421,Vilogna ,,24,,,,,,,,,,0,NA,,,
+P07,P0422,Ramiavogna ,,,,,,,,,,,,1,NA,,,
+P08,P0501,Vahikarabo,,25,,,,,,,,,,0,1,,Corde,
+P08,P0502,Vahidronono,,,,,,,,,,,,2,1,,Corde,
+P08,P0503,Vahierotra,,,,,,,,,,,,4,NA,,Corde,
+P08,P0504,Hazodandy,,,,,,,,,,,,1,1,,Maison,
+P08,P0505,Tsikarikaragna ,,,,,,,,,,,,2,1,,Manche des bêches,
+P08,P0506,Tsilaitra,Petites feuilles,,,,,,,,,,,1,2,Feuilles petites ou grandes,,
+P08,P0507,Vahinamalogna,,,,,,,,,,,,1,NA,,Corde,
+P08,P0508,Randripody ,Écorce sans traits verticaux,28,8,,,,,,,,,0,2,Écorce avec ou sans traits verticaux,,Rangipody’ ?
+P08,P0509,Tsimatindreo,,,,,,,,,,,,1,NA,,Plante médicinale ,
+P08,P0510,Madiorano,Petit rachis,,,,,,,,,,,6,2,Rachis des feuilles petit ou grand,,
+P08,P0511,Nanto,Petites feuilles,,,,,,,,,,,1,2,Feuilles petites ou grandes,,Nato’ / ‘Nahto’ ?
+P08,P0512,Vahivahy,,,,,,,,,,,,5,NA,,,
+P08,P0513,Randripody,Écorce à traits verticaux,25,15,15,,,,,,,,0,NA,Écorce avec ou sans traits verticaux,,
+P08,P0514,Angavoady ,,,,,,,,,,,,1,1,,,
+P08,P0515,Rindambo,,,,,,,,,,,,3,1,,,
+P08,P0516,Hasina,,,,,,,,,,,,1,1,,,
+P08,P0517,Tsingena ,,8,,,,,,,,,,3,1,,Balai d’extérieur,
+P08,P0518,Mandriravy,,12,10,,,,,,,,,0,1,,,
+P08,P0519,Longoza,,,,,,,,,,,,1,1,,Fruit comestible,
+P08,P0520,Vahikiripoka,,,,,,,,,,,,1,NA,,,Vahikaripoka’ ?
+P08,P0521,Ambora,,,,,,,,,,,,1,2,Feuilles longues et petites ou grandes,,
+P08,P0522,Voarotra,Feuilles poilues,,,,,,,,,,,2,2,Feuilles glabres ou poilues,,
+P08,P0523,Fandramanagna ,Feuilles petites,,,,,,,,,,,1,3,"Feuilles petites, moyennes ou grandes",,
+P08,P0524,Vilogna,,10,,,,,,,,,,1,1,,,
+P08,P0525,Rotra ala,,11,,,,,,,,,,1,2,Forestier ou non-forestier,,
+P08,P0526,Vainjagna,,,,,,,,,,,,2,NA,,,Vahijagna’ ?
+P08,P0527,Hazomainty ,,17,,,,,,,,,,1,1,,,
+P08,P0528,Tsimanasasokina ,,41,,,,,,,,,,0,1,,,
+P09,P0601,Longosa,,,,,,,,,,,,2,1,,Fruit comestible,
+P09,P0602,Hasimbe ,Feuilles grandes,,,,,,,,,,,1,2,Feuilles petites ou grandes,,
+P09,P0603,Kiritrala,Feuilles petites,10,,,,,,,,,,0,2,Feuilles petites ou grandes,,
+P09,P0604,Vahinamalogna,,,,,,,,,,,,1,NA,,,
+P09,P0605,Vahierotra,,,,,,,,,,,,3,NA,,,
+P09,P0606,Vahibe,,14,8,9,,,,,,,,0,NA,,,
+P09,P0607,Tsingena,,,,,,,,,,,,3,1,,,
+P09,P0608,Tsikarakaragnana,,,,,,,,,,,,1,2,Feuilles petites ou grandes,,
+P09,P0609,Ambora,,22,,,,,,,,,,0,2,,,
+P09,P0610,Raharaha ,Latex clair,32,,,,,,,,,,0,2,Latex rouge ou clair,,
+P09,P0611,Vilogna,,16,9,,,,,,,,,1,1,,,
+P09,P0612,Randripody ,Feuilles petites et longues,12,,,,,,,,,,1,NA,,,
+P09,P0613,Rindambo,,,,,,,,,,,,3,1,,,
+P09,P0614,Vahijagna,,,,,,,,,,,,2,1,,,
+P09,P0615,Fandrenakanga ,,,,,,,,,,,,2,NA,,,1 type ? ; ‘Fandrena akanga’
+P09,P0616,Hazondambo ,,,,,,,,,,,,1,1,,,
+P09,P0617,Tamenaky,,,,,,,,,,,,1,1,,,
+P09,P0618,Vahivahy,,,,,,,,,,,,8,1,,,
+P09,P0619,Madiorano ,Tronc poilu,,,,,,,,,,,3,2,Tronc poilu ou glabre,,
+P09,P0620,Fotsik'azo,,13,10,,,,,,,,,0,1,,,
+P09,P0621,Hazomainty,,,,,,,,,,,,1,1,,,
+P09,P0622,Voapaka,,64,,,,,,,,,,0,1,,,
+P09,P0623,Ambora,,,,,,,,,,,,2,2,Feuilles petites ou grandes,,
+P09,P0624,Vodiazo,,,,,,,,,,,,1,1,,,
+P09,P0625,Kiritr’ala,,,,,,,,,,,,1,1,,,
+P09,P0626,Angavoady ,,13,17,,,,,,,,,0,1,,,
+P09,P0627,Longotra,,,,,,,,,,,,2,1,,,
+P09,P0628,Tsilaitra ,,,,,,,,,,,,1,1,,,
+P09,P0629,Tsimatindreo ,,,,,,,,,,,,3,NA,,Plante médicinale,Le nom de la plante signifie « difficile à tuer »
+P09,P0630,Madiorano ,Tronc glabre,,,,,,,,,,,1,NA,,,
+P10,1001,Raharaha,Latex clair,,,,,,,,,,,1,2,Latex rouge ou clair,,
+P10,1002,Hasina kely,,9,,,,,,,,,,3,NA,,,Probablement Dracanea
+P10,1003,Madiorano,,,,,,,,,,,,2,NA,,,
+P10,1004,Fandemo,Petites feuilles,,,,,,,,,,,1,2,Feuilles petites ou grandes,,
+P10,1005,Tsirika,Sans branches,15,,,,,,,,,,1,2,Présence ou absence de branches,,
+P10,1006,Voara,,,,,,,,,,,,1,2,Forestier ou non-forestier,,
+P10,1007,Ambilzo,,23,,,,,,,,,,0,1,,,
+P10,1008,Vahimainty,,,,,,,,,,,,1,NA,,,
+P10,1009,Fandrenakanga,,10,,,,,,,,,,4,NA,,,
+P10,1010,Hazomainty,,10,,,,,,,,,,5,NA,,,
+P10,1011,Itsoka,,,,,,,,,,,,1,1,,,
+P10,1012,Vainjagna,,,,,,,,,,,,4,NA,,,
+P10,1013,Vaierotra,,,,,,,,,,,,2,NA,,,
+P10,1014,Hasimbe,,,,,,,,,,,,1,NA,,,
+P10,1015,Kiritr’ala,,,,,,,,,,,,8,1,,,
+P10,1016,Nato,Petites feuilles,26,,,,,,,,,,0,2,Feuilles petites ou grandes,,
+P10,1017,Vaibe,,10,,,,,,,,,,0,NA,,,
+P10,1018,Fotsik’azo,,,,,,,,,,,,1,1,,,
+P10,1019,Volombody pony,,,,,,,,,,,,1,1,,,
+P10,1020,Vilogna,,,,,,,,,,,,2,1,,,
+P10,1021,Ambora,Petites feuilles,9,,,,,,,,,,2,2,Feuilles petites ou grandes,,
+P10,1022,Kijy,,,,,,,,,,,,1,1,,,
+P10,1023,Vaiganeno,,,,,,,,,,,,1,NA,,,
+P10,1024,Voapaka,,14,,,,,,,,,,1,NA,,,
+P10,1025,Fantsin’akohon’ala,,,,,,,,,,,,2,1,,,
+P10,1026,Vorovoro,Tige glabre,,,,,,,,,,,6,2,Tige poilue ou glabre,,
+P10,1027,Fantsihena,,,,,,,,,,,,2,2,Feuilles petites ou grandes,,
+P10,1028,Zahagna,,,,,,,,,,,,9,1,,,
+P10,1029,Longotra,,,,,,,,,,,,1,1,,,
+P10,1030,Vaijagna,,,,,,,,,,,,2,NA,,,Liane dont le type n’a pas été identifié ou spécifié
+P10,1031,Vaivay,,,,,,,,,,,,1,NA,,,
+P10,1032,Ambora,Grandes feuilles,,,,,,,,,,,1,2,Feuilles petites ou grandes,,
+P10,1033,Randripody,Tige à traits verticaux,15,,,,,,,,,,0,NA,,,
+P11,1101,Madiorano,,,,,,,,,,,,5,NA,,,
+P11,1102,Vilogna,,,,,,,,,,,,3,NA,,,
+P11,1103,Hasina,,10,21,11,,,,,,,,5,NA,,,
+P11,1104,Sagnira,,,,,,,,,,,,1,NA,,,
+P11,1105,Nanto,Grandes feuilles,13,,,,,,,,,,5,2,Feuilles petites ou grandes,,
+P11,1106,Mandrorovo,,,,,,,,,,,,1,NA,,,
+P11,1107,Vaijagna,,,,,,,,,,,,2,NA,,,
+P11,1108,Vainamalogna,,,,,,,,,,,,1,NA,,,
+P11,1109,Fotsik’azo,,11,,,,,,,,,,2,NA,,,
+P11,1110,Fandrenakanga,,,,,,,,,,,,2,NA,,,
+P11,1111,Vorovoro,,,,,,,,,,,,2,NA,,,
+P11,1112,Raharaha,,,,,,,,,,,,1,NA,,,
+P11,1113,Babogna,,,,,,,,,,,,1,NA,,,"Si latex dans les yeux, on enlève les yeux"
+P11,1114,Valotra,,,,,,,,,,,,1,NA,,,
+P11,1115,Kijy,,,,,,,,,,,,1,NA,,,
+P11,1116,Tsimitehigna,,12,16,10,13,11,,,,,,0,NA,,,
+P11,1117,Randripody,,12,9,,,,,,,,,1,NA,,,
+P11,1118,Voatsingiry ala,Forestier (type ‘ala’),,,,,,,,,,,1,2,Forestier ou non-forestier,,
+P11,1119,Kiritrala,,,,,,,,,,,,1,NA,,,
+P11,1120,Zahagna,,,,,,,,,,,,1,NA,,,
+P11,1121,Vaivay,,,,,,,,,,,,1,NA,,,
+P11,1122,Rindambo,,,,,,,,,,,,1,NA,,,
+P11,1123,Hazo mainty,,17,33,15,12,34,11,,,,,0,NA,,,
+P11,1124,Tsirika,,12,,,,,,,,,,3,NA,,,Plusieurs racines sortent de la plante par en haut (‘mora tagnana’)
+P11,1125,Hazondandy,,,,,,,,,,,,1,NA,,,
+P11,1126,Fanalaotra,,30,,,,,,,,,,0,1,,Poutres de bonne qualité,
+P11,1127,Hazombalala,,11,10,,,,,,,,,0,1,,,
+P11,1128,Voatrotrokala,,,,,,,,,,,,1,NA,,,
+P11,1129,Hazoara,Forestier,,,,,,,,,,,3,2,Forestier ou non-forestier,,
+P11,1130,Nanto pôha,Petites feuilles,,,,,,,,,,,1,2,Feuilles petites ou grandes,,
+P11,1131,Matsoraka,,,,,,,,,,,,3,NA,,,
+P11,1132,Hazo mainty,,,,,,,,,,,,1,NA,,,
+P11,1133,Tsy mahamasa-sokona,,40,,,,,,,,,,0,NA,,,
+P11,1134,Matsoroka,,,,,,,,,,,,1,NA,,,
+P11,1135,Ambora,,12,,,,,,,,,,0,NA,,,
+P11,1136,Vaiminty,,,,,,,,,,,,2,NA,,,
+P11,1137,Voatsarotra,,,,,,,,,,,,1,1,,,
+P11,1138,Vaierotra,,,,,,,,,,,,1,NA,,,
+P11,1139,Ampaly ala,,,,,,,,,,,,1,1,,,
+P12,1201,Vondrogna,,22,,,,,,,,,,5,1,,,
+P12,1202,Fantsik’ala,,,,,,,,,,,,1,1,,,
+P12,1203,Randripody,,,,,,,,,,,,2,2,Feuilles petites ou grandes,,
+P12,1204,Ramiavogna,,74,,,,,,,,,,0,2,Feuilles petites ou grandes,,
+P12,1205,Ambora vavy,Grandes feuilles (‘vavy’),97,,,,,,,,,,0,2,Feuilles petites ou grandes,,
+P12,1206,Sagnira,Petites feuilles,59,,,,,,,,,,5,3,"Feuilles petites, grandes ou longues",,
+P12,1207,Hasina,Petites feuilles,8,,,,,,,,,,1,2,Feuilles petites ou grandes,,
+P12,1208,Lagnary,,,,,,,,,,,,1,1,,,
+P12,1209,Fantsik’aitra,,,,,,,,,,,,3,1,,,
+P12,1210,Hazo haraka,,,,,,,,,,,,1,1,,Plante médicinale pour les gonflements,
+P12,1211,Vainjagna,,12,8,,,,,,,,,2,1,,,
+P12,1212,Angavoady,,,,,,,,,,,,1,1,,,
+P12,1213,Menahihy,,14,13,,,,,,,,,1,1,,,
+P12,1214,Lalangiala,,,,,,,,,,,,2,1,,,
+P12,1215,Vain’amalogna,,13,,,,,,,,,,1,2,Feuilles petites ou grandes,,
+P12,1216,Babogna,,84,,,,,,,,,,1,1,,,
+P12,1217,Tsimamasasokona,Petites feuilles,,,,,,,,,,,1,2,Feuilles petites ou grandes,,
+P12,1218,Kijy,Grandes feuilles,28,,,,,,,,,,0,3,"Feuilles petites, moyennes ou grandes",,Tous les types ont du latex
+P12,1219,Alampogna,,9,,,,,,,,,,0,1,,,
+P12,1220,Tsirika,,8,,,,,,,,,,0,1,,,
+P12,1221,Sagnira,Feuilles longues,,,,,,,,,,,1,3,"Feuilles petites, grandes ou longues",,
+P13,1001,Sagnira,Grandes feuilles,,,,,,,,,,,1,NA,,,
+P13,1002,Kijy,Petites feuilles,,,,,,,,,,,1,NA,Feuilles petites ou grandes,,
+P13,1003,Vaimena,Grandes feuilles (‘be raviny’),,,,,,,,,,,1,NA,,,
+P13,1004,Ambora,,,,,,,,,,,,1,NA,,,
+P13,1005,Raharaha,Tige rouge,71,,,,,,,,,,0,2,Tige blanche ou rouge,,
+P13,1006,Alampogna,,17,,,,,,,,,,1,NA,,,
+P13,1007,Hasina,Grandes feuilles,21,,,,,,,,,,2,NA,,,
+P13,1008,Angavoady,,13,,,,,,,,,,2,1,,,
+P13,1009,Vay fotsy,,,,,,,,,,,,1,1,,,
+P13,1010,Tsikara karagna,,17,,,,,,,,,,0,1,,,
+P13,1011,Vahy be,,13,8,10,,,,,,,,0,NA,,,
+P13,1012,Hajo mainty,Petites feuilles,,,,,,,,,,,2,2,Feuilles petites ou grandes,,
+P13,1013,Hajo mainty,Grandes feuilles,,,,,,,,,,,1,2,Feuilles petites ou grandes,,
+P13,1014,Voatsilagna,,70,,,,,,,,,,0,1,,,
+P13,1015,Hazombary,,,,,,,,,,,,1,NA,,,
+P13,1016,Lalangiala,,9,,,,,,,,,,1,NA,,,
+P13,1017,Vondrogna,,,,,,,,,,,,3,NA,,,
+P13,1018,Vilogna,,,,,,,,,,,,1,1,,,
+P13,1019,Vahy mahery,,,,,,,,,,,,1,1,,,
+P13,1020,Sagnira,Longues feuilles (‘lava raviny’),,,,,,,,,,,1,NA,,,
+P13,1021,Mahanora,,,,,,,,,,,,1,1,,,
+P13,1022,Vaimena,,,,,,,,,,,,1,1,,,
+P13,1023,Hazombavy,,,,,,,,,,,,1,1,,,
+P13,1024,Tavia,,23,13,,,,,,,,,0,1,,,
+P13,1025,Vahy mantsigna,,14,,,,,,,,,,0,1,,,
+P13,1026,Fandramanagna,,32,,,,,,,,,,0,1,,,
+P13,1027,Lagnary,,,,,,,,,,,,1,1,,,
+P13,1028,Randripody,,8,,,,,,,,,,0,NA,,,
+P14,1101,Hozo fotsy,,,,,,,,,,,,4,NA,,,
+P14,1102,Vondrogna,,44,,,,,,,,,,7,NA,,,
+P14,1103,Bararata,,,,,,,,,,,,6,NA,,,
+P14,1104,Kijy,,,,,,,,,,,,1,NA,,,
+P14,1105,Ambora,Grandes feuilles,,,,,,,,,,,1,NA,,,
+P14,1106,Sagnira,,,,,,,,,,,,1,NA,,,
+P14,1107,Nato,,,,,,,,,,,,1,NA,,,
+P14,1108,Vahy mahery,,14,,,,,,,,,,2,NA,,,
+P14,1109,Hasina,,,,,,,,,,,,4,NA,,,
+P14,1110,Menahihy,,10,8,,,,,,,,,1,NA,,,
+P14,1111,Fantsikahitra,,,,,,,,,,,,1,NA,,,
+P14,1112,Hazombato,,,,,,,,,,,,4,NA,,,
+P14,1113,Vahinjagna,,,,,,,,,,,,1,NA,,,
+P14,1114,Vilogna,,13,12,,,,,,,,,0,NA,,,
+P14,1115,Ambora lahy,,11,,,,,,,,,,0,NA,,,
+P14,1116,Randripody,Petites feuilles,,,,,,,,,,,3,NA,,,
+P14,1117,Vahijagna,,,,,,,,,,,,1,NA,,,
+P14,1118,Rotra,,15,,,,,,,,,,0,NA,,,
+P14,1119,Hazo mainty,,,,,,,,,,,,2,NA,,,
+P14,1120,Vahy mena,,,,,,,,,,,,1,NA,,,
+P14,1121,Vahy fotsy,,,,,,,,,,,,1,NA,,,
+P14,1122,Tsimahamasasokona,,,,,,,,,,,,1,NA,,,
+P14,1123,Babogna,,8,,,,,,,,,,0,NA,,,
+P14,1124,Randripody,Grandes feuilles,,,,,,,,,,,1,NA,,,
+P15,1201,Tsitrotroka,,,,,,,,,,,,1,2,Bois tendre ou dur,,
+P15,1202,Kabokala,,,,,,,,,,,,1,1,,,
+P15,1203,Fantsikala,,,,,,,,,,,,2,2,Feuilles petites ou grandes,,
+P15,1204,Raomogna,,,,,,,,,,,,2,1,,,
+P15,1205,Tsilakagna,,,,,,,,,,,,1,2,NA,,
+P15,1206,Longotra,,11,,,,,,,,,,2,1,,,
+P15,1207,Voatsilagna,Petites feuilles,,,,,,,,,,,1,2,Feuilles petites (‘voatsilagna’) ou grandes (‘voatsilambato),,
+P15,1208,Tsiriba,,15,13,,,,,,,,,0,NA,,,
+P15,1209,Vondrogna,,,,,,,,,,,,2,NA,,,
+P15,1210,Alompogna,,,,,,,,,,,,1,NA,,,
+P15,1211,Faralaotra,,,,,,,,,,,,1,NA,,,
+P15,1212,Hasina,Feuilles longues,,,,,,,,,,,1,NA,,,
+P15,1213,Vilogna,,,,,,,,,,,,1,NA,,,
+P15,1214,Vahy mahery,,,,,,,,,,,,1,NA,,,
+P15,1215,Hasina,,,,,,,,,,,,1,NA,,,
+P15,1216,Voatsilambato,Grandes feuilles,,,,,,,,,,,1,2,Feuilles petites (‘voatsilagna’) ou grandes (‘voatsilambato),,
+P15,1217,Angavoady,,,,,,,,,,,,1,NA,,,
+P15,1218,Randripody,,,,,,,,,,,,6,NA,,,
+P15,1219,Vahibe,,,,,,,,,,,,1,NA,,,
+P15,1220,Sagnira,,58,,,,,,,,,,2,NA,,,
+P15,1221,Marimbody,Grandes feuilles,,,,,,,,,,,1,2,Feuilles petites ou grandes,,
+P15,1222,Hasina,,,,,,,,,,,,5,NA,,,
+P15,1223,Tavia,,51,,,,,,,,,,0,1,,,
+P15,1224,Vahimainty,,8,,,,,,,,,,1,NA,,,
+P15,1225,Kabokala,,72,,,,,,,,,,0,NA,,,
+P15,1226,Babogna,,51,,,,,,,,,,0,NA,,,
+P15,1227,Raharopa,,36,,,,,,,,,,0,NA,,,
+P15,1228,Faralaotra,,,,,,,,,,,,1,NA,,,
+P15,1229,Hazo mainty,,18,,,,,,,,,,0,NA,,,
+P15,1230,Tsimamasasokona,,8,,,,,,,,,,0,NA,,,
+P15,1231,Vahibe,,10,,,,,,,,,,0,NA,,,
+P16,1301,Hafipotsy,Petites feuilles,14,,,,,,,,,,0,2,Feuilles petites ou grandes,,
+P16,1302,Vahinalalogna,Grandes feuilles,,,,,,,,,,,2,2,Feuilles petites ou grandes,,
+P16,1303,Vahy mandronono,Petites feuilles (mâle),10,8,9,10,,,,,,,1,++,Feuilles petites (mâle) ou grandes (femelle),,
+P16,1304,Vonotra,,,,,,,,,,,,15,1,,,
+P16,1305,Hazomena maraigna,,43,,,,,,,,,,0,1,,,
+P16,1306,Hazo mainty,,19,13,,,,,,,,,3,1,,,
+P16,1307,Vahipika,,,,,,,,,,,,4,1,,,
+P16,1308,Randripody lahy,Grandes feuilles,9,,,,,,,,,,1,2,,,
+P16,1309,Tsikarakaragna vavy,Petites feuilles,,,,,,,,,,,1,2,,,
+P16,1310,Hasina,Petites feuilles,,,,,,,,,,,8,++,,,
+P16,1311,Vahierotra,Grandes feuilles,,,,,,,,,,,1,2,Feuilles petites ou grandes,,
+P16,1312,Vahimaragna,Grandes feuilles,17,10,11,,,,,,,,1,2,"Écorce noire et feuilles petites, ou grandes feuilles",,
+P16,1313,Vahisagnira,Grandes feuilles,16,,,,,,,,,,1,2,Feuilles petites ou grandes,,
+P16,1314,Ambora lahy,Grandes feuilles,12,11,,,,,,,,,0,2,Feuilles petites ou grandes,,
+P16,1315,Ambora,,10,,,,,,,,,,0,2,,,
+P16,1316,Menafatagna lahy,Petites feuilles,19,15,,,,,,,,,0,2,Feuilles petites ou grandes,,
+P16,1317,Lambignana,,,,,,,,,,,,1,1,,,Dans la P1 hors placette : gros Lambignana (66 et 53 CBH)
+P16,1318,Vahy lambignana,Grandes feuilles (femelle),,,,,,,,,,,2,2,Feuilles petites ou grandes (femelle),,
+P16,1319,Andragnoy,Écorce rouge,,,,,,,,,,,2,2,Écorce rouge ou noire,,
+P16,1320,Mahanoro,Petites feuilles,9,,,,,,,,,,1,2,Feuilles petites ou grandes,,
+P16,1321,Sagnira lahy,Petites feuilles,,,,,,,,,,,1,NA,Feuilles petites ou grandes,,
+P16,1322,Tsingena,,,,,,,,,,,,1,1,,,
+P16,1323,Vahy mantsigna,Grandes feuilles,14,,,,,,,,,,0,2,Feuilles petites ou grandes,,
+P16,1324,Vahy,,11,8,,,,,,,,,0,NA,,,
+P16,1325,Longotra lahy,Petites feuilles (‘lahy’),81,,,,,,,,,,0,2,Feuilles petites ou grandes,,
+P16,1326,Mamirano,,,,,,,,,,,,1,1,,,La plante est appelée ‘madiorano’ à Ambahatrazo d’après l’interprète
+P16,1327,Sp. inconnue 1,,,,,,,,,,,,2,NA,?,,
+P16,1328,Tongoloala lahy,Sans odeur,,,,,,,,,,,1,2,Bonne odeur ou absence d’odeur,,Tongoala’ type ‘lahy’
+P16,1329,Hazo maragna,Petites feuilles (mâle),11,,,,,,,,,,0,2,Feuilles petites (mâle) ou grandes (femelle),,
+P16,1330,Sp. inconnue 2,,,,,,,,,,,,5,NA,,,
+P16,1331,Menafatagna,,,,,,,,,,,,1,NA,,,
+P17,1701,Mamirano,,,,,,,,,,,,1,1,,,
+P17,1702,Menafatagna,Feuilles moyennes,40,12,,,,,,,,,0,3,"Feuilles petites, moyennes ou grandes",,
+P17,1703,Menahihy,Grandes feuilles,,,,,,,,,,,3,2,Feuilles petites ou grandes,,
+P17,1704,Talatalana tsidigna,Grandes feuilles,26,,,,,,,,,,0,2,Feuilles petites ou grandes,,
+P17,1705,Fagnamo hazo,Petites feuilles,14,10,,,,,,,,,0,2,Feuilles petites ou grandes,,
+P17,1706,Vahikerotra,Couleur jaune,,,,,,,,,,,2,2,Couleur rouge avec fruits ou jaune,,
+P17,1707,Vahimainty,Grandes feuilles,9,,,,,,,,,,0,2,Feuilles petites ou grandes,,
+P17,1708,Vahymaragna,Écorce lisse,,,,,,,,,,,4,2,Écorce lisse ou rugueuse,,
+P17,1709,Vahibe,,,,,,,,,,,,1,1,,,Autre nom : ‘odibiby’
+P17,1710,Tsy mahamasasokogna,,16,,,,,,,,,,0,1,,,
+P17,1711,Hasina be,,,,,,,,,,,,2,1,,,
+P17,1712,Hasina kely ravy,,,,,,,,,,,,10,1,,,
+P17,1713,Vahinamalogna,,8,,,,,,,,,,0,2,Écorce noire et grandes feuilles ; Écorce rouge et petites feuilles,,
+P17,1714,Vilogna,,9,15,,,,,,,,,0,1,,,
+P17,1715,Vonotra,,,,,,,,,,,,6,1,,,
+P17,1716,Tsikara karagna,,,,,,,,,,,,0,1,,,
+P17,1717,Hazon-dambo,Petites feuilles,9,,,,,,,,,,2,2,Feuilles petites ou grandes,,
+P17,1718,Lakatra,,,,,,,,,,,,1,1,,,
+P17,1719,Resonjo,Long,,,,,,,,,,,1,2,Long ou court,,
+P17,1720,Hazon-drano,,15,,,,,,,,,,0,2,Forestier et grandes feuilles ; Dans les rizières et petites feuilles,,
+P17,1721,Meragna,,,,,,,,,,,,1,1,,,
+P17,1722,Vahy lambignana,Petites feuilles,,,,,,,,,,,1,2,Feuilles petites ou grandes,,
+P17,1723,Fatsinakoho,,8,8,,,,,,,,,1,1,,,
+P17,1724,Ranivinaomby,,8,,,,,,,,,,0,1,,,
+P17,1725,Kijy,,22,,,,,,,,,,0,3,"Feuilles grandes ; Feuilles longues et petites, en forme d’amande (‘ravim-boanjo’) ; Feuilles petites",,
+P17,1726,Rotra ala,Écorce blanche,28,,,,,,,,,,0,2,Écorce blanche ou rouge (‘Rodambo’),,
+P17,1727,Dintogna,,,,,,,,,,,,1,1,,,
+P17,1728,Andragnoy,Petites feuilles,,,,,,,,,,,2,2,Feuilles petites ou grandes,,
+P17,1729,Voarongy,Grandes feuilles,,,,,,,,,,,1,2,Feuilles petites ou grandes,,
+P17,1730,Ambora,Grandes feuilles,9,17,15,14,,,,,,,1,3,"Feuilles petites, moyennes ou grandes",,
+P17,1731,Ranoavao,,,,,,,,,,,,1,1,,,
+P17,1732,Sefagna,Grandes feuilles,10,,,,,,,,,,0,2,Feuilles petites ou grandes,,
+P17,1733,Tavia,,,,,,,,,,,,1,1,,,
+P17,1734,Mandirio,,21,,,,,,,,,,0,1,,,
+P17,1735,Be ronono,Grandes feuilles,,,,,,,,,,,1,2,Feuilles petites ou grandes,,
+P17,1736,Mahasalama,,,,,,,,,,,,1,1,,,
+P17,1737,Mahery apatragna,,9,,,,,,,,,,0,NA,,,
+P17,1738,Velomijy,,8,,,,,,,,,,0,NA,,,
+P18,1801,Vonotra,,,,,,,,,,,,16,1,,,
+P18,1802,Hasina,Longues feuilles,15,,,,,,,,,,4,na,,,
+P18,1803,Vandrika ala,Grandes feuilles,,,,,,,,,,,1,2,Feuilles petites ou grandes,,
+P18,1804,Andragnoy,,,,,,,,,,,,10,3,"Feuilles petites, moyennes ou grandes",,
+P18,1805,Mahatsoraka,,,,,,,,,,,,2,2,Feuilles petites ou grandes,,
+P18,1806,Mahasalama,,,,,,,,,,,,3,1,,,
+P18,1807,Vahikerotra,,,,,,,,,,,,3,1,,,
+P18,1808,Tsenimposa,,,,,,,,,,,,1,2,Feuilles petites ou grandes,,
+P18,1809,Ranivinaomby,,9,,,,,,,,,,1,1,,,
+P18,1810,Tsy mahamaso-sokogna,Grandes feuilles,10,8,9,11,,,,,,,10,3,"Feuilles petites, moyennes ou grandes",,
+P18,1811,Valotra,Écorce noire,20,,,,,,,,,,0,2,Écorce noire ou jaune,,
+P18,1812,Vahy maragna,,,,,,,,,,,,1,2,,,
+P18,1813,Ambilazo,,,,,,,,,,,,1,1,,,
+P18,1814,Randripody,Grandes feuilles,8,10,,,,,,,,,1,2,"Feuilles petites, moyennes ou grandes",,
+P18,1815,Meragna,,,,,,,,,,,,1,1,,,
+P18,1816,Fantsikaitra,,,,,,,,,,,,2,2,Feuilles petites ou grandes,,
+P18,1817,Hazombary,,,,,,,,,,,,1,2,Feuilles petites ou grandes,,
+P18,1818,Vilogna,,,,,,,,,,,,4,1,,,
+P18,1819,Lalangy ala,Écorce blanche,68,,,,,,,,,,1,2,Écorce blanche ou rouge,,
+P18,1820,Fantsinakoha,Petites feuilles,9,,,,,,,,,,0,1,,,
+P18,1821,Menafatagna,Grandes feuilles,,,,,,,,,,,1,NA,,,
+P18,1822,Resonjo,Grandes et longues feuilles,,,,,,,,,,,3,2,Feuilles grandes et longues ; courtes ; petites feuilles,,
+P18,1823,Marana ambatsy,Petites feuilles,11,,,,,,,,,,0,2,Feuilles petites ou grandes,,Nom difficile à lire : ‘masana’ ‘marana’ ?
+P18,1824,Hasina,Petites feuilles,,,,,,,,,,,2,NA,,,
+P18,1825,Babogna,,29,,,,,,,,,,1,1,,,
+P18,1826,Hazonoambo,,9,,,,,,,,,,7,2,Feuilles petites ou grandes,,
+P18,1827,Vahinamalogna,,,,,,,,,,,,5,1,,,
+P18,1828,Vahy mainty,,,,,,,,,,,,3,1,,,
+P18,1829,Vahy lambignana,,,,,,,,,,,,2,1,,,
+P18,1830,Fotsy vavogna,,,,,,,,,,,,2,1,,,
+P18,1831,Tendritrazo,,,,,,,,,,,,2,1,,,
+P18,1832,Menafatagna,Grandes feuilles,14,,,,,,,,,,0,NA,,,
+P18,1833,Hasimbe,Grandes feuilles,,,,,,,,,,,2,NA,,,
+P18,1834,Vahy maragna,Petites feuilles,,,,,,,,,,,2,2,Feuilles petites ou grandes,,
+P18,1835,Ody sandragna,Petites feuilles,12,,,,,,,,,,1,2,Feuilles petites ou grandes,,
+P18,1836,Fagnamo hazo,Grandes feuilles,,,,,,,,,,,3,2,Feuilles petites ou grandes,,
+P18,1837,Voakazoaraby,,,,,,,,,,,,1,1,,,
+P18,1838,Velomijy,,,,,,,,,,,,1,1,,,
+P18,1839,Rotra ala,Écorce blanche,,,,,,,,,,,1,2,Écorce rouge (‘rodambo’) ou blanche,,
+P18,1840,Fagnamo hazo,,,,,,,,,,,,1,NA,,,
+P18,1841,Hazombato,Grandes feuilles,16,,,,,,,,,,0,2,Feuilles petites ou grandes,,
+P18,1842,Menafatagna,Petites feuilles,9,,,,,,,,,,3,NA,,,
+P18,1843,Mamirano,,,,,,,,,,,,1,1,,,
+P18,1844,Kabokala,Petites feuilles,,,,,,,,,,,5,2,Feuilles petites ou grandes,,
+P18,1845,Vahybe,,,,,,,,,,,,1,1,,,
+P18,1846,Menahihy,Petites feuilles,8,,,,,,,,,,0,NA,,,
+P18,1847,Ramiavogna,Petites feuilles,,,,,,,,,,,1,2,Feuilles petites ou grandes,,
+P18,1848,Hazomainty,Écorce noire,14,,,,,,,,,,0,2,Écorce jaune ou noire,,
+P18,1849,Vahypika,,,,,,,,,,,,1,1,,,
+P18,1850,Voapenakaragna,,20,,,,,,,,,,0,1,,,
+P18,1851,Hazotavolo,,13,,,,,,,,,,1,1,,,
+P19,1901,Mahanoro,,,,,,,,,,,,0,3,Feuilles longues ou rondes ou petites,,
+P19,1902,Resonjo,,,,,,,,,,,,4,NA,,,
+P19,1903,Hasina,,,,,,,,,,,,9,NA,Feuilles petites ou grandes,,
+P19,1904,Tendritrazo,,10,15,18,13,,,,,,,0,2,,,
+P19,1905,Ambora vavy,,22,43,17,8,21,,,,,,0,NA,,,
+P19,1906,Hazomainty,,,,,,,,,,,,3,2,,,
+P19,1907,Tavia,,32,,,,,,,,,,0,2,Feuilles longues ou rondes,,
+P19,1908,Vahy sagnira,,,,,,,,,,,,7,1,,,
+P19,1909,Randripody,,10,12,,,,,,,,,1,2,,,
+P19,1910,Vahy kerotra,,,,,,,,,,,,2,1,,,
+P19,1911,Mandrio,,,,,,,,,,,,1,2,Feuilles longues ou rondes,,
+P19,1912,Kijy,,,,,,,,,,,,1,1,,,
+P19,1913,Hasina,,21,,,,,,,,,,0,NA,,,
+P19,1914,Valotra,Écorce lisse,,,,,,,,,,,1,2,Écorce noire ou blanche,,
+P19,1915,Voapaka,,72,37,,,,,,,,,2,1,,,
+P19,1916,Vahy maragna,,,,,,,,,,,,1,2,Écorce lisse ou rugueuse,,
+P19,1917,Tsilakana,,,,,,,,,,,,12,1,,,
+P19,1918,Masona ambatsy,,14,10,,,,,,,,,0,2,,,
+P19,1919,Ody sandragna,,,,,,,,,,,,1,NA,,,
+P19,1920,Menafatagna,,13,,,,,,,,,,2,NA,,,
+P19,1921,Andragnoy,,,,,,,,,,,,2,1,,,
+P19,1922,Mavalia,Écorce noire (plante mâle),13,,,,,,,,,,1,2,Plante femelle à l’écorce verte ; plante mâle à l’écorce noire,,
+P19,1923,Ambilazo,,,,,,,,,,,,1,1,,,
+P19,1924,Tsirika ala,,14,,,,,,,,,,3,1,,,
+P19,1925,Vilogna,,10,,,,,,,,,,0,1,,,
+P19,1926,Goavy ala,Grandes feuilles,,,,,,,,,,,2,2,Feuilles petites ou grandes,,
+P19,1927,Vahin-borondreo,,,,,,,,,,,,1,1,,,
+P19,1928,Taim-barika,,,,,,,,,,,,1,1,,,
+P19,1929,Fantsiknakoho,,,,,,,,,,,,2,1,,,
+P19,1930,Nato poaka,,,,,,,,,,,,1,NA,,,Type de ‘nato’
+P19,1931,Hazondambo,Femelle,,,,,,,,,,,1,2,Plante mâle ou femelle,,
+P19,1932,Magnasavelo,Femelle,8,,,,,,,,,,0,2,Plante mâle ou femelle,,
+P19,1933,Malandivoho,Mâle,9,,,,,,,,,,1,2,Plante mâle ou femelle,,
+P19,1934,Ranivinaomby,,,,,,,,,,,,1,1,,,
+P19,1935,Lagnary,,53,,,,,,,,,,0,NA,,,
+P20,2001,Vandrika ala,Grandes feuilles,,,,,,,,,,,1,3,"Feuilles grandes, petites, ou rondes",,
+P20,2002,Menahihy,Petites feuilles,,,,,,,,,,,3,NA,,,
+P20,2003,Tsy mahamasasokina,,12,10,20,,,,,,,,7,NA,,,
+P20,2004,Kijy mainty,Grandes feuilles,,,,,,,,,,,2,NA,,,
+P20,2005,Fantsinakoho,,10,8,10,15,10,11,10,21,,,0,NA,,,
+P20,2006,Ody sandragna,Grandes feuilles,,,,,,,,,,,1,NA,,,
+P20,2007,Hazomainty,,9,12,16,23,10,15,17,,,,0,NA,,,
+P20,2008,Hasina,Feuilles longues,,,,,,,,,,,1,NA,,,
+P20,2009,Hasina,Grandes feuilles,,,,,,,,,,,2,NA,,,
+P20,2010,Resonjo,,19,10,,,,,,,,,2,NA,,,
+P20,2011,Masona ambatsy,,19,15,8,,,,,,,,1,NA,,,
+P20,2012,Tendritrazo,,,,,,,,,,,,1,NA,,,
+P20,2013,Faralaotra,Écorce rouge,,,,,,,,,,,1,2,Écorce rouge ou jaune,,
+P20,2014,Andragnoy,,10,,,,,,,,,,4,NA,,,
+P20,2015,Vandrika ala,Grandes feuilles,,,,,,,,,,,2,NA,,,
+P20,2016,Ro-dambo,Écorce rouge,30,,,,,,,,,,1,NA,,,
+P20,2017,Babogna,,30,75,22,,,,,,,,1,1,,,
+P20,2018,Roin-dambo,,,,,,,,,,,,1,1,,,
+P20,2019,Nato poaka,Grandes feuilles (vérifier ’poaka’),,,,,,,,,,,3,3,"Grandes feuilles, feuilles rondes, nato (ravim-boango)",,
+P20,2020,Vonotra,,,,,,,,,,,,1,1,,,
+P20,2021,Menafatagna,Petites feuilles,23,,,,,,,,,,4,NA,,,
+P20,2022,Hazondambo,,,,,,,,,,,,3,NA,,,
+P20,2023,Tsilakana,,,,,,,,,,,,5,NA,,,
+P20,2024,Vahy kerotra,,9,,,,,,,,,,2,1,,,
+P20,2025,Voatalangy,,,,,,,,,,,,1,1,,,
+P20,2026,Hasina,Petites feuilles,,,,,,,,,,,2,NA,,,
+P20,2027,Hazomamy,,,,,,,,,,,,1,2,Feuilles longues ou rondes,,
+P20,2028,Avoa,,,,,,,,,,,,3,1,,,
+P20,2029,Matsoraka,Écorce noire,,,,,,,,,,,1,2,Écorce noire ou blanche,,
+P20,2030,Hazombato,,10,10,8,,,,,,,,0,1,,,
+P20,2031,Raharaha,,12,,,,,,,,,,1,2,Feuilles grandes ou petites,,
+P20,2032,Menafatagna,Grandes feuilles,38,,,,,,,,,,3,NA,,,
+P20,2033,Matsoraka,Écorce blanche,,,,,,,,,,,1,NA,,,
+P20,2034,Rendemy,,8,,,,,,,,,,1,1,,,
+P20,2035,Hazotavolo,,,,,,,,,,,,1,1,,,
+P20,2036,Lalangy ala,,,,,,,,,,,,1,1,,,
+P20,2037,Vilogna,,10,,,,,,,,,,0,NA,,,
+P21,1801,Hazomainty,,,,,,,,,,,,5,NA,,Menuiserie,
+P21,1802,Tsimahamasasokona,,,,,,,,,,,,4,NA,,Bois construction,
+P21,1803,Hasina,Petites feuilles,,,,,,,,,,,1,NA,,Aucun,
+P21,1804,Andragnoy,,9,,,,,,,,,,2,NA,,Bois construction,
+P21,1805,Hazombary,,11,17,20,29,11,17,9,31,11,11,0,NA,,Bois construction,
+P21,1806,Vahikerotra,,8,,,,,,,,,,9,NA,,Aucun,
+P21,1807,Vahimainty,,,,,,,,,,,,6,NA,,Corde,
+P21,1808,Vahy ,,,,,,,,,,,,1,NA,,Aucun,
+P21,1809,Raharaha,,,,,,,,,,,,1,NA,,Aucun,
+P21,1810,Rohindambo,,,,,,,,,,,,6,NA,,Médicinale (aphrodisiaque),
+P21,1811,Fantsinakoho,,,,,,,,,,,,1,NA,,Bois construction,
+P21,1812,Voatalagny,,,,,,,,,,,,1,NA,,Aucun,
+P21,1813,Fagnidy,,,,,,,,,,,,1,NA,,Médicinale,
+P21,1814,Lalangiala,Femelle,,,,,,,,,,,2,NA,,Bois construction,
+P21,1815,Lalangiala,Mâle,,,,,,,,,,,2,NA,,Bois construction,
+P21,1816,Sp. inconnue ,,,,,,,,,,,,2,NA,,Magie,
+P21,1817,Velonizy,,,,,,,,,,,,4,NA,,Magie,
+P21,1818,Haorendry,,,,,,,,,,,,1,NA,,Aucun,
+P21,1819,Fantsikahatra,,,,,,,,,,,,1,NA,,Bois construction,
+P21,1820,Voapaka,,12,,,,,,,,,,1,NA,,Bois construction,
+P21,1821,Hazondambo,,,,,,,,,,,,1,NA,,Aucun,
+P21,1822,Vognitra,,,,,,,,,,,,1,NA,,Aucun,
+P21,1823,Vahiara,,,,,,,,,,,,2,NA,,Médicinale,Liane
+P21,1824,Menafatana,,13,,,,,,,,,,0,NA,,Bois construction,
+P22,1901,Hazoharaka,,,,,,,,,,,,1,NA,,Aucun,
+P22,1902,Vahimainty,,8,,,,,,,,,,2,NA,,,
+P22,1903,Sp. inconnue ,,19,,,,,,,,,,5,NA,,,
+P22,1904,Velonizy,,,,,,,,,,,,2,NA,,,
+P22,1905,Vahipika,,,,,,,,,,,,2,NA,,Paniers,
+P22,1906,Babogna,,8,13,11,,,,,,,,2,NA,,Bois construction,
+P22,1907,Ambora,,19,28,19,42,,,,,,,0,NA,,Aucun,
+P22,1908,Hasina,Petites feuilles,,,,,,,,,,,3,NA,,,
+P22,1909,Hazombary,,,,,,,,,,,,5,NA,,,
+P22,1910,Menafatana,,8,9,12,12,16,16,,,,,0,NA,,,
+P22,1911,Fagnidy,,10,,,,,,,,,,1,NA,,Magie,
+P22,1912,Lalangiala,,,,,,,,,,,,2,NA,,Bois construction,
+P22,1913,Hazomainty,Femelle,,,,,,,,,,,1,2,Mâle ou femelle,Aucun,
+P22,1914,Vognitra,,44,,,,,,,,,,2,NA,,,Palmier
+P22,1915,Haorendry,,,,,,,,,,,,1,NA,,,
+P22,1916,Fantsikahatra,,,,,,,,,,,,2,NA,,Médicinale,
+P22,1917,Sefana,,,,,,,,,,,,1,NA,,Bois construction,
+P22,1918,Vahikerotra,,9,16,,,,,,,,,9,NA,,Aucun,
+P22,1919,Mamirano,,,,,,,,,,,,1,NA,,,
+P22,1920,Menahihy,,,,,,,,,,,,1,NA,,Bois construction,
+P22,1921,Hazomainty,Mâle,15,,,,,,,,,,1,2,Mâle ou femelle,,
+P22,1922,Natopoaka,,,,,,,,,,,,1,NA,,,
+P22,1923,Retsara,,,,,,,,,,,,1,NA,,Médicinale,
+P22,1924,Sp. inconnue ,,,,,,,,,,,,6,NA,,,6 tiges de la même cépée
+P22,1925,Rahaboramena,,10,,,,,,,,,,0,NA,,Bois construction,
+P22,1926,Andragnoy,,,,,,,,,,,,1,NA,,,
+P22,1927,Tsimihifiky,,,,,,,,,,,,1,NA,,,
+P22,1928,Beronono,,,,,,,,,,,,1,NA,,Bois construction,
+P22,1929,Ramanjavona,,,,,,,,,,,,1,NA,,Magie,
+P23,2001,Kizy,,79,,,,,,,,,,0,NA,,Bois construction,
+P23,2002,Havoa,,,,,,,,,,,,1,NA,,Magie,
+P23,2003,Hasina,Petites feuilles,,,,,,,,,,,2,NA,,,
+P23,2004,Lafagna,,72,,,,,,,,,,0,NA,,Plancher des maisons,
+P23,2005,Kabokala,,,,,,,,,,,,1,NA,,Aucun,
+P23,2006,Hazomainty,Mâle,20,19,12,18,,,,,,,0,2,,,
+P23,2007,Hazomainty,Femelle,10,,,,,,,,,,1,2,,,
+P23,2008,Vahy ,,,,,,,,,,,,3,NA,,,Liane
+P23,2009,Hazombary,,8,,,,,,,,,,2,NA,,,
+P23,2010,Sp. inconnue ,,,,,,,,,,,,1,NA,,,
+P23,2011,Zambo,,14,,,,,,,,,,0,NA,,Bois construction,
+P23,2012,Vognitra,,,,,,,,,,,,3,NA,,,
+P23,2013,Haboladitra,,,,,,,,,,,,1,NA,,Bois construction,
+P23,2014,Menahihy,,,,,,,,,,,,2,NA,,,
+P23,2015,Vahikerotra,,,,,,,,,,,,1,NA,,,Liane
+P23,2016,Ragnomona,,,,,,,,,,,,1,NA,,,
+P23,2017,Magnivalana,,10,,,,,,,,,,0,NA,,,
+P23,2018,Sary,,105,,,,,,,,,,0,NA,,Planches,
+P23,2019,Sp. inconnue ,,,,,,,,,,,,2,NA,,,
+P23,2020,Velonizy,,,,,,,,,,,,1,NA,,,
+P23,2021,Randropody,,8,,,,,,,,,,0,NA,,,
+P23,2022,Ambora,,,,,,,,,,,,1,NA,,,
+P23,2023,Lalangiala,,,,,,,,,,,,1,NA,,,
+P23,2024,Tsimahamasasokona,,12,,,,,,,,,,0,NA,,,
+P24,2101,Vognitra,,,,,,,,,,,,1,NA,,,
+P24,2102,Hazombary,,9,,,,,,,,,,8,NA,,,
+P24,2103,Menafatana,,10,18,,,,,,,,,1,NA,,,
+P24,2104,Fantsinakoho,,,,,,,,,,,,1,NA,,,
+P24,2105,Andragnoy,,11,,,,,,,,,,0,NA,,,
+P24,2106,Hazomainty,Mâle,10,,,,,,,,,,5,2,,,
+P24,2107,Matolahimiana,,12,,,,,,,,,,0,NA,,Magie,
+P24,2108,Hasina,Petites feuilles,8,,,,,,,,,,1,NA,,,
+P24,2109,Vahy ,,10,21,,,,,,,,,4,NA,,,Liane
+P24,2110,Haboladitra,,,,,,,,,,,,2,NA,,,
+P24,2111,Valotra,,8,,,,,,,,,,1,NA,,Bois construction,
+P24,2112,Ramiavona,,,,,,,,,,,,1,NA,,,
+P24,2113,Hazoharaka,,,,,,,,,,,,2,NA,,,
+P24,2114,Vilona,,,,,,,,,,,,2,NA,,,
+P24,2115,Sp. inconnue ,,,,,,,,,,,,4,NA,,,
+P24,2116,Velonizy,,,,,,,,,,,,1,NA,,,
+P24,2117,Manivalana,,,,,,,,,,,,1,NA,,Magie,
+P24,2118,Soakazo,,,,,,,,,,,,1,NA,,,
+P24,2119,Menahihy,,11,9,,,,,,,,,0,NA,,,
+P24,2120,Tsimahamasasokona,,17,,,,,,,,,,1,NA,,,
+P24,2121,Raharaha,,,,,,,,,,,,2,NA,,,
+P24,2122,Hazomalagny,,,,,,,,,,,,1,NA,,,
+P24,2123,Angavoala,,10,,,,,,,,,,0,NA,,,
+P24,2124,Sary,,10,,,,,,,,,,0,NA,,,
+P24,2125,Fantsikahatra,,,,,,,,,,,,1,NA,,,
+P24,2126,Voandakevona,,12,,,,,,,,,,0,NA,,,Liane
+P24,2127,Voatsilagna,,11,,,,,,,,,,0,NA,,,
+P25,2201,Hasina,Petites feuilles,11,,,,,,,,,,9,1,,Aucun,
+P25,2202,Faritafoka,Grandes feuilles,,,,,,,,,,,1,2,,Anti-foudre,"Les gens utilisent pour que la foudre n’atteignent pas leur maison, pour éviter la magie qui lance la foudre."
+P25,2203,Haorendry,,,,,,,,,,,,10,1,,Contre les douleurs dentaires,
+P25,2204,Mokaragnana,,22,8,,,,,,,,,0,1,,Aucun,
+P25,2205,Vahy ,,,,,,,,,,,,2,NA,,Aucun,
+P25,2206,Fantsikala,,8,,,,,,,,,,1,1,,Aucun,
+P25,2207,Kabokala,,,,,,,,,,,,1,1,,Aucun,
+P25,2208,Hazoharaka,,,,,,,,,,,,1,1,,Aucun,
+P25,2209,Hazondambo,,15,8,12,10,18,14,,,,,4,1,,,
+P25,2210,Ravinala,,,,,,,,,,,,2,1,,,
+P25,2211,Vahikerotra,Noir,,,,,,,,,,,5,2,,,
+P25,2212,Bararaky,,10,,,,,,,,,,0,1,,Bois construction,
+P25,2213,Mahanoro,Petites feuilles,,,,,,,,,,,1,2,,Aucun,
+P25,2214,Vilona,,,,,,,,,,,,1,1,,,
+P25,2215,Vahimainty,,11,,,,,,,,,,2,1,,,
+P25,2216,Fagnidy,,,,,,,,,,,,1,1,,,
+P25,2217,Lafagna,,,,,,,,,,,,6,1,,,
+P25,2218,Kizy,Petites feuilles,,,,,,,,,,,4,2,,Bois construction,
+P25,2219,Voatsilagna,Grandes feuilles,13,,,,,,,,,,0,2,,,
+P25,2220,Voapaka,Sans racines-échasses,12,,,,,,,,,,0,2,Présence ou absence de racines-échasses,,
+P25,2221,Babogna,,26,,,,,,,,,,0,1,,,
+P25,2222,Veso,,,,,,,,,,,,2,1,,,
+P25,2223,Hazomainty,Mâle,11,,,,,,,,,,1,2,,,
+P25,2224,Tsianiposa,,,,,,,,,,,,1,1,,Bois construction,
+P25,2225,Soakazo,,,,,,,,,,,,1,1,,,
+P25,2226,Andragnoy,,8,,,,,,,,,,0,1,,,
+P25,2227,Angavoala,,,,,,,,,,,,1,1,,Aucun,
+P25,2228,Tsihifoka,,,,,,,,,,,,1,1,,,
+P25,2229,Fandramanana,,,,,,,,,,,,2,1,,Thé,
+P25,2230,Fantsikahatra,,8,11,,,,,,,,,0,1,,Bois construction,
+P25,2231,Vognitra,,,,,,,,,,,,1,1,,Aucun,
+P25,2232,Ramiavona,,,,,,,,,,,,1,1,,Bois construction,
+P25,2233,Voatalagny,,,,,,,,,,,,1,1,,Aucun,
+P25,2234,Tamenaka,,15,,,,,,,,,,1,1,,Bois construction,
+P26,2301,Mahitsiatoraka,,9,9,9,10,8,,,,,,35,1,,,
+P26,2302,Voapaka,Racines-échasses,12,9,9,10,17,,,,,,29,2,,,
+P26,2303,Velonizy,,9,13,,,,,,,,,2,1,,,
+P26,2304,Fantsikahatra,,,,,,,,,,,,1,1,,,
+P26,2305,Kizy,,,,,,,,,,,,2,1,,,
+P26,2306,Menafatana,Petites feuilles,12,17,,,,,,,,,1,2,,,
+P26,2307,Hasina,Petites feuilles,,,,,,,,,,,16,2,Feuilles petites ou grandes,,
+P26,2308,Sp. inconnue ,,9,9,9,,,,,,,,4,1,,,
+P26,2309,Hazomainty,Mâle,,,,,,,,,,,2,2,,,
+P26,2310,Raharaha,,,,,,,,,,,,1,1,,,
+P26,2311,Babogna,,13,,,,,,,,,,2,1,,,
+P26,2312,Haorendry,,,,,,,,,,,,2,1,,,
+P26,2313,Tsikarikaragnana,,9,,,,,,,,,,2,1,,Aucun,
+P26,2314,Natopoaka,,,,,,,,,,,,3,1,,,
+P26,2315,Vahy ,,,,,,,,,,,,9,NA,,,Liane
+P26,2316,Tsimahamasasokona,,10,27,10,,,,,,,,1,1,,,
+P26,2317,Hasina,Grandes feuilles,9,8,,,,,,,,,3,2,Feuilles petites ou grandes,,
+P26,2318,Hafotra,,10,,,,,,,,,,0,1,,Fixation de la toiture (raty = début du pétiole),
+P26,2319,Vilona,,,,,,,,,,,,1,1,,,
+P26,2320,Hazondambo,,,,,,,,,,,,1,1,,,
+P26,2321,Mokaragnana,,8,,,,,,,,,,1,1,,,
+P26,2322,Raboramena,,8,,,,,,,,,,1,1,,Bois construction,
+P26,2323,Tsitrotroky,,,,,,,,,,,,1,1,,Aucun,
+P26,2324,Hazomalagny,,14,,,,,,,,,,0,1,,Aucun,
+P26,2325,Vognitry,,33,,,,,,,,,,0,1,,Bois construction,
+P26,2326,Andragnoy,,,,,,,,,,,,1,1,,,
+P26,2327,Fagnidy,,,,,,,,,,,,1,1,,,
+P27,2401,Veso,,,,,,,,,,,,1,1,,Aucun,
+P27,2402,Sp. inconnue ,,,,,,,,,,,,3,1,,,En fleurs
+P27,2403,Kabokala,,,,,,,,,,,,4,1,,,
+P27,2404,Babogna,,13,8,8,8,18,10,,,,,8,1,,Bois construction,
+P27,2405,Hafona,Mâle,19,22,21,,,,,,,,0,2,Mâle ou femelle,,"Fougère arborescente (HYP : présence seulement au niveau du cours d’eau : hygrophile ? Explique qu’il y en ait plus dans les montagnes, et ce serait un marqueur biaisé pour estimer la naturalité des FTH malgaches de plaine)"
+P27,2406,Rotrala,Grandes feuilles,16,,,,,,,,,,0,2,Feuilles petites ou grandes,Bois construction,
+P27,2407,Ampaliala,,26,,,,,,,,,,0,1,,Aucun,
+P27,2408,Vahy ,,,,,,,,,,,,4,NA,,Aucun,Liane
+P27,2409,Vahimainty,,,,,,,,,,,,3,NA,,Aucun,Liane
+P27,2410,Menahihy,,,,,,,,,,,,1,1,,Bois construction,
+P27,2411,Vahikarabo,,8,13,,,,,,,,,0,NA,,,Liane de grande taille
+P27,2412,Longoza,,,,,,,,,,,,2,1,,,
+P27,2413,Tavoloala,,,,,,,,,,,,1,1,,,
+P27,2414,Vahipika,,,,,,,,,,,,1,NA,,,Liane
+P27,2415,Hazondambo,,15,,,,,,,,,,0,1,,,
+P27,2416,Zambo,,10,,,,,,,,,,0,1,,Bois construction,
+P27,2417,Mahitsiatoraka,,10,,,,,,,,,,0,1,,Aucun,
+P27,2418,Fianakara,,,,,,,,,,,,1,1,,,
+P27,2419,Voapaka,Racines-échasses,42,,,,,,,,,,0,2,,Bois construction,
+P27,2420,Tsitoitoy,,,,,,,,,,,,3,1,,Aucun,
+P27,2421,Rohindambo,,,,,,,,,,,,1,NA,,Aucun,Liane
+P27,2422,Tsimahamasasokona,,9,,,,,,,,,,0,NA,,Aucun,
+P27,2423,Tsirika,,,,,,,,,,,,1,NA,,Aucun,
+P27,2424,Hazomainty,Femelle,12,,,,,,,,,,1,2,,Bois construction,
+P27,2425,Valotra,,11,,,,,,,,,,0,1,,"Bois construction, pirogues",
+P27,2426,Fantsinakoho,,,,,,,,,,,,1,1,,Bois construction,
+P27,2427,Velonizy,,,,,,,,,,,,2,1,,Aucun,
+P27,2428,Voatrotrokala,,,,,,,,,,,,1,1,,,
+P27,2429,Tamenaka,,14,,,,,,,,,,1,1,,Bois construction,
+P27,2430,Raharaha,,,,,,,,,,,,1,1,,,
+P27,2431,Voamasoandro,,20,,,,,,,,,,0,NA,,,Appellation personnelle du polisn’ala
+P28,2501,Tsirika,,9,8,8,9,8,8,9,,,,20,1,,,
+P28,2502,Hasina,Petites feuilles,,,,,,,,,,,16,2,,Aucun,
+P28,2503,Sp. inconnue ,,9,,,,,,,,,,0,1,,,
+P28,2504,Tsimahamasasokona,,35,10,13,27,,,,,,,2,1,,Aucun,
+P28,2505,Vahy,,,,,,,,,,,,3,NA,,,Liane
+P28,2506,Vognitra,,,,,,,,,,,,2,1,,,
+P28,2507,Tsitoitoy,,,,,,,,,,,,1,1,,,
+P28,2508,Fantsikahatra,,8,,,,,,,,,,1,1,,,
+P28,2509,Hafotra,,16,,,,,,,,,,0,1,,Corde pour la fixation du toit,
+P28,2510,Menafatana,Petites feuilles,73,,,,,,,,,,1,2,,Bois construction,
+P28,2511,Vahikerotra,,8,,,,,,,,,,3,1,,,
+P28,2512,Valotra,Grandes feuilles,,,,,,,,,,,1,2,,"Bois construction, pirogues",
+P28,2513,Menahihy,,15,9,,,,,,,,,2,1,,,
+P28,2514,Voapaka,Grandes feuilles,,,,,,,,,,,1,2,,,
+P28,2515,Raharaha,,,,,,,,,,,,1,1,,,
+P28,2516,Hazombary,,11,15,11,,,,,,,,1,1,,,
+P28,2517,Sp. inconnue ,,9,,,,,,,,,,0,1,,,
+P28,2518,Angavoala,,,,,,,,,,,,1,1,,,
+P28,2519,Kizy,,9,,,,,,,,,,1,1,,,
+P28,2520,Babogna,,8,15,,,,,,,,,0,1,,,
+P28,2521,Hazomainty,Femelle,,,,,,,,,,,2,2,,,
+P28,2522,Retsara,,,,,,,,,,,,1,1,,,
+P28,2523,Hazomamy,,9,,,,,,,,,,2,1,,Écorce sucrée,
+P28,2524,Nato,Rouge,17,,,,,,,,,,0,2,Rouge ou blanc (Natopoaka fotsy),Bois construction,
+P28,2525,Sp. inconnue ,,,,,,,,,,,,1,1,,,
+P28,2526,Menafatana,Grandes feuilles,,,,,,,,,,,1,2,,,
+P28,2527,Vilona,,,,,,,,,,,,1,1,,,
+P28,2528,Haorendry,,11,,,,,,,,,,1,1,,,
+P28,2529,Hazoaraka,,,,,,,,,,,,2,1,,,
+P01,0101,Hasina,Grandes feuilles,8,,,,,,,,,,0,3,"Feuilles grandes (‘be’), moyennes (‘antogniny’) ou petites (‘kely’)",Haies,
+P01,0102,Hazo tavolo,Petites feuilles,,,,,,,,,,,4,2,Feuilles petites ou grandes,Pilons,
+P01,0103,Fantsik'ahitra,,,,,,,,,,,,2,2,Feuilles petites ou grandes,,
+P01,0104,Hazo tavolo,Grandes feuilles,,,,,,,,,,,3,,Feuilles petites ou grandes,,
+P01,0105,Tsy mataodakato,,,,,,,,,,,,3,2,Plante poilue et verte ou glabre,,
+P01,0106,Fantsik'ahitra ,,,,,,,,,,,,3,2,Feuilles petites ou grandes,Maison,Bois dur
+P01,0107,Lambignana,,,,,,,,,,,,2,1,,,
+P01,0108,Tsimanasa sokona,,,,,,,,,,,,3,2,Feuilles grandes et écorce épaisse ou feuilles petites et écorce mince,Maison,
+P01,0109,Longotra,,,,,,,,,,,,3,1,,Maison,
+P01,0110,Vahipika,,,,,,,,,,,,1,1,,"Paniers tressés, haies",
+P01,0111,Raharaha,,,,,,,,,,,,1,1,,,
+P01,0112,Ravinala,,,,,,,,,,,,1,3,Plante petite (‘volovo’) ; rachis rouge (‘Iaraka’) ; rachis large (‘belavo’),,
+P01,0113,Sagnira,,,,,,,,,,,,3,2,Feuilles petites ou grandes,,
+P01,0114,Randripody,,,,,,,,,,,,1,2,Feuilles longues ou rondes,,
+P01,0115,Hazombary,,39,22,,,,,,,,,0,1,,Poutre,
+P01,0116,Resonjo,,,,,,,,,,,,4,1,,Plante médicinale,
+P01,0117,Menahihy,,20,,,,,,,,,,0,1,,Poutre,Bois dur
+P01,0118,Ampaly ala,,,,,,,,,,,,1,2,Feuilles poilues ou glabres,,
+P01,0119,Fandramanagna,,,,,,,,,,,,1,2,Feuilles petites ou grandes,"Thé, plante médicinale",
+P01,0120,Lakabolavo,,,,,,,,,,,,3,2,Feuilles petites ou grandes,Tressage,
+P01,0121,Hazondambo,,,,,,,,,,,,2,2,Feuilles épaisses ou minces,,
+P01,0122,Angavoady,,,,,,,,,,,,2,2,Feuilles petites ou grandes,,
+P01,0123,Menafatagna,,20,,,,,,,,,,0,1,,,Il existe plusieurs appellations différentes pour cette plante
+P01,0124,Hazondambo ,Feuilles rondes,,,,,,,,,,,3,NA,,,
+P01,0125,Voatsilagna,,,,,,,,,,,,1,1,,Guitares,Bois léger
+P01,0126,Sp. inconnue,,,,,,,,,,,,1,NA,,,
+P01,0127,Mamaly folaina,,,,,,,,,,,,2,1,,,
+P01,0128,Vilok'azo,,,,,,,,,,,,2,1,,,Arbre à croissance rapide
+P01,0129,Fantsik' ala,,,,,,,,,,,,1,2,Tige rouge ou noire,Insecticide,
+P01,0130,Hasina,Petites feuilles,,,,,,,,,,,1,NA,,,
+P01,0131,Jatsifady,,,,,,,,,,,,1,2,Avec ou sans branches,,
+P02,0201,Tavia,,13,,,,,,,,,,,,,,ex-P2 obs 203
+P02,0202,Mahanoro,,8,,,,,,,,,,,,,,ex-P2 obs 220
+P02,0203,Madiorano,,32,,,,,,,,,,,,,,ex-P2 obs 233
+P02,0204,Malandivony,,10,,,,,,,,,,,,,,ex-P2 obs 238
+P02,0205,Hasimbe,,16,,,,,,,,,,,,,,ex-P2 obs 241
+P02,0206,Babogna,,62,,,,,,,,,,,,,,ex-P2 obs 244
+P02,0207,Sagnira,,17,,,,,,,,,,,,,,ex-P2 obs 249
+P02,0208,Kijy,,9,,,,,,,,,,,,,,ex-P2 obs 271
+P02,0209,Mandrosovelo,,8,,,,,,,,,,,,,,ex-P2 obs 274
+P02,0210,Rotrala,,17,,,,,,,,,,,,,,ex-P2 obs 278
+P02,0211,Hazomavo,,20,,,,,,,,,,,,,,ex-P2 obs 280
+P02,0212,Tragnobemboragna,,30,,,,,,,,,,,,,,ex-P2 obs 282
+P02,0213,Hazomdambo,,11,,,,,,,,,,,,,,ex-P2 obs 294
+P02,0214,Ambora,,,,,,,,,,,,2,,,,ex-P2 obs 251
+P02,0215,Angavoady,,,,,,,,,,,,1,,,,ex-P2 obs 266
+P02,0216,Babogna,,,,,,,,,,,,5,,,,ex-P2 obs 244
+P02,0217,Bevoroviky,,,,,,,,,,,,1,,,,ex-P2 obs 296
+P02,0218,Bevorovoka,,,,,,,,,,,,1,,,,ex-P2 obs 214
+P02,0219,Etatr'angidigna,,,,,,,,,,,,2,,,,ex-P2 obs 257
+P02,0220,Hasimbe,,,,,,,,,,,,2,,,,ex-P2 obs 241
+P02,0221,Hasina,,,,,,,,,,,,2,,,,ex-P2 obs 234
+P02,0222,Hazo mainty,,,,,,,,,,,,1,,,,ex-P2 obs 235
+P02,0223,Katoky,,,,,,,,,,,,1,,,,ex-P2 obs 237
+P02,0224,Kijy,,,,,,,,,,,,1,,,,ex-P2 obs 271
+P02,0225,Kimba,,,,,,,,,,,,1,,,,ex-P2 obs 222
+P02,0226,Madiorano,,,,,,,,,,,,3,,,,ex-P2 obs 233
+P02,0227,Mahatsoraka,,,,,,,,,,,,1,,,,ex-P2 obs 258
+P02,0228,Malandivony,,,,,,,,,,,,2,,,,"ex-P2 obs 232,238"
+P02,0229,Marotao,,,,,,,,,,,,1,,,,ex-P2 obs 287
+P02,0230,Randripody,,,,,,,,,,,,1,,,,ex-P2 obs 236
+P02,0231,Sagnira,,,,,,,,,,,,3,,,,ex-P2 obs 249
+P02,0232,Sakasaka,,,,,,,,,,,,1,,,,ex-P2 obs 221
+P02,0233,Soaravy,,,,,,,,,,,,1,,,,ex-P2 obs 250
+P02,0234,Talihy,,,,,,,,,,,,1,,,,ex-P2 obs 217
+P02,0235,Tsikarikaragnana,,,,,,,,,,,,1,,,,ex-P2 obs 276
+P02,0236,Tsokazo,,,,,,,,,,,,1,,,,ex-P2 obs 205
+P02,0237,Tsoy,,,,,,,,,,,,1,,,,ex-P2 obs 248
+P02,0238,Vahierotra,,,,,,,,,,,,2,,,,ex-P2 obs 246
+P02,0239,Vahimavo,,,,,,,,,,,,1,,,,ex-P2 obs 239
+P02,0240,Vaijagna,,,,,,,,,,,,2,,,,ex-P2 obs 202
+P02,0241,Vaimainty,,,,,,,,,,,,1,,,,ex-P2 obs 218
+P02,0242,Vainamalogna,,,,,,,,,,,,1,,,,ex-P2 obs 291
+P02,0243,Valambignana,,,,,,,,,,,,1,,,,ex-P2 obs 207
+P02,0244,Voasonairogna,,,,,,,,,,,,1,,,,ex-P2 obs 223
+P02,0245,Voatogna,,,,,,,,,,,,1,,,,ex-P2 obs 275
+P03,0301,Sakatavilogna,,63,,,,,,,,,,,,,,ex-P2 obs 208
+P03,0302,Mahanoro,,8,,,,,,,,,,,,,,ex-P2 obs 220
+P03,0303,Ramiavogna,,83,,,,,,,,,,,,,,ex-P2 obs 229
+P03,0304,Babogna,,19,,,,,,,,,,,,,,ex-P2 obs 244
+P03,0305,Sagnira,,11,,,,,,,,,,,,,,ex-P2 obs 249
+P03,0306,Sagnira,,28,,,,,,,,,,,,,,ex-P2 obs 249
+P03,0307,Tsirika,,14,,,,,,,,,,,,,,ex-P2 obs 261
+P03,0308,Tsirika,,15,,,,,,,,,,,,,,ex-P2 obs 261
+P03,0309,Angavoady,,14,,,,,,,,,,,,,,ex-P2 obs 266
+P03,0310,Tsimitegnina,,11,,,,,,,,,,,,,,ex-P2 obs 270
+P03,0311,Kabokala,,60,,,,,,,,,,,,,,ex-P2 obs 273
+P03,0312,Natopoaky,,8,,,,,,,,,,,,,,ex-P2 obs 277
+P03,0313,Hasina,,12,,,,,,,,,,,,,,ex-P2 obs 281
+P03,0314,Ambora,,,,,,,,,,,,1,,,,ex-P2 obs 269
+P03,0315,Angavoady,,,,,,,,,,,,2,,,,ex-P2 obs 266
+P03,0316,Babogna,,,,,,,,,,,,10,,,,ex-P2 obs 244
+P03,0317,Dikadika,,,,,,,,,,,,1,,,,ex-P2 obs 226
+P03,0318,Fotsign'iraka,,,,,,,,,,,,1,,,,ex-P2 obs 209
+P03,0319,Hajom-barika,,,,,,,,,,,,3,,,,ex-P2 obs 247
+P03,0320,Hasina,,,,,,,,,,,,1,,,,ex-P2 obs 234
+P03,0321,Hazo mainty,,,,,,,,,,,,2,,,,ex-P2 obs 235
+P03,0322,Hazompody,,,,,,,,,,,,1,,,,ex-P2 obs 211
+P03,0323,Katoky,,,,,,,,,,,,1,,,,ex-P2 obs 237
+P03,0324,Lalogna,,,,,,,,,,,,1,,,,ex-P2 obs 260
+P03,0325,Madiorano,,,,,,,,,,,,3,,,,ex-P2 obs 233
+P03,0326,Mahanoro,,,,,,,,,,,,1,,,,ex-P2 obs 220
+P03,0327,Mahatsoraka,,,,,,,,,,,,1,,,,ex-P2 obs 219
+P03,0328,Marotao,,,,,,,,,,,,1,,,,ex-P2 obs 287
+P03,0329,Menahihy,,,,,,,,,,,,1,,,,ex-P2 obs 283
+P03,0330,Nato,,,,,,,,,,,,2,,,,ex-P2 obs 252
+P03,0331,Randripody,,,,,,,,,,,,1,,,,ex-P2 obs 254
+P03,0332,Sagnira,,,,,,,,,,,,1,,,,ex-P2 obs 249
+P03,0333,Sakasaka,,,,,,,,,,,,1,,,,ex-P2 obs 221
+P03,0334,Tsetoraky,,,,,,,,,,,,1,,,,ex-P2 obs 284
+P03,0335,Tsikarikaragna,,,,,,,,,,,,1,,,,ex-P2 obs 210
+P03,0336,Tsingena,,,,,,,,,,,,1,,,,ex-P2 obs 286
+P03,0337,Tsirika,,,,,,,,,,,,2,,,,ex-P2 obs 261
+P03,0338,Tsoaky,,,,,,,,,,,,1,,,,ex-P2 obs 289
+P03,0339,Tsoy,,,,,,,,,,,,1,,,,ex-P2 obs 248
+P03,0340,Vahipiky,,,,,,,,,,,,1,,,,ex-P2 obs 293
+P03,0341,Vaijagna,,,,,,,,,,,,1,,,,ex-P2 obs 215
+P03,0342,Vilogna,,,,,,,,,,,,1,,,,ex-P2 obs 264
+P04,0401,Bararaky,,21,,,,,,,,,,,,,,ex-P2 obs 206
+P04,0402,Madiorano,,39,,,,,,,,,,,,,,ex-P2 obs 233
+P04,0403,Madiorano,,22,,,,,,,,,,,,,,ex-P2 obs 233
+P04,0404,Vahimavo,,12,,,,,,,,,,,,,,ex-P2 obs 239
+P04,0405,Vahierotra,,20,,,,,,,,,,,,,,ex-P2 obs 246
+P04,0406,Vahierotra,,17,,,,,,,,,,,,,,ex-P2 obs 246
+P04,0407,Vahierotra,,12,,,,,,,,,,,,,,ex-P2 obs 246
+P04,0408,Tsirika,,13,,,,,,,,,,,,,,ex-P2 obs 261
+P04,0409,Kijy,,14,,,,,,,,,,,,,,ex-P2 obs 271
+P04,0410,Kijy,,12,,,,,,,,,,,,,,ex-P2 obs 271
+P04,0411,Kabokala,,14,,,,,,,,,,,,,,ex-P2 obs 273
+P04,0412,Voamalimpangady,,13,,,,,,,,,,,,,,ex-P2 obs 292
+P04,0413,Katoky,,9,,,,,,,,,,,,,,ex-P2 obs 295
+P04,0414,Ambora,,,,,,,,,,,,1,,,,ex-P2 obs 251
+P04,0415,Angavoady,,,,,,,,,,,,3,,,,ex-P2 obs 266
+P04,0416,Babogna,,,,,,,,,,,,9,,,,ex-P2 obs 244
+P04,0417,Etatr'angidigna,,,,,,,,,,,,1,,,,ex-P2 obs 257
+P04,0418,Fanakaragna,,,,,,,,,,,,1,,,,ex-P2 obs 201
+P04,0419,Hafi-potsy,,,,,,,,,,,,1,,,,ex-P2 obs 243
+P04,0420,Hajom-barika,,,,,,,,,,,,1,,,,ex-P2 obs 247
+P04,0421,Hasimbe,,,,,,,,,,,,2,,,,ex-P2 obs 241
+P04,0422,Hasina,,,,,,,,,,,,4,,,,ex-P2 obs 234
+P04,0423,Hazo mainty,,,,,,,,,,,,3,,,,ex-P2 obs 235
+P04,0424,Kabokala,,,,,,,,,,,,1,,,,ex-P2 obs 273
+P04,0425,Lambignana,,,,,,,,,,,,2,,,,ex-P2 obs 262
+P04,0426,Madiorano,,,,,,,,,,,,3,,,,ex-P2 obs 233
+P04,0427,Mahatsoraka,,,,,,,,,,,,2,,,,ex-P2 obs 258
+P04,0428,Mandravy,,,,,,,,,,,,1,,,,ex-P2 obs 255
+P04,0429,Manjarivelo,,,,,,,,,,,,1,,,,ex-P2 obs 225
+P04,0430,Menahihy,,,,,,,,,,,,1,,,,ex-P2 obs 283
+P04,0431,Nato,,,,,,,,,,,,1,,,,ex-P2 obs 252
+P04,0432,Ramiavogna,,,,,,,,,,,,1,,,,ex-P2 obs 242
+P04,0433,Randripody,,,,,,,,,,,,1,,,,ex-P2 obs 254
+P04,0434,Raomogna,,,,,,,,,,,,1,,,,ex-P2 obs 263
+P04,0435,Soaravy,,,,,,,,,,,,1,,,,ex-P2 obs 288
+P04,0436,Tavia,,,,,,,,,,,,1,,,,ex-P2 obs 267
+P04,0437,Tsoaky,,,,,,,,,,,,1,,,,ex-P2 obs 289
+P04,0438,Vaijagna,,,,,,,,,,,,1,,,,ex-P2 obs 202
+P04,0439,Valotra,,,,,,,,,,,,1,,,,ex-P2 obs 213
+P05,0501,Ambora,,9,,,,,,,,,,,,,,ex-P2 obs 224
+P05,0502,Matsoraka,,9,,,,,,,,,,,,,,ex-P2 obs 230
+P05,0503,Madiorano,,25,,,,,,,,,,,,,,ex-P2 obs 233
+P05,0504,Madiorano,,34,,,,,,,,,,,,,,ex-P2 obs 233
+P05,0505,Madiorano,,30,,,,,,,,,,,,,,ex-P2 obs 233
+P05,0506,Malandivony,,15,,,,,,,,,,,,,,ex-P2 obs 238
+P05,0507,Babogna,,19,,,,,,,,,,,,,,ex-P2 obs 244
+P05,0508,Vahierotra,,15,,,,,,,,,,,,,,ex-P2 obs 246
+P05,0509,Vahierotra,,14,,,,,,,,,,,,,,ex-P2 obs 246
+P05,0510,Vahierotra,,12,,,,,,,,,,,,,,ex-P2 obs 246
+P05,0511,Hazopody,,9,,,,,,,,,,,,,,ex-P2 obs 272
+P05,0512,Rotrala,,20,,,,,,,,,,,,,,ex-P2 obs 278
+P05,0513,Matsoraky,,8,,,,,,,,,,,,,,ex-P2 obs 298
+P05,0514,Ambora,,,,,,,,,,,,1,,,,ex-P2 obs 251
+P05,0515,Babogna,,,,,,,,,,,,3,,,,ex-P2 obs 244
+P05,0516,Besaroviky,,,,,,,,,,,,1,,,,ex-P2 obs 245
+P05,0517,Bevorovoka,,,,,,,,,,,,1,,,,ex-P2 obs 214
+P05,0518,Etatr'angidigna,,,,,,,,,,,,1,,,,ex-P2 obs 257
+P05,0519,Fantsik'ahitra,,,,,,,,,,,,1,,,,ex-P2 obs 256
+P05,0520,Faralaotra,,,,,,,,,,,,1,,,,ex-P2 obs 259
+P05,0521,Hakify,,,,,,,,,,,,1,,,,ex-P2 obs 231
+P05,0522,Hasimbe,,,,,,,,,,,,4,,,,ex-P2 obs 241
+P05,0523,Hasina,,,,,,,,,,,,2,,,,ex-P2 obs 234
+P05,0524,Hazo mainty,,,,,,,,,,,,6,,,,ex-P2 obs 235
+P05,0525,Hazoaraka,,,,,,,,,,,,1,,,,ex-P2 obs 268
+P05,0526,Hazomavo,,,,,,,,,,,,1,,,,ex-P2 obs 227
+P05,0527,Hazombary,,,,,,,,,,,,1,,,,ex-P2 obs 216
+P05,0528,Kitsoky,,,,,,,,,,,,1,,,,ex-P2 obs 285
+P05,0529,Madiorano,,,,,,,,,,,,1,,,,ex-P2 obs 233
+P05,0530,Mahanoro,,,,,,,,,,,,1,,,,ex-P2 obs 220
+P05,0531,Mahatsoraka,,,,,,,,,,,,1,,,,ex-P2 obs 258
+P05,0532,Malandivony,,,,,,,,,,,,1,,,,ex-P2 obs 238
+P05,0533,Mandrosovelo,,,,,,,,,,,,1,,,,ex-P2 obs 228
+P05,0534,Matsoaka,,,,,,,,,,,,1,,,,ex-P2 obs 212
+P05,0535,Rafita,,,,,,,,,,,,1,,,,ex-P2 obs 297
+P05,0536,Ramiavogna,,,,,,,,,,,,1,,,,ex-P2 obs 242
+P05,0537,Randripody,,,,,,,,,,,,1,,,,ex-P2 obs 236
+P05,0538,Sagnira,,,,,,,,,,,,1,,,,ex-P2 obs 249
+P05,0539,Soaravy,,,,,,,,,,,,1,,,,ex-P2 obs 250
+P05,0540,Tsingena,,,,,,,,,,,,1,,,,ex-P2 obs 253
+P05,0541,Tsoratsoraky,,,,,,,,,,,,1,,,,ex-P2 obs 240
+P05,0542,Vahierotra,,,,,,,,,,,,1,,,,ex-P2 obs 246
+P05,0543,Vahimavo,,,,,,,,,,,,1,,,,ex-P2 obs 239
+P05,0544,Valambignana,,,,,,,,,,,,1,,,,ex-P2 obs 207
+P05,0545,Voamalimpangady,,,,,,,,,,,,1,,,,ex-P2 obs 265
+P05,0546,Voamalok'agady,,,,,,,,,,,,1,,,,ex-P2 obs 290
+P05,0547,Voatogna,,,,,,,,,,,,1,,,,ex-P2 obs 279
+P05,0548,Voatsilagna,,,,,,,,,,,,1,,,,ex-P2 obs 204
