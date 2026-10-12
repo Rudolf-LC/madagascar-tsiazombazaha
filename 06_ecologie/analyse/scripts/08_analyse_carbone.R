@@ -1,216 +1,405 @@
-"
-Ewen Le Coeur
-2026
-Objectif : stock de carbone (§3.3 du document d'etape) et indicateurs
-de transects (grands arbres DBH > 40, chablis).
+# 08_analyse_carbone.R
+# Ewen Le Coeur
+# 2026
+# Objectif : stocks de carbone (§3.3 du rapport d'étape) par compartiment —
+# grands arbres (transects 10 m), tiges de placettes (flore), bois mort au
+# sol (line intersect, Van Wagner 1968) et bois mort sur pied (chandelles).
+# Pour chaque compartiment : volume (m³/ha), biomasse (tMS/ha), carbone
+# (tC/ha) et CO2 (tCO2/ha), avec IC95 bootstrap et extrapolation sur la
+# forêt totale de Tsiazombazaha.
+#
+# Methodologie (rapport d'étape §3.3) :
+#   AGB      = Chave et al. 2014 (allometrie sans hauteur)
+#   BGB      = 0,20 × AGB  (ratio root:shoot, Mokany et al. 2006)
+#   CF       = 0,47        (fraction de carbone, Eggleston et al. 2006)
+#   CO2/C    = 3,67
+#   Vivant   : StockCO2 = (AGB + BGB) × CF × 3,67 = 2,06988 × AGB
+#   Bois mort: StockCO2 = V × ρ × CF × 3,67 × f  (f = facteur décomposition)
+#
+# Sorties :
+# - CSV : carbone_stocks.csv — volume, biomasse, C, CO2 par compartiment
+#         (ha + total forêt) avec IC95.
+#
+# Utilisation :
+#   source("06_ecologie/analyse/scripts/08_analyse_carbone.R")
 
-La structure forestiere (densite, classes, G) est traitee par
-04_analyse_structure.R — ce script ne la duplique plus.
-
-Structure du code :
-  - 01_importDonnees.R   : import et nettoyage (socle)
-  - 08_analyse_carbone.R : CE SCRIPT — carbone + grands arbres/chablis
-
-Utilisation :
-  source(\"06_ecologie/analyse/scripts/08_analyse_carbone.R\")
-"
+SURFACE_TSIAZOMBAZAHA <- 450  # surface totale forêt (ha)
 
 ### Modules ###
 
 if (!requireNamespace("dplyr", quietly = TRUE)) install.packages("dplyr")
 if (!requireNamespace("tidyr", quietly = TRUE)) install.packages("tidyr")
-if (!requireNamespace("stringr", quietly = TRUE)) install.packages("stringr")
 if (!requireNamespace("readr", quietly = TRUE)) install.packages("readr")
+if (!requireNamespace("tibble", quietly = TRUE)) install.packages("tibble")
 
 library(dplyr)
 library(tidyr)
-library(stringr)
 library(readr)
+library(tibble)
 
-source("06_ecologie/analyse/scripts/01_importDonnees.R")
-d <- importer_donnees()
+### Import des donnees CSV ###
 
-### Préparation des tiges ###
+dossierDonnees <- "06_ecologie/analyse/donnees"
+dossierSorties <- "06_ecologie/analyse/sorties"
+if (!dir.exists(dossierSorties)) dir.create(dossierSorties, recursive = TRUE)
 
-# Tiges mesurées (CBH > 8 cm) : floreTiges.
-# Gaulis (tiges < 1,30 m) : non mesurés — comptés dans la densité,
-# exclus de la surface terrière (pas de CBH).
-# La surface terrière se rapporte à la surface horizontale.
-tiges <- d$floreTiges |>
+# Flore : tiges mesurees (circonferences)
+flore_brut <- read_csv(
+  file.path(dossierDonnees, "flore.csv"),
+  show_col_types = FALSE
+)
+
+cols_circ <- c("Circ1", "Circ2", "Circ3", "Circ4", "Circ5", "Circ6",
+               "Cir7", "Circ8", "Circ9", "Cir10")
+cols_circ_present <- intersect(cols_circ, names(flore_brut))
+
+d_floreTiges <- flore_brut |>
+  select(placette, all_of(cols_circ_present)) |>
+  pivot_longer(
+    cols = all_of(cols_circ_present),
+    names_to = "numTige",
+    values_to = "circ_cm"
+  ) |>
+  filter(!is.na(circ_cm)) |>
+  mutate(circ_cm = suppressWarnings(as.numeric(circ_cm))) |>
+  filter(!is.na(circ_cm)) |>
+  rename(cdPlacette = placette) |>
+  select(cdPlacette, circ_cm, numTige)
+
+# Placettes
+d_placettes <- read_csv(
+  file.path(dossierDonnees, "placettes.csv"),
+  show_col_types = FALSE,
+  col_types = cols(
+    `surface-horizontale` = col_character(),
+    `surface-corrigee` = col_character()
+  )
+) |>
+  rename(
+    cdPlacette = placette,
+    cdTransect = transect,
+    surfaceHorizontale_m2 = `surface-horizontale`,
+    longueurBM = `longueur-transect-bois-mort`
+  ) |>
   mutate(
-    dbh_cm = circ_cm / pi,
-    classeDiam = floor(dbh_cm / 2.5) * 2.5
+    surfaceHorizontale_m2 = as.numeric(gsub(",", ".", surfaceHorizontale_m2)),
+    longueurBM = suppressWarnings(as.numeric(longueurBM))
   )
 
-gaulis <- d$flore |>
-  filter(!is.na(gaulis)) |>
-  group_by(cdPlacette) |>
-  summarise(nbGaulis = sum(gaulis), .groups = "drop")
+# Transects
+d_transects <- read_csv(
+  file.path(dossierDonnees, "transects.csv"),
+  show_col_types = FALSE
+) |>
+  rename(
+    cdTransect = transect,
+    longueurGA = `longueur-prospection-grands-arbres`
+  ) |>
+  mutate(longueurGA = suppressWarnings(as.numeric(longueurGA)))
 
-### Surfaces ###
+# Grands arbres
+d_grandsArbres <- read_csv(
+  file.path(dossierDonnees, "grands-arbres.csv"),
+  show_col_types = FALSE
+) |>
+  rename(cdTransect = transect, circ_cm = circonference) |>
+  mutate(circ_cm = suppressWarnings(as.numeric(circ_cm))) |>
+  filter(!is.na(circ_cm), !is.na(cdTransect))
 
-surfaceTotale <- sum(d$placettes$surfaceHorizontale_m2, na.rm = TRUE)
-message("Surface inventoriée (horizontale) : ", round(surfaceTotale, 1),
-        " m² sur ", nrow(d$placettes), " placettes")
+# Bois mort
+d_boisMort <- read_csv(
+  file.path(dossierDonnees, "bois-mort.csv"),
+  show_col_types = FALSE
+) |>
+  rename(
+    cdPlacette = placette,
+    circ_cm = circonference,
+    etatDecomposition = `niveau-degradation`
+  ) |>
+  mutate(circ_cm = suppressWarnings(as.numeric(circ_cm))) |>
+  filter(!is.na(circ_cm))
 
-### Indicateurs des transects : grands arbres DBH > 40 et chablis ###
+### Constantes du rapport d'etape §3.3 ###
 
-# N.B. conventions (document d'étape §3.2) :
-#  - largeur de prospection : 10 m -> surface = longueur x 10
-#  - la feuille "transects" mélange longueurs (m) et réponses Oui/Non
-#    selon que la prospection a eu lieu ; seules les valeurs numériques
-#    sont des longueurs exploitables. Les transects sans longueur
-#    renseignée sont exclus et signalés.
+E_bioclimatique <- -0.080   # indice bioclimatique Chave et al. 2014 (prov.)
+rho_bois <- 0.60            # densite du bois (t/m³, prov.)
+R <- 0.20                   # ratio BGB/AGB (Mokany et al. 2006)
+CF <- 0.47                  # fraction de carbone (Eggleston et al. 2006)
+M_CO2_C <- 3.67             # rapport molaire CO2/C
 
-longueurTotaleTransects <- sum(d$transects$longueurGA, na.rm = TRUE)
-surfaceTransects_m2 <- longueurTotaleTransects * 10
-
-transectsSansLongueur <- d$transects |>
-  filter(is.na(longueurGA)) |>
-  pull(cdTransect)
-if (length(transectsSansLongueur) > 0) {
-  message("⚠️  Transects sans longueur de prospection exploitables : ",
-          paste(transectsSansLongueur, collapse = ", "),
-          " — exclus des calculs à l'hectare.")
-}
-
-# Nombre de grands arbres (DBH > 40 cm) a l'hectare
-grandsArbresValides <- d$grandsArbres |>
-  filter(cdTransect %in% d$transects$cdTransect[!is.na(d$transects$longueurGA)])
-
-nbGrandsArbres <- nrow(grandsArbresValides)
-densiteGrandsArbres <- nbGrandsArbres / surfaceTransects_m2 * 10000
-
-grandsArbresDispositif <- tibble(
-  indicateur = "Grands arbres DBH>40 (arbres/ha)",
-  valeur = densiteGrandsArbres
-)
-
-# Surface terriere des grands arbres a l'hectare
-GgrandsArbres <- grandsArbresValides |>
-  summarise(G_m2 = sum(pi / 4 * (circ_cm / pi / 100)^2, na.rm = TRUE)) |>
-  pull(G_m2)
-GgrandsArbres_ha <- GgrandsArbres / surfaceTransects_m2 * 10000
-
-# Chablis a l'hectare
-# Convention : seuls les transects avec prospection chablis attestée
-# (prospChablis == TRUE) sont comptés ; les longueurs correspondantes
-# ne sont pas renseignées dans le fichier -> a completer.
-chablisValides <- d$chablis
-nbChablis <- sum(chablisValides$nombre, na.rm = TRUE)
-transectsChablis <- d$transects |>
-  filter(prospChablis == TRUE) |>
-  pull(cdTransect)
-longueurChablisConnue <- sum(d$transects$longueurGA[d$transects$cdTransect %in% transectsChablis], na.rm = TRUE)
-
-chablisDispositif <- tibble(
-  indicateur = "Chablis (/ha)",
-  nbChablis = nbChablis,
-  transectsProspectes = paste(transectsChablis, collapse = ", "),
-  longueurConnue_m = longueurChablisConnue,
-  valeur = NA_real_
-)
-if (longueurChablisConnue > 0) {
-  chablisDispositif$valeur <- nbChablis / (longueurChablisConnue * 10) * 10000
-}
-
-### Stock de carbone (document d'etape §3.3) ###
-
-# Parametres du site — PROVISOIRES, a confirmer :
-#  E : indice bioclimatique de Chave et al. 2014 (foret tropicale humide,
-#      facade Est Madagascar ; valeur par defaut -0,080)
-#  rho : densite du bois (t/m3) ; moyenne bois tropical humide 0,60
-# Constantes du document d'etape :
-#  R (BGB/AGB) = 0,20 ; CF = 0,47 ; CO2/MS = 3,67
-#     -> StockCO2 vivant = (AGB + 0,20 AGB) x 0,47 x 3,67 = 2,06988 AGB
-#  bois mort sur pied : meme allometrie, facteur de decomposition
-#     par etat (1 : 0,9 ; 2 : 0,6 ; 3 : 0,4 ; NA : 1,0)
-#  bois mort au sol : Van Wagner (1968), L_bm = 290 m
-#     V = pi2/8L x somme(d2) x 10000 (m3/ha), CO2 = V x rho x CF x 3,67
-
-E_bioclimatique <- -0.080   # PROVISOIRE
-rho_bois <- 0.60            # PROVISOIRE
 facteurs_decomposition <- c("1" = 0.9, "2" = 0.6, "3" = 0.4)
 
+### Fonctions allometriques ###
+
+# AGB Chave et al. 2014 (kg) pour un DHP en cm
 agb_chave <- function(dhp_cm, rho = rho_bois, E = E_bioclimatique) {
   lnD <- log(dhp_cm)
   exp(-1.803 - 0.976 * E + 0.976 * log(rho) + 2.673 * lnD - 0.0299 * lnD^2)
 }
 
-# N.B. domaine de validite de Chave 2014 : DHP >= 5 cm. Les tiges plus
-# petites (2,2 a 5 cm) sont incluses mais contribuent marginalement
-# (< 8 % de l'AGB total) ; recalcul sans elles possible via floreTiges.
+# Volume (m³) = AGB (kg) / (rho (t/m³) × 1000 kg/t)
+volume_chave <- function(dhp_cm, rho = rho_bois, E = E_bioclimatique) {
+  agb_chave(dhp_cm, rho, E) / (rho * 1000)
+}
 
-tiges <- tiges |>
-  mutate(agb_kg = agb_chave(dbh_cm))
-
-agb_par_placette <- tiges |>
-  group_by(cdPlacette) |>
-  summarise(AGB_kg = sum(agb_kg, na.rm = TRUE), .groups = "drop")
-
-AGB_ha <- sum(agb_par_placette$AGB_kg) / surfaceTotale / 1000 * 10000
-stockCO2_vivant <- 2.06988 * AGB_ha
-
-# Bois mort sur pied (chandelles)
 facteur_decomposition <- function(etat) {
   dplyr::coalesce(unname(facteurs_decomposition[as.character(etat)]), 1)
 }
 
-chandelles <- d$boisMort |>
+### 1. Grands arbres (transects, largeur 10 m) — vivant ###
+
+transects_GA <- d_transects |>
+  filter(!is.na(longueurGA)) |>
+  mutate(surface_m2 = longueurGA * 10)
+
+surfaceGA_m2 <- sum(transects_GA$surface_m2)
+message("Grands arbres : ", nrow(transects_GA), " transects, ",
+        round(surfaceGA_m2, 0), " m² prospectés (",
+        paste(transects_GA$cdTransect, collapse = ", "), ")")
+
+ga <- d_grandsArbres |>
+  filter(cdTransect %in% transects_GA$cdTransect) |>
+  mutate(
+    dbh_cm = circ_cm / pi,
+    volume_m3 = volume_chave(dbh_cm)
+  )
+
+ga_par_transect <- ga |>
+  group_by(cdTransect) |>
+  summarise(volume_m3 = sum(volume_m3, na.rm = TRUE), .groups = "drop") |>
+  left_join(transects_GA, by = "cdTransect")
+
+V_GA_ha <- sum(ga_par_transect$volume_m3) / surfaceGA_m2 * 10000
+
+boot_GA <- replicate(1000, {
+  idx <- sample(nrow(ga_par_transect), replace = TRUE)
+  bs <- ga_par_transect[idx, ]
+  sum(bs$volume_m3) / sum(bs$surface_m2) * 10000
+})
+ic_GA <- quantile(boot_GA, c(0.025, 0.975), names = FALSE)
+
+### 2. Tiges des placettes (flore) — vivant ###
+
+surfacePlacettes_m2 <- sum(d_placettes$surfaceHorizontale_m2, na.rm = TRUE)
+message("Placettes : ", nrow(d_placettes), " placettes, ",
+        round(surfacePlacettes_m2, 1), " m², ",
+        nrow(d_floreTiges), " tiges mesurées")
+
+tiges <- d_floreTiges |>
+  mutate(
+    dbh_cm = circ_cm / pi,
+    volume_m3 = volume_chave(dbh_cm)
+  )
+
+tiges_par_placette <- tiges |>
+  group_by(cdPlacette) |>
+  summarise(volume_m3 = sum(volume_m3, na.rm = TRUE), .groups = "drop") |>
+  right_join(
+    d_placettes |> select(cdPlacette, surfaceHorizontale_m2),
+    by = "cdPlacette"
+  ) |>
+  mutate(volume_m3 = replace_na(volume_m3, 0))
+
+V_tiges_ha <- sum(tiges_par_placette$volume_m3) / surfacePlacettes_m2 * 10000
+
+boot_tiges <- replicate(1000, {
+  idx <- sample(nrow(tiges_par_placette), replace = TRUE)
+  bs <- tiges_par_placette[idx, ]
+  sum(bs$volume_m3) / sum(bs$surfaceHorizontale_m2) * 10000
+})
+ic_tiges <- quantile(boot_tiges, c(0.025, 0.975), names = FALSE)
+
+### 3. Bois mort au sol (line intersect, Van Wagner 1968) — mort ###
+
+L_total <- sum(d_placettes$longueurBM, na.rm = TRUE)
+message("Bois mort au sol : L_total = ", L_total, " m")
+
+boisSol <- d_boisMort |>
+  filter(type == "Sol") |>
+  mutate(
+    diametre_m = circ_cm / pi / 100,
+    facteur = facteur_decomposition(etatDecomposition),
+    d2_f = diametre_m^2 * facteur
+  )
+
+boisSol_par_placette <- d_placettes |>
+  select(cdPlacette, longueurBM) |>
+  left_join(
+    boisSol |>
+      group_by(cdPlacette) |>
+      summarise(somme_d2f = sum(d2_f, na.rm = TRUE), .groups = "drop"),
+    by = "cdPlacette"
+  ) |>
+  mutate(somme_d2f = replace_na(somme_d2f, 0))
+
+# V/ha = π²/(8×L) × Σ(d²×f) × 10000  (f déjà appliqué par pièce)
+V_sol_ha <- pi^2 / (8 * L_total) * sum(boisSol_par_placette$somme_d2f) * 10000
+
+boot_sol <- replicate(1000, {
+  idx <- sample(nrow(boisSol_par_placette), replace = TRUE)
+  bs <- boisSol_par_placette[idx, ]
+  L_boot <- sum(bs$longueurBM)
+  if (L_boot == 0) return(NA_real_)
+  pi^2 / (8 * L_boot) * sum(bs$somme_d2f) * 10000
+})
+ic_sol <- quantile(boot_sol, c(0.025, 0.975), na.rm = TRUE, names = FALSE)
+
+### 4. Bois mort sur pied (chandelles) — mort ###
+
+chandelles <- d_boisMort |>
   filter(type == "Chandelle") |>
   mutate(
     dbh_cm = circ_cm / pi,
     facteur = facteur_decomposition(etatDecomposition),
-    agb_kg = agb_chave(dbh_cm)
+    volume_m3 = volume_chave(dbh_cm) * facteur
   )
 
-CO2_pied_ha <- sum(chandelles$agb_kg * chandelles$facteur, na.rm = TRUE) *
-  0.47 * 3.67 / surfaceTotale / 1000 * 10000
+message("Chandelles : ", nrow(chandelles), " bois morts sur pied")
 
-# Bois mort au sol (Van Wagner)
-longueur_transect_bm <- 290   # L_bm (m)
+chandelles_par_placette <- chandelles |>
+  group_by(cdPlacette) |>
+  summarise(volume_m3 = sum(volume_m3, na.rm = TRUE), .groups = "drop") |>
+  right_join(
+    d_placettes |> select(cdPlacette, surfaceHorizontale_m2),
+    by = "cdPlacette"
+  ) |>
+  mutate(volume_m3 = replace_na(volume_m3, 0))
 
-boisSol <- d$boisMort |>
-  filter(type == "Sol") |>
-  mutate(
-    diametre_m = circ_cm / pi / 100,
-    facteur = facteur_decomposition(etatDecomposition)
-  )
+V_pied_ha <- sum(chandelles_par_placette$volume_m3) /
+  surfacePlacettes_m2 * 10000
 
-V_sol_ha <- pi^2 / (8 * longueur_transect_bm) *
-  sum(boisSol$diametre_m^2 * boisSol$facteur, na.rm = TRUE) * 10000
-CO2_sol_ha <- V_sol_ha * rho_bois * 0.47 * 3.67
+boot_pied <- replicate(1000, {
+  idx <- sample(nrow(chandelles_par_placette), replace = TRUE)
+  bs <- chandelles_par_placette[idx, ]
+  sum(bs$volume_m3) / sum(bs$surfaceHorizontale_m2) * 10000
+})
+ic_pied <- quantile(boot_pied, c(0.025, 0.975), names = FALSE)
 
-stockCO2_boisMort <- CO2_pied_ha + CO2_sol_ha
+### Conversion volume → biomasse → carbone → CO2 ###
+# Biomasse (tMS) = Volume (m³) × ρ
+# Vivant  : C = Biomasse × (1+R) × CF ;  CO2 = C × 3,67
+# Mort    : C = Biomasse × CF          ;  CO2 = C × 3,67
+# Les IC se déduisent linéairement des IC volume.
 
-stockCarbone_dispositif <- tibble(
-  indicateur = c(
-    "AGB vivant (tMS/ha)",
-    "Stock CO2 vivant (tCO2/ha)",
-    "CO2 bois mort sur pied (tCO2/ha)",
-    "CO2 bois mort au sol (tCO2/ha)",
-    "CO2 bois mort total (tCO2/ha)"
-  ),
-  valeur = c(AGB_ha, stockCO2_vivant, CO2_pied_ha, CO2_sol_ha, stockCO2_boisMort)
+# Coefficients de conversion (par m³ de bois à l'hectare)
+conv_vivant <- c(
+  biomasse = rho_bois,                          # tMS / m³
+  carbone  = rho_bois * (1 + R) * CF,           # tC  / m³
+  co2      = rho_bois * (1 + R) * CF * M_CO2_C  # tCO2/ m³ = 2,06988 × ρ
+)
+conv_mort <- c(
+  biomasse = rho_bois,                 # tMS / m³
+  carbone  = rho_bois * CF,            # tC  / m³
+  co2      = rho_bois * CF * M_CO2_C   # tCO2/ m³
 )
 
-### Sorties ###
+### Assemblage compartiment par compartiment ###
 
-dossierSorties <- "06_ecologie/analyse/sorties"
-if (!dir.exists(dossierSorties)) dir.create(dossierSorties, recursive = TRUE)
+# Vecteurs nommés : volume/ha + IC pour chaque compartiment
+compartiments <- c(
+  "Grands arbres (transects 10 m)",
+  "Tiges placettes (flore)",
+  "Bois mort au sol (line intersect)",
+  "Bois mort sur pied (chandelles)"
+)
+V_ha   <- c(V_GA_ha, V_tiges_ha, V_sol_ha, V_pied_ha)
+ic_lo  <- c(ic_GA[1], ic_tiges[1], ic_sol[1], ic_pied[1])
+ic_hi  <- c(ic_GA[2], ic_tiges[2], ic_sol[2], ic_pied[2])
+vivant <- c(TRUE, TRUE, FALSE, FALSE)  # compartiments vivants
 
-readr::write_csv(agb_par_placette,
-                 file.path(dossierSorties, "carbone_agb_placettes.csv"))
-readr::write_csv(stockCarbone_dispositif,
-                 file.path(dossierSorties, "carbone_resume.csv"))
+# Fonction : convertir un volume/ha + IC en biomasse/carbone/CO2
+convertir <- function(v, ic_l, ic_h, vivant) {
+  conv <- if (vivant) conv_vivant else conv_mort
+  tibble(
+    volume_m3_ha  = v,
+    volume_ic95_bas = ic_l,
+    volume_ic95_haut = ic_h,
+    biomasse_tMS_ha = v * conv[["biomasse"]],
+    biomasse_ic95_bas = ic_l * conv[["biomasse"]],
+    biomasse_ic95_haut = ic_h * conv[["biomasse"]],
+    carbone_tC_ha = v * conv[["carbone"]],
+    carbone_ic95_bas = ic_l * conv[["carbone"]],
+    carbone_ic95_haut = ic_h * conv[["carbone"]],
+    co2_tCO2_ha = v * conv[["co2"]],
+    co2_ic95_bas = ic_l * conv[["co2"]],
+    co2_ic95_haut = ic_h * conv[["co2"]]
+  )
+}
 
-message("✅ Carbone (§3.3, paramètres E et rho PROVISOIRES) :")
-message("   AGB = ", round(AGB_ha, 1), " tMS/ha")
-message("   CO2 vivant = ", round(stockCO2_vivant, 1), " t/ha")
+liste_compartiments <- lapply(seq_along(compartiments), function(i) {
+  convertir(V_ha[i], ic_lo[i], ic_hi[i], vivant[i]) |>
+    mutate(compartiment = compartiments[i], .before = 1)
+})
 
-resultat <- list(
-  abondances = tiges,
-  agb_par_placette = agb_par_placette,
-  stockCarbone = stockCarbone_dispositif)
+resultats <- bind_rows(liste_compartiments) |>
+  mutate(
+    type = ifelse(vivant, "vivant", "mort"),
+    # Extrapolation forêt totale
+    volume_total_m3 = volume_m3_ha * SURFACE_TSIAZOMBAZAHA,
+    volume_total_ic95_bas = volume_ic95_bas * SURFACE_TSIAZOMBAZAHA,
+    volume_total_ic95_haut = volume_ic95_haut * SURFACE_TSIAZOMBAZAHA,
+    biomasse_total_tMS = biomasse_tMS_ha * SURFACE_TSIAZOMBAZAHA,
+    biomasse_total_ic95_bas = biomasse_ic95_bas * SURFACE_TSIAZOMBAZAHA,
+    biomasse_total_ic95_haut = biomasse_ic95_haut * SURFACE_TSIAZOMBAZAHA,
+    carbone_total_tC = carbone_tC_ha * SURFACE_TSIAZOMBAZAHA,
+    carbone_total_ic95_bas = carbone_ic95_bas * SURFACE_TSIAZOMBAZAHA,
+    carbone_total_ic95_haut = carbone_ic95_haut * SURFACE_TSIAZOMBAZAHA,
+    co2_total_tCO2 = co2_tCO2_ha * SURFACE_TSIAZOMBAZAHA,
+    co2_total_ic95_bas = co2_ic95_bas * SURFACE_TSIAZOMBAZAHA,
+    co2_total_ic95_haut = co2_ic95_haut * SURFACE_TSIAZOMBAZAHA
+  ) |>
+  select(compartiment, type,
+         volume_m3_ha, volume_ic95_bas, volume_ic95_haut,
+         biomasse_tMS_ha, biomasse_ic95_bas, biomasse_ic95_haut,
+         carbone_tC_ha, carbone_ic95_bas, carbone_ic95_haut,
+         co2_tCO2_ha, co2_ic95_bas, co2_ic95_haut,
+         volume_total_m3, volume_total_ic95_bas, volume_total_ic95_haut,
+         biomasse_total_tMS, biomasse_total_ic95_bas, biomasse_total_ic95_haut,
+         carbone_total_tC, carbone_total_ic95_bas, carbone_total_ic95_haut,
+         co2_total_tCO2, co2_total_ic95_bas, co2_total_ic95_haut)
 
-resultat
+### Sortie CSV ###
+
+readr::write_csv(resultats, file.path(dossierSorties, "carbone_stocks.csv"))
+
+### Messages ###
+
+message("\n=== Stocks par compartiment (ha + total ",
+        SURFACE_TSIAZOMBAZAHA, " ha) ===")
+for (i in seq_len(nrow(resultats))) {
+  r <- resultats[i, ]
+  message(sprintf(
+    "\n%s [%s]",
+    r$compartiment, r$type
+  ))
+  message(sprintf(
+    "  Volume   : %8.1f m³/ha  [%8.1f ; %8.1f]  →  %10.0f m³  [%10.0f ; %10.0f]",
+    r$volume_m3_ha, r$volume_ic95_bas, r$volume_ic95_haut,
+    r$volume_total_m3, r$volume_total_ic95_bas, r$volume_total_ic95_haut
+  ))
+  message(sprintf(
+    "  Biomasse : %8.1f tMS/ha [%8.1f ; %8.1f]  →  %10.0f tMS [%10.0f ; %10.0f]",
+    r$biomasse_tMS_ha, r$biomasse_ic95_bas, r$biomasse_ic95_haut,
+    r$biomasse_total_tMS, r$biomasse_total_ic95_bas, r$biomasse_total_ic95_haut
+  ))
+  message(sprintf(
+    "  Carbone  : %8.1f tC/ha  [%8.1f ; %8.1f]  →  %10.0f tC  [%10.0f ; %10.0f]",
+    r$carbone_tC_ha, r$carbone_ic95_bas, r$carbone_ic95_haut,
+    r$carbone_total_tC, r$carbone_total_ic95_bas, r$carbone_total_ic95_haut
+  ))
+  message(sprintf(
+    "  CO2      : %8.1f tCO2/ha[%8.1f ; %8.1f]  →  %10.0f tCO2[%10.0f ; %10.0f]",
+    r$co2_tCO2_ha, r$co2_ic95_bas, r$co2_ic95_haut,
+    r$co2_total_tCO2, r$co2_total_ic95_bas, r$co2_total_ic95_haut
+  ))
+}
+
+# Totaux forêt
+total_carbone <- sum(resultats$carbone_tC_ha) * SURFACE_TSIAZOMBAZAHA
+total_co2 <- sum(resultats$co2_tCO2_ha) * SURFACE_TSIAZOMBAZAHA
+message(sprintf(
+  "\n=== Total forêt (%.0f ha) ===\n  Carbone : %.0f tC\n  CO2     : %.0f tCO2",
+  SURFACE_TSIAZOMBAZAHA, total_carbone, total_co2
+))
+
+resultats
