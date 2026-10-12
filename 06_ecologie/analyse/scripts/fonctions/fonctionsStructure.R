@@ -126,6 +126,45 @@ calculer_G_par_placette <- function(tiges) {
     )
 }
 
+# G par classe de diametre, moyenne et IC 95 % entre placettes.
+# Chaque placette compte 0 dans les classes sans tige (grille complete).
+calculer_G_par_classe <- function(tiges, surfacesPlacettes,
+                                   largeur = 5, origine = 2.5,
+                                   surfaceTotale) {
+  tigesAvecClasse <- tiges |>
+    mutate(
+      classeG = floor((dbh_cm - origine) / largeur) * largeur + origine,
+      G_m2 = pi / 4 * (dbh_cm / 100)^2
+    )
+  G_par_placette_classe <- tigesAvecClasse |>
+    group_by(cdPlacette, classeG) |>
+    summarise(G_m2 = sum(G_m2), .groups = "drop") |>
+    left_join(surfacesPlacettes, by = "cdPlacette") |>
+    mutate(G_ha_placette = G_m2 / surfaceHorizontale_m2 * 10000) |>
+    select(cdPlacette, classeG, G_ha_placette)
+  toutesClasses <- tidyr::expand_grid(
+    cdPlacette = surfacesPlacettes$cdPlacette,
+    classeG = sort(unique(tigesAvecClasse$classeG))
+  ) |>
+    left_join(G_par_placette_classe, by = c("cdPlacette", "classeG")) |>
+    replace_na(list(G_ha_placette = 0))
+  toutesClasses |>
+    group_by(classeG) |>
+    group_modify(~ {
+      v <- .x$G_ha_placette
+      n <- length(v)
+      demi <- qt(0.975, max(n - 1, 1)) * sd(v) / sqrt(n)
+      tibble(moyenne_ha = mean(v), ic95_bas = mean(v) - demi,
+             ic95_haut = mean(v) + demi)
+    }) |>
+    ungroup() |>
+    mutate(
+      borneInf = classeG,
+      borneSup = classeG + largeur
+    ) |>
+    arrange(classeG)
+}
+
 # Moyenne, ecart-type et IC 95 % d'un vecteur (entre placettes)
 resumer <- function(valeurs) {
   n <- length(valeurs)

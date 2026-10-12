@@ -1,0 +1,40 @@
+section,indice,valeur,ic95_bas,ic95_haut,p_value,n,details
+Beta multiplicatif (Whittaker),Beta = gamma / alpha - 1,7.73,NA,NA,NA,NA,"alpha moyen = 30, gamma = 262"
+Beta additif,Beta additif = gamma - alpha moyen,232,NA,NA,NA,NA,"alpha moyen = 30, gamma = 262"
+NMDS (Bray-Curtis),Stress,0.224,NA,NA,NA,28,"k = 2, methode Bray-Curtis"
+Boxplot Jaccard (presence-absence),Kruskal-Wallis (4 niveaux),NA,NA,NA,3.81e-27,378,Niveaux : meme transect / polisn'ala / commune / entre communes
+Boxplot Jaccard (presence-absence),Wilcoxon : Même polisn'ala vs Même transect,NA,NA,NA,0.0675,NA,Correction Holm
+Boxplot Jaccard (presence-absence),Wilcoxon : Même commune vs Même transect,NA,NA,NA,0,NA,Correction Holm
+Boxplot Jaccard (presence-absence),Wilcoxon : Entre communes vs Même transect,NA,NA,NA,0,NA,Correction Holm
+Boxplot Jaccard (presence-absence),Wilcoxon : Même commune vs Même polisn'ala,NA,NA,NA,0,NA,Correction Holm
+Boxplot Jaccard (presence-absence),Wilcoxon : Entre communes vs Même polisn'ala,NA,NA,NA,0,NA,Correction Holm
+Boxplot Jaccard (presence-absence),Wilcoxon : Entre communes vs Même commune,NA,NA,NA,7e-4,NA,Correction Holm
+Bray-Curtis par niveau,Même transect,0.645,NA,NA,NA,37,moyenne ± ecart-type = 0.645 ± 0.099
+Bray-Curtis par niveau,Même polisn'ala,0.776,NA,NA,NA,16,moyenne ± ecart-type = 0.776 ± 0.053
+Bray-Curtis par niveau,Même commune,0.838,NA,NA,NA,70,moyenne ± ecart-type = 0.838 ± 0.064
+Bray-Curtis par niveau,Entre communes,0.833,NA,NA,NA,255,moyenne ± ecart-type = 0.833 ± 0.059
+Bray-Curtis par niveau,Kruskal-Wallis (4 niveaux),NA,NA,NA,1.46e-19,378,
+Bray-Curtis par niveau,Wilcoxon : Même polisn'ala vs Même transect,NA,NA,NA,0,NA,Correction Holm
+Bray-Curtis par niveau,Wilcoxon : Même commune vs Même transect,NA,NA,NA,0,NA,Correction Holm
+Bray-Curtis par niveau,Wilcoxon : Entre communes vs Même transect,NA,NA,NA,0,NA,Correction Holm
+Bray-Curtis par niveau,Wilcoxon : Même commune vs Même polisn'ala,NA,NA,NA,0.001,NA,Correction Holm
+Bray-Curtis par niveau,Wilcoxon : Entre communes vs Même polisn'ala,NA,NA,NA,0.0011,NA,Correction Holm
+Bray-Curtis par niveau,Wilcoxon : Entre communes vs Même commune,NA,NA,NA,0.3626,NA,Correction Holm
+Bray-Curtis par groupe,Même transect,0.645,NA,NA,NA,37,moyenne ± ecart-type = 0.645 ± 0.099
+Bray-Curtis par groupe,Même polisn'ala,0.776,NA,NA,NA,16,moyenne ± ecart-type = 0.776 ± 0.053
+Bray-Curtis par groupe,Même commune,0.838,NA,NA,NA,70,moyenne ± ecart-type = 0.838 ± 0.064
+Bray-Curtis par groupe,Même groupe (Andriana/Mizilo),0.828,NA,NA,NA,108,moyenne ± ecart-type = 0.828 ± 0.056
+Bray-Curtis par groupe,Ambahatrazo vs autres,0.837,NA,NA,NA,147,moyenne ± ecart-type = 0.837 ± 0.06
+Bray-Curtis par groupe,Kruskal-Wallis (5 niveaux),NA,NA,NA,5.13e-19,378,Andriana/Mizilo regroupes vs Ambahatrazo
+Bray-Curtis par groupe,Wilcoxon : Même polisn'ala vs Même transect,NA,NA,NA,0,NA,Correction Holm
+Bray-Curtis par groupe,Wilcoxon : Même commune vs Même transect,NA,NA,NA,0,NA,Correction Holm
+Bray-Curtis par groupe,Wilcoxon : Même groupe (Andriana/Mizilo) vs Même transect,NA,NA,NA,0,NA,Correction Holm
+Bray-Curtis par groupe,Wilcoxon : Ambahatrazo vs autres vs Même transect,NA,NA,NA,0,NA,Correction Holm
+Bray-Curtis par groupe,Wilcoxon : Même commune vs Même polisn'ala,NA,NA,NA,0.002,NA,Correction Holm
+Bray-Curtis par groupe,Wilcoxon : Même groupe (Andriana/Mizilo) vs Même polisn'ala,NA,NA,NA,0.0064,NA,Correction Holm
+Bray-Curtis par groupe,Wilcoxon : Ambahatrazo vs autres vs Même polisn'ala,NA,NA,NA,0.0023,NA,Correction Holm
+Bray-Curtis par groupe,Wilcoxon : Même groupe (Andriana/Mizilo) vs Même commune,NA,NA,NA,0.5553,NA,Correction Holm
+Bray-Curtis par groupe,Wilcoxon : Ambahatrazo vs autres vs Même commune,NA,NA,NA,0.6628,NA,Correction Holm
+Bray-Curtis par groupe,Wilcoxon : Ambahatrazo vs autres vs Même groupe (Andriana/Mizilo),NA,NA,NA,0.5553,NA,Correction Holm
+Especes mono-commune,Especes reconciliees,0.718,NA,NA,0.001,262,attendu sous permutation = 0.532
+Especes mono-commune,Noms vernaculaires bruts,0.806,NA,NA,0.001,341,attendu sous permutation = 0.617
