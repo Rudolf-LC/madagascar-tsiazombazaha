@@ -191,5 +191,3 @@ Les abondances prennent en compte toutes les tiges comptées : tiges mesurées (
 // courbe de raréfaction-extrapolation (Chao & Jost 2012 ; Hsieh et al. 2016).
 // §3.8 Compléments : corrélation, ACP, CAH si le temps le permet.
 // TODO : rédiger chaque sous-section quand la session R livre et valide les livrables.
-
-Bonjour Papi
