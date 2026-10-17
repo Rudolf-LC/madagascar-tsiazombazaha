@@ -9,6 +9,22 @@
 
 = Discussion
 
+// sujets de discussion
+- Concept de dette d'extinction. Il sert à interpréter les résultats (richesse, régénération, espèces rares).
+- L’absence d’analyse de la trame écologique peut aller en Discussion, comme limite et comme perspective : les petits fragments situés à 5, 10 et 15 km sont des relais potentiels.
+
+Hending et al. (2023) :
+Discussion : comparaison avec tes résultats de structure (§3.2) et de diversité (§3.4). Il faudra écrire que leur forêt est de type transitionnel, dans le Nord-Ouest, et que la tienne est une forêt humide de l’Est. La transposition reste donc prudente. Comme ton dispositif ne permet pas de tester lisière contre cœur, la source sert de grille de lecture, pas de point de comparaison direct.
+
+Brown et al. (2018) :
+Elle compare lisière et intérieur dans une forêt tropicale humide de Madagascar. Elle ne trouve pas de différence de biomasse aérienne, mais une diversité phylogénétique et fonctionnelle plus faible en lisière.
+Elle sert surtout au §3.3 carbone, pour nuancer l’idée qu’un fragment perd forcément du carbone.
+// REF? : je n’ai vu que des résumés. Les auteurs complets, la revue (Journal of Applied Ecology) et surtout le site d’étude sont à vérifier avant citation. https://doi.org/10.1111/1365-2664.12985
+
+// PISTE À OUVRIR (Discussion) : exploitation sélective des gros bois (GB) et de certaines espèces de GB (information orale, source à documenter ; n'utiliser que des extraits d'entretiens anonymisés).
+// Hypothèse : le retrait des GB et l'ouverture du couvert pourraient favoriser quelques espèces dans la régénération (dominance accrue, équitabilité réduite). Non testée : pas de placette témoin, pas de donnée sur l'intensité ni l'ancienneté des coupes, et ¹D et ²D sont à homogénéiser avant toute lecture de l'équitabilité.
+// Pour la rendre testable : identifier les espèces ciblées (entretiens), puis comparer leur structure (G, classes de diamètre, IVI) et leur régénération entre placettes plus ou moins exploitées (souches observées, entretiens).
+
 == Recommandations stratégiques
 
 VIs à vis de :
@@ -19,7 +35,7 @@ VIs à vis de :
 - Diagnostic agraires et actions
 - Coordination avec les autres ONG (FOLUR, ADRA)
 
-== Limites et pistes ouvertes
+== Pistes ouvertes
 === Enquête sociale
 Traduction
 
@@ -31,7 +47,7 @@ Le fokontany d'Ambahatrazo n'est pas adhérant du VOI, mais comporte une partie 
 La présente étude a omis ces deux fokontany par contraintes temporelles et logistiques, mais certains ménages proches de la forêt interagissent probablemen,t avec celle-ci, ouen tout cas intéragissaient avant.
 La raison de non-adhésion de ces FKT au VOI reste également à élucider.
 
-Plusieurs acteurs n'ont pas souhaité non rencontrer en raison de leurs contraintes propres ou par manqiue de temps de notre part.
+Plusieurs acteurs n'ont pas souhaité non rencontrer en raison de leurs contraintes propres ou par manque de temps de notre part.
 Les raisons de refus évoquées par les paysans sont : absence de rémunération de l'entretien, manque de temps, distribution alimentaire organisée par une autre organisme,
 réunion avec d'autres membres d'Inter Aide, maladie ou décès d'un proche, aucune raison.
 
@@ -59,4 +75,6 @@ Données de qualité faible (?)
 
 === Écologie
 
-Très faible échantillonage
+Très faible échantillonage, pas d'indentification à l'espèce : engager des botanistes du Missouri Botanical Garden, de Tannarive ou des étudiants de l'ESSA spécialisés en écologie pour ne travailler que sur ça afin de dresser une liste valide des espèces binominales de la forêt et calculer des indices alpha, beta et gamma sur les espèces botaniques réelles.
+
+Augmenter l'échantillonage pour réduire les incertitudes sur le calcul du stock de carbone.

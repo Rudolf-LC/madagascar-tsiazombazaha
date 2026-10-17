@@ -1,6 +1,10 @@
 // main.typ — assemblage du mémoire.
-// Compilation : typst compile --root ../.. main.typ memoire.pdf
-// (la racine du dépôt est la racine Typst, à cause des figures dans 06_ecologie/).
+// Compilation : typst compile main.typ memoire.pdf
+
+// Imports
+
+#import "@preview/glossarium:0.5.10": make-glossary, register-glossary, print-glossary, gls, glspl
+#show: make-glossary
 
 // ---------- Police ----------
 // Accessibilité + rigueur académique : Source Serif 4 (Adobe, SIL OFL) — serif de
@@ -9,31 +13,50 @@
 // (Google Fonts) ou fonts-sourceserifpro.
 // Alternatives : "Atkinson Hyperlegible" (Braille Institute, basse vision, sans-serif),
 // "Lexend" (lecture fluide, sans-serif), "Liberation Serif" (métrique Times).
-#set text(font: "Source Serif 4", size: 12pt, lang: "fr", region: "FR")
+#set text(font: "Source Serif 4", size: 11pt, lang: "fr", region: "FR")
 
 // ---------- Corps de texte : justifié, avec césures ----------
-// Interligne élargi (1,3 em) pour la lisibilité ; césures automatiques pour
-// éviter les « rivières » d'espaces créées par la justification.
 #set par(justify: true, leading: 1.3em)
 #set text(hyphenate: true)
 
-// ---------- Titres : 11 pt, numérotation 1.1 ----------
+// ---------- Titres : 11 pt, numérotation 1.1.1 (critère 122, quatre niveaux max, critère 123) ----------
 #set heading(numbering: "1.1")
 #show heading: set text(size: 11pt)
 #show heading: set block(above: 1.6em, below: 1.1em)
+#show heading.where(level: 1): it => { // Chaque titre de niveau 1 commence sur une nouvelle page.
+  pagebreak(weak: true) 
+  it
+}
 
-// ---------- Pagination : « - page / total - » en bas à droite ----------
-// Typst ne connaît pas le total de pages nativement. Méthode des docs Typst
-// (guide « State ») : le numbering lit le state, et un update final (via
-// `locate` + `final`, exécuté à la fin de la compilation) fixe le total.
-#let nb-pages = state("nb-pages", 1)
-#set page(paper: "a4", margin: 2.5cm, number-align: right, numbering: (..nums) => {
-  "- " + str(nums.pos().first()) + " / " + str(nb-pages.get()) + " -"
-})
-// En fin de document, on fixe le total au numéro de la dernière page.
-// `context` + `counter(page).final()` sont résolus après la passe complète :
-// tous les pieds de page affichent alors le même total.
-#context nb-pages.update(counter(page).final().first())
+// ---------- Pagination : recto/verso, numéro côté extérieur, en-tête + filet ----------
+#set page(
+  paper: "a4",
+  binding: left,
+  margin: (inside: 2cm, outside: 2cm, top: 3cm, bottom: 2cm),
+  header: context {
+    let debut = query(<debut-corps>).first().location().page()
+    if here().page() >= debut {
+      let pg = counter(page).get().first()
+      let gauche = [Étude sociale et écologique de Tsiazombazaha]
+      let num = counter(page).display("1")
+      set text(size: 10pt)
+      if calc.odd(pg) {
+        grid(
+          columns: (1fr, auto),
+          align(left, gauche), align(right, num),
+        )
+      } else {
+        grid(
+          columns: (auto, 1fr),
+          align(left, num), align(right, gauche),
+        )
+      }
+      v(-0.5em)
+      line(length: 100%, stroke: 1pt)
+    }
+  }
+)
+#set footnote.entry(separator: line(length: 30%, stroke: 0.5pt))
 
 // ---------- Figures et tableaux ----------
 // Titre des tableaux au-dessus, titre des figures en dessous (défaut).
@@ -48,25 +71,25 @@
 // Colonnes numériques : à centrer horizontalement — réglé tableau par tableau
 // dans les fichiers (align: ..., center pour les colonnes de chiffres).
 
-// ---------- Assemblage ----------
-// Ordre final visé : page de titre, note d'accessibilité, dédicace, épigraphes,
-// remerciements, résumés, listes liminaires (glossaire, abréviations, tables),
-// corps (Introduction -> Problématique -> Matériels et méthodes -> Résultats ->
-// Discussion -> Conclusion -> Après-propos), références, annexes.
+// ---------- Pièces liminaires : titres non numérotés (Tableau 1 du guide) ----------
+#set heading(numbering: none, outlined: false)
+#include "Couverture.typ"
 #include "PageDeTitre.typ"
-#include "PrefaceAccessibilite.typ"
 #include "Dedicace.typ"
-#include "Epigraphe.typ"
 #include "Remerciements.typ"
 #include "Resume.typ"
-#include "ListesLiminaires.typ"
+
+#outline(title: [Table des matières], depth: 4)
+
+// ---------- Corps du texte : numérotation à partir de l'introduction ----------
+#set heading(numbering: "1.1", outlined: true)
 #include "Introduction.typ"
-#include "Problemmatique.typ"
-#include "MaterielMethodesEcologie.typ"
-#include "MaterielMethodesSocial.typ"
+#include "Problematique.typ"
+#include "MaterielMethodes.typ"
 #include "ResultatsEcologie.typ"
 #include "Discussion.typ"
 #include "Conclusion.typ"
 #include "ApresPropos.typ"
 #include "References.typ"
+#include "Listes.typ"
 #include "Annexes.typ"

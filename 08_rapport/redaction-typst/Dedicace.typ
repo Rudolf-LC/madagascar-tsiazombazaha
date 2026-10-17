@@ -1,17 +1,27 @@
-// Dédicace — liminaire.
-// Transféré du brouillon « redaction-resume-brouillon » (texte intégral ; les essais de
-// formulation de l'auteur sont conservés tels quels).
+// Dédicace
 
-= Dédicace
+#v(1fr)
+#align(right)[
+  #emph[Aux milliers de forêts sacrifiées pour faire prospérer l'espèce humaine,\ et surtout à celles et ceux qui replantent ces forêts perdues.]
+  ]
+#v(2fr) // tuées/mortes pour faire vivres
 
-À ceux qui souffrent.
-À ceux qui ont perdu leurs arbres.
-À ceux qui souffrent, car ils ont perdu leurs arbres. \*\*\*
-À ceux qui ont perdu leur nature et qui en souffrent.
-À ceux qui souffrent de la perte de leur forêt.
-À ceux qui souffrent de la mort de la nature.
-À ceux qui souffrent de la mort de leur forêt.
-À ceux qui souffrent car la forêt se meurt.
-À ceux qui perdent leur forêt.
+#page(header: none, footer: none)[]
 
-À ceux qui souffrent des sécheresses car leur forêt est perdue.
+
+// Épigraphe
+
+#v(1fr)
+#align(right)[
+  #emph[« Longtemps [...] l'on regardait les arbres et les forêts comme le plus beau présent fait à l'homme.
+Ce sont les arbres qui fournirent les premiers aliments, dont le feuillage rendit la caverne plus moelleuse,
+dont l'écorce servit de vêtement [...] C'est avec l'arbre que nous sillonnons les mers et que nous rapprochons les pays éloignés ;
+c'est avec l'arbre que nous construisons nos édifices ;  c'est avec l'arbre que l'on faisait les statues des dieux. »]
+
+  Pline l'Ancien, \
+  Histoire naturelle, Livre XII (I et II) : Rang honorable des arbres dans la nature, 77 EC.
+  // https://remacle.org/bloodwolf/erudits/plineancien/livre12.htm
+]
+#v(2fr)
+
+#page(header: none, footer: none)[]
