@@ -135,7 +135,7 @@ Les données ont été nettoyées puis traitées avec le langage R (// REF? : ve
 citation R à préciser ; packages : dplyr, ggplot2 // TODO : compléter la liste effective)
 sous l'environnement RStudio.
 
-Sauf mention contraire, les indicateurs sont présentés sous la forme moyenne ± écart-type, accompagnés d'un intervalle de confiance à 95 % calculé par le t de Student entre placettes. Le nombre de placettes (n) est systématiquement précisé. // TODO : convention de notation des seuils de significativité (* p(H₀) < 0,05 ; ** p(H₀) < 0,01 ; *** p(H₀) < 0,001) à énoncer ici si des tests sont présentés en Résultats (guide, critère 45).
+Sauf mention contraire, les indicateurs sont présentés sous la forme moyenne ± écart-type, accompagnés d'un intervalle de confiance à 95 % calculé par le t de Student entre placettes. Le nombre de placettes (n) est systématiquement précisé. Les niveaux de probabilité statistique sont notés selon la convention suivante : \* p(H₀) < 0,05 ; \*\* p(H₀) < 0,01 ; \*\*\* p(H₀) < 0,001 ; ns : non significatif (p(H₀) ≥ 0,05).
 
 // Note du brouillon « redaction-foresterie-brouillon » : « Sauf mention contraire
 // explicite, les intervalles de confiance présentés à la formule E = moy ± sigma / n
@@ -191,5 +191,3 @@ Les abondances prennent en compte toutes les tiges comptées : tiges mesurées (
 // courbe de raréfaction-extrapolation (Chao & Jost 2012 ; Hsieh et al. 2016).
 // §3.8 Compléments : corrélation, ACP, CAH si le temps le permet.
 // TODO : rédiger chaque sous-section quand la session R livre et valide les livrables.
-
-Bonjour Papi

@@ -6,7 +6,8 @@
 // (32 entretiens / 49 personnes) — à harmoniser. Le titre annonce aussi un abstract
 // anglais et une version malgache : à traduire.
 
-= Resume / Abstract / malgache (1700 caractères espaces compris)
+#pagebreak(weak: true)
+= Résumé (1700 caractères espaces compris)
 
 Située dans le Sud-Est de Madagascar, la forêt de Tsiazombazaha (450 hectares) consituent aujourd'hui le plus grand/seul fragment de forêt primaire de la région Fitonivavy.
 c'est pourquoi les politiques de conservation et les ONG mettent des moyens pour sa préservation.
@@ -26,3 +27,9 @@ La forêt de Tsiazombazaha constitue donc bien une forêt d'importance première
 Des recommendations oéprationnelles sur les actions à mener par Inter Aide sont proposées.
 
 Mots-clés : Madagascar, Forêt tropicale humide, socioécologie, inventaire écologique, ONG
+
+#pagebreak(weak: true)
+= Abstract
+
+#pagebreak(weak: true)
+= Famintana

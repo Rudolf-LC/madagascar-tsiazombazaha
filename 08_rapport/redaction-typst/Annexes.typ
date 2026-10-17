@@ -5,9 +5,17 @@
 // espèce×usage) sont à importer dynamiquement depuis les CSV (cf. convention de gestion
 // des tableaux en Résultats §3.1).
 
-= Table des annexes
+#show figure.where(kind: "annexe"): set figure.caption(position: top)
+#set figure(numbering: "1")
 
 = Annexes
+
+#figure(
+  [ ... contenu de l'annexe ... ],
+  kind: "annexe",
+  supplement: [Annexe],
+  caption: [Titre de l'annexe],
+)
 
 - Carte d'intervention du projet EcoBois (?)
 - Canevas d'entretien
