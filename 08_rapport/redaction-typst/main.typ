@@ -86,7 +86,7 @@
 #include "Introduction.typ"
 #include "Problematique.typ"
 #include "MaterielMethodes.typ"
-#include "ResultatsEcologie.typ"
+// #include "ResultatsEcologie.typ"
 #include "Discussion.typ"
 #include "Conclusion.typ"
 #include "ApresPropos.typ"

@@ -50,14 +50,6 @@ Une revue de la littérature portant spécifiquement sur la forêt de Tsiazombaz
 // TODO : figure — diagramme PRISMA de la revue (identification, tri, éligibilité, inclusion).
 // TODO : tableau — documents retenus (référence, type, thème, données exploitées).
 
-// inclure le diagramme PRISMA ici 
-// Oui, mais pas seulement le nombre final. Le diagramme PRISMA 2020 donne les effectifs à chaque étape :
-
-// Identification : enregistrements trouvés par source (bases, littérature grise, GBIF…) et doublons retirés.
-// Sélection : enregistrements examinés sur titre et résumé, puis exclus.
-// Éligibilité : documents recherchés, non obtenus, puis lus en entier et exclus, avec le motif d’exclusion pour chaque catégorie.
-// Inclusion : nombre de documents retenus dans la synthèse.
-
 == Méthodologie du volet social
 
 // ATTENTION : le guide GEEFT demande pour les sujets en SHS une section « Méthodologie » et une section « Problématique » (absente de main.typ) ; à arbitrer avec le référent. Les chiffres du brouillon (32 entretiens/49 personnes) diffèrent du résumé (29/44) : ne rien figer.
@@ -174,52 +166,6 @@ Le nombre de chablis par hectare et le nombre d'arbres de DBH $>$ 40~cm par hect
 
 Le lien entre la régénération et le couvert est testé par la corrélation de Pearson entre le nombre de gaulis et le nombre de tiges de DBH $>=$ 12,5~cm par placette. Les classes de diamètre adjacentes ne sont pas utilisées, car leur corrélation positive est un artefact mécanique du dénombrement. // TODO : vérifier la formulation avec l'auteur ; n et p-value à citer depuis les CSV à jour.
 
-=== Diversités alpha et bêta
-
-La diversité alpha, à l'échelle de la placette, est quantifiée par quatre indices. Les trois premiers relèvent du cadre unificateur des nombres de Hill $""^q D$ (Hill, 1973), où l'ordre $q$ règle la sensibilité à la rareté : la richesse spécifique $S = ""^0 D$ ; l'indice de Shannon $H' = -sum_i p_i ln p_i$ (Shannon et Weaver, 1949), dont l'exponentielle $""^1 D$ s'interprète comme le nombre effectif d'espèces communes (Jost, 2006) ; l'inverse de l'indice de Simpson sous sa forme corrigée, $1 / hat(lambda) = N(N-1) / sum_i n_i (n_i - 1) = ""^2 D$ (Simpson, 1949), nombre effectif d'espèces dominantes. Le quatrième est l'indice alpha de Fisher, défini par $S = alpha ln(1 + N / alpha)$ (Fisher et al., 1943), indépendant du nombre de tiges comptées.
-// TODO : tableau — indices alpha par placette (moyenne ± écart-type, n), issus des CSV à jour.
-
-La diversité bêta mesure la différence de composition entre placettes. Le bêta multiplicatif de Whittaker, $beta = gamma / macron(alpha)$ (Whittaker, 1960), s'interprète comme le nombre effectif de communautés. Le bêta additif, $beta_"add" = gamma - macron(alpha)$ (Lande, 1996), est le nombre moyen d'espèces de la forêt absentes d'une placette moyenne ; rapporté à $gamma$, il donne la part de la richesse de la forêt absente d'une placette moyenne. Une ordination par positionnement multidimensionnel non métrique (NMDS) est réalisée sur les dissimilarités de Bray-Curtis (Bray et Curtis, 1957) calculées à partir des effectifs par placette ; la qualité de la représentation est mesurée par le stress (Kruskal, 1964). Les points sont colorés par itinéraire pour rendre visible une éventuelle autocorrélation spatiale. Les placettes voisines d'un même itinéraire n'étant pas indépendantes, le bêta observé entre placettes proches est probablement sous-estimé.
-// TODO : figure — NMDS (stress en légende, points colorés par itinéraire) ; valeurs de $gamma$ à citer uniquement après arbitrage du nombre d'espèces (230 / 261 / 243 selon les notes).
-
-
-=== Richesse spécifique totale
-
-La richesse observée $gamma_"obs"$ est le nombre d'espèces recensées dans l'ensemble des placettes. L'état d'avancement de l'inventaire est décrit par la courbe de raréfaction-extrapolation en fonction du nombre de placettes (Chao et Jost, 2012 ; Hsieh et al., 2016). La richesse totale est estimée par des estimateurs asymptotiques dont la confrontation délimite une fourchette : Chao2 (estimateur principal), jackknife d'ordre 2 (contrôle de robustesse), ICE et bootstrap (compléments) sur les incidences, et Chao1 sur les abondances en contrepoint (Burnham et Overton, 1979 ; Chao, 1984 ; 1987 ; Lee et Chao, 1994 ; Smith et van Belle, 1984). Le dispositif étant orienté par l'accessibilité, ces estimateurs visent la richesse des assemblages couverts ; ils constituent des bornes inférieures de la richesse de la forêt, et l'extrapolation à la forêt entière est une généralisation appuyée sur cette couverture, non une inférence statistique.
-// TODO : figure — courbe de raréfaction-extrapolation (légende : estimateurs, seuils, n).
-// TODO : tableau — estimateurs de richesse (valeurs à prendre dans le CSV, jamais figées avant validation).
-// TODO : §3.8 (groupes d'espèces et de placettes : ACP, CAH) — à inclure seulement si l'analyse est réalisée.
-
-
-// 2.2 Relevés par placette : variables stationnelles, tiges comptées et mesurées (CBH), gaulis et semis, bois mort debout et au sol.
-// 2.3 Transects : chablis et grands arbres, en précisant le statut de l’indicateur.
-// 2.4 Faune : simple liste des espèces rencontrées, sans traitement.
-// 2.5 Données complémentaires : Romiguière (2025), transfert de gestion de 2004, GBIF et Rajaonson et al. (2010), cités et discutés (critère 36).
-// 2.6 Identification des espèces : équipe de terrain (forestier, polisin’ala, traducteur), saisie, réconciliation des noms vernaculaires en identités (Schatz 2001, PlantNet, Tropicos, iNaturalist, d’après le projet de stage), classification des usages de Cook (1995).
-
-=== Espèces dominantes
-
-L'importance de chaque espèce est mesurée par l'indice de valeur d'importance (IVI) de Curtis & McIntosh (1951), somme de la densité relative (RD), de la dominance relative (RDo, part de la surface terrière) et de la fréquence relative (RF, part des occurrences en placette), ramenée sur 100 en la divisant par trois (Kent, 2011) :
-
-$ "IVI"_i = ("RD"_i + "RDo"_i + "RF"_i) / 3 $
-$ "RD"_i = D_i / (sum_j D_j) times 100, 
-quad quad "RDo"_i = G_i / (sum_j G_j) times 100 
-quad quad "RF"_i = F_i / (sum_j F_j) times 100 $
-
-Le calcul porte sur les tiges mesurées à l'échelle du dispositif entier ; les gaulis, dont la circonférence n'est pas mesurée, en sont exclus. Les espèces sont les identités réconciliées, chaque individu indéterminé comptant pour une espèce distincte.
-// REF? Curtis, J. T., & McIntosh, R. P. (1951). Ecology, 32(3), 476-496.
-// DOI à vérifier : 10.2307/1931725.
-// REF? Kent, M. (2011). Vegetation Description and Data Analysis: A Practical Approach
-// (2e éd.). Wiley-Blackwell. Pas de DOI pour un ouvrage : ajouter la page éditeur, et
-// vérifier la page de l'ouvrage qui décrit la normalisation par 3.
-// ATTENTION : dernière phrase conforme au CSV actuel (indéterminés comptés comme espèces).
-// Si le recalcul les exclut : « Les individus indéterminés sont exclus du calcul. »
-// Seuil de mesure : formulation sans seuil, car « > 8 cm » (M&M) et « ≥ 8 cm » (arbitrage
-// auteur) restent à harmoniser.
-// 
-// bien de conserver les indéterminés
-// IMPORTANT : utiliser les gaulis pour RD et RF
-
 === Stock de carbone
 
 La biomasse aérienne $"AGB"_k$ de chaque tige est estimée par l'allométrie sans hauteur de Chave et al. (2014) :
@@ -237,6 +183,40 @@ $ V_("bm,sol") = 10000 dot k dot pi^2 / (8 L_("bm")) sum_i d_i^2 $
 
 avec $k = 1$ et $L_"bm"$ la longueur cumulée des transects. // TODO : vérifier l'écriture de la formule (unités de $d_i$) et celle de la conversion du bois mort en CO₂ (facteur 1,7249 du document d'étape sans densité explicite).
 Le carbone du bois mort tient compte de la décomposition par un facteur $f$ de 0,9, 0,6 et 0,4 pour les classes de décomposition 1, 2 et 3, adaptation conservative de Harmon et Sexton (1996), qui distinguent cinq classes. // TODO : tout le §3.3 est préliminaire dans ETAT_AVANCEMENT ; relire après validation des paramètres.
+
+=== Diversité alpha
+
+La diversité alpha, à l'échelle de la placette, est quantifiée par quatre indices. Les trois premiers relèvent du cadre unificateur des nombres de Hill $""^q D$ (Hill, 1973), où l'ordre $q$ règle la sensibilité à la rareté : la richesse spécifique $S = ""^0 D$ ; l'indice de Shannon $H' = -sum_i p_i ln p_i$ (Shannon et Weaver, 1949), dont l'exponentielle $""^1 D$ s'interprète comme le nombre effectif d'espèces communes (Jost, 2006) ; l'inverse de l'indice de Simpson sous sa forme corrigée, $1 / hat(lambda) = N(N-1) / sum_i n_i (n_i - 1) = ""^2 D$ (Simpson, 1949), nombre effectif d'espèces dominantes. Le quatrième est l'indice alpha de Fisher, défini par $S = alpha ln(1 + N / alpha)$ (Fisher et al., 1943), indépendant du nombre de tiges comptées.
+// TODO : tableau — indices alpha par placette (moyenne ± écart-type, n), issus des CSV à jour.
+
+=== Diversité bêta
+
+La diversité bêta mesure la différence de composition entre placettes. Le bêta multiplicatif de Whittaker, $beta = gamma / macron(alpha)$ (Whittaker, 1960), s'interprète comme le nombre effectif de communautés. Le bêta additif, $beta_"add" = gamma - macron(alpha)$ (Lande, 1996), est le nombre moyen d'espèces de la forêt absentes d'une placette moyenne ; rapporté à $gamma$, il donne la part de la richesse de la forêt absente d'une placette moyenne. Une ordination par positionnement multidimensionnel non métrique (NMDS) est réalisée sur les dissimilarités de Bray-Curtis (Bray et Curtis, 1957) calculées à partir des effectifs par placette ; la qualité de la représentation est mesurée par le stress (Kruskal, 1964). Les points sont colorés par itinéraire pour rendre visible une éventuelle autocorrélation spatiale. Les placettes voisines d'un même itinéraire n'étant pas indépendantes, le bêta observé entre placettes proches est probablement sous-estimé.
+// TODO : figure — NMDS (stress en légende, points colorés par itinéraire) ; valeurs de $gamma$ à citer uniquement après arbitrage du nombre d'espèces (230 / 261 / 243 selon les notes).
+
+=== Indice de valeur d'importance
+
+L'indice de valeur d'importance (IVI) de l'espèce $i$ est la somme de sa densité relative, de sa fréquence relative et de sa dominance relative (Curtis et McIntosh, 1951) :
+
+$ "IVI"_i = "RD"_i + "RF"_i + "RDo"_i, quad "RD"_i = D_i / (sum_j D_j) dot 100, quad "RF"_i = F_i / (sum_j F_j) dot 100, quad "RDo"_i = G_i / (sum_j G_j) dot 100 $
+
+avec $D_i$ la densité, $F_i$ la fréquence (placettes où l'espèce est présente) et $G_i$ la surface terrière de l'espèce $i$.
+// TODO : préciser le nombre de placettes avec tiges mesurées (24 selon la note IVI, dont 4 sans tige mesurée à identifier) et l'effet sur $F_i$.
+
+=== Richesse spécifique totale
+
+La richesse observée $gamma_"obs"$ est le nombre d'espèces recensées dans l'ensemble des placettes. L'état d'avancement de l'inventaire est décrit par la courbe de raréfaction-extrapolation en fonction du nombre de placettes (Chao et Jost, 2012 ; Hsieh et al., 2016). La richesse totale est estimée par des estimateurs asymptotiques dont la confrontation délimite une fourchette : Chao2 (estimateur principal), jackknife d'ordre 2 (contrôle de robustesse), ICE et bootstrap (compléments) sur les incidences, et Chao1 sur les abondances en contrepoint (Burnham et Overton, 1979 ; Chao, 1984 ; 1987 ; Lee et Chao, 1994 ; Smith et van Belle, 1984). Le dispositif étant orienté par l'accessibilité, ces estimateurs visent la richesse des assemblages couverts ; ils constituent des bornes inférieures de la richesse de la forêt, et l'extrapolation à la forêt entière est une généralisation appuyée sur cette couverture, non une inférence statistique.
+// TODO : figure — courbe de raréfaction-extrapolation (légende : estimateurs, seuils, n).
+// TODO : tableau — estimateurs de richesse (valeurs à prendre dans le CSV, jamais figées avant validation).
+// TODO : §3.8 (groupes d'espèces et de placettes : ACP, CAH) — à inclure seulement si l'analyse est réalisée.
+
+
+// 2.2 Relevés par placette : variables stationnelles, tiges comptées et mesurées (CBH), gaulis et semis, bois mort debout et au sol.
+// 2.3 Transects : chablis et grands arbres, en précisant le statut de l’indicateur.
+// 2.4 Faune : simple liste des espèces rencontrées, sans traitement.
+// 2.5 Données complémentaires : Romiguière (2025), transfert de gestion de 2004, GBIF et Rajaonson et al. (2010), cités et discutés (critère 36).
+// 2.6 Identification des espèces : équipe de terrain (forestier, polisin’ala, traducteur), saisie, réconciliation des noms vernaculaires en identités (Schatz 2001, PlantNet, Tropicos, iNaturalist, d’après le projet de stage), classification des usages de Cook (1995).
+
 
 == Limites méthodologiques
 

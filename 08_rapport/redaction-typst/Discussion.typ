@@ -21,10 +21,6 @@ Elle compare lisière et intérieur dans une forêt tropicale humide de Madagasc
 Elle sert surtout au §3.3 carbone, pour nuancer l’idée qu’un fragment perd forcément du carbone.
 // REF? : je n’ai vu que des résumés. Les auteurs complets, la revue (Journal of Applied Ecology) et surtout le site d’étude sont à vérifier avant citation. https://doi.org/10.1111/1365-2664.12985
 
-// PISTE À OUVRIR (Discussion) : exploitation sélective des gros bois (GB) et de certaines espèces de GB (information orale, source à documenter ; n'utiliser que des extraits d'entretiens anonymisés).
-// Hypothèse : le retrait des GB et l'ouverture du couvert pourraient favoriser quelques espèces dans la régénération (dominance accrue, équitabilité réduite). Non testée : pas de placette témoin, pas de donnée sur l'intensité ni l'ancienneté des coupes, et ¹D et ²D sont à homogénéiser avant toute lecture de l'équitabilité.
-// Pour la rendre testable : identifier les espèces ciblées (entretiens), puis comparer leur structure (G, classes de diamètre, IVI) et leur régénération entre placettes plus ou moins exploitées (souches observées, entretiens).
-
 == Recommandations stratégiques
 
 VIs à vis de :

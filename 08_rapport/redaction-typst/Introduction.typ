@@ -33,71 +33,11 @@ Les forêts couvrent 32 % de la superficie terrestre et abritent plus de 80 % de
 
 == Madagascar : histoire de la déforestation
 
+== Madagascar : histoire de la déforestation
+
 Madagascar a été colonisée massivement par *Homo sapiens* il y a 1 500 à 2 000 ans. À cette époque, les forêts tropicales humides de l'est de l'île couvraient 11,2 millions d'hectares. La déforestation, d'abord liée aux pratiques agricoles des colons austronésiens, a réduit cette surface à 7,6 millions d'hectares en 1950 (soit une perte de 33 %), puis à 3,8 millions en 1985 (soit une perte de 66 %), avec un taux annuel de déforestation de 111 000 ha/an entre 1950 et 1985. En 2014, les forêts tropicales humides naturelles couvraient 4,4 millions d'hectares, soit la moitié des forêts naturelles de Madagascar. Entre 1953 et 2014, le pays a perdu 44 % de ses forêts naturelles, avec un taux de déforestation annuel de 99 000 ha/an (soit 1,1 %/an) entre 2010 et 2014 (Vieilledent, 2018).
 // HOULA HARD VERIFIER LES CHIFFRES
 // Théorie de l'ile verte (Mada 100 % de foret, vis à vis diversité des milieux ouverts VS forêts)
-
-#let evenements = (
-  (annee: "1930", niveau: "national", texte: [Code forestier colonial]),
-  // REF? : source = projet de stage (étude FAOLEX), à citer proprement.
-  (annee: "1996", niveau: "national", texte: [Loi GELOSE 96-025]),
-  // REF? : Leroy et Mermet (2014), source non lue.
-  (annee: "2004", niveau: "local", texte: [Création du VOI Maharitra ; premier transfert de gestion (GCF, 3~ans)]),
-  // REF? : document de transfert de gestion de 2004, à citer.
-  (annee: "2025", niveau: "local", texte: [Renouvellement du transfert de gestion (1~068~ha)]),
-  // TODO : valeur à valider (1~068 ha de surface transférée, projet de stage) ;
-  // ATTENTION : à distinguer des 450 ha de la forêt (Résumé, TODO de transition).
-
-  // ---- Événements possibles, à décommenter après vérification ----
-  // GCF : date et texte instituant la GCF inconnus.
-  //   (annee: "20XX", niveau: "national", texte: [Gestion contractualisée des forêts (GCF)]),
-  // REF? : textes présents dans la bibliographie du projet de stage (Acte jurid., FAOLEX), rôle exact à confirmer.
-  //   (annee: "2017", niveau: "national", texte: [Politique forestière de Madagascar]),
-  //   (annee: "2020", niveau: "national", texte: [Directives nationales de reboisement]),
-  // Contexte local (projet de stage) ; EcoBois relève plutôt de la Problématique.
-  //   (annee: "2016", niveau: "local", texte: [Inter Aide : reboisement communautaire]),
-  //   (annee: "2025", niveau: "local", texte: [Lancement du projet EcoBois (juillet)]),
-)
-
-#figure(
-  kind: image,
-  supplement: [Figure],
-  {
-  // Dans la figure : texte non justifié, sans césure, interligne serré.
-  set par(justify: false, leading: 0.55em)
-  set text(hyphenate: false)
-  grid(
-    columns: (1fr,) * evenements.len(),
-    row-gutter: 5pt,
-    // Ligne 1 : événements nationaux (au-dessus de l'axe)
-    ..for e in evenements {
-      let c = if e.niveau == "national" { align(center + bottom, pad(x: 5pt, text(size: 10pt, e.texte))) } else { [] }
-      (c,)
-    },
-    // Ligne 2 : axe, années et points (noir plein = national, blanc = local)
-    ..for e in evenements {
-      let a = stack(
-        dir: ttb,
-        spacing: 3pt,
-        align(center, text(size: 10pt, weight: "bold", e.annee)),
-        box(width: 100%, height: 10pt, {
-          place(horizon, line(length: 100%, stroke: 0.8pt))
-          place(center + horizon, circle(radius: 3.5pt, stroke: 0.8pt, fill: if e.niveau == "national" { black } else { white }))
-        }),
-      )
-      (a,)
-    },
-    // Ligne 3 : événements locaux (en dessous de l'axe)
-    ..for e in evenements {
-      let c = if e.niveau == "local" { align(center + top, pad(x: 5pt, text(size: 10pt, e.texte))) } else { [] }
-      (c,)
-    },
-  )
-  },
-  // REF? : sources de la légende à confirmer (FAOLEX ; Leroy et Mermet, 2014 ; documents de transfert de gestion du VOI Maharitra, 2004 et 2025).
-  caption: [Frise chronologique de la gouvernance forestière à Madagascar (au-dessus de l'axe, points noirs) et des transferts de gestion à Tsiazombazaha (en dessous, points blancs).],
-) <frisechronologiquedeforestationmadagascar>
-
 
 == Madagascar : un hotspot de biodiversité
 
@@ -130,7 +70,7 @@ est principalement associée, à Madagascar, à des pratiques d'abattis-brûlis 
 Introduction : une phrase de contexte dans la définition du fragment (c). Elle indique que, dans une forêt de transition du nord-ouest de Madagascar, la fragmentation et les effets de lisière réduisent la diversité spécifique, la taille des arbres et la diversité structurale. Elle sert à montrer que la fragmentation a des conséquences mesurables sur la structure forestière, donc sur tes indicateurs.
 
 
-== Gouvernance forestière malgache et transferts de gestion
+== 5. Gouvernance forestière malgache et transferts de gestion
 
 Dès l'époque coloniale, la gestion des forêts malgaches est encadrée par la loi : le premier code forestier date de 1930, et la recherche « Forêt » pour Madagascar dans la base FAOLEX recense 109 textes juridiques entre 1930 et 2026.
 // TODO : date de consultation de FAOLEX à indiquer (le nombre peut évoluer) ; référence de la base à compléter. Chiffre issu du projet de stage (diagramme PRISMA de l'étude de la législation prévu).
@@ -229,7 +169,7 @@ Dans ces dispositifs, la gestion d'un espace forestier est confiée à une commu
   caption: [Frise chronologique de la gouvernance forestière à Madagascar (au-dessus de l'axe, points noirs) et des transferts de gestion à Tsiazombazaha (en dessous, points blancs).],
 ) <frisechronologiquegouvernanceforestiere>
 
-== La côte Est et la région Fitovinany
+== 6. La côte Est et la région Fitovinany
 
 // ---- Paragraphe 6 : transition vers le local (côte Est, Fitovinany, Tsiazombazaha) ----
 // Rôle : passer du cadrage national au fragment étudié, sans monographie. Les détails du site
@@ -260,7 +200,7 @@ Les connaissances sur ce fragment restent pourtant lacunaires, sur le plan écol
 // TODO : appeler la frise dans le texte (paragraphe 5 ou 6). Ajouter l'étiquette <fig-frise-gouvernance> juste après la parenthèse fermante de #figure(...), puis écrire « (@fig-frise-gouvernance) » dans la phrase concernée.
 // 
 
-== Définitions des termes du titre
+== 7. Définitions des termes du titre
 
 // ---- Paragraphe 7 : définitions des termes du titre ----
 // Titre de travail utilisé : « Caractérisation écologique et sociale du fragment de forêt tropicale de Tsiazombazaha » (page de garde du projet de stage).
