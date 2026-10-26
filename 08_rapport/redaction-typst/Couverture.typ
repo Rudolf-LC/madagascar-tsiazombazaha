@@ -2,8 +2,6 @@
 
 #page(margin: (x: 2cm, top: 1.5cm, bottom: 2cm))[
 
-  // ---------- Logos ----------
-  // TODO : logo AgroParisTech officiel GEEFT = lien de la note 11 du guide.
   #grid(
     columns: (1fr, 1fr),
     align: (left + horizon, right + horizon),
@@ -19,13 +17,11 @@
     #text(size: 12pt)[présenté pour l'obtention du diplôme d'ingénieur AgroParisTech \ et du diplôme d'établissement Sciences et ingénierie forestières]
 
     #v(1.5cm)
-
-    // ---------- Titre du mémoire ----------
-    #text(size: 18pt, weight: "bold")[Conserver les forêts pour réduire la pauvreté des populations rurales vulnérables du Sud-Est de Madagascar : cas d'étude sociale et écologique de la forêt de Tsiazombazaha]
+//
+  #text(size: 12pt)[Diagnostic écologique et sociale de la forêt tropicale humide de Tsiazombazaha, sud-est de Madagascar]
 
     #v(1.5cm)
 
-    // ---------- Illustration (facultative, critère 88) ----------
     // #image("/08_rapport/Images/TODO.jpg", width: 70%)
 
     #text(size: 14pt)[Ewen LE COEUR]
@@ -33,8 +29,7 @@
 
   #v(1fr)
 
-  // ---------- Soutenance et jury ----------
-  #align(center)[
+d  #align(center)[
     Soutenu le 17 novembre 2026 à Montpellier
 
     #v(0.5em)
@@ -68,7 +63,6 @@
 // Notice d'accessibilité
 
 #pagebreak(weak: true)
-
 
 #place(bottom + right)[
   Ce document a été composé pour faciliter sa lecture : corps de texte en Source Serif 4 de 11 points, interligne élargi, césures automatiques, textes alternatifs pour les figures et langue déclarée pour les lecteurs d'écran. Les figures sont décrites en légende ; leurs données exactes figurent en annexe. Le document reste lisible en impression noir et blanc.

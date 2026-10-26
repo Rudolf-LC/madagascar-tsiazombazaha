@@ -16,6 +16,8 @@
 // 7. Définitions des termes du titre
 // La commande (Inter Aide, projet EcoBois), la problématique et les hypothèses
 // sont exposées dans la section Problématique.
+// Le VOI Maharitra et les détails du fragment sont exposés dans M&M, Site d'étude.
+// Principe : l'Introduction reste générale ; les détails propres à Tsiazombazaha vont en Site d'étude.
 
 // Consigne du brouillon « redaction-foresterie-brouillon » : « Le cadrage
 // scientifique : état actuel des connaissances sur le thème, du général et/ou
@@ -30,23 +32,30 @@
 
 Les forêts couvrent 32 % de la superficie terrestre et abritent plus de 80 % des espèces terrestres d'animaux, de plantes et d'insectes (FAO, 2025). À l'échelle mondiale, la déforestation concerne 10,9 millions d'hectares par an sur les 4,14 milliards d'hectares de forêt (FAO, 2025). Les forêts tropicales humides, particulièrement riches en espèces et particulièrement menacées, concentrent une part disproportionnée de cette perte.
 // Depuis la sédentarisation de l'être humain (_Homo sapiens_), la superficie des forêts... intox ?
+// ATTENTION : « intox ? » non résolu. Les chiffres 32 % et 4,14 Md ha sont ceux de FAO (2025) ; à vérifier dans FAO FRA 2025 si doute.
 
 == Madagascar : histoire de la déforestation
 
-== Madagascar : histoire de la déforestation
-
-Madagascar a été colonisée massivement par *Homo sapiens* il y a 1 500 à 2 000 ans. À cette époque, les forêts tropicales humides de l'est de l'île couvraient 11,2 millions d'hectares. La déforestation, d'abord liée aux pratiques agricoles des colons austronésiens, a réduit cette surface à 7,6 millions d'hectares en 1950 (soit une perte de 33 %), puis à 3,8 millions en 1985 (soit une perte de 66 %), avec un taux annuel de déforestation de 111 000 ha/an entre 1950 et 1985. En 2014, les forêts tropicales humides naturelles couvraient 4,4 millions d'hectares, soit la moitié des forêts naturelles de Madagascar. Entre 1953 et 2014, le pays a perdu 44 % de ses forêts naturelles, avec un taux de déforestation annuel de 99 000 ha/an (soit 1,1 %/an) entre 2010 et 2014 (Vieilledent, 2018).
+Madagascar a été colonisée massivement par _Homo sapiens_ il y a 1 500 à 2 000 ans. À cette époque, les forêts tropicales humides de l'est de l'île couvraient 11,2 millions d'hectares. La déforestation, d'abord liée aux pratiques agricoles des colons austronésiens, a réduit cette surface à 7,6 millions d'hectares en 1950 (soit une perte de 33 %), puis à 3,8 millions en 1985 (soit une perte de 66 %), avec un taux annuel de déforestation de 111 000 ha/an entre 1950 et 1985. En 2014, les forêts tropicales humides naturelles couvraient 4,4 millions d'hectares, soit la moitié des forêts naturelles de Madagascar. Entre 1953 et 2014, le pays a perdu 44 % de ses forêts naturelles, avec un taux de déforestation annuel de 99 000 ha/an (soit 1,1 %/an) entre 2010 et 2014 (Vieilledent et al., 2018).
 // HOULA HARD VERIFIER LES CHIFFRES
+// ATTENTION, calculs sur les valeurs écrites :
+//   - 11,2 → 7,6 Mha : perte de 32 % (3,6 / 11,2 = 32,1 %), et non 33 %. Possible arrondi de la source : à vérifier chez Vieilledent et al. (2018).
+//   - 7,6 → 3,8 Mha sur 35 ans : environ 108 600 ha/an, et non 111 000 ha/an.
+//   - 99 000 ha/an = 1,1 %/an implique une base d'environ 9 Mha ; or les forêts naturelles sont à 4,4 Mha en 2014 (soit environ 2,2 %/an). Vérifier la base du pourcentage.
+// Harmonisé : « Vieilledent et al., 2018 » (APA 7, sept auteurs). Entrée à compléter dans References.typ.
 // Théorie de l'ile verte (Mada 100 % de foret, vis à vis diversité des milieux ouverts VS forêts)
+// ATTENTION : concept absent des sources du projet. À sourcer avant d'écrire ; « 100 % de forêt » à présenter comme hypothèse historique, non comme fait.
 
 == Madagascar : un hotspot de biodiversité
 
 L'île est comprise entièrement dans la zone critique de biodiversité « Madagascar et îles de l'Océan Indien » (Conservation International, 2000), en particulier l'écorégion des « Forêts tropicales humides des basses terres de Madagascar » (Armstrong, 2011). Elle se caractérise par une diversité spécifique très élevée et un taux d'endémisme supérieur à 90 % pour certains taxons, telles que les plantes, les lémuriens et les caméléons. Cependant, entre 1950 et 2000, la déforestation a causé l'extinction de 9,1 % des espèces de Madagascar (Allnutt et al., 2008).
+// ATTENTION : « Armstrong (2011) » ici contre « Armstrong, Shugart et Fatoyinbo (2011) » dans la bibliographie du projet de stage (« Armstrong et al., 2011 » en APA 7). À arbitrer.
 
 == Causes de la déforestation et moyens de subsistance
 
-L'expansion agricole, responsable de près de 90 % de la déforestation mondiale en 2015 (ONU), // REF? : référence ONU à préciser (le projet de stage mentionne « ONU » et « ONU, 2015 » sans document exact).
-est principalement associée, à Madagascar, à des pratiques d'abattis-brûlis (_tavy_) pour la culture du riz, du manioc ou des légumes, ainsi qu'à la production de bois de construction, de bois de feu ou de charbon de bois (// REF? : référence à confirmer ; le projet de stage porte ici un « (XXX) » en attente). Or, alors que 79,9 % de la population rurale se situe déjà sous le seuil de pauvreté (Banque mondiale, 2024), la disparition des forêts entraîne celle des moyens de subsistance des communautés rurales, une augmentation des émissions de carbone, une diminution de la biodiversité et une dégradation des sols (ONU, 2015). // REF? : référence ONU 2015 à préciser.
+L'expansion agricole, responsable de près de 90 % de la déforestation mondiale en 2015 (ONU), est principalement associée, à Madagascar, à des pratiques d'abattis-brûlis (_tavy_) pour la culture du riz, du manioc ou des légumes, ainsi qu'à la production de bois de construction, de bois de feu ou de charbon de bois (// REF? : référence à confirmer ; le projet de stage porte ici un « (XXX) » en attente). Or, alors que 79,9 % de la population rurale se situe déjà sous le seuil de pauvreté (Banque mondiale, 2024), la disparition des forêts entraîne celle des moyens de subsistance des communautés rurales, une augmentation des émissions de carbone, une diminution de la biodiversité et une dégradation des sols (ONU, 2015).
+// REF? : « ONU » (2015) : référence exacte à préciser (le projet de stage mentionne « ONU » et « ONU, 2015 » sans document complet ; « ONU, 20XX » apparaît aussi).
+// REF? : référence du « (XXX) » du projet de stage (source des usages du bois) à confirmer.
 
 // TODO : paragraphe sur la gouvernance forestière malgache : code forestier colonial (1930),
 // loi GELOSE 96-025 (Leroy et Mermet, 2014), GCF, VOI. À rédiger avec la frise des politiques
@@ -63,14 +72,15 @@ est principalement associée, à Madagascar, à des pratiques d'abattis-brûlis 
 
 // dette d'extinction : une ou deux phrases pour poser le concept. Il justifie l’enjeu de conservation d’un fragment ancien et isolé.
 // défintion générique "d'état de conservation initial"
-// 
 
 // Hending et al. (2023) : Introduction et Discussion.
 
-Introduction : une phrase de contexte dans la définition du fragment (c). Elle indique que, dans une forêt de transition du nord-ouest de Madagascar, la fragmentation et les effets de lisière réduisent la diversité spécifique, la taille des arbres et la diversité structurale. Elle sert à montrer que la fragmentation a des conséquences mesurables sur la structure forestière, donc sur tes indicateurs.
+// Note de travail (ancienne consigne, à ne pas reprendre dans le texte) :
+// Introduction : une phrase de contexte dans la définition du fragment (c). Elle indique que, dans une forêt de transition du nord-ouest de Madagascar, la fragmentation et les effets de lisière réduisent la diversité spécifique, la taille des arbres et la diversité structurale. Elle sert à montrer que la fragmentation a des conséquences mesurables sur la structure forestière, donc sur tes indicateurs.
+// La phrase rédigée figure au paragraphe 7 (Hending et al., 2023).
 
 
-== 5. Gouvernance forestière malgache et transferts de gestion
+== Gouvernance forestière malgache et transferts de gestion
 
 Dès l'époque coloniale, la gestion des forêts malgaches est encadrée par la loi : le premier code forestier date de 1930, et la recherche « Forêt » pour Madagascar dans la base FAOLEX recense 109 textes juridiques entre 1930 et 2026.
 // TODO : date de consultation de FAOLEX à indiquer (le nombre peut évoluer) ; référence de la base à compléter. Chiffre issu du projet de stage (diagramme PRISMA de l'étude de la législation prévu).
@@ -79,10 +89,12 @@ En 1996, la loi GELOSE 96-025, issue d'une expérimentation de gestion patrimoni
 // REF? : source non lue. La filiation gestion patrimoniale -> GELOSE vient du projet de stage, qui cite Leroy et Mermet (2014) ; à vérifier dans l'article, ainsi que le contenu exact de la loi.
 // TODO : entrée Leroy et Mermet (2014) incomplète dans References.typ.
 
-Les transferts de gestion s'opèrent aussi dans le cadre de la gestion contractualisée des forêts (GCF), dont Blanc-Pamard et Ramiarantsoa (2007) analysent la mise en œuvre en pays betsileo.
-// REF? : https://doi.org/10.1051/nss:2007055 ; source non lue (seul le titre est connu). Date et texte instituant la GCF à préciser.
+Dans ce cadre, la gestion contractualisée des forêts (GCF) est la modalité par laquelle le transfert de gestion se formalise : un contrat de gestion lie la communauté locale à l'État (Blanc-Pamard et Ramiarantsoa, 2007). La @frisechronologiquegouvernanceforestiere replace ces dispositifs dans leur chronologie.
+// REF? : source non lue (seul le titre est connu) : https://doi.org/10.1051/nss:2007055. Le rôle exact de l'État et la forme du contrat sont à vérifier. Le projet de stage mentionne un « contrat de gestion » de la forêt à lire et décrire.
+// TODO : date et texte d'application de la GCF (rattachée à la GELOSE, à préciser).
 // TODO : vérifier que Blanc-Pamard et Ramiarantsoa (2007) figure dans References.typ.
 // // FAUX la GCF fait partie de la GELOSE => corriger tout ça !!!
+// Corrigé ci-dessus : la GCF est présentée comme modalité du transfert de gestion, non comme dispositif parallèle.
 
 Dans ces dispositifs, la gestion d'un espace forestier est confiée à une communauté locale de base (COBA), appelée VOI (Vondron'Olona Ifotony) à Madagascar, dont les membres du bureau sont responsables des actions de conservation au sein de leur périmètre (Cooke, 2007).
 // REF? : source non lue ; le rôle du bureau vient du projet de stage, qui cite Cooke (2007). Définitions de COBA et de VOI à confirmer dans un texte réglementaire.
@@ -90,10 +102,9 @@ Dans ces dispositifs, la gestion d'un espace forestier est confiée à une commu
 // ATTENTION : orthographe « Cooke » (2007, transferts de gestion) à distinguer de Cook (1995, classification des usages, source non retrouvée). Incohérence n° 9 de ETAT_AVANCEMENT.md.
 
 // TODO : bilan des transferts de gestion (résultats, limites) avec source ; contenu des contrats de gestion ; raisons de la mise en place des transferts (le projet de stage prévoit de les « décrire ») ; rôle de la DREDD ; premiers bilans.
-// TODO : renvoi à la frise des politiques publiques forestières (voir TODO en tête de fichier).
 // TODO : Montagne (2006), présent dans le projet de stage (transfert de gestion et décentralisation), pourrait servir au cadrage général ; source non lue.
-// Note pour le paragraphe 6 : le VOI Maharitra (fondé en 2004 dans le cadre de la GCF, renouvelé en 2025 pour 1 068 ha) n'est volontairement pas traité ici.
-// ATTENTION : 1 068 ha (surface transférée au VOI) vs 450 ha (forêt, selon le TODO de transition local et le Résumé). Deux objets possibles, à préciser dans le paragraphe 6.
+// Note pour le paragraphe 6 : le VOI Maharitra (fondé en 2004 dans le cadre de la GCF, renouvelé en 2025 pour 1 068 ha) est traité en M&M, Site d'étude, et non dans l'Introduction.
+// ATTENTION : 1 068 ha (surface transférée au VOI) vs 450 ha (forêt, selon le TODO de transition local et le Résumé). Deux objets possibles, à préciser en Site d'étude.
 
 // Frise chronologique : gouvernance forestière (national) et transferts de gestion (local).
 // Mode d'emploi : ajouter ou retirer une ligne dans « evenements », EN ORDRE CHRONOLOGIQUE.
@@ -169,17 +180,17 @@ Dans ces dispositifs, la gestion d'un espace forestier est confiée à une commu
   caption: [Frise chronologique de la gouvernance forestière à Madagascar (au-dessus de l'axe, points noirs) et des transferts de gestion à Tsiazombazaha (en dessous, points blancs).],
 ) <frisechronologiquegouvernanceforestiere>
 
-== 6. La côte Est et la région Fitovinany
+== La côte Est et la région Fitovinany
 
 // ---- Paragraphe 6 : transition vers le local (côte Est, Fitovinany, Tsiazombazaha) ----
 // Rôle : passer du cadrage national au fragment étudié, sans monographie. Les détails du site
-// (coordonnées, climat, sols, découpage administratif, unités paysagères, matrice) vont dans
+// (coordonnées, climat, sols, découpage administratif, unités paysagères, matrice, VOI Maharitra) vont dans
 // M&M, Site d'étude (critères 30 et 31 du guide). La commande (Inter Aide, EcoBois) va dans la
 // Problématique.
 
 Sur la côte Est de Madagascar, les forêts tropicales humides de basse altitude ne subsistent plus, pour l'essentiel, qu'à l'état de fragments isolés au sein d'une matrice agricole (Vieilledent et al., 2018).
 // REF? : affirmation à vérifier dans l'article (le titre porte sur la déforestation ET la fragmentation, mais le contenu n'a pas été lu). https://doi.org/10.1016/j.biocon.2018.04.008
-// ATTENTION : le paragraphe 2 cite « Vieilledent, 2018 » alors que la référence complète (projet de stage) compte sept auteurs : en APA 7, « Vieilledent et al., 2018 ». Harmoniser dans tout le mémoire ; l'entrée est aussi incomplète dans References.typ.
+// ATTENTION : l'entrée est incomplète dans References.typ.
 
 La forêt de Tsiazombazaha, située dans la région Fitovinany (district de Manakara-Atsimo), est l'un de ces fragments, et constituerait le plus grand fragment de forêt naturelle de la région.
 // TODO : « le plus grand fragment » à confirmer (forêt de près de 1~000 ha au sud de la région, d'aspect plus clair sur les images satellites : statut non vérifié). Formulation conditionnelle en attendant ; source ou mesure à indiquer.
@@ -188,19 +199,17 @@ La forêt de Tsiazombazaha, située dans la région Fitovinany (district de Mana
 // REF? : la région Fitovinany serait issue de la scission de l'ancienne région Vatovavy-Fitovinany (connaissance générale, non vérifiée dans les sources du projet ; Ramiandrisoa, 2016, emploie encore « Vatovavy-Fitovinany »). À sourcer si mentionné.
 
 Le massif était déjà un fragment en 1973 ; l'essentiel de la déforestation à ses marges s'est produit entre 1973 et 1990, et presque aucune déforestation n'y a été enregistrée depuis 2000 (Romiguière, 2025).
+// ATTENTION : cette phrase a été déplacée en M&M, Site d'étude. Elle est conservée ici à votre demande : à supprimer ici si elle figure bien en Site d'étude (doublon).
 // REF? : résultats de Romiguière (2025), d'après la figure 2 du projet de stage, elle-même adaptée de Vieilledent et al. (2018). Vérifier dans le manuscrit. Entrée incomplète dans References.typ.
 // ATTENTION : orthographe « Romiguière » (fichiers .typ) contre « Romiguiere » (bibliographie du projet de stage) ; prénom Félix.
-// Choix à arbitrer : cette phrase d'historique peut rester ici (elle justifie l'enjeu d'un fragment isolé depuis plus de cinquante ans et prépare la dette d'extinction) ou passer en Site d'étude, comme convenu pour les détails du fragment.
 
 Les connaissances sur ce fragment restent pourtant lacunaires, sur le plan écologique comme sur le plan social.
 // REF? : constat formulé dans le projet de stage ; il s'appuie sur la revue de littérature, dont les résultats sont présentés en Résultats (section « Revue de littérature »). Prévoir un renvoi vers cette section.
 // TODO : phrase de transition vers la Problématique (commande d'Inter Aide, projet EcoBois), à écrire une fois la Problématique rédigée.
 // Note : l'étymologie de Tsiazombazaha (« Là où les blancs ne peuvent pas aller ») et l'existence d'au moins quatre autres forêts homonymes sur la côte Est vont en Site d'étude (projet de stage). L'étymologie est aussi évoquée dans Discussion.typ.
 // ATTENTION (hors Introduction, relevé au passage) : fokontany « Tsarano » (tableaux du projet de stage) contre « Tsararano » (Discussion.typ). À harmoniser.
-// TODO : appeler la frise dans le texte (paragraphe 5 ou 6). Ajouter l'étiquette <fig-frise-gouvernance> juste après la parenthèse fermante de #figure(...), puis écrire « (@fig-frise-gouvernance) » dans la phrase concernée.
-// 
 
-== 7. Définitions des termes du titre
+== Définitions des termes du titre
 
 // ---- Paragraphe 7 : définitions des termes du titre ----
 // Titre de travail utilisé : « Caractérisation écologique et sociale du fragment de forêt tropicale de Tsiazombazaha » (page de garde du projet de stage).

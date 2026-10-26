@@ -378,3 +378,6 @@ Du rang 76 au rang 129, chaque espèce n'est représentée que par une ou deux t
 //   totale des transects (120 m) et à la présence de quelques grands bois
 //   (ex. : 141 cm de circonférence). »
 
+== Enquête sociale
+
+// Ici on abordera les résultats des entretiens dans l'ordre des questions de la problématique !

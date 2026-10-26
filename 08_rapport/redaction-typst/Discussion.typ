@@ -1,11 +1,4 @@
-// Discussion.
-// Transféré du brouillon « redaction-discussion-brouillon » (texte intégral, coquilles
-// conservées telles quelles).
-// En-tête du brouillon : ce fichier cherchait à amorcer la discussion du rapport ; la
-// partie résultats & discussion de la sociologie sont intriquement liées ; il convient
-// d'essayer de lier écologie et sociologie. Les résultats purs d'écologie (avec une
-// petite partie d'écologie) seront entièrement présentés dans la section Résultats avec
-// les analyses.
+// Discussion. // probablement un peu détruite par les push/pull...
 
 = Discussion
 

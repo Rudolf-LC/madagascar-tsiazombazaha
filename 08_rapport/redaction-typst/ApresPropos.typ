@@ -1,7 +1,3 @@
-// Après-propos.
-// Transféré du brouillon « redaction-foresterie-brouillon » (texte intégral, coquilles
-// conservées telles quelles).
-
 = Après-propos
 
 Je ne peux que souligner, sans m'étaler dessus, les conditions de travail franchement *défavorables* au rendu d'un travail de qualité.
