@@ -22,7 +22,14 @@ VIs à vis de :
 - Reboisements VOI
 - Etudes à mener : écologie, hydrographie
 - Diagnostic agraires et actions
-- Coordination avec les autres ONG (FOLUR, ADRA)
+
+Il y a un besoin urgent d'arrêter les reboisements en acacia car sa capacité de propagation a déjà condamné des terrains agricoles, et il est déjà très présent dans la zone. L'eucalyptus est un bois de meilleure qualité, et ce sont des bois de meilleure qualité pour les poutres de construction qui manquent. De plus il ne se propage pas naturellement.
+
+Évaluer les espèces héliophiles auprès des tranobe. Les essences sont plutôt choisies pour la qualité du bois final que pour leur caractère pionnier dans beaucoup de cas. Vérifier les taux de reprises.
+
+Une concertation dans les méthodes avec les ONG XXX et XXX semble importante pour assurer une meilleure efficacité des actions.
+
+Projets d'agroforesterie : très pertinent. Demandes de culture de rente. Nécessité de réfléchir en filière. S'informer sur l'usine de stockage/transformation qui s'ouvre au carrefour d'Ambila.
 
 == Pistes ouvertes
 === Enquête sociale
@@ -54,7 +61,9 @@ Voici la liste des acteurs pertinents, avec
 
 Enfin, refus de parler aux étrangers : peur du blanc héritée de la colonisation (n'oublions pas l'éthymologie de Tsiazombazaha), peur générale de l'étranger (blanc ou malgache) liée au contexte rural isolé pauvre et au contexte insulaire de Madagascar.
 Certaines informations ont été perdues et de nombreux entretiens avortés au dernier moment par les personnes, d'une part à cause de cette peur. On ne sait pas si un entretien se fera jusqu'au moment où il est terminé (les gens peuvent ne pas se présenter ou partir pendant ou avant sans prévenir).
-Rappelons qu'on m'a répété que la mentalité Antemoro est aussi de changer d'avis au dernier moment et de ne pas prévoir à l'avance.
+Rappelons qu'on m'a répété que la mentalité Antemoro est aussi de changer d'avis au dernier moment et de ne pas prévoir à l'avance. // adoucir ce paragraphe, le rendre plus acceptable scientifiquement
+Discours adapaté à une ONG, à un blanc en particulier : rater certaines choses, moins de mention des conflits, de l'histoire lié à la colonisation, orienté sur recevoir quelque chose à terme et ce que peut apporter l'ONG.
+Comme pas de rémunération des entretiens, beaucoup de refus et de lapins.
 
 === Géographie
 
