@@ -7,7 +7,7 @@
 #set text(font: "Source Serif 4", size: 11pt, lang: "fr", region: "FR")
 
 // Corps de texte
-#set par(justify: true, leading: 1.3em, first-line-indent: 1.5em)
+#set par(justify: true, leading: 1em, first-line-indent: 1.5em)
 #set text(hyphenate: true)
 
 // Titres
@@ -28,7 +28,7 @@
     let debut = query(<debut-corps>).first().location().page()
     if here().page() >= debut {
       let pg = counter(page).get().first()
-      let gauche = [Étude sociale et écologique de Tsiazombazaha]
+      let gauche = [Caractérisation écologique et sociale de Tsiazombazaha]
       let num = counter(page).display("1")
       set text(size: 10pt)
       if calc.odd(pg) {
@@ -68,7 +68,7 @@
 
 // Corps du texte
 #set heading(numbering: "1.1", outlined: true)
-#include "Introduction.typ"
+// #include "Introduction.typ"
 #include "Problematique.typ"
 // #include "MaterielMethodes.typ"
 // #include "ResultatsEcologie.typ"

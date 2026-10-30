@@ -18,13 +18,15 @@
 
     #v(1.5cm)
 //
-  #text(size: 12pt)[Diagnostic écologique et sociale de la forêt tropicale humide de Tsiazombazaha, sud-est de Madagascar]
+  #text(size: 18pt)[Diagnostic écologique et sociale de la forêt tropicale humide de Tsiazombazaha, sud-est de Madagascar]
 
     #v(1.5cm)
 
     // #image("/08_rapport/Images/TODO.jpg", width: 70%)
 
     #text(size: 14pt)[Ewen LE COEUR]
+
+    #text(size: 12pt)[Du 15 avril 2026 au 14 octobre 2026]
   ]
 
   #v(1fr)
