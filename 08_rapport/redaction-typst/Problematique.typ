@@ -19,7 +19,7 @@ L'ONG est présente dans le sud-est de Madagascar depuis XXXX. sur des projets d
 // à reprendre
 Depuis 2016, l'équipe travaille sur le reboisement des collines dégradées (_tanety_) avec essences exotiques : acacia mangium _Acacia mangium_ Willd. et Kinina _Eucalyptus sp._, afin de restaurer les collines abandonnées et a déjà planté 2,5 millions d'arbres. Cette approche s'appuie sur les communautés lignagères tranobe (une famille au sens large avec père + tous les fils, oncles, cousins, etc), lohatrano (un ménage père + fils) pour réaliser les reboisements et les payements par des parcelles collectives.
 
-=== Le projet EcoBois et le contexte institutionnel
+=== Le projet EcoBois
 
 Depuis 2025, Inter Aide met en œuvre avec l'ONG WeForest le projet EcoBois («~Concilier préservation des écosystèmes et autonomie en bois~»), prévu sur cinq ans à Madagascar et au Malawi, pour un budget total de 4~953~020~euros (Inter Aide et WeForest, 2025). Le Fonds français pour l'environnement mondial (FFEM) y contribue à hauteur de 1~875~000~euros, soit 38~% du total, aux côtés de l'Agence française de développement (AFD), de Jersey Overseas Aid et de fondations privées. Le projet s'organise en trois composantes : répondre aux besoins en bois des familles par une production agroforestière ou sylvicole ; mobiliser les acteurs locaux pour une gestion durable des paysages agricoles et forestiers ; définir les conditions de reproduction et de mise à l'échelle des solutions et en capitaliser les enseignements (Inter Aide et WeForest, 2025).
 // TODO : ajouter FFEM et AFD à la liste des abréviations (critère 115).

@@ -1,25 +1,39 @@
 // Matériel et méthodes - tous les volets
 
-= Matériel et méthodes
+= Matériel et méthodes <debut-corps>
 
 == Site d'étude
 
-// Carte de localisation (coordonnées du projet de stage : 47,933–47,969°E, 21,884–21,924°S, WGS84).
 
+
+La forêt de Tsiazombazaha est située dans la région Fitovinany, district de Manakara Atsimo, entre 47,933~°E et 47,969~°E de longitude et entre 21,884~°S et 21,924~°S de latitude (degrés décimaux, datum WGS84) (CARTE DE LOCALISATION). 
+// CLAUDE : REDIGE LE CLIMAT
+Elle appartientJ à l'écorégion des forêts humides de Madagascar (SOURCE) et repose sur le socle cristallin précambrien du bouclier malgache. 
+Les sols sont des ferralsols, anciens, profonds, acides et pauvres en nutriments (Riquier, 1966) ; les cartes pédologiques disponibles, anciennes ou d'une petite échelle, ne permettent pas une caractérisation plus fine (Nishigaki et al., 2020).
 
 //// TODO : figure — carte de localisation de la forêt avec limites du transfert de gestion et chemins de ronde si cartographiés.
 
-La forêt de Tsiazombazaha est située dans la région Fitovinany, district de Manakara Atsimo, entre 47,933~°E et 47,969~°E de longitude et entre 21,884~°S et 21,924~°S de latitude (degrés décimaux, datum WGS84). Elle appartient à l'écorégion des forêts humides de Madagascar (SOURCE) et repose sur le socle cristallin précambrien du bouclier malgache (SOURCE). Les sols sont des ferralsols, anciens, profonds, acides et pauvres en nutriments (Riquier, 1966) ; les cartes pédologiques disponibles, anciennes ou d'une petite échelle, ne permettent pas une caractérisation plus fine (Nishigaki et al., 2020). // REF? Riquier (1966), Nishigaki et al. (2020)
+Le nom de la forêt, issu de « _tsia_ », adverbe de négation, « _zo_ », nom pour « l'action d'aller, marcher » et de « _basaha_ », « un étranger », en particulier blanc ou français, signifie alors étymologiquement « Là où les étrangers ne peuvent pas aller ». Plusieurs autres forêts le long de la côte Est de Madagascar se nomment également Tsiazombazaha, témoins d'une histoire commune liée à la colonisation française.
+// ---- §3 Étymologie (prévue ici par l'Introduction, l. 209) ----
+// TODO : vérifier qu'elle sert le problème posé (critère 30) ; sinon, la passer en note de bas de page.
+// TODO : source de l'étymologie et du nombre de forêts homonymes (« au moins quatre » selon l'Introduction).
 
-Le nom de la forêt, issu de "_tsia_", adverbe de négation, "_zo_", nom pour "l'action d'aller, marcher" et de "_basaha_", "un étranger", en particulier blanc ou français, signifie alors étymologiquement "Là où les étrangers ne peuvent pas aller". Plusieurs autres forêts le long de la côte Est de Madagascar se nomment également Tsiazombazah", témoins d'une histoire commune liée à la colonisation française.
-
+// ---- §2 Milieu physique (critère 30 : le climat est l'élément attendu pour une étude d'écologie) ----
 // TODO : climat (altitude, températures, précipitations) — source et valeurs à confirmer ; le projet de stage prévoyait WorldClim 2, mais aucune sortie n'est référencée dans les sources actuelles.
-La forêt s'étend sur trois communes (Ambahatrazo, Mizilo Gara et Ambila) et quatre fokontany riverains (Ambahatrazo, Mahatsara, Mizilo Gara et Tsarano). Elle est gérée par le VOI Maharitra, fondé en 2004 dans le cadre d'un premier transfert de gestion (gestion contractualisée des forêts), puis renouvelé en 2025 pour une superficie transférée de 1068~ha. // TODO : confirmer la superficie et citer le document de transfert de gestion (VOI Maharitra, 2025) ; // REF? Cooke (2007) — orthographe « Cook »/« Cooke » à vérifier
-// check la superficie calculée selon limites données VS cité dans le document 2025 VS citée dans le doc de 2004
+// TODO : ordre — altitude ; température moyenne annuelle ; précipitations annuelles et saisonnalité ; puis sols (phrase du §1). Valeurs : « // TODO : valeur à valider » tant qu'elles ne sont pas extraites.
+// REF? WorldClim 2 : Fick et Hijmans (2017), https://doi.org/10.1002/joc.5086
 
-
-Les caractéristiques du fragment (surface, historique d’après Romiguière (2025), matrice d’après Fabiani (2025)). Distance aux autres fragments.
-// Fabiani (2025). On peut reprendre ses unités paysagères dans le Site d’étude, en précisant qu’elles ont été établies autour de Vorovoka. 
+// ---- §4 Le fragment (cœur de la section) ----
+// Les caractéristiques du fragment (surface, historique d’après Romiguière (2025), matrice d’après Fabiani (2025)). Distance aux autres fragments.
+// Fabiani (2025). On peut reprendre ses unités paysagères dans le Site d’étude, en précisant qu’elles ont été établies autour de Vorovoka.
+// TODO : ordre suggéré —
+//   1. surface, en nommant l'objet (massif forestier ou périmètre transféré) ;
+//   2. ancienneté de l'isolement : « déjà fragmenté en 1973 » (Romiguière, 2025) — attendu par l'Introduction (l. 232, dette d'extinction) ;
+//   3. distances aux autres fragments (Lakia, Vorovoka, Vatovavy ; surfaces dans la Problématique, l. 31) — distances de 5, 10 et 15 km (Introduction, l. 67) à sourcer ;
+//   4. matrice : cultures, espèces généralistes des milieux ouverts, reboisements exotiques en plein (observation de l'auteur ; unités paysagères de Fabiani, 2025, établies autour de Vorovoka) — attendue par l'Introduction (l. 226, analogie insulaire) ;
+//   5. si conservée : zone plus claire au sud sur les images satellites, au conditionnel, avec vérification sur Vieilledent et al. (2018) (note ci-dessous).
+// ATTENTION : surface de la forêt — 450 ha (Résumé), 500 ha (Problématique), ~1 000 ha (note M&M), 1 068 ha (périmètre transféré). Choisir l'objet et s'y tenir.
+// ATTENTION : « Fabiani » contre « Fabiany » (projet de stage).
 
 // TODO : le reste du contexte socio-économique et l'historique vont en annexe ou dans l'Introduction (guide, critères 30 et 31).
 // Gouvernance (VOI Maharitra, transfert de gestion) en quelques lignes. Le reste va en annexe, ce n’est pas une monographie.
@@ -29,34 +43,58 @@ Les caractéristiques du fragment (surface, historique d’après Romiguière (2
 // // 
 
 // La forêt de 1 000 ha en vert clair. La couleur seule ne permet pas de conclure à une forêt non primaire. Un ton plus clair peut traduire une forêt secondaire ou dégradée. Il peut aussi venir d’autres causes : un autre type de végétation (forêt littorale, marécageuse, plantations), la date ou la saison de l’image, la topographie, ou la composition colorée utilisée. Deux pistes pour vérifier :
-la carte des forêts naturelles de Vieilledent et al. (2018), déjà dans ta bibliographie ;
-une confirmation par Inter Aide ou par le terrain.
-En attendant, j’écrirais « à notre connaissance », avec un // TODO.
+// la carte des forêts naturelles de Vieilledent et al. (2018), déjà dans ta bibliographie ;
+// une confirmation par Inter Aide ou par le terrain.
+// En attendant, j’écrirais « à notre connaissance », avec un // TODO.
 
-// La forêt de 1 000 ha en vert clair. La couleur seule ne permet pas de conclure à une forêt non primaire. Un ton plus clair peut traduire une forêt secondaire ou dégradée. Il peut aussi venir d’autres causes : un autre type de végétation (forêt littorale, marécageuse, plantations), la date ou la saison de l’image, la topographie, ou la composition colorée utilisée. Deux pistes pour vérifier :
-la carte des forêts naturelles de Vieilledent et al. (2018), déjà dans ta bibliographie ;
-une confirmation par Inter Aide ou par le terrain.
-En attendant, j’écrirais « à notre connaissance », avec un // TODO.
-
-Sa gestion a été transférée en 2004 au VOI Maharitra, dans le cadre de la GCF, pour une durée de trois ans ; le dispositif a été mis à jour en 2025 par la DREDD et les communes rurales d'Ambahatrazo, de Mizilo Gara et d'Ambila, sur une surface transférée de 1~068~ha (VOI Maharitra, 2025).
+// ---- §5 Gouvernance (quelques lignes ; GELOSE, GCF et VOI déjà définis dans l'Introduction) ----
+La forêt s'étend sur trois communes (Ambahatrazo, Mizilo Gara et Ambila) et quatre fokontany riverains (Ambahatrazo, Mahatsara, Mizilo Gara et Tsarano). Sa gestion a été transférée en 2004 au VOI Maharitra, dans le cadre de la GCF, pour une durée de trois ans ; le dispositif a été mis à jour en 2025 par la DREDD et les communes rurales d'Ambahatrazo, de Mizilo Gara et d'Ambila, sur une surface transférée de 1~068~ha (VOI Maharitra, 2025).
 // REF? : informations issues du projet de stage. Sources primaires à citer : document de transfert de gestion de 2004 et VOI Maharitra (2025), entrée absente de References.typ.
 // TODO : DREDD à développer à la première occurrence et à ajouter à la liste des abréviations (développé non vérifié dans les sources du projet).
 // ATTENTION : 1~068 ha (surface transférée au VOI) contre 450 ha (forêt, Résumé et ancien TODO de transition). Deux objets probablement distincts (périmètre transféré et massif forestier) : préciser lequel est désigné à chaque fois.
 // ATTENTION : la frise indique « Renouvellement du transfert de gestion » pour 2025 ; le projet de stage parle d'une COBA « de nouveau mise à jour ». Harmoniser le libellé de la frise avec la nature exacte de l'acte (renouvellement, nouveau contrat ?).
+// ATTENTION : version antérieure du paragraphe, fusionnée ci-dessus, à arbitrer : « Elle est gérée par le VOI Maharitra, fondé en 2004 dans le cadre d'un premier transfert de gestion (gestion contractualisée des forêts), puis renouvelé en 2025 pour une superficie transférée de 1068 ha. » « Renouvelé » (ici) ou « mis à jour » (texte retenu) ; durée de trois ans absente ici.
+// TODO : confirmer la superficie et citer le document de transfert de gestion (VOI Maharitra, 2025) ; // REF? Cooke (2007) — orthographe « Cook »/« Cooke » à vérifier
+// check la superficie calculée selon limites données VS cité dans le document 2025 VS citée dans le doc de 2004
+// ATTENTION : « Tsarano » (ici, projet de stage) contre « Tsararano » (Discussion.typ) ; « Fitovinany » contre « Fitonivavy » (Resume.typ).
+// ATTENTION : Cooke (2007) cité ci-dessus pour le transfert de gestion, mais par l'Introduction (l. 100) pour le rôle du bureau du VOI : usage à vérifier.
 
 == Revue de la littérature
 
 Une revue de la littérature portant spécifiquement sur la forêt de Tsiazombazaha a été conduite selon la méthodologie de Pullin et Stewart (2006) et les recommandations de la déclaration PRISMA 2020 (Page et al., 2021), à partir du mot-clé « Tsiazombazaha ». // TODO : bases interrogées (le projet de stage prévoyait Web of Science, Google Scholar et Internet Archive Scholar), date de la requête, critères d'inclusion et d'exclusion, nombre de documents identifiés, retenus, exclus.
 // TODO : figure — diagramme PRISMA de la revue (identification, tri, éligibilité, inclusion).
 // TODO : tableau — documents retenus (référence, type, thème, données exploitées).
+// ---- Contenu attendu (protocole uniquement ; source : documents-brouillons/PRISMA_resultats.ods) ----
+// TODO : ordre suggéré —
+//   1. objectif et méthode (phrase existante) ; envisager « inspirée de » (une requête à un mot-clé n'est pas une revue systématique complète au sens de Pullin et Stewart) ;
+//      // REF? Pullin et Stewart (2006), https://doi.org/10.1111/j.1523-1739.2006.00485.x ; Page et al. (2021), https://doi.org/10.1136/bmj.n71 — entrées absentes de References.typ ;
+//   2. sources interrogées : Google Scholar, Web of Science, Internet Archive (Scholar ?) [branche « bases de données » de PRISMA 2020] ; moteur de recherche Google et documents internes d'Inter Aide [branche « autres méthodes »] ;
+//   3. requête « Tsiazombazaha », sans opérateur ; // TODO : date de la requête ;
+//   4. critère d'inclusion : document portant sur la forêt de Tsiazombazaha ; motifs d'exclusion : forêt homonyme (« autre forêt », lien avec l'étymologie du Site d'étude), forêt non localisée, documents portant sur les trois communes sans traiter de la forêt (note du tableur) ;
+//   5. traitement : retrait des doublons, puis tri ; // TODO : préciser si le tri porte sur le titre et le résumé ou sur le texte intégral ;
+//   6. renvois au diagramme PRISMA (figure ou annexe) et au tableau des documents retenus.
+// ATTENTION : emplacement des effectifs — le TODO ci-dessus les demande en M&M ; l'Introduction (l. 207) les annonce en Résultats (section « Revue de littérature »). À arbitrer.
+// ATTENTION : Web of Science et Internet Archive regroupés dans une colonne (15 résultats) ; PRISMA exige un n par base. WoS = 0 ?
+// ATTENTION : doublons comptés par base (4 et 6) ; doublons entre bases retirés ou non ?
+// ATTENTION : le document Internet Archive retenu est « introuvable » → case « documents non récupérés » du diagramme.
+// ATTENTION : second diagramme PRISMA (législation, FAOLEX) mentionné dans l'Introduction (l. 86) : maintenu ou abandonné ?
+// Données du tableur pour le diagramme (// TODO : valeurs à valider) :
+//   Google Scholar : 18 résultats, 4 doublons, 14 uniques, 11 autre forêt, 1 non localisée, 2 forêt d'étude ;
+//   WoS + Internet Archive : 15 résultats, 6 doublons, 9 uniques, 5 autre forêt, 3 non localisées, 1 forêt d'étude (introuvable) ;
+//   Google : 1 forêt d'étude ; documents internes : 3 (Romiguière 2025, transferts de gestion 2004 et 2025) ;
+//   total : 7 retenus, dont 6 récupérés.
 
 == Méthodologie du volet social
 
 // ATTENTION : le guide GEEFT demande pour les sujets en SHS une section « Méthodologie » et une section « Problématique » (absente de main.typ) ; à arbitrer avec le référent. Les chiffres du brouillon (32 entretiens/49 personnes) diffèrent du résumé (29/44) : ne rien figer.
 
-Cadre d’analyse, entretiens semi-directifs, sorties en forêt, traduction, anonymisation et consentement.
+// Cadre d’analyse, entretiens semi-directifs, sorties en forêt, traduction, anonymisation et consentement.
+// ATTENTION : l'ATTENTION ci-dessus n'est plus à jour : Problematique.typ est inclus dans main.typ (l. 72). Reste l'écart 32/49 contre 29/44.
+// ATTENTION : la Problématique renvoie à une section « Méthodologie » ; ici « Méthodologie du volet social ». Harmoniser.
+// TODO : en ouverture, renvoi aux sous-questions (critère 37) — entretiens et sorties → SQ2 (usages, perceptions, pressions) ; entretiens et documents de transfert → SQ3 (gestion, règles).
 
 === Cadre d'analyse
+// ATTENTION : le cadre d'analyse (ASGE, Ostrom 1990, grille SES d'Ostrom 2009) est désormais rédigé dans la Problématique (guide, critère 28). Le TODO ci-dessous reprend les quatre cadres du projet de stage et n'est plus à jour. Remplacer cette sous-section par un renvoi d'une phrase, ou la supprimer.
 // TODO : cadres d'analyse retenus (le projet de stage en identifiait quatre : analyse stratégique de la gestion environnementale, gouvernance des biens communs, gestion patrimoniale, sociologie de l'action organisée), chacun avec sa référence ; // REF? Mermet et al. ; Ostrom (1990) ; Montgolfier et Natali (1987) ; Crozier et Friedberg (1976).
 
 === Collecte des données
@@ -65,9 +103,20 @@ Des entretiens semi-directifs ont été menés auprès d'habitants des fokontany
 Des sorties en forêt ou en bordure de forêt avec des accompagnateurs, ainsi que des discussions opportunes, ont complété les entretiens. // TODO : nombre de sorties.
 Les échanges ont été traduits du malgache vers le français par un traducteur-interprète. // TODO : mode de recueil (notes manuscrites, sans enregistrement ni retranscription, comme prévu au projet de stage ?), consentement et anonymat.
 Les entretiens sont référencés par un code E suivi d'un numéro, les sorties par un code S suivi d'un numéro. Les canevas d'entretien figurent en annexe. // TODO : annexes à numéroter (guide, critère 35).
+// ---- Contenu attendu, dans l'ordre ----
+// TODO : entretiens — choix de l'échantillon (qui, selon quels critères, comment les personnes ont été trouvées : VOI, chefs de fokontany, de proche en proche ?) ; nombre d'entretiens et de personnes, durée moyenne ; préciser si certains entretiens étaient collectifs (plus de personnes que d'entretiens).
+// REF? référence méthodologique des entretiens (critère 36) — piste : Beaud et Weber, Guide de l'enquête de terrain, La Découverte (édition à vérifier).
+// TODO : sorties en forêt — nombre, avec qui, objectif (observer les usages et pressions décrits en entretien).
+// TODO : documents de transfert de gestion (2004, 2025) — annoncés comme source du volet social dans la Problématique, mais pas encore décrits ici.
+// TODO : recueil et traduction — notes manuscrites ou enregistrement ; traduction en direct ou après coup. Critère 74 (verbatim mot pour mot) : si les propos passent par un interprète et des notes, dire que les citations sont des propos traduits, non des verbatims au sens strict.
+// TODO : éthique — consentement oral, anonymat, codes E et S (critère 73), canevas en annexe (critère 35).
 
 === Analyse des entretiens
 // TODO : méthode d'analyse (analyse thématique, triangulation, tableau de traitement en annexe ; guide, critères 40 et 43).
+// REF? piste : analyse thématique de Braun et Clarke (2006), https://doi.org/10.1191/1478088706qp063oa
+// TODO : grille de codage reliée aux catégories de la grille SES d'Ostrom (2009) ; tableau de traitement en annexe (critère 43) ; croisement entretiens / sorties / documents (critère 38).
+// ATTENTION : la Problématique annonce l'observation des images satellites pour SQ1, sans méthode décrite dans la partie écologique de ce M&M.
+// ATTENTION (hors section, Problematique.typ) : « l'exclusion des usagers est coûteuse et le bien est exclusif » — chez Ostrom, une ressource commune se définit plutôt par une exclusion difficile et des prélèvements qui diminuent la ressource pour les autres. À vérifier dans Ostrom (1990).
 
 == Acquisition des données écologiques
 
@@ -82,6 +131,19 @@ Le dispositif comprend 28 placettes circulaires de 5~m de diamètre. Après corr
 // TODO : période de terrain (dates), nombre de jours de relevés => août et septembre 2026
 // TODO : figure — carte des placettes sur la forêt (coordonnées GPS issues du nettoyage des données géographiques, encore à réaliser).
 // TODO : renvoyer aux questions de recherche de l'Introduction (guide, critère 37).
+// ---- Contenu attendu, dans l'ordre (critères 32 à 34, 36, 37) ----
+// TODO : 1. renvoi à SQ1 (Problématique), en une phrase.
+// TODO : 2. choix du plan : une phrase (systématique et stratifié écartés pour raison d'accessibilité) ; conséquences (sélection orientée, autocorrélation) → « Limites méthodologiques ».
+// TODO : 3. implantation reproductible — comment le point était choisi (distance tirée au sort, intervalle régulier, choix sur place ?) ; distance minimale entre placettes ; distance au chemin ; nombre d'itinéraires ; période (août-septembre 2026) et nombre de jours.
+// ATTENTION : « chemins de ronde des patrouilleurs communautaires » (ici) contre « itinéraires parcourus avec les guides locaux » (document d'étape §3.7). Harmoniser.
+// TODO : 4. forme et surface — rayon de 2,5 m mesuré à l'horizontale ou le long de la pente ? méthode de correction de pente (lien avec la convention de surface horizontale, « Conventions »).
+// TODO : 5. placette P2 — inventoriée sur une surface quadruple (78,54 m² horizontaux, note P2), puis découpée en quatre placettes standard (P02 à P05) par tirage aléatoire ; décrire le tirage (graine 20261009) et le contrôle par Monte-Carlo (10 000 tirages) ; renumérotation P06–P28 en annexe.
+// TODO : valeur à valider — p = 0,114 (Monte-Carlo, note P2 du 09/10/2026) : je n'ai pas pu vérifier sa présence dans P2_decoupage_4_placettes.csv (hors 08_rapport).
+// TODO : 6. matériel (critère 34) — GPS (modèle), ruban, cordelette de 2,5 m, instrument de mesure de la pente.
+// TODO : 7. carte des placettes (TODO ci-dessus).
+// TODO : 8. écart avec le protocole de référence (Armstrong et al., 2011 ; SNSF — TODO de « Relevés par placette ») : argumenter le choix de placettes de 20 m² (critère 36).
+// ATTENTION : nombre de placettes — 28 (ici, note P2) contre « vingt-neuf placettes de 20 m² » (document d'étape §2.1).
+// ATTENTION : surface — 19,63 m² horizontaux et 20,74 m² réels par placette (note P2) ; totaux cités : 549,4 m² (note P2), 569 m² « après correction de pente » (ici, document d'étape §2.1), 590 m² (document d'étape §3.2). Valider dans les CSV.
 
 === Relevés par placette
 
@@ -99,10 +161,9 @@ En parallèle, des transects de 10~m de large ont été parcourus pour recenser 
 // ATTENTION : longueurs de transects — 3~945 m saisis sur ~6~000 m annoncés ; le document d'étape écrit « six hectares » mais 𝑆t = 6~000 m² (6~000 m × 10 m = 60~000 m²). Longueurs à récupérer sur le GPS ; ne figer aucune valeur avant.
 // TODO : statut final des indicateurs chablis/ha et grands arbres/ha (bloqués).
 
+=== Observations de la faune
+
 Les animaux observés lors des cheminements en forêt ont été consignés dans les notes de sortie. Aucun inventaire faunistique n'a été conduit : une liste des espèces rencontrées est établie, sans traitement statistique.
-
-=== Observations de la faune 
-
 
 
 
@@ -133,21 +194,21 @@ Les données des placettes ont été saisies sous tableur LibreCalc (CITATION) p
 // et son utilité comme point de référence dans la définition de l'état de conservation initial de la forêt
 // 
 
-Logiciels (R, packages à lister) et convention des p-values (critère 45).
-Listes d’espèces et usages ; moyenne ± écart-type entre placettes.
-Structure : N, classes de 2,5 cm, G, IC 95 % (t de Student).
-Carbone : formules (critère 44), paramètres en // TODO.
-Diversité alpha (nombres de Hill, Shannon, Simpson corrigé, Fisher).
-Diversité bêta (Whittaker, Lande, NMDS de Bray-Curtis).
-IVI.
-Richesse totale : raréfaction-extrapolation, Chao2, jackknife2, ICE, bootstrap, Chao1, avec les limites de l’échantillonnage orienté.
-§3.8 uniquement si ces analyses sont réalisées.
+// Logiciels (R, packages à lister) et convention des p-values (critère 45).
+// Listes d’espèces et usages ; moyenne ± écart-type entre placettes.
+// Structure : N, classes de 2,5 cm, G, IC 95 % (t de Student).
+// Carbone : formules (critère 44), paramètres en // TODO.
+// Diversité alpha (nombres de Hill, Shannon, Simpson corrigé, Fisher).
+// Diversité bêta (Whittaker, Lande, NMDS de Bray-Curtis).
+// IVI.
+// Richesse totale : raréfaction-extrapolation, Chao2, jackknife2, ICE, bootstrap, Chao1, avec les limites de l’échantillonnage orienté.
+// §3.8 uniquement si ces analyses sont réalisées.
 
 === Conventions
 
 Les analyses ont été réalisées avec le langage R sous RStudio. // TODO : versions de R et des packages (ggplot2, dplyr, knitr, snakecase, iNEXT, etc.) et références des logiciels (guide, critère 42).
 Les indices sont rapportés à la surface horizontale des placettes. Les gaulis sont comptés dans la densité $N$ mais exclus de la surface terrière $G$. La classe de diamètre 0--2,5~cm des effectifs inclut les gaulis. Pour les indices calculés par placette, la moyenne et l'écart-type sont donnés entre placettes ; les intervalles de confiance à 95~% sont calculés par la loi de Student entre placettes. Deux approches coexistent : à l'échelle du dispositif (effectif total rapporté à la surface cumulée) et par placette (moyenne des rapports). Elles donnent des valeurs légèrement différentes et ne sont jamais mélangées dans les résultats.
-Les niveaux de probabilité sont notés * $p$ (H0) $<$ 0,05 ; ** $p$ (H0) $<$ 0,01 ; * $p$ (H0) $<$ 0,001.
+Les niveaux de probabilité sont notés \* $p$ (H0) $<$ 0,05 ; \*\* $p$ (H0) $<$ 0,01 ; \*\*\* $p$ (H0) $<$ 0,001.
 
 === Listes d'espèces et usages
 
@@ -220,6 +281,6 @@ La richesse observée $gamma_"obs"$ est le nombre d'espèces recensées dans l'e
 
 == Limites méthodologiques
 
-(3 à 4 phrases) : échantillonnage orienté par l’accessibilité, autocorrélation spatiale entre placettes voisines, absence de contrôle de l’inventaire, traduction.
+// (3 à 4 phrases) : échantillonnage orienté par l’accessibilité, autocorrélation spatiale entre placettes voisines, absence de contrôle de l’inventaire, traduction.
 
-Faune : absence de protocole d'indices kilométriques d'abondance (prévu au projet de stage, non repris dans le document d'étape) en raison du manque d'exhaustivité du relevé des indices de faune par les polisn'ala.
+Faune : absence de protocole d'indices kilométriques d'abondance (prévu au projet de stage, non repris dans le document d'étape) en raison du manque d'exhaustivité du relevé des indices de faune par les polisin'ala.
