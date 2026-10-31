@@ -1,10 +1,3 @@
-// Annexes — table des annexes et liste des annexes.
-// Transféré du brouillon « redaction-foresterie-brouillon » (liste intégrale conservée,
-// coquilles telles quelles).
-// TODO : composer chaque annexe ; les gros tableaux (liste des espèces, association
-// espèce×usage) sont à importer dynamiquement depuis les CSV (cf. convention de gestion
-// des tableaux en Résultats §3.1).
-
 #show figure.where(kind: "annexe"): set figure.caption(position: top)
 #set figure(numbering: "1")
 
@@ -16,6 +9,8 @@
   supplement: [Annexe],
   caption: [Titre de l'annexe],
 )
+
+#pagebreak(weak: true)
 
 - Carte d'intervention du projet EcoBois (?)
 - Canevas d'entretien

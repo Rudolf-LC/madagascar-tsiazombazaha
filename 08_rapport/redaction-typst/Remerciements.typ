@@ -1,6 +1,4 @@
 // Remerciements — liminaire.
-// Transféré du brouillon « redaction-resume-brouillon » (texte intégral, inachèvements
-// de l'auteur conservés tels quels).
 
 #pagebreak(weak: true)
 = Remerciements

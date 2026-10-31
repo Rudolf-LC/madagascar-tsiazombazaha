@@ -1,10 +1,5 @@
-.Rproj.user
-.Rhistory
-.RData
-.Ruserdata
-
-# 05_Sociologie _temp
-05_Sociologie _temp/
+# 05_Sociologie
+05_Sociologie/
 
 # 06_ecologie
 06_ecologie/
@@ -15,8 +10,10 @@
 # 08_rapport
 08_rapport/documents-brouillons/
 08_rapport/documents-etapes/
-08_rapport/guides-de-redaction-apt/
-08_rapport/images/
+08_rapport/consignes-redaction-et-templates/
+08_rapport/redaction-typst/images/
+08_rapport/redaction-typst/analyse-figures/
+08_rapport/redaction-typst/analyse-tables/
 
 # Système
 .DS_Store

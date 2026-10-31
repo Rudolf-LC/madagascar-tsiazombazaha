@@ -1,0 +1,2 @@
+Ces fichiers sont des brouillons d'étape rédigés en cours de stage, sans vision globale.
+Ils sont là à titre informatif pour la réfléxion, mais les données réelles et documents ultérieurs prennent le dessus en cas de conflit.
