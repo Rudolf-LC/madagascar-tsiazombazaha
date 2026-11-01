@@ -23,7 +23,11 @@
 # Utilisation :
 #   source("06_ecologie/analyse/scripts/08_analyse_carbone.R")
 
-SURFACE_TSIAZOMBAZAHA <- 450  # surface totale forêt (ha)
+# Surface totale de la forêt (ha) pour l'extrapolation des stocks.
+# VALEUR PROVISOIRE : 500 ha (ordre de grandeur de la Problématique), en
+# attendant le calcul de la surface réelle sous QGIS par l'auteur.
+# Modifier cette seule ligne puis relancer le script.
+SURFACE_TSIAZOMBAZAHA <- 500
 
 ### Modules ###
 
@@ -104,7 +108,10 @@ d_grandsArbres <- read_csv(
 ) |>
   rename(cdTransect = transect, circ_cm = circonference) |>
   mutate(circ_cm = suppressWarnings(as.numeric(circ_cm))) |>
-  filter(!is.na(circ_cm), !is.na(cdTransect))
+  filter(!is.na(circ_cm), !is.na(cdTransect)) |>
+  # Seuil des grands arbres : CBH >= 126 cm (DBH ~ 40 cm) ; les arbres plus
+  # petits saisis sont des reliquats d'un seuil anterieur
+  filter(circ_cm >= 126)
 
 # Bois mort
 d_boisMort <- read_csv(
@@ -121,13 +128,31 @@ d_boisMort <- read_csv(
 
 ### Constantes du rapport d'etape §3.3 ###
 
-E_bioclimatique <- -0.080   # indice bioclimatique Chave et al. 2014 (prov.)
-rho_bois <- 0.60            # densite du bois (t/m³, prov.)
+# Graine du generateur aleatoire (bootstrap reproductible)
+set.seed(2026)
+
+# Indice de stress environnemental E (Chave et al. 2014), lu le 01/11/2026
+# dans la grille E diffusee avec le package BIOMASS (E.zip, depot GitHub
+# umr-amap/BIOMASS, resolution 2,5') au centre de l'emprise de la foret
+# (47,951 E ; 21,904 S). Valeurs aux quatre coins de l'emprise : 0,102 a 0,109.
+E_bioclimatique <- 0.1025
+# Densite du bois generique (t/m³) : moyenne arithmetique des especes
+# d'Afrique tropicale (282 especes), Brown (1997, FAO Forestry Paper 134,
+# §3.1.2), d'apres Reyes et al. (1992). Rattachement aux genres et familles
+# juge trop incertain pour des densites par espece.
+rho_bois <- 0.58
 R <- 0.20                   # ratio BGB/AGB (Mokany et al. 2006)
 CF <- 0.47                  # fraction de carbone (Eggleston et al. 2006)
 M_CO2_C <- 3.67             # rapport molaire CO2/C
 
-facteurs_decomposition <- c("1" = 0.9, "2" = 0.6, "3" = 0.4)
+# Facteurs de reduction de densite par classe de decomposition (1 sain,
+# 2 intermediaire, 3 pourri) : valeurs par defaut de l'outil MDP AR-AM-Tool-12
+# v01.1.0 (CCNUCC, EB 58, annexe 14, §21), adaptees de Harmon et Sexton (1996)
+facteurs_decomposition <- c("1" = 1.00, "2" = 0.80, "3" = 0.45)
+# Facteur de reduction de biomasse des arbres morts sur pied ayant perdu
+# feuilles, rameaux et petites branches (meme outil, §11 b) : applique a la
+# biomasse de l'arbre entier, faute de hauteur mesuree pour les chandelles
+facteur_chandelle <- 0.80
 
 ### Fonctions allometriques ###
 
@@ -250,8 +275,7 @@ chandelles <- d_boisMort |>
   filter(type == "Chandelle") |>
   mutate(
     dbh_cm = circ_cm / pi,
-    facteur = facteur_decomposition(etatDecomposition),
-    volume_m3 = volume_chave(dbh_cm) * facteur
+    volume_m3 = volume_chave(dbh_cm) * facteur_chandelle
   )
 
 message("Chandelles : ", nrow(chandelles), " bois morts sur pied")

@@ -23,6 +23,10 @@
 
 --------
 
+// TODO : figure — diagramme PRISMA 2020 (Page et al., 2021) : branche « bases de données » (Google Scholar, Web of Science, Internet Archive Scholar) et branche « autres méthodes » (Google, documents internes) ; effectifs dans documents-brouillons/PRISMA_resultats.ods (valeurs à valider). Renvoi depuis le M&M (« Revue de la littérature »).
+// TODO : tableau — documents retenus (référence, type, thème, données exploitées), à partir des esquisses ci-dessous.
+// Rajaonson et al. (2010) fait partie des documents retenus : forêt visitée le 25/01/2009 (une journée), deux espèces de lémuriens trouvées (Avahi laniger, Eulemur rufus), aucun bambou (p. 37).
+
 // Transféré du brouillon « redaction-foresterie-brouillon » — esquisses de tableaux :
 // Tableau 1 — sources ayant prospecté la faune/flore de la forêt :
 //   [Source][Effort de prospection en jours][Espèces animales (vern/scie)][Espèces végétales (vern/sci)]
@@ -30,7 +34,7 @@
 //   [Document de transfert de gestion (2004)], [?], [], [], [],],
 //   [DREDD], [?], [], [], [],],
 //   [Mollusques (200~8)], [2 ?], [0], [], [],
-//   [Lémuriens], [1 ou 2], [0], [], [],
+//   [Lémuriens — Rajaonson et al. (2010)], [1], [2 (A. laniger, E. rufus)], [], [],
 // Tableau 2 — sources identifiées ayant réalisé des relevés écologiques dans la forêt
 // de Tsiazombazaha :
 //   [Source], [Nombre de tiges], [Nombre d'espèces],
@@ -40,27 +44,27 @@
 
 == Analyse des données écologiques
 
-=== Listes d'espèces et usages => à refaire // en cours d'être refait CF Claue, donner les infos nécessaires
+// Rédigé le 01/11/2026 à partir des sorties R du 31/10/2026 (diversité, structure, IVI, richesse) et du 01/11/2026 (carbone), après passage en gaulis des deux tiges de 7 cm de P06.
+// Sources : analyse-tables/ (copies de 06_ecologie/analyse/sorties/) et, pour les fichiers non copiés, 06_ecologie/analyse/sorties/ (nom indiqué à chaque paragraphe).
+// Règle (guide, critère 49) : résultats seulement ; comparaisons avec la littérature et interprétations en Discussion.
+// Figures et tableaux : laissés en commentaires (« // FIGURE » / « // TABLEAU »), avec le code prêt à décommenter ; les renvois entre parenthèses en capitales sont à remplacer par les étiquettes Typst une fois les blocs activés. Les renvois « (ANNEXE : …) » visent les entrées de Annexes.typ.
 
-// // TODO date-jeu-de-données : liste définitive issue de la fusion PR #2 ; revalider avant dépôt.
+=== Listes d'espèces et usages
 
-// Au total, 335 noms vernaculaires normalisés ont été relevés dans les relevés de terrain et les sources complémentaires ; leur réconciliation manuelle aboutit à 230 identités d'espèces perçues localement. Sur les 229 identités de la liste définitive, 130 disposent d'une identification botanique au sens large : 61 avec un taxon proposé (genre, espèce) et 69 avec une correspondance concordante vers au moins deux genres différents à partir des deux sources utilisées (Schatz, 2001 ; dictionnaire des noms malgaches de végétaux // TODO : référence exacte de la source en ligne à préciser).
+// TODO : valeurs à produire. La liste définitive de la flore n'a pas été régénérée depuis la réconciliation et les corrections de flore.csv (anciens chiffres du 08/10/2026 conservés en commentaire en fin de sous-section). Seule la richesse des placettes (243 espèces) vient d'une sortie à jour (estimateurs_richesse_gamma.csv).
+Les 28 placettes comptent 243 espèces. Quarante-neuf tiges, 7 tiges mesurées et 42 gaulis répartis dans 10 placettes, n'ont pas pu être nommées ; elles sont exclues des calculs de diversité, de richesse et d'IVI, qui portent sur 1~950 tiges. La liste de la flore réunit au total [X] espèces : [X] relevées dans les placettes, [X] notées seulement hors des placettes et [X] citées seulement par les sources complémentaires (ANNEXE : liste de la flore). Parmi elles, [X] sont rattachées à un nom scientifique : [X] à l'espèce, [X] au genre et [X] à la famille. Le polisin'ala a décrit plusieurs types pour [X] espèces.
+// Source : diversite_indeterminees.csv (export ajouté à analyse_diversite_alpha.R le 01/11/2026) ; 1 950 + 49 = 1 999 tiges (structure_resume.csv).
 
-// Les identités comportent en moyenne 1,60 ± 0,64 types phénotypiques (IC 95 % : [1,50 ; 1,70] ; n = 180 espèces pour lesquelles le nombre de types est documenté, en retenant le maximum observé). Cette moyenne masque une distribution dissymétrique : 86 espèces n'ont qu'un type décrit, 81 en ont deux, 12 en ont trois et une en a quatre. Les distinctions rapportées entre types sont le plus souvent liées à la taille ou à la couleur des feuilles, au port, ou à l'habitat (forêt ou village).
+Des usages ont été cités pour [X] espèces. La catégorie de Cook (1995) la plus représentée est [X], avec [X] espèces, suivie de [X] (TABLEAU : USAGES PAR CATÉGORIE).
+// TABLEAU : nombre d'espèces par catégorie d'usage de premier niveau (Cook, 1995), avec les usages cités ; codes de second niveau en annexe. Gabarit repris de l'ancien tableau <tab-usages> (commenté ci-dessous), valeurs à mettre à jour.
 
-// // Esquisse du brouillon « redaction-foresterie-brouillon » (« Diversité spécifique /
-// // Chao2 ») : « X noms vernaculaires ont été relevés. En moyenne, chaque nom
-// // vernaculaire correspond à X±y types vernaculaires. » Tableau [Nombre de types][Nombre
-// // de noms vernaculaires] : 1→X, 2→Y, 3→Z, 4→W — correspond à la distribution validée
-// // ci-dessus (86 / 81 / 12 / 1).
+La liste de la faune compte [X] espèces : [X] observées directement ou par leurs indices de présence au cours des cheminements, et [X] citées seulement par les sources complémentaires (ANNEXE : liste de la faune). Les traces d'activités humaines rencontrées et les observations phénologiques sont données en annexe, à titre indicatif (ANNEXE : OBSERVATIONS COMPLÉMENTAIRES).
+// TODO : valeurs à tirer de la liste de faune une fois nettoyée (« T1-T2-faune », notes de sortie, transfert de gestion 2004, GBIF, Rajaonson et al., 2010).
 
-// // Valeurs recalculées sur liste_especes_vegetales_definitive.csv le 2026-10-08 (règle : max observé).
-// // La note §3.1 donnait n=181, 1,59±0,64, 89/79/12/1 — écart de version, le CSV fait foi.
-
-// Soixante-dix espèces ont au moins un usage rapporté et classé ; parmi elles, le nombre moyen d'usages est de 1,27 ± 0,51. Les 28 mentions « aucun » correspondent à un usage non rapporté lors de l'enquête, et non à une plante sans usage — dix de ces espèces ont d'ailleurs un usage rapporté par une autre source. Dix-sept espèces supplémentaires ont une mention d'usage non renseignée (NA), sans qu'on puisse conclure à l'absence d'usage.
-
-// La répartition des usages par catégorie du standard Cook (1995) est dominée par les matériaux : 48 espèces sur les 70 à usage rapporté et classé (Tableau @tab-usages). Les usages détaillés de cette catégorie relèvent presque tous de la construction et du bois d'œuvre — poutres, planches, menuiserie, charpente, manches d'outils, tressage. Viennent ensuite les usages médicinaux (11 espèces), les usages sociaux et rituels (9 espèces, dont des usages magiques et un usage anti-foudre), l'alimentation (3), les combustibles (2), les usages environnementaux (2) et les poisons (1).
-
+// --- Ancien brouillon (chiffres du 08/10/2026, antérieurs à la réconciliation : NE PAS CITER) ---
+// Au total, 335 noms vernaculaires normalisés ; 230 identités ; 130 avec une identification botanique au sens large (61 avec un taxon proposé, 69 avec une correspondance vers au moins deux genres).
+// Types : 1,60 ± 0,64 par identité (n = 180) ; 86 espèces à un type, 81 à deux, 12 à trois, une à quatre.
+// Usages : 70 espèces à usage rapporté et classé (1,27 ± 0,51 usages par espèce) ; matériaux 48, médicaments 11, usages sociaux 9, alimentation 3, combustibles 2, usages environnementaux 2, poisons des non-vertébrés 1.
 // #figure(
 //   table(
 //     columns: (auto, auto, auto),
@@ -75,308 +79,209 @@
 //     [Usages environnementaux], [2], [Haie],
 //     [Poisons des non-vertébrés], [1], [Insecticide],
 //   ),
-//   caption: [Répartition des 69 espèces à usage rapporté par catégorie de premier niveau de la classification Cook (1995). Les usages cités sont les usages de second niveau ; leurs codes figurent en annexe.],
+//   caption: [Répartition des espèces à usage cité par catégorie de premier niveau de la classification de Cook (1995). Les usages cités relèvent du second niveau ; leurs codes figurent en annexe.],
 // ) <tab-usages>
-
-// // Règle de gestion des tableaux (décision auteur, phase de saisie en cours) :
-// //   - petits tableaux du corps : saisie manuelle, à mettre à jour à la main quand les
-// //     CSV évoluent (tout est évolutif tant que la saisie des 28 placettes n'est pas finie) ;
-// //   - gros tableaux d'annexe (liste des 230 espèces, association espèce×usage) :
-// //     import CSV dynamique (Typst csv()) — à mettre en place quand les annexes sont
-// //     créées ; en attendant, renvoi annexe en commentaire.
-// // Ce tableau : valeurs vérifiées sur usages_especes_par_classe.csv le 2026-10-08 —
-// // revalider à chaque évolution du CSV tant que la saisie n'est pas close.
-
-// === Diversité animale // inclus dans liste esp/usages en fait
-
-// // Transféré du brouillon « redaction-foresterie-brouillon » — placeholders X à compléter.
-
-// Nos observations et nos échanges ont pu relever X noms vernaculaires d'espèces animales.
-// L'identification taxonomique des espèces animales n'a pas été abordée. Les identifications rapportées
-// dans la table X sont celles issues de la littérature.
-
-// // Tableau esquisse (brouillon) :
-// //   [Taxon][Nombre d'espèces vernaculaires][Nombre d'espèces vernaculaires]
-// //   [Mammifères], [], [], (note de bas de page : il convient d'exclure Homo sapiens)
-// //   [Serpents], [], [],
-// //   [Oiseaux], [], [],
-// //   [Mollusques], [], [],
-// //   [0], [], [],
-
-// La liste complète des espèces comportant les noms détaillés, les correspondances taxonomique et les sources
-// pour l'observation de chaque espèce est disponible en annexe.
-
-// // En attente (ne pas rédiger) : diversité bêta (§3.5), IVI (§3.6), estimateurs de
-// // richesse (§3.7), stock de carbone (§3.3 — valeurs disponibles mais chantier en cours
-// // de validation par l'autre session), analyses complémentaires (§3.8).
 
 === Structure forestière
 
-// Valeurs : analyse_tables/structure_resume.csv (n = 28 placettes, 1 998 tiges).
-// TODO date-jeu-de-données : reporter la date d'exécution du CSV avant dépôt.
-// Arrondis (arbitrage auteur, 2026-10-15) : deux décimales par défaut ; densités à
-// l'hectare arrondies à l'unité.
-// Figures : chemins analyse_figures/ (consigne auteur), en remplacement des chemins
-// 06_ecologie/analyse/sorties/ du brouillon précédent.
+// Source : structure_resume.csv (copie de structure_resume_indices.csv) ; surface : courbe_raréfaction_extrapolation.csv (531,09 m² à 28 placettes) et message du script de structure (531,1 m²).
+// Arrondis : deux décimales ; densités à l'hectare arrondies à l'unité (arbitrage auteur, 15/10/2026).
+L'inventaire porte sur 1~999 tiges, tiges mesurées et gaulis, réparties dans 28 placettes, pour une surface horizontale cumulée de 531,1~m². Une placette compte en moyenne 71,39~±~26,41 tiges. La densité moyenne est de 37~569~±~13~506 tiges/ha et la surface terrière moyenne de 37,30~±~28,04~m²/ha (TABLEAU : STRUCTURE).
 
-L'inventaire porte sur 1~998 tiges réparties dans 28 placettes, pour une surface horizontale cumulée de 549,4~m². La densité moyenne est de 36~365~±~13~461 tiges/ha et la surface terrière moyenne de 35,95~±~26,79~m²/ha (@tab-structure).
-// TODO : valeur à valider. 549,4 m² vient de l'état d'avancement (note P2 du
-// 09/10/2026), pas d'un CSV de sortie.
+// TABLEAU : indicateurs de structure (moyenne ± écart-type entre placettes, IC 95 % par la loi de Student, n = 28).
+// #figure(
+//   table(
+//     columns: (auto, auto, auto),
+//     align: (left, center, center),
+//     inset: 8pt,
+//     [*Indicateur (unité)*], [*Moyenne ± écart-type (n = 28)*], [*IC 95 %*],
+//     [Tiges par placette (tiges)], [71,39 ± 26,41], [[61,15 ; 81,63]],
+//     [Densité N (tiges/ha)], [37~569 ± 13~506], [[32~332 ; 42~806]],
+//     [Surface terrière G (m²/ha)], [37,30 ± 28,04], [[26,43 ; 48,17]],
+//   ),
+//   caption: [Indicateurs de structure forestière (28 placettes). Moyenne entre placettes ± écart-type ; IC 95 % : intervalle de confiance à 95 % par la loi de Student. Indicateurs rapportés à la surface horizontale. Les gaulis (tiges de plus de 1,30 m de haut et de CBH < 8 cm) sont inclus dans N et exclus de G. Valeurs par placette en annexe.],
+// ) <tab-structure>
+// Ligne N (tiges/m²) non reprise : redondante avec N (tiges/ha) (guide, critère 52) ; CSV : 3,76 ± 1,35 [3,23 ; 4,28].
 
-// Ligne N (tiges/m²) retirée du tableau : redondante avec N (tiges/ha) (guide, critère 52).
-// Elle reste dans le CSV : 3,64 ± 1,35 [3,11 ; 4,16].
-// ATTENTION : alignement des valeurs (centré, comme dans main.typ, ou à droite) à voir
-// avec le référent.
-#figure(
-  table(
-    columns: (auto, auto, auto),
-    align: (left, center, center),
-    inset: 8pt,
-    [*Indicateur (unité)*], [*Moyenne ± écart-type (n = 28)*], [*IC 95 %*],
-    [Tiges par placette (tiges)], [71,36 ± 26,45], [[61,10 ; 81,61]],
-    [Densité N (tiges/ha)], [36~365 ± 13~461], [[31~146 ; 41~585]],
-    [Surface terrière G (m²/ha)], [35,95 ± 26,79], [[25,57 ; 46,34]],
-  ),
-  caption: [Indicateurs de structure forestière du dispositif (28 placettes). Moyenne entre placettes ± écart-type ; IC 95 % : intervalle de confiance à 95 % calculé par la loi de Student entre placettes. Indicateurs rapportés à la surface horizontale. Les gaulis (tiges < 1,30 m) sont inclus dans N et exclus de G.],
-) <tab-structure>
+// Source : 06_ecologie/analyse/sorties/structure_classes_ic95.csv.
+La densité décroît de 28~426 tiges/ha dans la classe de diamètre 0-2,5~cm, qui comprend les gaulis, à 446 tiges/ha dans la classe 7,5-10~cm. Au-delà de 10~cm, elle ne dépasse pas 268 tiges/ha et varie irrégulièrement d'une classe à l'autre. Aucune tige de diamètre supérieur à 35~cm n'a été mesurée dans les placettes (FIGURE : CLASSES DE DIAMÈTRE).
+// ATTENTION : la classe 27,5-30 cm est absente du CSV (aucune tige) ; à vérifier sur la figure.
 
-La densité de tiges décroît depuis la classe de diamètre 0–2,5~cm, qui inclut les gaulis, vers les grandes classes (@fig-hist-classes).
-// Option retenue (arbitrage auteur, 2026-10-15) : pas de valeur par classe dans le texte,
-// la figure porte les chiffres (guide, critère 51).
-// ANNEXE : y placer structure_classes_ic95.csv (densité et IC 95 % par classe), données
-// de la figure (guide, critère 80), et renvoyer à cette annexe en légende (critère 53).
-// TODO : demander à la session R de déposer ce CSV dans analyse_tables/, puis vérifier la
-// lecture « décroît » sur la figure à 28 placettes.
+// FIGURE : histogramme de la densité par classe de diamètre de 2,5 cm.
+// #figure(
+//   image("analyse-figures/structure_histogramme_classes.svg",
+//     alt: "Histogramme de la densité de tiges par classe de diamètre de 2,5 cm, en échelle symétrique-logarithmique : la classe 0-2,5 cm domine, puis la densité décroît vers les grandes classes."),
+//   caption: [Densité de tiges par classe de diamètre de 2,5~cm (moyenne entre 28 placettes ; barres : IC 95 % par la loi de Student, tronquées à zéro). Axe des ordonnées en échelle symétrique-logarithmique : linéaire près de zéro, logarithmique au-delà. Les gaulis sont inclus dans la classe 0-2,5~cm. Données en annexe.],
+// ) <fig-hist-classes>
 
-#figure(
-  image("analyse_figures/structure_histogramme_classes.svg",
-    alt: "Histogramme de la densité de tiges par classe de diamètre de 2,5 cm, en échelle symétrique-logarithmique : la classe 0-2,5 cm domine, puis la densité décroît vers les grandes classes."),
-  caption: [Densité de tiges par classe de diamètre de 2,5~cm (moyenne entre 28 placettes ; barres : IC 95 % par la loi de Student). Axe des ordonnées en échelle symétrique-logarithmique : linéaire près de zéro, logarithmique au-delà. Pour les classes rares, la borne inférieure de l'IC est négative et la barre est tronquée à zéro. Les gaulis (< 1,30 m) sont inclus dans la classe 0–2,5~cm.],
-) <fig-hist-classes>
+// Source : 06_ecologie/analyse/sorties/structure_G_classes.csv.
+La surface terrière la plus élevée est celle de la classe 2,5-7,5~cm (10,43~m²/ha), suivie de la classe 22,5-27,5~cm (9,62~m²/ha). Les classes de 27,5 à 37,5~cm ont chacune une surface terrière inférieure à 1,7~m²/ha (FIGURE : G PAR CLASSE).
 
-La surface terrière se répartit sur l'ensemble des classes de diamètre (@fig-G-classes).
-// Option retenue (arbitrage auteur, 2026-10-15) : pas de valeur par classe dans le texte,
-// la figure porte les chiffres (guide, critère 51).
-// ANNEXE : y placer structure_G_classes.csv (G et IC 95 % par classe), données de la
-// figure (guide, critère 80), et renvoyer à cette annexe en légende (critère 53).
-// TODO : demander à la session R de déposer ce CSV dans analyse_tables/, puis vérifier sur
-// la figure à 28 placettes la position du maximum et d'un éventuel pic secondaire avant de
-// les décrire.
+// FIGURE : surface terrière par classe de diamètre de 5 cm.
+// #figure(
+//   image("analyse-figures/structure_G_classes.svg",
+//     alt: "Histogramme de la surface terrière par classe de diamètre de 5 cm, de 2,5 à 37,5 cm, avec un maximum dans la première classe et un second dans la classe 22,5-27,5 cm."),
+//   caption: [Surface terrière par classe de diamètre de 5~cm, à partir du seuil de mesure de 2,5~cm (moyenne entre 28 placettes ; barres : IC 95 % par la loi de Student, tronquées à zéro). Les gaulis, non mesurés, sont exclus. Données en annexe.],
+// ) <fig-G-classes>
 
-#figure(
-  image("analyse_figures/structure_G_classes.svg",
-    alt: "Histogramme de la surface terrière par classe de diamètre de 5 cm, de 2,5 à 37,5 cm."),
-  caption: [Surface terrière par classe de diamètre de 5~cm, bornes décalées depuis le seuil de mesure effectif de 2,5~cm (moyenne entre 28 placettes ; barres : IC 95 % par la loi de Student, tronquées à zéro). Les gaulis, non mesurés, sont exclus.],
-) <fig-G-classes>
+// TODO : densité de chablis et de grands arbres (CBH ≥ 126 cm) à l'hectare — en attente des longueurs de transects (M&M, Transects). Ne rédiger aucune valeur avant.
 
-À l'échelle de la placette, la densité de la régénération (gaulis/ha) et celle des tiges de DBH ≥ 12,5~cm ne sont pas significativement corrélées au seuil de 5~% (Pearson r = −0,35 ; p = 0,07 ; @fig-regen).
-// Valeurs lues sur la figure structure_regeneration.svg (aucun CSV de corrélation dans
-// analyse_tables/).
-// ATTENTION : la note §3.2 et l'ancien texte donnent r = −0,39 ; p = 0,058 ; n = 17.
-// La figure, plus récente, fait foi.
-// TODO : n placettes et p du Spearman à reprendre dans une sortie R.
+=== Stock de carbone
 
-#figure(
-  image("analyse_figures/structure_regeneration.svg",
-    alt: "Nuage de points par placette : densité de gaulis en fonction de la densité des tiges de DBH supérieur ou égal à 12,5 cm, tendance faiblement négative."),
-  caption: [Densité de la régénération (gaulis/ha) en fonction de la densité des tiges de DBH ≥ 12,5~cm, par placette (n = TODO). Corrélation de Pearson r = −0,35 (p = 0,07, ns) ; corrélation de Spearman ρ = −0,33.],
-) <fig-regen>
+// Source : 06_ecologie/analyse/sorties/carbone_stocks.csv (01/11/2026 ; E = 0,10, ρ = 0,58, facteurs MDP, graine 2026). Fichier à copier dans analyse-tables/.
+Les tiges des placettes représentent un stock de 112,48~tC/ha (IC 95~% : [75,41~; 155,27]) et les grands arbres des transects un stock de 15,71~tC/ha ([10,72~; 20,70]) (TABLEAU : CARBONE). Le volume de bois mort au sol est de 22,47~m³/ha ([9,62~; 37,86]), pour un stock de 6,13~tC/ha ([2,62~; 10,32]) ; celui du bois mort sur pied est de 9,92~m³/ha ([2,90~; 18,45]), pour un stock de 2,70~tC/ha ([0,79~; 5,03]).
+// TODO : stock total à l'hectare et stock de la forêt entière — à faire exporter par le script (pas de somme à la main) ; stock de la forêt en attente de la surface QGIS (500 ha provisoires dans le script).
+// TODO : la surface prospectée pour les grands arbres ne compte que T05, T06 et T16 (3 930 m) ; valeur à reprendre après récupération des longueurs de T19 et T20.
 
-// TODO : indicateurs transects (chablis/ha, grands arbres DBH > 40 cm/ha) bloqués
-// (3 945 m saisis sur ~6 000 m). Ne pas rédiger de valeurs.
+// TABLEAU : stocks par compartiment (IC 95 % par bootstrap, 1 000 rééchantillonnages).
+// #figure(
+//   table(
+//     columns: (auto, auto, auto, auto),
+//     align: (left, center, center, center),
+//     inset: 8pt,
+//     [*Compartiment*], [*Biomasse (tMS/ha)*], [*Carbone (tC/ha)*], [*CO₂ (tCO₂/ha)*],
+//     [Tiges des placettes], [199,43], [112,48 [75,41 ; 155,27]], [412,80 [276,77 ; 569,83]],
+//     [Grands arbres des transects], [27,85], [15,71 [10,72 ; 20,70]], [57,65 [39,36 ; 75,98]],
+//     [Bois mort au sol], [13,03], [6,13 [2,62 ; 10,32]], [22,48 [9,63 ; 37,88]],
+//     [Bois mort sur pied], [5,75], [2,70 [0,79 ; 5,03]], [9,92 [2,91 ; 18,46]],
+//   ),
+//   caption: [Stocks de biomasse, de carbone et de CO₂ par compartiment. Entre crochets : IC 95 % par bootstrap (1~000 rééchantillonnages des placettes ou des transects). Biomasse vivante : biomasse aérienne seule ; le carbone et le CO₂ du vivant incluent la biomasse souterraine ($R = "0,20"$). Paramètres : $E = "0,10"$, $rho = "0,58"$~g/cm³, $"CF" = "0,47"$. Détail des volumes et des stocks extrapolés en annexe.],
+// ) <tab-carbone>
 
-=== Diversités alpha et bêta
+=== Diversité alpha
 
-En moyenne, une placette compte 30 espèces (@tab-div-alpha). Les nombres effectifs d'espèces communes (¹D) et d'espèces dominantes (²D) ont des moyennes proches ; la dispersion entre placettes est la plus forte pour ²D et pour l'α de Fisher. Les indices de chaque placette figurent en annexe.
+// Source : diversite_alpha_resume.csv ; valeurs par placette : 06_ecologie/analyse/sorties/diversite_alpha_placettes.csv.
+Une placette compte en moyenne 29,32~±~6,29 espèces. L'indice de Shannon moyen est de 3,03~±~0,26, soit 21,41~±~5,35 espèces communes effectives (¹D) ; l'inverse de Simpson donne 15,95~±~4,63 espèces dominantes effectives (²D) et l'alpha de Fisher 22,04~±~9,31 (TABLEAU : ALPHA). L'écart-type entre placettes est le plus élevé pour l'alpha de Fisher. Les indices de chaque placette figurent en annexe (ANNEXE : INDICES PAR PLACETTE).
+// ¹D et ²D en forme brute (arbitrage auteur, 01/11/2026) ; ²D recalculé (1 / Σp²) dans fonctionsDiversite.R, alpha relancé le 01/11/2026. L'ancienne valeur corrigée (22,05) était supérieure à ¹D.
 
-// ANNEXE : y placer diversite_alpha_placettes.csv (absent de analyse_tables/, à demander
-// à la session R) et renvoyer à cette annexe en légende du tableau.
+// TABLEAU : indices alpha (moyenne ± écart-type, IC 95 %, n = 28).
+// #figure(
+//   table(
+//     columns: (auto, auto, auto),
+//     align: (left, center, center),
+//     inset: 8pt,
+//     [*Indice (unité)*], [*Moyenne ± écart-type (n = 28)*], [*IC 95 %*],
+//     [Richesse spécifique S = ⁰D (espèces)], [29,32 ± 6,29], [[26,88 ; 31,76]],
+//     [Indice de Shannon H′ (sans unité)], [3,03 ± 0,26], [[2,93 ; 3,13]],
+//     [exp(H′) = ¹D (espèces communes effectives)], [21,41 ± 5,35], [[19,33 ; 23,48]],
+//     [²D, inverse de Simpson (espèces dominantes effectives)], [15,95 ± 4,63], [[14,15 ; 17,75]],
+//     [Alpha de Fisher (sans unité)], [22,04 ± 9,31], [[18,43 ; 25,65]],
+//   ),
+//   caption: [Indices de diversité alpha par placette : moyenne entre 28 placettes ± écart-type ; IC 95 % par la loi de Student. Abondances : toutes les tiges comptées (tiges mesurées et gaulis), tiges indéterminées exclues. ¹D et ²D sous leur forme brute. Espèces : identités réconciliées. Valeurs par placette en annexe.],
+// ) <tab-div-alpha>
 
-// L’inversion ²D > ¹D vient surtout de cette comparaison entre un estimateur corrigé et un estimateur brut.
-// Le vrai problème est le mélange des estimateurs :
-// ¹D = exp(H′) est calculé « brut », et il est biaisé vers le bas en petit échantillon ;
-// ²D est corrigé, donc tiré vers le haut.
-// Il faut demander à la session R d’utiliser des estimateurs homogènes. Deux options :
-// (a) les deux bruts ;
-// (b) les deux corrigés, avec les estimateurs asymptotiques de Hill (Chao et al., 2014, Ecological Monographs, 84(1), 45–67, https://doi.org/10.1890/13-0133.1 // REF?), disponibles dans iNEXT.
+=== Diversité bêta
 
-#figure(
-  table(
-    columns: (auto, auto, auto),
-    align: (left, center, center),
-    inset: 8pt,
-    [*Indice (unité)*], [*Moyenne ± écart-type (n = 28)*], [*IC 95 %*],
-    [Richesse spécifique S = ⁰D (espèces)], [30 ± 6,19], [[27,6 ; 32,4]],
-    [Indice de Shannon H′ (sans unité)], [3,06 ± 0,25], [[2,96 ; 3,15]],
-    [exp(H′) = ¹D (espèces communes effectives)], [21,91 ± 5,06], [[19,95 ; 23,88]],
-    [²D, inverse de Simpson (espèces dominantes effectives)], [22,56 ± 8,6], [[19,23 ; 25,89]],
-    [α de Fisher (sans unité)], [22,49 ± 9,24], [[18,91 ; 26,07]],
-  ),
-  caption: [Indices de diversité alpha par placette : moyenne entre 28 placettes ± écart-type ; IC 95 % : intervalle de confiance à 95 % par la loi de Student entre placettes. Abondances : toutes les tiges comptées (tiges mesurées et gaulis). Espèces : identités réconciliées, chaque individu indéterminé comptant pour une espèce distincte dans sa placette.],
-) <tab-div-alpha>
+// Sources : diversite_beta_resume_rapport.csv, diversite_beta_resume.csv, diversite_beta_whittaker.csv, diversite_beta_bray_niveaux.csv, diversite_beta_mono_commune.csv.
+La richesse de l'ensemble des placettes ($gamma$ = 243 espèces) est 8,29 fois plus élevée que la richesse moyenne d'une placette ($macron(alpha)$ = 29,32 espèces). Le bêta additif est de 213,68 espèces. La dissimilarité de Bray-Curtis moyenne entre les 378 paires de placettes est de 0,81~±~0,09.
 
-// Figures optionnelles (note alpha), gardées en réserve sur décision de l'auteur :
-// boxplot des indices par placette ; nuage S en fonction de ln(N).
+Dans l'ordination NMDS, de stress 0,23, (FIGURE : NMDS) [description de la disposition des placettes par itinéraire].
+// TODO (à faire, auteur) : lire la figure NMDS (SVG du 31/10/2026) et décrire la disposition des placettes par itinéraire ; coordonnées dans diversite_beta_nmds_points.csv.
 
-À l'échelle du dispositif, la richesse totale dépasse d'environ huit fois la richesse moyenne d'une placette (bêta multiplicatif, @tab-div-beta).
+// FIGURE : ordination NMDS des 28 placettes, un symbole par itinéraire.
+// #figure(
+//   image("analyse-figures/diversite_beta_nmds.svg",
+//     alt: "Plan d'ordination NMDS à deux dimensions des 28 placettes, un symbole par itinéraire."),
+//   caption: [Ordination NMDS en deux dimensions des 28 placettes, sur la dissimilarité de Bray-Curtis (abondances, espèces réconciliées) ; stress = 0,23. Deux points proches correspondent à des placettes de composition proche. Chaque symbole représente un itinéraire. Coordonnées en annexe.],
+// ) <fig-beta-nmds>
 
-// Whittaker.  la session R doit recalculer avec γ / ᾱ (actuellement (γ / ᾱ) - 1 visiblement)
-// ATTENTION : le CSV bêta utilise γ = 262, une valeur proche de ton gamma « toutes observations » (261). Or ᾱ ne porte que sur les placettes. γ doit donc porter sur les mêmes placettes, soit 243 ou 244, sinon le rapport mélange deux échelles. Il faut le préciser à la session R. Cela touche aussi le bêta additif (232) et la part d’espèces vues dans une seule commune (n = 262).
+Les dissimilarités moyennes les plus faibles sont celles des paires de placettes d'un même itinéraire (Jaccard : 0,71~±~0,07 ; Bray-Curtis : 0,64~±~0,10 ; 37 paires), puis celles des paires d'un même polisin'ala (0,74~±~0,09 ; 0,76~±~0,06 ; 16 paires). Les paires d'une même commune (0,89~±~0,04 ; 0,83~±~0,07 ; 70 paires) et celles de communes différentes (0,86~±~0,04 ; 0,83~±~0,06 ; 255 paires) ont des dissimilarités voisines (TABLEAU : DISSIMILARITÉS PAR NIVEAU ; FIGURE : GRADIENT).
+// ATTENTION : Jaccard « même commune » = 0,885 dans le CSV (trois décimales) ; arrondi ici à 0,89, à vérifier sur la valeur complète.
+// Comparaison descriptive seulement (paires non indépendantes, M&M) : aucun test cité.
 
-#figure(
-  table(
-    columns: (auto, auto),
-    align: (left, center),
-    inset: 8pt,
-    [*Indice (unité)*], [*Valeur*],
-    [Bêta multiplicatif de Whittaker (sans unité)], [7,73],
-    [Bêta additif de Lande (espèces)], [232],
-    [Dissimilarité de Bray-Curtis moyenne (sans unité)], [0,81 ± 0,09],
-  ),
-  caption: [Diversité bêta du dispositif (28 placettes ; richesse totale γ = 262 espèces ; richesse moyenne par placette ᾱ = 30 espèces). Dissimilarité de Bray-Curtis : moyenne ± écart-type sur les 378 paires de placettes, calculée sur les abondances des espèces réconciliées.],
-) <tab-div-beta>
+// TABLEAU : dissimilarités moyennes (± écart-type) par niveau partagé.
+// #figure(
+//   table(
+//     columns: (auto, auto, auto, auto),
+//     align: (left, center, center, center),
+//     inset: 8pt,
+//     [*Niveau partagé par la paire*], [*Paires*], [*Jaccard*], [*Bray-Curtis*],
+//     [Même itinéraire], [37], [0,71 ± 0,07], [0,64 ± 0,10],
+//     [Même polisin'ala (itinéraires différents)], [16], [0,74 ± 0,09], [0,76 ± 0,06],
+//     [Même commune (polisin'ala différents)], [70], [0,89 ± 0,04], [0,83 ± 0,07],
+//     [Communes différentes], [255], [0,86 ± 0,04], [0,83 ± 0,06],
+//   ),
+//   caption: [Dissimilarités moyennes ± écart-type entre paires de placettes selon le niveau le plus fin qu'elles partagent. Jaccard : présence-absence ; Bray-Curtis : abondances ; espèces réconciliées. Comparaison descriptive : les paires ne sont pas indépendantes.],
+// ) <tab-beta-niveaux>
+// Vérifié dans analyse_diversite_beta.R (01/11/2026) : case_when ordonné (même transect > même polisin'ala > même commune > communes différentes), chaque paire est classée au niveau le plus fin qu'elle partage ; les niveaux sont exclusifs.
 
-La dissimilarité de Jaccard entre deux placettes varie selon le niveau spatial qu'elles partagent (Kruskal-Wallis, p < 0,001 ; @fig-beta-gradient). Elle ne diffère pas significativement entre les paires d'un même transect et celles d'un même polisn'ala (p = 0,07, ns). Elle est plus élevée entre les paires d'une même commune qu'entre celles d'un même polisn'ala (p < 0,001), et plus élevée encore entre placettes de communes différentes (p < 0,001). En abondances (Bray-Curtis), en revanche, les paires d'une même commune et celles de communes différentes ne se distinguent pas (0,84 ± 0,06 contre 0,83 ± 0,06 ; p = 0,36, ns).
-// Sources : diversite_beta_resume_rapport.csv (p-values Holm ; « 0 » écrit p < 0,001).
-// TODO : le sens des écarts en Jaccard vient de la note bêta. Les moyennes de Jaccard par
-// niveau ne sont pas dans analyse_tables/ : vérifier sur la figure ou les faire exporter.
+// FIGURE : boîtes à moustaches de la dissimilarité de Jaccard par niveau (sans étoiles de significativité, figure du 31/10/2026).
+// #figure(
+//   image("analyse-figures/diversite_beta_gradient.svg",
+//     alt: "Boîtes à moustaches de la dissimilarité de Jaccard entre paires de placettes, pour quatre niveaux ordonnés du même itinéraire aux communes différentes."),
+//   caption: [Dissimilarité de Jaccard (présence-absence, espèces réconciliées) entre paires de placettes selon le niveau partagé : même itinéraire (37 paires), même polisin'ala (16), même commune (70), communes différentes (255). Boîtes : quartiles ; trait : médiane ; moustaches : valeurs extrêmes dans la limite de 1,5 fois l'écart interquartile ; points : valeurs au-delà.],
+// Moustaches : geom_boxplot sans argument coef (défaut ggplot2 : 1,5 × IQR), vérifié le 01/11/2026.
+// ) <fig-beta-gradient>
 
-#figure(
-  image("analyse_figures/diversite_beta_gradient.svg",
-    alt: "Boîtes à moustaches de la dissimilarité de Jaccard entre paires de placettes, pour quatre niveaux spatiaux ordonnés du même transect aux communes différentes."),
-  caption: [Dissimilarité de Jaccard (présence-absence, espèces réconciliées) entre paires de placettes, selon le niveau spatial partagé : même transect (n = 37 paires), même polisn'ala (n = 16), même commune (n = 70), entre communes (n = 255, paires ne partageant ni transect, ni polisn'ala, ni commune). Test global : Kruskal-Wallis, p < 0,001. Comparaisons deux à deux : test de Wilcoxon avec correction de Holm ; \*\*\* p(H₀) < 0,001 ; ns : non significatif.],
-) <fig-beta-gradient>
-// TODO : définir les moustaches en légende (guide, critère 59). Par défaut dans ggplot2 :
-// 1,5 fois l'écart interquartile, à confirmer avec la session R.
-
-Dans l'ordination NMDS, les placettes d'un même transect ne forment pas de groupe distinct (@fig-beta-nmds). Par ailleurs, 71,8~% des espèces ne sont observées que dans une seule commune, contre 53,2~% attendus si les placettes étaient réparties au hasard entre communes (test par permutation, p = 0,001).
-// TODO : vérifier la lecture de la NMDS sur la figure à 28 placettes.
-// TODO : nombre de permutations (999 d'après la note) à confirmer, absent du CSV.
-// La note donne 71,3 % et 53 % ; le CSV (0,718 et 0,532, n = 262 espèces) fait foi.
-// La ligne « noms vernaculaires bruts » du CSV (80,6 %) est un contrôle de la
-// réconciliation : à citer en M&M ou en Discussion, pas ici.
-
-#figure(
-  image("analyse_figures/diversite_beta_nmds.svg",
-    alt: "Plan d'ordination NMDS à deux dimensions des 28 placettes, un symbole par transect, sans regroupement net par transect."),
-  caption: [Ordination NMDS en deux dimensions des 28 placettes, sur la dissimilarité de Bray-Curtis (abondances, espèces réconciliées) ; stress = 0,22. Deux points proches correspondent à des placettes de composition proche. Chaque symbole représente un transect. Coordonnées par placette en annexe.],
-) <fig-beta-nmds>
-// ANNEXE : diversite_beta_nmds_points.csv (coordonnées avec transect, polisn'ala et
-// commune) et diversite_beta_paires.csv (378 paires).
-
-=== Richesse spécifique totale
-
-// ATTENTION (gamma observé) : 244 dans le CSV et sur la figure, 243 dans la note §3.7.
-// Vérification en cours par l'auteur (espèce inconnue ou en-tête compté ?).
-
-Les 28 placettes totalisent 244 espèces observées. Tous les estimateurs donnent une richesse supérieure à cette valeur (@tab-gamma). Les sept estimations vont de 288,19 espèces (bootstrap) à 385,89 espèces (jackknife d'ordre 2) ; Chao2 donne 334,97 espèces (IC à 95~% : [298,66~; 395,39]). Toutes les estimations, à l'exception du bootstrap, se situent dans cet intervalle.
-
-Les 28 placettes totalisent 244 espèces observées. Tous les estimateurs donnent une richesse supérieure à cette valeur (@tab-gamma). Les sept estimations vont de 288,19 espèces (bootstrap) à 385,89 espèces (jackknife d'ordre 2) ; Chao2, estimateur principal, donne 334,97 espèces (IC à 95~% : [298,66~; 395,39]).
-// Pas de test de différence entre estimateurs : comparaison et interprétation à réserver à la Discussion.
-
-#figure(
-  table(
-    columns: (auto, auto, auto, auto),
-    align: (left, left, center, center),
-    inset: 8pt,
-    [*Estimateur*], [*Modèle (unité)*], [*Estimation (espèces)*], [*IC 95 %*],
-    [Chao2 (principal)], [Incidence (placette)], [334,97], [[298,66 ; 395,39]],
-    [Jackknife d'ordre 2], [Incidence (placette)], [385,89], [[347,08 ; 439,33]],
-    [ICE], [Incidence (placette)], [370,99], [[329,32 ; 433,02]],
-    [Bootstrap], [Incidence (placette)], [288,19], [[264,89 ; 311,49]],
-    [Jackknife d'ordre 1], [Incidence (placette) / abondance vérifier !], [340,43], [[296,35 ; 384,50]],
-    [Chao1], [Abondance (tige)], [326,62], [[299,10 ; 374,57]],
-    [ACE], [Abondance (tige)], [345,44], [[327,00 ; 363,87]],
-  ),
-  caption: [Estimateurs asymptotiques de la richesse spécifique totale (28 placettes~; richesse observée γ#sub[obs] = 244 espèces, identités réconciliées). Chao2 est l'estimateur principal ; les autres estimateurs sont rapportés à titre indicatif. IC 95~% : transformation logarithmique pour Chao2, le jackknife d'ordre 2 et ICE ; approximation normale pour le bootstrap, le jackknife d'ordre 1 et ACE ; intervalle exact pour Chao1.],
-) <tab-gamma>
-// TODO : méthodes de calcul des IC reprises de la note §3.7, à confirmer avec la session R.
-
-La courbe de raréfaction-extrapolation n'atteint pas de plateau, ni sur la surface prospectée ni dans la plage extrapolée, et sa bande de confiance s'élargit au-delà du point de référence (@fig-rarefaction).
-// TODO : lecture faite sur le SVG, à confirmer. courbe_raréfaction_extrapolation.csv est
-// absent de analyse_tables/ : à placer en annexe (guide, critère 80).
-// ATTENTION (M&M) : extrapolation jusqu'à quatre fois la surface prospectée, alors que les
-// auteurs de la méthode recommandent au plus le double. Choix à justifier en M&M.
-
-#figure(
-  image("analyse_figures/courbe_raréfaction_extrapolation.svg",
-    alt: "Courbe de richesse spécifique en fonction de la surface cumulée, croissante sans plateau jusqu'à environ 2 200 m², avec une bande de confiance qui s'élargit au-delà de la surface prospectée."),
-  caption: [Richesse spécifique (modèle d'incidence, ordre q = 0) en fonction de la surface horizontale cumulée : interpolation de 1 à 28 placettes (point de référence : 549,4~m², 244 espèces), puis extrapolation jusqu'à 112 placettes, soit quatre fois la surface prospectée. Bande grise : IC 95~% par bootstrap.],
-) <fig-rarefaction>
-// TODO : vérifier sur la figure les styles de trait (interpolation, extrapolation, point de
-// référence) et la ligne verticale à 549,4 m², puis les décrire en légende.
+Sur les 243 espèces, 69,5~% ne sont observées que dans une seule commune, contre 49,6~% en moyenne lorsque les communes sont réattribuées au hasard aux placettes (999 permutations ; $p$ = 0,001).
+// La ligne « noms vernaculaires bruts » du CSV (80,6 % contre 61,7 %) est un contrôle de la réconciliation : à citer en Discussion si besoin, pas ici.
 
 === Espèces dominantes
 
-// REPRISE (état au 2026-10-15) : recalcul de ivi_especes.csv en cours (28 placettes ;
-// nombre d'espèces à confirmer). Tous les chiffres ci-dessous viennent de l'ancien CSV :
-// PROVISOIRES. Après recalcul : (1) relire le nouveau CSV ; (2) revérifier les
-// affirmations [IVI-1] à [IVI-5] ; (3) mettre à jour tableau et légende ; (4) restaurer
-// la phrase d'effectifs [IVI-0]. La note NOTE_CONTEXTE_3_6_IVI.md est obsolète (24
-// placettes, 488 tiges) : le CSV prime.
-// Arbitrages auteur : IVI normalisé (÷ 3) ; interprétations (espèce structurante,
-// turnover, espèces rares mais localement dominantes) réservées à la Discussion.
-// Arrondis : deux décimales.
+// Source : ivi_especes.csv (31/10/2026, relancé le 01/11/2026 après passage en gaulis des tiges de 7 cm de P06). IVI sur 100.
+Le classement porte sur 124 espèces, représentées par 479 tiges mesurées dans les 28 placettes, hors tiges indéterminées. L'IVI le plus élevé est celui de Babogna (6,59), devant Ambora (5,03) et Hazomainty (4,96) (TABLEAU : IVI). Babogna a aussi la dominance relative la plus forte (9,96~%) et la fréquence relative la plus forte (4,59~%, 14 placettes) ; la densité relative la plus forte est celle de Hazomainty (6,05~%, 29 tiges). Six espèces ont un IVI supérieur à 3,5 ; l'IVI est inférieur à 1,5 à partir du rang 19.
 
-// [IVI-0] À restaurer après recalcul : « Le classement porte sur [N] espèces, représentées
-// par [n] tiges mesurées dans [p] placettes (@tab-ivi). »
-// Ancien CSV, non retenu : 129 espèces dont au moins 4 indéterminées, 488 tiges, 24 placettes.
+Les trois composantes divergent pour certaines espèces. Ramiavogna et Sary, avec deux tiges chacune, ont une dominance relative de 5,00~% et de 4,50~%. Hasina, présente dans 12 placettes, a une fréquence relative de 3,93~% pour une dominance relative de 1,26~%. Cinquante-quatre espèces ne sont représentées que par une tige mesurée et 66 ne sont présentes que dans une placette ; à partir du rang 66, aucune espèce ne compte plus de deux tiges mesurées. Le classement complet figure en annexe (ANNEXE : IVI).
 
-L'IVI le plus élevé est celui de Babogna (6,52~%), devant Ambora (4,97~%) et Hazomainty (4,89~%) (@tab-ivi).
-// [IVI-1] Vérifier : rangs 1 à 3 et leurs IVI.
-Babogna présente la dominance relative la plus forte (9,93~%) et la fréquence relative la plus forte (4,50~%, 14 placettes) ; la densité relative la plus forte est celle de Hazomainty (5,94~%, 29 tiges).
-// [IVI-2] Vérifier : maxima de DoR, FR et DR sur tout le CSV. Une espèce hors du top 15 ne
-// peut détenir un maximum que si sa composante dépasse celle du top (IVI ≥ composante / 3).
-Six espèces ont un IVI supérieur à 3,5~%, et il est inférieur à 1,5~% à partir du rang 18.
-// [IVI-3] Vérifier : nombre d'espèces à IVI > 3,5 ; premier rang à IVI < 1,5.
+// TABLEAU : les quinze espèces de plus fort IVI.
+// #figure(
+//   table(
+//     columns: (auto, auto, auto, auto, auto, auto),
+//     align: (center, left, center, center, center, center),
+//     inset: 8pt,
+//     [*Rang*], [*Espèce*], [*DR (%)*], [*DoR (%)*], [*FR (%)*], [*IVI*],
+//     [1], [Babogna], [5,22], [9,96], [4,59], [6,59],
+//     [2], [Ambora], [4,59], [7,23], [3,28], [5,03],
+//     [3], [Hazomainty], [6,05], [4,55], [4,26], [4,96],
+//     [4], [Menafatagna], [4,59], [5,03], [3,61], [4,41],
+//     [5], [Voapaka], [2,92], [5,87], [2,62], [3,80],
+//     [6], [Tsimahamasasokona], [4,38], [3,35], [3,61], [3,78],
+//     [7], [Randripody], [3,76], [1,33], [3,28], [2,79],
+//     [8], [Hasina], [3,13], [1,26], [3,93], [2,78],
+//     [9], [Hazombary], [3,55], [2,41], [1,64], [2,53],
+//     [10], [Sagnira], [1,67], [3,48], [1,64], [2,26],
+//     [11], [Kijy], [1,46], [3,24], [1,97], [2,22],
+//     [12], [Ramiavogna], [0,42], [5,00], [0,66], [2,02],
+//     [13], [Sary], [0,42], [4,50], [0,66], [1,86],
+//     [14], [Tsirika], [2,71], [0,62], [1,97], [1,77],
+//     [15], [Kabokala], [0,63], [3,63], [0,98], [1,75],
+//   ),
+//   caption: [Les quinze espèces de plus fort indice de valeur d'importance (IVI) sur l'ensemble du dispositif (28 placettes ; 479 tiges mesurées, gaulis et tiges indéterminées exclus). DR : densité relative ; DoR : dominance relative (part de la surface terrière) ; FR : fréquence relative (part des occurrences en placette). IVI = (DR + DoR + FR) / 3, la somme sur les 124 espèces valant 100. Espèces : identités réconciliées. Classement complet en annexe.],
+// ) <tab-ivi>
 
-Les trois composantes divergent pour certaines espèces. Ramiavogna et Sary, représentées par deux tiges chacune, atteignent une dominance relative de 4,98~% et de 4,48~%. Hasina, présente dans 12 placettes, a une fréquence relative de 3,86~% mais une dominance relative de 1,26~%.
-// [IVI-4] Vérifier : nbTiges, DoR, nbPlacettes, FR de ces trois espèces.
-Du rang 76 au rang 129, chaque espèce n'est représentée que par une ou deux tiges mesurées.
-// [IVI-5] Vérifier : plage de rangs où nbTiges ≤ 2 (le nombre total d'espèces change).
+=== Richesse spécifique totale
 
-#figure(
-  table(
-    columns: (auto, auto, auto, auto, auto, auto),
-    align: (center, left, center, center, center, center),
-    inset: 8pt,
-    [*Rang*], [*Espèce*], [*DR (%)*], [*DoR (%)*], [*FR (%)*], [*IVI (%)*],
-    [1], [Babogna], [5,12], [9,93], [4,50], [6,52],
-    [2], [Ambora], [4,51], [7,20], [3,22], [4,97],
-    [3], [Hazomainty], [5,94], [4,53], [4,18], [4,89],
-    [4], [Menafatagna], [4,51], [5,01], [3,54], [4,35],
-    [5], [Voapaka], [2,87], [5,85], [2,57], [3,76],
-    [6], [Tsimahamasasokona], [4,30], [3,33], [3,54], [3,72],
-    [7], [Randripody], [3,69], [1,33], [3,22], [2,74],
-    [8], [Hasina], [3,07], [1,26], [3,86], [2,73],
-    [9], [Hazombary], [3,48], [2,40], [1,61], [2,50],
-    [10], [Sagnira], [1,64], [3,47], [1,61], [2,24],
-    [11], [Kijy], [1,43], [3,23], [1,93], [2,20],
-    [12], [Ramiavogna], [0,41], [4,98], [0,64], [2,01],
-    [13], [Vilogna], [2,25], [0,76], [2,57], [1,86],
-    [14], [Sary], [0,41], [4,48], [0,64], [1,84],
-    [15], [Tsirika], [2,66], [0,61], [1,93], [1,74],
-  ),
-  caption: [Les quinze espèces de plus fort indice de valeur d'importance (IVI), pour l'ensemble du dispositif (28 placettes ; tiges mesurées uniquement, gaulis exclus). DR : densité relative (part des tiges) ; DoR : dominance relative (part de la surface terrière) ; FR : fréquence relative (part des occurrences en placette). IVI = (DR + DoR + FR) / 3, la somme sur l'ensemble des espèces valant 100~%. Espèces : identités réconciliées ; traitement des individus indéterminés à préciser. Classement complet en annexe.],
-) <tab-ivi>
-// TODO : tableau et légende à régénérer après recalcul (valeurs, rangs, nombre de
-// placettes, traitement des indéterminés).
-// ANNEXE : liste complète (ivi_especes.csv) par import dynamique csv() dans Annexes.typ
-// (« Liste des plantes établie ... avec IVI ») ; renvoyer à l'annexe en légende.
-// OPTION : courbe rang-IVI ou part cumulée de l'IVI, à demander à la session R.
+// Sources : estimateurs_richesse_gamma.csv ; 06_ecologie/analyse/sorties/courbe_raréfaction_extrapolation.csv.
+Les 28 placettes totalisent 243 espèces observées. Tous les estimateurs donnent une richesse supérieure, de 287,19 espèces (bootstrap) à 384,89 espèces (jackknife d'ordre 2). Chao2, estimateur principal, donne 333,97 espèces (IC 95~% : [297,66~; 394,39]) ; toutes les autres estimations, sauf celle du bootstrap, sont comprises dans cet intervalle (TABLEAU : ESTIMATEURS).
 
-=== Bois mort et stock de carbone (§3.3) => à faire
+// TABLEAU : estimateurs de la richesse totale.
+// #figure(
+//   table(
+//     columns: (auto, auto, auto, auto),
+//     align: (left, left, center, center),
+//     inset: 8pt,
+//     [*Estimateur*], [*Modèle (unité)*], [*Estimation (espèces)*], [*IC 95 %*],
+//     [Chao2 (principal)], [Incidence (placette)], [333,97], [[297,66 ; 394,39]],
+//     [Jackknife d'ordre 1], [Incidence (placette)], [339,43], [[295,35 ; 383,50]],
+//     [Jackknife d'ordre 2], [Incidence (placette)], [384,89], [[346,08 ; 438,33]],
+//     [ICE], [Incidence (placette)], [368,94], [[327,49 ; 430,71]],
+//     [Bootstrap], [Incidence (placette)], [287,19], [[263,89 ; 310,49]],
+//     [Chao1], [Abondance (tige)], [298,48], [[273,87 ; 342,73]],
+//     [ACE], [Abondance (tige)], [316,34], [[298,73 ; 333,94]],
+//   ),
+//   caption: [Estimateurs asymptotiques de la richesse spécifique totale (28 placettes ; richesse observée $gamma_"obs"$ = 243 espèces, identités réconciliées, tiges indéterminées exclues). Chao2 est l'estimateur principal ; les autres sont donnés à titre de comparaison.],
+// ) <tab-gamma>
+// TODO : méthode de calcul des IC par estimateur (note §3.7 : transformation logarithmique pour Chao2, jackknife 2 et ICE ; approximation normale pour bootstrap, jackknife 1 et ACE ; intervalle exact pour Chao1) à confirmer dans estimation_richesse_specifique.R avant de l'écrire en légende.
 
-// En attente de validation (ne pas rédiger — cf. note de contexte PR #5 : paramètres
-// E et ρ provisoires, valeurs préliminaires ; et M&M « Analyses en attente »).
-// Contenu du brouillon « redaction-foresterie-brouillon » (« Diversité végétale >
-// Statistiques descriptives »), à revalider avant rédaction :
-//   « Le volume de bois mort estimé est de 38 m³/ha (IC à 95 % : [18 ; 58 m³/ha]).
-//   Cette valeur est cohérente avec les forêts tropicales humides primaires
-//   (20–60 m³/ha ; Chao et al., 2008), bien que légèrement élevée pour une forêt
-//   secondaire. La marge d'erreur élevée (±15 m³/ha) est due à la faible longueur
-//   totale des transects (120 m) et à la présence de quelques grands bois
-//   (ex. : 141 cm de circonférence). »
+À 28 placettes (531,1~m²), la couverture d'échantillonnage est de 0,88 (IC 95~% : [0,86~; 0,90]). Extrapolée à 112 placettes, soit quatre fois la surface prospectée (2~124~m²), la richesse atteint 330,39 espèces ([295,72~; 365,06]) pour une couverture de 0,995 (FIGURE : RARÉFACTION).
+// TODO (à faire, auteur) : lire la courbe (SVG du 31/10/2026) et décrire sa forme (plateau ou non).
+
+// FIGURE : courbe de raréfaction-extrapolation (incidence, q = 0).
+// #figure(
+//   image("analyse-figures/courbe_raréfaction_extrapolation.svg",
+//     alt: "Courbe de richesse spécifique en fonction de la surface cumulée, interpolée jusqu'à 531 m² puis extrapolée jusqu'à environ 2 124 m², avec sa bande de confiance."),
+//   caption: [Richesse spécifique (modèle d'incidence, ordre $q$ = 0) en fonction de la surface horizontale cumulée : interpolation de 1 à 28 placettes (point de référence : 531,1~m², 243 espèces), puis extrapolation jusqu'à 112 placettes, soit quatre fois la surface prospectée. Bande grise : IC 95~% par bootstrap. Données en annexe.],
+// ) <fig-rarefaction>
 
 == Enquête sociale
 

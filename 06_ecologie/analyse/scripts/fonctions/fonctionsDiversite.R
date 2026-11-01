@@ -11,12 +11,14 @@ Conventions (validees par l'auteur, double controle R/Python) :
   - ABONDANCES = toutes les tiges comptees : tiges mesurees
     (floreTiges, CBH > 8 cm) + gaulis (tiges < 1,30 m) ;
   - ESPECES = identites re conciliees (liste_especes_vegetales.csv) ;
-    chaque observation « espece indeterminee » compte pour une espece
-    locale distincte (ind_PXX_OOO) ;
+    les observations « espece indeterminee » sont exclues de tous les
+    calculs de diversite (arbitrage auteur du 31/10/2026) ;
   - INDICES DE HILL (Hill 1973 ; interpretations de Jost 2006) :
       0D = richesse specifique S ;
       1D = exp(Shannon H') = nombre effectif d'especes communes ;
-      2D = Simpson inverse corrige (estimateur N(N-1)/Σn(n-1))
+      2D = Simpson inverse brut, 1 / Σp² (forme brute, comme 1D ;
+           arbitrage auteur du 01/11/2026 : faible completude des
+           placettes, estimateurs corriges trop extrapolants)
            = nombre effectif d'especes dominantes ;
   - ALPHA DE FISHER : resolution numerique (dichotomie) de
       S = alpha * ln(1 + N / alpha)
@@ -39,7 +41,7 @@ calculer_abondances <- function(d, correspondances) {
                              .default = nomVernaculaire),
       espece = if_else(
         str_to_lower(str_trim(espece)) == "espèce indéterminée",
-        paste0("ind_", cdPlacette, "_", cdObs),
+        NA_character_,
         espece
       )
     ) |>
@@ -52,7 +54,7 @@ calculer_abondances <- function(d, correspondances) {
                              .default = nomVernaculaire),
       espece = if_else(
         str_to_lower(str_trim(espece)) == "espèce indéterminée",
-        paste0("ind_", cdPlacette, "_", cdObs),
+        NA_character_,
         espece
       ),
       nbGaulis = replace_na(gaulis, 0)
@@ -83,9 +85,8 @@ indices_hill <- function(abondances) {
   p <- abondances / N
   H <- -sum(p * log(p))          # Shannon H'
   D1 <- exp(H)                   # 1D
-  # 2D : Simpson inverse. Indefini si une seule espece (sommeCarres = 0)
-  sommeCarres <- sum(abondances * (abondances - 1))
-  D2 <- if (sommeCarres > 0) N * (N - 1) / sommeCarres else NA_real_
+  # 2D : Simpson inverse brut (forme homogene avec 1D)
+  D2 <- 1 / sum(p^2)
   c(S = S, H = H, D1 = D1, D2 = D2, N = N)
 }
 

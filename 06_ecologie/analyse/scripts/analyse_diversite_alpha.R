@@ -114,6 +114,25 @@ if (!dir.exists(dossierSorties)) dir.create(dossierSorties, recursive = TRUE)
 abondances <- calculer_abondances(d, correspondances)
 diversiteAlpha <- calculer_diversite_alpha(abondances)
 
+### Tiges d'espece indeterminee (exclues des indices) ###
+
+est_indeterminee <- function(nom) {
+  espece <- dplyr::recode(nom, !!!correspondances, .default = nom)
+  !is.na(espece) & str_to_lower(str_trim(espece)) == "espèce indéterminée"
+}
+indetTiges <- d$floreTiges |> filter(est_indeterminee(nomVernaculaire))
+indetGaulis <- d$flore |>
+  filter(est_indeterminee(nomVernaculaire)) |>
+  mutate(gaulis = replace_na(gaulis, 0))
+indeterminees <- tibble(
+  nbTigesMesurees = nrow(indetTiges),
+  nbGaulis = sum(indetGaulis$gaulis),
+  nbTotal = nbTigesMesurees + nbGaulis,
+  nbPlacettes = n_distinct(c(indetTiges$cdPlacette,
+                             indetGaulis$cdPlacette[indetGaulis$gaulis > 0])),
+  nbTigesRetenues = sum(abondances$abondance)
+)
+
 ### Resume entre placettes ###
 
 resumer_ic <- function(valeurs) {
@@ -146,11 +165,13 @@ readr::write_csv(abondances,
                   file.path(dossierSorties, "diversite_abondances.csv"))
 readr::write_csv(resumeAlpha,
                   file.path(dossierSorties, "diversite_alpha_resume.csv"))
+readr::write_csv(indeterminees,
+                  file.path(dossierSorties, "diversite_indeterminees.csv"))
 
 ### Messages ###
 
 message("✅ Diversité alpha (§3.4) — ", nrow(diversiteAlpha),
-        " placettes, indéterminées comptées comme espèces distinctes :")
+        " placettes, espèces indéterminées exclues :")
 for (i in seq_len(nrow(resumeAlpha))) {
   r <- resumeAlpha[i, ]
   message("   ", r$indice, " : ", r$moyenne, " ± ", r$ecartType,

@@ -78,7 +78,7 @@ Mokany, K., Raison, R. J., & Prokushkin, A. S. (2006). Critical analysis of root
 
 Ostrom, E. (1990). *Governing the commons: The evolution of institutions for collective action*. Cambridge University Press. // TODO : vérifier si l'auteur souhaite citer l'édition anglaise ou une traduction française.
 
-Rajaonson, A., & al. (2010). // TODO : entrée à compléter — citée pour la faune.
+Rajaonson, A., Ratolojanahary, M., Ratsimbazafy, J., Feistner, A. & King, T. (2010). Enquête préliminaire de la distribution des lémuriens de bambou dans et autour du Corridor forestier Fandriana-Vondrozo, Madagascar. Lemur News, 15, 34-39.
 
 Romiguière, F. (2025). // TODO : entrée à compléter — mémoire/rapport de stage cité de nombreuses fois.
 
