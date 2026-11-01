@@ -1,0 +1,72 @@
+"Code enquêté";"Nom";"Genre";"Année de naissance";"Âge";"Professions";"Lien au VOI";"Code entretien";"Code sortie"
+"ENQ01";"Eric";"H";"?";;"Responsable programme Inter Aide";"N/A";"E1";
+"ENQ02";"Ravaka";"H";1996;30;"Coordinateur socio-environnemental Inter Aide";"N/A";"E2";
+"ENQ03";;"H";1961;65;"Agriculteur";"Vice-président de Mizilo Gara";"E3, E17";"S14"
+"ENQ04";"Constant Sylvain";"H";1969;57;"Agriculteur";"Polisn’ala";"E3";"S19"
+"ENQ05";;"H";;;"Président fokontany de Mizilo Gara";"?";"E4";
+"ENQ06";;"H";;;;"Aucun";"E5";
+"ENQ07";;"F";;;;"Aucun (par son mari)";"E5";
+"ENQ08";;"H";1990;36;"Agriculteur";"Aucun";"E6";
+"ENQ09";;"H";1986;40;"Agriculteur";"Aucun";"E6";
+"ENQ10";;"H";1964;62;"?";"Observateur";"E6";
+"ENQ11";;"H";;;"Agriculteur, maire de Mizilo Gara, ancien";"Membre";"E7";
+"ENQ12";;"H";1960;66;"Agriculteur";"Secrétaire de Mizilo Gara";"E8, E9, E17";"S3"
+"ENQ13";"Maximilien";"H";1991;35;"Instituteur";"Membre";"E9";
+"ENQ14";;"F";1998;28;"Agricultrice, vannière";"Membre (par son mari)";"E9";
+"ENQ15";"Koto Vajale";"H";1979;47;"Agriculteur";"Ancien membre";"E9";
+"ENQ16";;"F";1989;37;"Agricultrice, vannière";"Ancienne membre (par son mari)";"E9";
+"ENQ17";;"H";;;"Président fokontany d’Andriana";;"E10";
+"ENQ18";"Claude";"H";;;"Agriculteur, éleveur";"Président du VOI";"E11";
+"ENQ19";;"H";;;"Agriculteur";"Pépiniériste, polisn’ala";"E12";
+"ENQ20";;"H";;;;"Pépiniériste";"E13";
+"ENQ21";;"F";1972;54;"Agent communautaire, vannière";"Membre";"E14";
+"ENQ22";"Fredo";"H";2000;26;"Agriculteur";"Polisn’ala";"E15";
+"ENQ23";;"H";;;;"Conseiller, polisn’ala";"E15";
+"ENQ24";;"H";;;;"Polisn’ala, comité feu";"E16";"S14, S15"
+"ENQ25";;"F";;;;"Membre (par son mari)";"E16";
+"ENQ26";;"H";;;"Président fokontany d’Ampasipotsy";"Comité feu";"E16";
+"ENQ27";"Morafeno";"H";;;;"Vice-président d’Ambahatrazo";"E18";"S8"
+"ENQ28";"?";"H";;;;"Trésorier";"E18, E21";
+"ENQ29";;"H";;;"Président fokontany de Manakana";"Polisn’ala (?)";"E19";"S11"
+"ENQ30";;"H";;;"Vice-président fokontany de Manakana";;"E19";
+"ENQ31";;"H";;;;;"E20";
+"ENQ32";;"H";;;;;"E20";
+"ENQ33";"Célestin GÉRARD";"H";1976;50;"Agriculteur";"Polisn’ala";;"S4, S12, S13"
+"ENQ34";"Mme Micheline";"F";1988;38;"Agent communautaire, agricultrice";"Aucun";"E22";
+"ENQ35";"Clodice";"H";2001;25;"Agriculteur";"Aucun";"E23";
+"ENQ36";"Elisa";"F";2005;21;"Agricultrice, commerçante, vannière";"Aucun";"E24";
+"ENQ37";"Chamson";"H";1975;51;"Agriculteur, polisn’ala, adjoint au président fokontany d’Ambalavolo";"Polisn’ala";"E25";
+"ENQ38";"Laly";"H";1977;49;"Ampazaka, agriculteur";"Membre";"E26";
+"ENQ39";"Gasy";"H";1961;65;"Agriculteur";"Ancien membre";"E26";
+"ENQ40";;"H";1971;55;"Agriculteur, président fokontany d’Amborodra";"Membre";"E27";
+"ENQ41";"Fabrice";"H";1986;40;"Agriculteur, adjoint au président fokontany d’Amborodra";"Membre";"E27";
+"ENQ42";"Boutesou Alisara";"H";1957;69;"Agriculteur";"Membre";"E28";
+"ENQ43";"Claude JEAN";"H";"NA";;"Agriculteur";"Polisn’ala";;"S9, S10"
+"ENQ44";"Vaspasienne";"F";"NA";;"Technicienne Inter Aide";"Aucun";"E29";
+"ENQ45";"M. JEAN DE DIEU";"H";1983;43;"Agriculteur";"Membre (par sa femme)";"E30";
+"ENQ46";"Razoual…";"H";1991;35;"Agriculteur, mpanzaka";"Pépiniériste";"E31";
+"ENQ47";"Soafiny";"F";1996;30;"Agricultrice";"Aucun / Membre (par son mari)";"E32";
+"ENQ48";"Razakamomemjanary Dophin Bien-Aimé";"H";1979;47;"Agriculteur";"Membre";"E32";
+"ENQ49";"Mbitaka";"F";1988;38;;"Membre (par son mari)";"E32";
+"ENQ100";"X";"H";1972;54;"Agriculteur, ampazaka, menuisier, vannier";"Polisn’ala";;"S5, S16"
+"ENQ50";;"H";;;;"Polisn’ala";"E33";"S20, S21"
+"ENQ51";;"H";;;;"Membre";"E33";
+"ENQ52";;"H";;;;"Membre";"E34";
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;;;;;;;;
+;"ANDREA";;;;;;;
+;"NOELSON";;;;;;;
+;"DREDD";"F";344676788;;;;;
+;;;;;;;;
+;"Autres…….";;;;;;;
+;"Yanck";;;;;;;
+;"Andriana";;;;;;;
+;"Village près de la forêt";;;;;;;
+;"Gars d’Ambila (est-il mort ? Demander à Morafeno / demander le CD à Morafeno)";;;;;;;

@@ -56,6 +56,13 @@
 #show table.cell: set par(justify: true)
 #show table.cell: set align(horizon)
 #show table.cell.where(y: 0): set text(weight: "bold")
+// Largeur des colonnes : proportionnelle pour les tableaux
+#show table: set table.columns: auto
+#show table: set table.column-gutter: 0.5em
+
+// Bibliographie avec Hayagriva
+#import "@preview/hayagriva:0.1.0": bibliography, cite
+#bibliography("hayagriva.bib", title: "Références bibliographiques")
 
 // Pièces liminaires
 // #set heading(numbering: none, outlined: false)
@@ -76,6 +83,8 @@
 // #include "Discussion.typ"
 // #include "Conclusion.typ"
 // #include "ApresPropos.typ"
-// #include "References.typ"
 // #include "Listes.typ"
 // #include "Annexes.typ"
+
+// Bibliographie (générée automatiquement depuis hayagriva.bib)
+#bibliography
