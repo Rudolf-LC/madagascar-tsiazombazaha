@@ -251,8 +251,11 @@ resumeNiveaux <- pairesNiveaux |>
 
 # Kruskal-Wallis global puis comparaisons deux a deux (Wilcoxon,
 # correction de Holm). Les paires ne sont pas independantes entre
-# elles (une placette apparait dans plusieurs paires) : le test est
-# indicatif, a croiser avec les boxplots.
+# elles (une placette apparait dans plusieurs paires) : p-values non
+# valides (pseudo-replication). Arbitrage auteur du 31/10/2026 : tests
+# conserves pour tracabilite dans les CSV *_tests_*, mais retires du
+# resume pour le rapport et de la figure ; resultats presentes de
+# facon descriptive (moyennes, boites a moustaches).
 testKW <- stats::kruskal.test(brayCurtis ~ niveau, data = pairesNiveaux)
 testsPairs <- stats::pairwise.wilcox.test(pairesNiveaux$brayCurtis,
                                          pairesNiveaux$niveau,
@@ -263,60 +266,8 @@ tableTests <- tableTests |>
   dplyr::filter(!is.na(p)) |>
   dplyr::mutate(p = round(p, 4))
 
-### Regroupement Andriana/Mizilo vs Ambahatrazo ###
-
-# Les communes Andriana et Mizilo sont regroupees (cf. arbitrage
-# auteur) : le contraste porte sur Ambahatrazo vs le reste.
-groupesCommunes <- metaPlacettes |>
-  dplyr::mutate(
-    groupe = dplyr::if_else(
-      commune == "Ambahatrazo", "Ambahatrazo",
-      dplyr::if_else(commune %in% c("Andriana", "Mizilo"),
-                     "Andriana-Mizilo", NA_character_))
-  ) |>
-  dplyr::select(cdPlacette, groupe)
-
-pairesGroupe <- pairesNiveaux |>
-  dplyr::left_join(groupesCommunes,
-                   by = c("placette1" = "cdPlacette")) |>
-  dplyr::rename(groupe1 = groupe) |>
-  dplyr::left_join(groupesCommunes,
-                   by = c("placette2" = "cdPlacette")) |>
-  dplyr::rename(groupe2 = groupe) |>
-  dplyr::mutate(
-    niveauGroupe = dplyr::case_when(
-      transect1 == transect2 ~ "Même transect",
-      polisnala1 == polisnala2 ~ "Même polisn'ala",
-      commune1 == commune2 ~ "Même commune",
-      groupe1 == groupe2 ~ "Même groupe (Andriana/Mizilo)",
-      TRUE ~ "Ambahatrazo vs autres"
-    ),
-    niveauGroupe = factor(niveauGroupe, levels = c(
-      "Même transect", "Même polisn'ala", "Même commune",
-      "Même groupe (Andriana/Mizilo)", "Ambahatrazo vs autres"))
-  ) |>
-  dplyr::filter(!is.na(niveauGroupe))
-
-resumeGroupe <- pairesGroupe |>
-  dplyr::group_by(niveauGroupe) |>
-  dplyr::summarise(
-    nbPaires = dplyr::n(),
-    moyenne = mean(brayCurtis),
-    ecartType = sd(brayCurtis),
-    .groups = "drop"
-  ) |>
-  dplyr::mutate(across(where(is.numeric), ~ round(.x, 3)))
-
-testKWGroupe <- stats::kruskal.test(brayCurtis ~ niveauGroupe,
-                                    data = pairesGroupe)
-testsPairsGroupe <- stats::pairwise.wilcox.test(pairesGroupe$brayCurtis,
-                                               pairesGroupe$niveauGroupe,
-                                               p.adjust.method = "holm")
-tableTestsGroupe <- as.data.frame(as.table(testsPairsGroupe$p.value))
-names(tableTestsGroupe) <- c("niveau1", "niveau2", "p")
-tableTestsGroupe <- tableTestsGroupe |>
-  dplyr::filter(!is.na(p)) |>
-  dplyr::mutate(p = round(p, 4))
+# Regroupement Ambila/Mizilo vs Ambahatrazo retire (arbitrage auteur du
+# 31/10/2026) : contraste nord/sud non concluant et sans apport.
 
 # (figure remplacee par le gradient Jaccard : voir plus bas)
 
@@ -395,29 +346,15 @@ pairesGrad <- dplyr::bind_rows(lapply(seq_along(combis), function(k) {
   )
 }))
 
-# Les p-values exactes et les seuils vont dans la legende de la figure
-# (titre/description cote memoire), pas dans l'image : seules les
-# etoiles de significativite y figurent.
+# Figure descriptive : pas d'etoiles de significativite (tests non
+# valides sur des paires non independantes, cf. ci-dessus).
 
 figGradient <- ggplot(pairesNiveaux,
                       aes(x = niveau, y = jaccard, group = niveau)) +
   geom_boxplot(show.legend = FALSE, linewidth = 0.3, outlier.size = 0.8,
                fill = "grey85", colour = "grey20",
                outlier.colour = "grey20") +
-  geom_segment(data = pairesGrad,
-               aes(x = x, xend = xend, y = y, yend = y),
-               inherit.aes = FALSE, linewidth = 0.3, colour = "grey20") +
-  geom_segment(data = pairesGrad,
-               aes(x = x, xend = x, y = y, yend = y - 0.02),
-               inherit.aes = FALSE, linewidth = 0.3, colour = "grey20") +
-  geom_segment(data = pairesGrad,
-               aes(x = xend, xend = xend, y = y, yend = y - 0.02),
-               inherit.aes = FALSE, linewidth = 0.3, colour = "grey20") +
-  geom_text(data = pairesGrad,
-            aes(x = (x + xend) / 2, y = y, label = etoile),
-            inherit.aes = FALSE, size = 3.8, vjust = -0.1,
-            colour = "grey20") +
-  coord_cartesian(ylim = c(0, 1.42)) +
+  coord_cartesian(ylim = c(0, 1.02)) +
   scale_x_discrete(labels = function(l) paste0(l, "\n(n = ",
     as.integer(table(pairesNiveaux$niveau)[l]), ")")) +
   scale_y_continuous(breaks = seq(0, 1, by = 0.2),
@@ -532,10 +469,6 @@ readr::write_csv(tableTests,
                  file.path(dossierSorties, "diversite_beta_tests_niveaux.csv"))
 readr::write_csv(tableTestsJac,
                  file.path(dossierSorties, "diversite_beta_tests_niveaux_jaccard.csv"))
-readr::write_csv(resumeGroupe,
-                 file.path(dossierSorties, "diversite_beta_bray_groupes.csv"))
-readr::write_csv(tableTestsGroupe,
-                 file.path(dossierSorties, "diversite_beta_tests_groupes.csv"))
 readr::write_csv(especesParCommune,
                  file.path(dossierSorties, "diversite_beta_especes_par_commune.csv"))
 readr::write_csv(dplyr::bind_rows(
@@ -556,7 +489,7 @@ resumeRapport <- dplyr::bind_rows(
   # Beta multiplicatif (Whittaker)
   tibble(
     section = "Beta multiplicatif (Whittaker)",
-    indice = "Beta = gamma / alpha - 1",
+    indice = "Beta = gamma / alpha moyen",
     valeur = round(whit$beta, 2),
     ic95_bas = NA_real_, ic95_haut = NA_real_,
     p_value = NA_real_, n = NA_integer_,
@@ -582,26 +515,19 @@ resumeRapport <- dplyr::bind_rows(
     p_value = NA_real_, n = nrow(matAbond),
     details = "k = 2, methode Bray-Curtis"
   ),
-  # Boxplot Jaccard : KW global
-  tibble(
-    section = "Boxplot Jaccard (presence-absence)",
-    indice = "Kruskal-Wallis (4 niveaux)",
-    valeur = NA_real_,
-    ic95_bas = NA_real_, ic95_haut = NA_real_,
-    p_value = signif(testKWJac$p.value, 3),
-    n = nrow(pairesNiveaux),
-    details = "Niveaux : meme transect / polisn'ala / commune / entre communes"
-  ),
-  # Boxplot Jaccard : comparaisons deux a deux
-  tableTestsJac |>
+  # Jaccard par niveau : moyennes (descriptif)
+  pairesNiveaux |>
+    dplyr::group_by(niveau) |>
+    dplyr::summarise(nbPaires = dplyr::n(), moyenne = round(mean(jaccard), 3),
+                     ecartType = round(sd(jaccard), 3), .groups = "drop") |>
     dplyr::transmute(
-      section = "Boxplot Jaccard (presence-absence)",
-      indice = paste0("Wilcoxon : ", niveau1, " vs ", niveau2),
-      valeur = NA_real_,
+      section = "Jaccard par niveau",
+      indice = as.character(niveau),
+      valeur = moyenne,
       ic95_bas = NA_real_, ic95_haut = NA_real_,
-      p_value = p,
-      n = NA_integer_,
-      details = "Correction Holm"
+      p_value = NA_real_,
+      n = nbPaires,
+      details = paste0("moyenne ± ecart-type = ", moyenne, " ± ", ecartType)
     ),
   # Bray-Curtis par niveau : moyennes
   resumeNiveaux |>
@@ -613,59 +539,6 @@ resumeRapport <- dplyr::bind_rows(
       p_value = NA_real_,
       n = nbPaires,
       details = paste0("moyenne ± ecart-type = ", moyenne, " ± ", ecartType)
-    ),
-  # Bray-Curtis : KW global
-  tibble(
-    section = "Bray-Curtis par niveau",
-    indice = "Kruskal-Wallis (4 niveaux)",
-    valeur = NA_real_,
-    ic95_bas = NA_real_, ic95_haut = NA_real_,
-    p_value = signif(testKW$p.value, 3),
-    n = nrow(pairesNiveaux),
-    details = ""
-  ),
-  # Bray-Curtis : comparaisons deux a deux
-  tableTests |>
-    dplyr::transmute(
-      section = "Bray-Curtis par niveau",
-      indice = paste0("Wilcoxon : ", niveau1, " vs ", niveau2),
-      valeur = NA_real_,
-      ic95_bas = NA_real_, ic95_haut = NA_real_,
-      p_value = p,
-      n = NA_integer_,
-      details = "Correction Holm"
-    ),
-  # Groupes (Andriana/Mizilo vs Ambahatrazo) : moyennes
-  resumeGroupe |>
-    dplyr::transmute(
-      section = "Bray-Curtis par groupe",
-      indice = as.character(niveauGroupe),
-      valeur = moyenne,
-      ic95_bas = NA_real_, ic95_haut = NA_real_,
-      p_value = NA_real_,
-      n = nbPaires,
-      details = paste0("moyenne ± ecart-type = ", moyenne, " ± ", ecartType)
-    ),
-  # Groupes : KW
-  tibble(
-    section = "Bray-Curtis par groupe",
-    indice = "Kruskal-Wallis (5 niveaux)",
-    valeur = NA_real_,
-    ic95_bas = NA_real_, ic95_haut = NA_real_,
-    p_value = signif(testKWGroupe$p.value, 3),
-    n = nrow(pairesGroupe),
-    details = "Andriana/Mizilo regroupes vs Ambahatrazo"
-  ),
-  # Groupes : comparaisons deux a deux
-  tableTestsGroupe |>
-    dplyr::transmute(
-      section = "Bray-Curtis par groupe",
-      indice = paste0("Wilcoxon : ", niveau1, " vs ", niveau2),
-      valeur = NA_real_,
-      ic95_bas = NA_real_, ic95_haut = NA_real_,
-      p_value = p,
-      n = NA_integer_,
-      details = "Correction Holm"
     ),
   # Especes mono-commune
   tibble(
@@ -717,14 +590,6 @@ for (i in seq_len(nrow(tableTests))) {
   r <- tableTests[i, ]
   message("     ", r$niveau1, " vs ", r$niveau2, " : p = ", r$p)
 }
-message("   Niveaux avec Andriana/Mizilo regroupes :")
-for (i in seq_len(nrow(resumeGroupe))) {
-  r <- resumeGroupe[i, ]
-  message("     ", r$niveauGroupe, " : ", r$moyenne,
-          " (n = ", r$nbPaires, " paires)")
-}
-message("   Kruskal-Wallis (groupes) : p = ",
-        signif(testKWGroupe$p.value, 3))
 message("   Gradient Jaccard (presence-absence) : KW p = ",
         signif(testKWJac$p.value, 3))
 for (i in seq_len(nrow(tableTestsJac))) {
@@ -751,10 +616,7 @@ list(
   pointsNMDS = pointsNMDS,
   pairesNiveaux = pairesNiveaux,
   resumeNiveaux = resumeNiveaux,
-  pairesGroupe = pairesGroupe,
-  resumeGroupe = resumeGroupe,
   tableTests = tableTests,
-  tableTestsGroupe = tableTestsGroupe,
   tableTestsJac = tableTestsJac,
   especesParCommune = especesParCommune
 )

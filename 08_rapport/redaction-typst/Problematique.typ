@@ -119,7 +119,7 @@ Le stage vise également à identifier des indicateurs de suivi pertinents dans 
 
 // (g) Espèces phares : l'argumentaire de la NEP cite l'aye-aye, le lémur à crinière noire et blanche et
 //     le grand hapalémur ; à Tsiazombazaha, seuls Eulemur rufus et Avahi laniger sont attestés à ce jour
-//     (Rajaonson et al., 2010). À vérifier avant d'écrire.
+//     (Rajaonson et al., 2010, p. 37 : visite du 25/01/2009, lu le 01/11/2026).
 
 
 // (h) Position du stagiaire : stage inscrit dans le dispositif d'un projet dont AgroParisTech est
@@ -156,8 +156,8 @@ La question centrale est la suivante : quel est l'état de conservation de la fo
 
 Elle se décline en trois sous-questions :
 + SQ1 : Quel est l'état écologique actuel de la forêt~? (section Résultats, volet écologique)
-+ SQ2 : Quels usages et quelles perceptions les populations riveraines ont-elles de la forêt, et quelles pressions s'y exercent ? (section Résultats, volet social 1)
-+ SQ3 : Comment s'organise la gestion de la forêt : par qui et selon quelles règles ? (section Résultats, volet social 2)
++ SQ2~: Quels usages les habitants des fokontany voisins font-ils de la forêt, comment la perçoivent-ils, et quelles pressions y sont rapportées ou observées~? (section Résultats, volet social 1)
++ SQ3~: Comment s'organise la gestion de la forêt~: par qui, selon quelles règles, et comment ces règles sont-elles appliquées et perçues~? (section Résultats, volet social 2)
 // TODO : remplacer les renvois entre parenthèses par des références Typst aux sections.
 
 L'étude combine ainsi deux volets. Le premier, écologique, repose sur un inventaire forestier en placettes et l'observation des images satellites (SQ1). Le second, social, repose sur des entretiens semi-directifs, des sorties en forêt avec des habitants et l'étude des documents de transfert de gestion (SQ2 et SQ3). Les deux volets ont été menés et analysés séparément, puis croisés en discussion à l'aide de la grille socio-écologique pour répondre à la question centrale et formuler des recommandations pour Inter Aide. Les protocoles sont détaillés dans les sections Matériel et méthodes et Méthodologie. 

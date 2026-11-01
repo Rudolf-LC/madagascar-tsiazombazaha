@@ -140,6 +140,8 @@ d$flore <- d$flore |>
 
 especesParPlacette <- d$flore |>
   filter(!is.na(espece), str_trim(espece) != "") |>
+  # Especes indeterminees exclues de la richesse (arbitrage auteur du 31/10/2026)
+  filter(str_to_lower(str_trim(espece)) != "espèce indéterminée") |>
   distinct(cdPlacette, espece) |>
   mutate(presence = 1) |>
   pivot_wider(names_from = espece, values_from = presence, values_fill = 0)

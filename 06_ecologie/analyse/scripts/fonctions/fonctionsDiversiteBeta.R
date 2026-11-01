@@ -10,10 +10,8 @@ figures sont dans analyse_diversite_beta.R.
 Conventions (coh\u00e9rentes avec fonctionsDiversite.R, diversite alpha) :
   - ABONDANCES = m\u00eame table que la diversite alpha
     (calculer_abondances : tiges mesurees + gaulis) ;
-  - ESPECES = identites reconciliees ; chaque observation
-    \u00ab espece indeterminee \u00bb compte pour une espece locale distincte
-    (ind_PXX_OOO), donc deux placettes ne partagent jamais leurs
-    indeterminees ;
+  - ESPECES = identites reconciliees ; les observations
+    \u00ab espece indeterminee \u00bb sont exclues (calculer_abondances) ;
   - DISSIMILARITES (Legendre & Legendre 2012) :
       Jaccard  : b / (a + b + c)  (presence-absence) ;
       Sorensen : b / (2a + b)     (presence-absence) ;
@@ -137,6 +135,6 @@ whittaker_beta <- function(matAbond) {
   list(
     alphaMoyen = alphaMoyen,
     gamma = gamma,
-    beta = gamma / alphaMoyen - 1
+    beta = gamma / alphaMoyen
   )
 }

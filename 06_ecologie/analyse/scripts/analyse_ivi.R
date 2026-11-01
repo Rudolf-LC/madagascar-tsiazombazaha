@@ -9,18 +9,17 @@
 #   - DR  (densite relative)      : % des tiges de l'espece / total tiges ;
 #   - DoR (dominance relative)    : % de la surface terriere de l'espece
 #                                   / surface terriere totale ;
-#   - FR  (frequence relative)    : % des placettes contenant l'espece /
-#                                   placettes echantillonnees ;
-#   - IVI normalise = (DR + DoR + FR) / 3.
-# La normalisation evite que la FR domine l'indice en foret
-# hyperdiverse a fort turnover (DR et DoR y sont dilues entre de
-# nombreuses especes, pas la FR : voir note de contexte).
+#   - FR  (frequence relative)    : nombre de placettes contenant l'espece
+#                                   / somme de ces nombres sur toutes les especes ;
+#   - IVI normalise = (DR + DoR + FR) / 3 : simple changement d'echelle
+#     (sur 100 au lieu de 300), sans effet sur le poids des composantes.
 #
 # Conventions :
 #   - tiges mesurees (floreTiges, CBH > 8 cm) ; gaulis exclus (pas de CBH,
 #     donc pas de surface terriere) ;
 #   - especes reconciliees uniquement (reconciliation-taxonomique.csv) ;
-#     indeterminees = especes locales distinctes (ind_PXX_OOO) ;
+#     especes indeterminees exclues, comme dans les indices de diversite
+#     (arbitrage auteur du 31/10/2026) ;
 #   - surface terriere g = circ^2 / (4 pi), rapportee a la placette.
 #
 # Utilisation :
@@ -119,7 +118,7 @@ tiges <- d$floreTiges |>
                            .default = nomVernaculaire),
     espece = dplyr::if_else(
       str_to_lower(str_trim(espece)) == "espèce indéterminée",
-      paste0("ind_", cdPlacette, "_", cdObs),
+      NA_character_,
       espece
     ),
     g_m2 = (circ_cm / 100)^2 / (4 * pi)

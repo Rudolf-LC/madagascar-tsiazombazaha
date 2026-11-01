@@ -68,10 +68,11 @@
 
 // Corps du texte
 #set heading(numbering: "1.1", outlined: true)
-// #include "Introduction.typ"
+#include "Introduction.typ"
 // #include "Problematique.typ"
 #include "MaterielMethodes.typ"
-// #include "ResultatsEcologie.typ"
+// #include "Resultats.typ"
+#include "ResultatsSocio.typ"
 // #include "Discussion.typ"
 // #include "Conclusion.typ"
 // #include "ApresPropos.typ"
