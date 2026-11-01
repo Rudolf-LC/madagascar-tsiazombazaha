@@ -1,6 +1,6 @@
-indice,moyenne,ecartType,ic95_bas,ic95_haut,nbPlacettes
-N total (tiges),1999,NA,NA,NA,28
-N brut par placette (tiges),71.39,26.41,61.15,81.63,28
-N (tiges/m2),3.76,1.35,3.23,4.28,28
-N (tiges/ha),37569.35,13505.66,32332.4,42806.3,28
-G (m2/ha),37.3,28.04,26.43,48.17,28
+indice,moyenne,ecartType,erreurType,ic95_bas,ic95_haut,nbPlacettes
+N total (tiges),1999,NA,NA,NA,NA,28
+N brut par placette (tiges),71.39,26.41,4.99,61.15,81.63,28
+N (tiges/m2),3.76,1.35,0.26,3.23,4.28,28
+N (tiges/ha),37569.35,13505.66,2552.33,32332.4,42806.3,28
+G (m2/ha),37.3,28.04,5.3,26.43,48.17,28

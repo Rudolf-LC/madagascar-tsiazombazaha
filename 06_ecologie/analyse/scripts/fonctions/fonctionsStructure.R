@@ -165,11 +165,12 @@ calculer_G_par_classe <- function(tiges, surfacesPlacettes,
     arrange(classeG)
 }
 
-# Moyenne, ecart-type et IC 95 % d'un vecteur (entre placettes)
+# Moyenne, ecart-type, erreur-type et IC 95 % d'un vecteur (entre placettes)
 resumer <- function(valeurs) {
   n <- length(valeurs)
   demiLargeur <- qt(0.975, n - 1) * sd(valeurs) / sqrt(n)
   c(moyenne = mean(valeurs), ecartType = sd(valeurs),
+    erreurType = sd(valeurs) / sqrt(n),
     ic95_bas = mean(valeurs) - demiLargeur, ic95_haut = mean(valeurs) + demiLargeur)
 }
 

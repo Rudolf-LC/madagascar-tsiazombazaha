@@ -165,7 +165,7 @@ classesIC95 <- calculer_classes_IC95(d, tiges, gaulis)
 
 resume_N <- bind_rows(
   tibble(indice = "N total (tiges)",
-         moyenne = N_total, ecartType = NA_real_,
+         moyenne = N_total, ecartType = NA_real_, erreurType = NA_real_,
          ic95_bas = NA_real_, ic95_haut = NA_real_),
   t(resumer(N_par_placette$nbTigesBrut)) |> as_tibble() |>
     mutate(indice = "N brut par placette (tiges)"),
@@ -175,7 +175,8 @@ resume_N <- bind_rows(
     mutate(indice = "N (tiges/ha)")
 ) |>
   mutate(nbPlacettes = nrow(N_par_placette)) |>
-  select(indice, moyenne, ecartType, ic95_bas, ic95_haut, nbPlacettes) |>
+  select(indice, moyenne, ecartType, erreurType, ic95_bas, ic95_haut,
+         nbPlacettes) |>
   mutate(across(where(is.numeric), ~ round(.x, 2)))
 
 ### Surface terriere G ###
@@ -191,7 +192,8 @@ G_par_placette <- G_par_placette |>
 
 resume_G <- t(resumer(G_par_placette$G_ha)) |> as_tibble() |>
   mutate(indice = "G (m2/ha)", nbPlacettes = nrow(G_par_placette)) |>
-  select(indice, moyenne, ecartType, ic95_bas, ic95_haut, nbPlacettes) |>
+  select(indice, moyenne, ecartType, erreurType, ic95_bas, ic95_haut,
+         nbPlacettes) |>
   mutate(across(where(is.numeric), ~ round(.x, 2)))
 
 resume_indices <- bind_rows(resume_N, resume_G)
