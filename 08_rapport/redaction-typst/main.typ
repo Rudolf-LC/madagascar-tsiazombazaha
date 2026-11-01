@@ -56,6 +56,9 @@
 #show table.cell: set par(justify: true)
 #show table.cell: set align(horizon)
 #show table.cell.where(y: 0): set text(weight: "bold")
+// Largeur des colonnes : proportionnelle pour les tableaux
+#show table: set table.columns: auto
+#show table: set table.column-gutter: 0.5em
 
 // Pièces liminaires
 // #set heading(numbering: none, outlined: false)
