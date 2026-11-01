@@ -20,6 +20,8 @@ Bray, J. R., & Curtis, J. T. (1957). An ordination of the upland forest communit
 
 Brokaw, N. V. L. (1982). The definition of treefall gap and its effect on measures of forest dynamics. *Biotropica, 14*(2), 158–160. // REF? : vérifier la référence exacte du chablis (seule « (Brokaw, 1982) » figure dans le template).
 
+Bureau National des Changements Climatiques et de la REDD+ [BNCCREDD+], Direction du Reboisement et de la Gestion des Paysages Forestiers [DRGPF], & Ministère de l'Environnement et du Développement Durable [MEDD]. (2020). *Proposition technique de l'inventaire des forêts humides et sèches de Madagascar*. BNCCREDD+. https://creativecommons.org/licenses/by/3.0/igo/ // Licence CC BY 3.0 IGO ; forme « citer comme » du document. Cité « BNCCREDD+ et al., 2020 » dans le M&M.
+
 Burnham, K. P., & Overton, W. S. (1979). Robust estimation of population size when capture probabilities vary among animals. *Ecology, 60*(5), 927–936.
 
 Chao, A. (1984). Non-parametric estimation of the number of classes in a population. *Scandinavian Journal of Statistics, 11*(4), 265–270.
@@ -41,6 +43,8 @@ Cooke, B. (1995). *Economic botany data collection standard* (TDWG). // TODO : e
 Crozier, M., & Friedberg, E. (1976). *L'acteur et le système*. Seuil. // TODO : vérifier l'édition citée.
 
 Curtis, J. T., & McIntosh, R. P. (1951). An upland forest continuum in the prairie-forest border region of Wisconsin. *Ecology, 32*(3), 476–496.
+
+Direction des Eaux et Forêts [DEF], DFS Deutsche Forstservice GmbH, Entreprise d'Études de Développement Rural « Mamokatra », & Foiben-Taosarintanin'i Madagasikara [FTM]. (1996). *Inventaire écologique forestier national : problématique, objectifs, méthodes, résultats, analyses et recommandations*. Ministère de l'Environnement, Programme Environnemental – Phase 1. // Cité « DEF et al., 1996 » dans le M&M. TODO : année (d'après le nom du fichier ; travaux d'avril 1995 à février 1996) et lieu d'édition à vérifier.
 
 Eggleston, H. S., Buendia, L., Miwa, K., Ngara, T., & Tanabe, K. (2006). *Lignes directrices 2006 du GIEC pour les inventaires nationaux de gaz à effet de serre, Volume 4 : Agriculture, foresterie et autres affectations des terres* (Chapitre 4 : Terres forestières). Institut des stratégies environnementales mondiales (IGES).
 

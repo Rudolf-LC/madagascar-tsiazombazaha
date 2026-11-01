@@ -1,0 +1,8 @@
+cookN1,cookN1Libelle,nbEspeces,usagesCites
+600,materiaux,49,balai | batan | bois_construction | canaux_irrigation | construction_maison | corde | fixation_toiture | guitare | manche_beche | menuiserie | panier | pilon | pirogue | planche | plancher | poutre | tressage
+1100,medicinale,11,aphrodisiaque | douleurs_dentaires | fatigue | gonflements | medicinale
+800,sociale_culturelle,8,anti_foudre | magie
+100,alimentaire,3,ecorce_sucree | fruit_comestible | the
+700,combustible,2,bois_chauffage
+1200,environnementale,2,haie
+1000,poison,1,insecticide

@@ -1,14 +1,14 @@
 section,indice,valeur,ic95_bas,ic95_haut,p_value,n,details
-Beta multiplicatif (Whittaker),Beta = gamma / alpha moyen,8.29,NA,NA,NA,NA,"alpha moyen = 29.3, gamma = 243"
-Beta additif,Beta additif = gamma - alpha moyen,213.7,NA,NA,NA,NA,"alpha moyen = 29.3, gamma = 243"
+Beta multiplicatif (Whittaker),Beta = gamma / alpha moyen,8.26,NA,NA,NA,NA,"alpha moyen = 29.3, gamma = 242"
+Beta additif,Beta additif = gamma - alpha moyen,212.7,NA,NA,NA,NA,"alpha moyen = 29.3, gamma = 242"
 NMDS (Bray-Curtis),Stress,0.227,NA,NA,NA,28,"k = 2, methode Bray-Curtis"
-Jaccard par niveau,Même transect,0.71,NA,NA,NA,37,moyenne ± ecart-type = 0.71 ± 0.067
+Jaccard par niveau,Même transect,0.71,NA,NA,NA,37,moyenne ± ecart-type = 0.71 ± 0.068
 Jaccard par niveau,Même polisn'ala,0.742,NA,NA,NA,16,moyenne ± ecart-type = 0.742 ± 0.086
-Jaccard par niveau,Même commune,0.885,NA,NA,NA,70,moyenne ± ecart-type = 0.885 ± 0.036
+Jaccard par niveau,Même commune,0.885,NA,NA,NA,70,moyenne ± ecart-type = 0.885 ± 0.037
 Jaccard par niveau,Entre communes,0.864,NA,NA,NA,255,moyenne ± ecart-type = 0.864 ± 0.043
 Bray-Curtis par niveau,Même transect,0.638,NA,NA,NA,37,moyenne ± ecart-type = 0.638 ± 0.099
 Bray-Curtis par niveau,Même polisn'ala,0.763,NA,NA,NA,16,moyenne ± ecart-type = 0.763 ± 0.057
-Bray-Curtis par niveau,Même commune,0.834,NA,NA,NA,70,moyenne ± ecart-type = 0.834 ± 0.067
+Bray-Curtis par niveau,Même commune,0.833,NA,NA,NA,70,moyenne ± ecart-type = 0.833 ± 0.067
 Bray-Curtis par niveau,Entre communes,0.829,NA,NA,NA,255,moyenne ± ecart-type = 0.829 ± 0.06
-Especes mono-commune,Especes reconciliees,0.695,NA,NA,0.001,243,attendu sous permutation = 0.496
+Especes mono-commune,Especes reconciliees,0.694,NA,NA,0.001,242,attendu sous permutation = 0.494
 Especes mono-commune,Noms vernaculaires bruts,0.806,NA,NA,0.001,341,attendu sous permutation = 0.617
